@@ -28,6 +28,7 @@ public class ArtistController {
     }
 
     public ResponseEntity<Object> registerUser(@RequestBody ArtistRegister user){
+
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 

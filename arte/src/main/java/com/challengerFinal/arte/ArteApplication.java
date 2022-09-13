@@ -26,6 +26,7 @@ public class ArteApplication implements CommandLineRunner {
 		System.out.println(client);
 		userGlobalRepository.saveUser(client);
 		userGlobalRepository.saveUser(userClient);
+
 		Artist artist = new Artist("Jhon","Jhonas","jhojho@goto.com","Jhon bon jhons","654");
 		Artist artist1 = new Artist("Bart","Simpson","bs@goto.com","el flautista","erty");
 		System.out.println(artist);

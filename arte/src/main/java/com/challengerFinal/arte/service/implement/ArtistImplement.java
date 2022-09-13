@@ -27,4 +27,5 @@ public class ArtistImplement implements ArtistService {
     public Artist saveUser(Artist user) {
         return artistRepository.save(user);
     }
+
 }
