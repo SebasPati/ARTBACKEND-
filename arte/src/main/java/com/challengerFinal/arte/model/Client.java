@@ -1,11 +1,13 @@
-package com.challengerFinal.arte.models;
+package com.challengerFinal.arte.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
-@Table()
-public class Client extends User {
+public class Client extends UserGlobal {
+
     private Integer telefone;
     public Client(){
 
@@ -36,3 +38,4 @@ public class Client extends User {
                 '}';
     }
 }
+

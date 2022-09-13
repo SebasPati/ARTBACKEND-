@@ -1,10 +1,10 @@
-package com.challengerFinal.arte.models;
+package com.challengerFinal.arte.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-public class Artist extends User {
+public class Artist extends UserGlobal {
+
     private String nickname;
 
     public Artist() {
@@ -18,6 +18,8 @@ public class Artist extends User {
         super(name, lastName, email, password);
         this.nickname = nickname;
     }
+
+
 
     public String getNickname() {
         return nickname;
@@ -38,4 +40,6 @@ public class Artist extends User {
                 "nickname='" + nickname + '\'' +
                 '}';
     }
+
+
 }
