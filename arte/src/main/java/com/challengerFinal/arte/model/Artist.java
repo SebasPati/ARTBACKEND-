@@ -2,15 +2,10 @@ package com.challengerFinal.arte.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.imageio.ImageIO;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.awt.*;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
 @Entity
 public class Artist {

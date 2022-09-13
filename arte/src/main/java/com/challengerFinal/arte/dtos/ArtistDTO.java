@@ -2,7 +2,6 @@ package com.challengerFinal.arte.dtos;
 
 
 import com.challengerFinal.arte.model.Artist;
-import com.challengerFinal.arte.model.Client;
 
 public class ArtistDTO {
     private long Id;
