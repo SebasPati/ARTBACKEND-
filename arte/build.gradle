@@ -8,6 +8,10 @@ group = 'com.challengerFinal'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+bootRun{
+	sourceResources sourceSets.main
+}
+
 repositories {
 	mavenCentral()
 }
