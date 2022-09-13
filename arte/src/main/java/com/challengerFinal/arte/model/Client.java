@@ -5,8 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
-public class UserGlobal {
+public class Client {
    @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
     @GenericGenerator(strategy = "native",name = "native")
@@ -16,14 +15,17 @@ public class UserGlobal {
     private String email;
     private String password;
 
-    public UserGlobal() {
+    private String telefone;
+
+    public Client() {
     }
 
-    public UserGlobal(String name, String lastName, String email, String password) {
+    public Client(String name, String lastName, String email, String password, String telefone) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.telefone = telefone;
     }
 
     public String getName() {
@@ -58,18 +60,27 @@ public class UserGlobal {
         this.password = password;
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public Long getId() {
         return id;
     }
 
     @Override
     public String toString() {
-        return "User{" +
+        return "Client{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
+                ", telefone='" + telefone + '\'' +
                 '}';
     }
 }

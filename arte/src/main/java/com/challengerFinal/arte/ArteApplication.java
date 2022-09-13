@@ -1,7 +1,9 @@
 package com.challengerFinal.arte;
 
-import com.challengerFinal.arte.model.UserGlobal;
-import com.challengerFinal.arte.repositories.UserGlobalRepository;
+import com.challengerFinal.arte.model.Artist;
+import com.challengerFinal.arte.model.Client;
+import com.challengerFinal.arte.service.ArtistService;
+import com.challengerFinal.arte.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,13 +16,20 @@ public class ArteApplication implements CommandLineRunner {
 		SpringApplication.run(ArteApplication.class, args);
 	}
 	@Autowired
-	UserGlobalRepository userGlobalRepository;
+	ClientService userGlobalRepository;
+	@Autowired
+	ArtistService artistService;
 	@Override
 	public void run(String... args) throws Exception {
-		UserGlobal userArtist = new UserGlobal("juan","Da vinci","juda@goto.com","juanda");
-		UserGlobal userClient = new UserGlobal("Homero","Simpson","hosi@goto.com","homerin");
-
-		userGlobalRepository.save(userArtist);
-		userGlobalRepository.save(userClient);
+		Client client = new Client("Juan","Da vinci","juda@goto.com","juanda","654");
+		Client userClient = new Client("Homero","Simpson","hosi@goto.com","homerin","erty");
+		System.out.println(client);
+		userGlobalRepository.saveUser(client);
+		userGlobalRepository.saveUser(userClient);
+		Artist artist = new Artist("Jhon","Jhonas","jhojho@goto.com","Jhon bon jhons","654");
+		Artist artist1 = new Artist("Bart","Simpson","bs@goto.com","el flautista","erty");
+		System.out.println(artist);
+		artistService.saveUser(artist);
+		artistService.saveUser(artist1);
 	}
 }
