@@ -1,11 +1,17 @@
-package com.challengerFinal.arte.models;
+package com.challengerFinal.arte.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+/*
+
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
 
 @Entity
-@Table()
 public class Client extends User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "unique")
+    @GenericGenerator(strategy = "native",name = "unique")
+    private Long id;
     private Integer telefone;
     public Client(){
 
@@ -14,6 +20,11 @@ public class Client extends User {
     public Client(String name, String lastName, String email, String password, Integer telefone) {
         super(name, lastName, email, password);
         this.telefone = telefone;
+    }
+
+    @Override
+    public Long getId() {
+        return id;
     }
 
     public Integer getTelefone() {
@@ -27,7 +38,7 @@ public class Client extends User {
     @Override
     public String toString() {
         return "Client{" +
-                "ID='" + getId() + '\''
+                "ID='" + id + '\''
                 +"Name='" + getName() + '\''
                 +"Last Name='" + getLastName() + '\''
                 +"Email='" + getEmail() + '\''
@@ -35,4 +46,5 @@ public class Client extends User {
                 "telefone=" + telefone  + '\'' +
                 '}';
     }
-}
+}*/
+

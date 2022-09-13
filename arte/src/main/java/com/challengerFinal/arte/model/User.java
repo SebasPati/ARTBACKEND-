@@ -1,16 +1,14 @@
-package com.challengerFinal.arte.models;
+package com.challengerFinal.arte.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO,generator = "unique")
-    @GenericGenerator(strategy = "native",name = "unique")
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
+    @GenericGenerator(strategy = "native",name = "native")
     private Long id;
     private String name;
     private String lastName;
