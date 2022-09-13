@@ -5,6 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserGlobal {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
