@@ -2,7 +2,6 @@ package com.challengerFinal.arte.controllers;
 
 import com.challengerFinal.arte.dtos.ArtworksDto;
 import com.challengerFinal.arte.repositories.ArtworksRepository;
-import com.challengerFinal.arte.service.ArtworksService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
