@@ -3,12 +3,16 @@ package com.challengerFinal.arte.dtos;
 
 import com.challengerFinal.arte.model.Artist;
 
+import java.util.Set;
+import java.util.stream.Collectors;
+
 public class ArtistDTO {
     private long Id;
     private String Name;
     private String LastName;
     private String Email;
     private String nickname;
+    private Set<ArtworksDto> artworks;
 
 
 
@@ -21,6 +25,7 @@ public class ArtistDTO {
         this.LastName = user.getLastName();
         this.Email = user.getEmail();
         this.nickname = user.getNickname();
+        this.artworks = user.getArtworks().stream().map(ArtworksDto::new).collect(Collectors.toSet());
 
     }
 
@@ -42,5 +47,9 @@ public class ArtistDTO {
 
     public String getNickname() {
         return nickname;
+    }
+
+    public Set<ArtworksDto> getArtworks() {
+        return artworks;
     }
 }

@@ -27,7 +27,7 @@ public class ArtistController {
         return artistService.getUsers().stream().map(ArtistDTO::new).collect(Collectors.toList());
     }
 
-    public ResponseEntity<Object> registerUser(@RequestBody ArtistRegister user){
+    public ResponseEntity<Object> registerArtist(@RequestBody ArtistRegister user){
 
         return new ResponseEntity<Object>(HttpStatus.CREATED);
     }

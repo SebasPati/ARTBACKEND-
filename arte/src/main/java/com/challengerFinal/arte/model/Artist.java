@@ -2,10 +2,10 @@ package com.challengerFinal.arte.model;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Artist {
@@ -18,6 +18,8 @@ public class Artist {
     private String email;
     private String nickname;
     private String password;
+    @OneToMany(mappedBy = "artist",fetch = FetchType.EAGER)
+    private Set<Artworks> artworks = new HashSet<>();
 
     public Artist(){
     }
@@ -72,6 +74,19 @@ public class Artist {
 
     public void setNickname(String telefone) {
         this.nickname = telefone;
+    }
+
+    public Set<Artworks> getArtworks() {
+        return artworks;
+    }
+
+    public void setArtworks(Set<Artworks> artworks) {
+        this.artworks = artworks;
+    }
+    public void addArtworks(Artworks artwork) {
+        artwork.setArtist(this);
+        artworks.add(artwork);
+
     }
 
     @Override

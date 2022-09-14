@@ -23,14 +23,15 @@ public class ArteApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Client client = new Client("Juan","Da vinci","juda@goto.com","juanda","654");
 		Client userClient = new Client("Homero","Simpson","hosi@goto.com","homerin","erty");
-		System.out.println(client);
+
 		userGlobalRepository.saveUser(client);
 		userGlobalRepository.saveUser(userClient);
-
+		System.out.println(client);
 		Artist artist = new Artist("Jhon","Jhonas","jhojho@goto.com","Jhon bon jhons","654");
 		Artist artist1 = new Artist("Bart","Simpson","bs@goto.com","el flautista","erty");
-		System.out.println(artist);
+
 		artistService.saveUser(artist);
 		artistService.saveUser(artist1);
+		System.out.println(artist);
 	}
 }
