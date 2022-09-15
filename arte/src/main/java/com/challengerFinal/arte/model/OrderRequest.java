@@ -5,6 +5,9 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class OrderRequest {
     @Id
@@ -17,6 +20,8 @@ public class OrderRequest {
     @JoinColumn(name = "client")
     private Client petitioner;
 
+    @OneToMany(mappedBy = "orderRequest",fetch = FetchType.EAGER)
+    private Set<OrderLineal> orders = new HashSet<>();
     public OrderRequest(){}
 
     public OrderRequest(LocalDate date, StatePedido state, Client petitioner) {

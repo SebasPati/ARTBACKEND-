@@ -2,7 +2,10 @@ package com.challengerFinal.arte.service;
 
 import com.challengerFinal.arte.model.OrderRequest;
 
-public interface OrderService {
+import java.util.List;
 
-    OrderRequest save(OrderRequest orderRequest);
+public interface OrderService {
+    OrderRequest getOrderRequest(Long id);
+    List<OrderRequest> getOrderRequestsAll();
+    OrderRequest saveRequest(OrderRequest orderRequest);
 }

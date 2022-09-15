@@ -3,7 +3,10 @@ package com.challengerFinal.arte.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 @Entity
 public class Artworks {
     @Id
@@ -22,7 +25,8 @@ public class Artworks {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "artist")
     private Artist artist;
-
+    @OneToMany(mappedBy = "artworks",fetch = FetchType.EAGER)
+    private Set<OrderLineal> artworks = new HashSet<>();
 
     public Artworks() {
     }
