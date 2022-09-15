@@ -11,14 +11,19 @@ public class ArtworksDto {
     private  String name;
     private  Double cost;
     private  String description;
-    private  List<Double> dimensionsSet;
+    private  List<Double> dimensionsList;
+
+    private Boolean status;
+    private Integer existing;
 
     public ArtworksDto(Artworks artworks) {
         this.id = artworks.getId();
         this.name = artworks.getName();
         this.cost = artworks.getCost();
         this.description = artworks.getDescription();
-        this.dimensionsSet = artworks.getDimensionsSet();
+        this.dimensionsList = artworks.getDimensionsSet();
+        this.status = artworks.getStatus();
+        this.existing = artworks.getExisting();
     }
 
     public Long getId() {
@@ -37,8 +42,16 @@ public class ArtworksDto {
         return description;
     }
 
-    public List<Double> getDimensionsSet() {
-        return dimensionsSet;
+    public List<Double> getDimensionsList() {
+        return dimensionsList;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public Integer getExisting() {
+        return existing;
     }
 
 }

@@ -7,5 +7,5 @@ import java.util.List;
 public interface ClientService {
     List<Client> getUsers();
     public Client getUserId(long userId);
-    Client saveUser(Client user);
+    Client saveUser(Client client);
 }

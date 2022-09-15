@@ -3,7 +3,6 @@ package com.challengerFinal.arte.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.awt.*;
 import java.util.List;
 @Entity
 public class Artworks {
@@ -16,20 +15,25 @@ public class Artworks {
     private String description;
     @ElementCollection
     @Column(name = "Dimensions")
-    private List<Double> dimensionsSet;
+    private List<Double> dimensionsList;
     //private Image image;
+    private Boolean status;
+    private Integer existing;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "artist")
     private Artist artist;
 
+
     public Artworks() {
     }
 
-    public Artworks(String name, Double cost, String description, List<Double> dimensionsSet,Artist artist) {
+    public Artworks(String name, Double cost, String description, List<Double> dimensionsList, Boolean status, Integer existing, Artist artist) {
         this.name = name;
         this.cost = cost;
         this.description = description;
-        this.dimensionsSet = dimensionsSet;
+        this.dimensionsList = dimensionsList;
+        this.status = status;
+        this.existing = existing;
         this.artist = artist;
     }
 
@@ -62,11 +66,11 @@ public class Artworks {
     }
 
     public List<Double> getDimensionsSet() {
-        return dimensionsSet;
+        return dimensionsList;
     }
 
     public void setDimensionsSet(List<Double> dimensionsSet) {
-        this.dimensionsSet = dimensionsSet;
+        this.dimensionsList = dimensionsSet;
     }
 
     public Artist getArtist() {
@@ -77,6 +81,30 @@ public class Artworks {
         this.artist = artist;
     }
 
+    public List<Double> getDimensionsList() {
+        return dimensionsList;
+    }
+
+    public void setDimensionsList(List<Double> dimensionsList) {
+        this.dimensionsList = dimensionsList;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Integer getExisting() {
+        return existing;
+    }
+
+    public void setExisting(Integer existing) {
+        this.existing = existing;
+    }
+
     @Override
     public String toString() {
         return "Artworks{" +
@@ -84,7 +112,9 @@ public class Artworks {
                 ", name='" + name + '\'' +
                 ", cost=" + cost +
                 ", description='" + description + '\'' +
-                ", dimensionsSet=" + dimensionsSet +
+                ", dimensionsList=" + dimensionsList +
+                ", status=" + status +
+                ", existing=" + existing +
                 ", artist=" + artist +
                 '}';
     }

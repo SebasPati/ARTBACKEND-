@@ -2,10 +2,7 @@ package com.challengerFinal.arte.controllers;
 
 import com.challengerFinal.arte.dtos.ArtistDTO;
 import com.challengerFinal.arte.dtos.ArtistRegister;
-import com.challengerFinal.arte.dtos.ClientDTO;
-import com.challengerFinal.arte.dtos.ClientRegister;
 import com.challengerFinal.arte.service.ArtistService;
-import com.challengerFinal.arte.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

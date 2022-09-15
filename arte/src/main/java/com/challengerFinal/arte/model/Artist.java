@@ -3,8 +3,8 @@ package com.challengerFinal.arte.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -18,18 +18,26 @@ public class Artist {
     private String email;
     private String nickname;
     private String password;
+    @ElementCollection
+    @Column(name = "networks")
+    private List<String> networks;
     @OneToMany(mappedBy = "artist",fetch = FetchType.EAGER)
     private Set<Artworks> artworks = new HashSet<>();
 
     public Artist(){
     }
 
-    public Artist(String name, String lastName, String email, String nickname, String password) {
+    public Artist(String name, String lastName, String email, String nickname, String password, List<String> networks) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.nickname = nickname;
         this.password = password;
+        this.networks = networks;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {
@@ -56,6 +64,14 @@ public class Artist {
         this.email = email;
     }
 
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -64,16 +80,12 @@ public class Artist {
         this.password = password;
     }
 
-    public Long getId() {
-        return id;
+    public List<String> getNetworks() {
+        return networks;
     }
 
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String telefone) {
-        this.nickname = telefone;
+    public void setNetworks(List<String> networks) {
+        this.networks = networks;
     }
 
     public Set<Artworks> getArtworks() {
@@ -83,6 +95,7 @@ public class Artist {
     public void setArtworks(Set<Artworks> artworks) {
         this.artworks = artworks;
     }
+
     public void addArtworks(Artworks artwork) {
         artwork.setArtist(this);
         artworks.add(artwork);
@@ -98,6 +111,8 @@ public class Artist {
                 ", email='" + email + '\'' +
                 ", nickname='" + nickname + '\'' +
                 ", password='" + password + '\'' +
+                ", networks=" + networks +
+                ", artworks=" + artworks +
                 '}';
     }
 }

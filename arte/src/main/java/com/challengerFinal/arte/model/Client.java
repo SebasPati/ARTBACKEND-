@@ -3,6 +3,8 @@ package com.challengerFinal.arte.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Client {
@@ -15,6 +17,9 @@ public class Client {
     private String email;
     private String password;
     private String telefone;
+    @OneToMany(mappedBy = "petitioner", fetch = FetchType.EAGER)
+    private Set<OrderRequest> claimant = new HashSet<>();
+
     public Client() {
     }
 

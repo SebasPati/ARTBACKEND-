@@ -3,6 +3,7 @@ package com.challengerFinal.arte.dtos;
 
 import com.challengerFinal.arte.model.Artist;
 
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -12,6 +13,7 @@ public class ArtistDTO {
     private String LastName;
     private String Email;
     private String nickname;
+    private List<String> networks;
     private Set<ArtworksDto> artworks;
 
 
@@ -25,6 +27,7 @@ public class ArtistDTO {
         this.LastName = user.getLastName();
         this.Email = user.getEmail();
         this.nickname = user.getNickname();
+        this.networks = user.getNetworks();
         this.artworks = user.getArtworks().stream().map(ArtworksDto::new).collect(Collectors.toSet());
 
     }
@@ -47,6 +50,10 @@ public class ArtistDTO {
 
     public String getNickname() {
         return nickname;
+    }
+
+    public List<String> getNetworks() {
+        return networks;
     }
 
     public Set<ArtworksDto> getArtworks() {
