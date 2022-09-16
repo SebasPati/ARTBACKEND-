@@ -1,6 +1,6 @@
 package com.challengerFinal.arte.controllers;
 
-import com.challengerFinal.arte.dtos.OrderDto;
+import com.challengerFinal.arte.dtos.OrderRequestDto;
 import com.challengerFinal.arte.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +16,7 @@ public class OrderController {
     @Autowired
     OrderService orderService;
     @GetMapping("/orders")
-    public List<OrderDto> getOrderRequestsAll() {
-        return orderService.getOrderRequestsAll().stream().map(OrderDto::new).collect(Collectors.toList());
+    public List<OrderRequestDto> getOrderRequestsAll() {
+        return orderService.getOrderRequestsAll().stream().map(OrderRequestDto::new).collect(Collectors.toList());
     }
 }

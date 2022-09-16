@@ -57,4 +57,23 @@ public class OrderRequest {
     public void setPetitioner(Client petitioner) {
         this.petitioner = petitioner;
     }
+
+    public Set<OrderLineal> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(Set<OrderLineal> orders) {
+        this.orders = orders;
+    }
+
+    @Override
+    public String toString() {
+        return "OrderRequest{" +
+                "id=" + id +
+                ", date=" + date +
+                ", state=" + state +
+                ", petitioner=" + petitioner +
+                ", orders=" + orders +
+                '}';
+    }
 }

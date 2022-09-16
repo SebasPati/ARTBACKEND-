@@ -19,26 +19,40 @@ public class Artworks {
     @ElementCollection
     @Column(name = "Dimensions")
     private List<Double> dimensionsList;
-    //private Image image;
+    @ElementCollection
+    @Column(name = "ImgArtworks")
+    private List<String> image;
     private Boolean status;
     private Integer existing;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "artist")
-    private Artist artist;
+    @JoinColumn(name = "client")
+    private Client client;
+
     @OneToMany(mappedBy = "artworks",fetch = FetchType.EAGER)
     private Set<OrderLineal> artworks = new HashSet<>();
 
     public Artworks() {
     }
 
-    public Artworks(String name, Double cost, String description, List<Double> dimensionsList, Boolean status, Integer existing, Artist artist) {
+    public Artworks(String name, Double cost, String description, List<Double> dimensionsList, Boolean status, Integer existing, Client client) {
         this.name = name;
         this.cost = cost;
         this.description = description;
         this.dimensionsList = dimensionsList;
         this.status = status;
         this.existing = existing;
-        this.artist = artist;
+        this.client = client;
+    }
+
+    public Artworks(String name, Double cost, String description, List<Double> dimensionsList, List<String> image, Boolean status, Integer existing, Client client) {
+        this.name = name;
+        this.cost = cost;
+        this.description = description;
+        this.dimensionsList = dimensionsList;
+        this.image = image;
+        this.status = status;
+        this.existing = existing;
+        this.client = client;
     }
 
     public Long getId() {
@@ -77,12 +91,12 @@ public class Artworks {
         this.dimensionsList = dimensionsSet;
     }
 
-    public Artist getArtist() {
-        return artist;
+    public Client getClient() {
+        return client;
     }
 
-    public void setArtist(Artist artist) {
-        this.artist = artist;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
     public List<Double> getDimensionsList() {
@@ -109,6 +123,22 @@ public class Artworks {
         this.existing = existing;
     }
 
+    public List<String> getImage() {
+        return image;
+    }
+
+    public void setImage(List<String> image) {
+        this.image = image;
+    }
+
+    public Set<OrderLineal> getArtworks() {
+        return artworks;
+    }
+
+    public void setArtworks(Set<OrderLineal> artworks) {
+        this.artworks = artworks;
+    }
+
     @Override
     public String toString() {
         return "Artworks{" +
@@ -119,7 +149,7 @@ public class Artworks {
                 ", dimensionsList=" + dimensionsList +
                 ", status=" + status +
                 ", existing=" + existing +
-                ", artist=" + artist +
+                ", artist=" + client +
                 '}';
     }
 }

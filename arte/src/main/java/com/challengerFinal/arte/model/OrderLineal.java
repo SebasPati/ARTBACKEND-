@@ -54,4 +54,14 @@ public class OrderLineal {
     public void setArtworks(Artworks artworks) {
         this.artworks = artworks;
     }
+
+    @Override
+    public String toString() {
+        return "OrderLineal{" +
+                "id=" + id +
+                ", units=" + units +
+                ", orderRequest=" + orderRequest +
+                ", artworks=" + artworks +
+                '}';
+    }
 }

@@ -1,6 +1,6 @@
 package com.challengerFinal.arte.dtos;
 
-public class ClientRegister {
+public class ClientRegisterDto {
     private Long userId;
     private String username;
     private String lastName;
@@ -9,7 +9,7 @@ public class ClientRegister {
     private String nickname;
     private Integer telefone;
 
-    public ClientRegister() {
+    public ClientRegisterDto() {
     }
 
     public Long getUserId() {
