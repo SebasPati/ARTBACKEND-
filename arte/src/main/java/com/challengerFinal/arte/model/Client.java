@@ -28,7 +28,7 @@ public class Client {
     @OneToMany(
             mappedBy = "client",
             fetch = FetchType.EAGER)
-    private Set<Artworks> artworks = new HashSet<>();
+    private Set<Product> artworks = new HashSet<>();
 
     @OneToMany(
             mappedBy = "petitioner",
@@ -137,11 +137,11 @@ public class Client {
     this.networks = networks;
    }
 
-   public Set<Artworks> getArtworks() {
+   public Set<Product> getArtworks() {
     return artworks;
    }
 
-   public void setArtworks(Set<Artworks> artworks) {
+   public void setArtworks(Set<Product> artworks) {
     this.artworks = artworks;
    }
 
@@ -153,7 +153,7 @@ public class Client {
     this.claimant = claimant;
    }
 
- public void addClients(Artworks artwork) {
+ public void addClients(Product artwork) {
         artwork.setClient(this);
         artworks.add(artwork);
     }

@@ -1,7 +1,7 @@
 package com.challengerFinal.arte.controllers;
 
-import com.challengerFinal.arte.dtos.ArtworksDto;
-import com.challengerFinal.arte.service.ServiceArtworks;
+import com.challengerFinal.arte.dtos.ProductDto;
+import com.challengerFinal.arte.service.ServiceProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,15 +15,15 @@ import java.util.stream.Collectors;
 @RequestMapping(value = "/api")
 public class ArtworksController {
     @Autowired
-    ServiceArtworks artworksService;
+    ServiceProduct artworksService;
 
     @GetMapping(value = "/artworks")
-    public Set<ArtworksDto> getArtworks() {
-        return artworksService.getArtworksAll().stream().map(ArtworksDto::new).collect(Collectors.toSet());
+    public Set<ProductDto> getArtworks() {
+        return artworksService.getArtworksAll().stream().map(ProductDto::new).collect(Collectors.toSet());
     }
     @GetMapping(value = "/artworks/{id}")
-    public ArtworksDto getArtworksId(@PathVariable Long id) {
-        return new ArtworksDto(artworksService.getArtworksId(id));
+    public ProductDto getArtworksId(@PathVariable Long id) {
+        return new ProductDto(artworksService.getArtworksId(id));
     }
 
 }

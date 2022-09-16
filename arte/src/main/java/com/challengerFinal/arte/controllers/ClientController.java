@@ -1,6 +1,6 @@
 package com.challengerFinal.arte.controllers;
 
-import com.challengerFinal.arte.dtos.ClientDto;
+import com.challengerFinal.arte.dtos.ClientsDto;
 import com.challengerFinal.arte.dtos.ClientRegisterDto;
 import com.challengerFinal.arte.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ public class ClientController {
     @Autowired
     ClientService clientService;
     @GetMapping("/clients")
-    public List<ClientDto> getClientsAll() {
-        return clientService.getUsers().stream().map(ClientDto::new).collect(Collectors.toList());
+    public List<ClientsDto> getClientsAll() {
+        return clientService.getUsers().stream().map(ClientsDto::new).collect(Collectors.toList());
     }
     @PostMapping("/client/current")
     public ResponseEntity<Object> registerUser(@RequestBody ClientRegisterDto user){

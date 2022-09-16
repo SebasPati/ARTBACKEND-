@@ -15,16 +15,16 @@ public class OrderLineal {
     private OrderRequest orderRequest;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "artworksRequest_id")
-    private Artworks artworks;
+    @JoinColumn(name = "productRequest_id")
+    private Product product;
 
     public OrderLineal() {
     }
 
-    public OrderLineal(Integer units,OrderRequest orderRequest, Artworks artworks) {
+    public OrderLineal(Integer units,OrderRequest orderRequest, Product product) {
         this.units = units;
         this.orderRequest = orderRequest;
-        this.artworks = artworks;
+        this.product = product;
     }
 
     public Long getId() {
@@ -47,12 +47,12 @@ public class OrderLineal {
         this.orderRequest = orderRequest;
     }
 
-    public Artworks getArtworks() {
-        return artworks;
+    public Product getArtworks() {
+        return product;
     }
 
-    public void setArtworks(Artworks artworks) {
-        this.artworks = artworks;
+    public void setArtworks(Product product) {
+        this.product = product;
     }
 
     @Override
@@ -61,7 +61,7 @@ public class OrderLineal {
                 "id=" + id +
                 ", units=" + units +
                 ", orderRequest=" + orderRequest +
-                ", artworks=" + artworks +
+                ", product=" + product +
                 '}';
     }
 }
