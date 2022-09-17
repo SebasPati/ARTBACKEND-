@@ -1,12 +1,10 @@
 package com.challengerFinal.arte.dtos;
 
-import com.challengerFinal.arte.model.OrderLineal;
 import com.challengerFinal.arte.model.OrderRequest;
 import com.challengerFinal.arte.model.enums.StatePedido;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
