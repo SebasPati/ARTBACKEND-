@@ -3,6 +3,7 @@ package com.challengerFinal.arte;
 import com.challengerFinal.arte.model.*;
 import com.challengerFinal.arte.model.enums.StatePedido;
 import com.challengerFinal.arte.model.enums.TypeUser;
+import com.challengerFinal.arte.repositories.ClientRepository;
 import com.challengerFinal.arte.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -20,7 +21,7 @@ public class ArteApplication implements CommandLineRunner {
 		System.out.println("Welcome to ArteApplication for Rafael");
 	}
 	@Autowired
-	ClientService userGlobalRepository;
+	ClientRepository userGlobalRepository;
 
 	@Autowired
 	ServiceProduct artworksService;
@@ -38,9 +39,9 @@ public class ArteApplication implements CommandLineRunner {
 		Client client = new Client("Juan","Da vinci","juda@goto.com","juanda","654", TypeUser.CLIENT);
 		Client artist = new Client("Homero","Simpson","Lord Simpson","hosi@goto.com","3100000","098765",TypeUser.ARTIST,"Cll siempre viva 123",socialNetwords);
 		Client admin = new Client("admin_db","Simpson","db@admin.com","31000000","admin1234",TypeUser.ADMIN);
-		userGlobalRepository.saveUser(client);
-		userGlobalRepository.saveUser(artist);
-		userGlobalRepository.saveUser(admin);
+		userGlobalRepository.save(client);
+		userGlobalRepository.save(artist);
+		userGlobalRepository.save(admin);
 		System.out.println(client);
 		System.out.println(artist);
 		System.out.println(admin);

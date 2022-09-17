@@ -18,7 +18,7 @@ public class ClientController {
     ClientService clientService;
     @GetMapping("/clients")
     public List<ClientsDto> getClientsAll() {
-        return clientService.getUsers().stream().map(ClientsDto::new).collect(Collectors.toList());
+        return clientService.getUsers();
     }
     @PostMapping("/client/current")
     public ResponseEntity<Object> registerUser(@RequestBody ClientRegisterDto user){

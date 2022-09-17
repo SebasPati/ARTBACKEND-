@@ -1,70 +1,101 @@
 package com.challengerFinal.arte.dtos;
 
+import com.challengerFinal.arte.model.enums.TypeUser;
+
+import java.util.List;
+
 public class ClientRegisterDto {
-    private Long userId;
-    private String username;
+    private Long id;
+    private String name;
     private String lastName;
-    private String email;
-    private String password;
     private String nickname;
-    private Integer telefone;
+    private String email;
+    private String telephone;
+    private String password;
+    private TypeUser typeUser;
+    private String direction;
+    private List<String> networks;
 
     public ClientRegisterDto() {
     }
 
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public String getUsername() {
-        return username;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLastName() {
         return lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPassword() {
-        return password;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getNickname() {
         return nickname;
     }
 
-    public Integer getTelefone() {
-        return telefone;
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getEmail() {
+        return email;
     }
 
     public void setEmail(String email) {
         this.email = email;
     }
 
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
     public void setPassword(String password) {
         this.password = password;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
+    public TypeUser getTypeUser() {
+        return typeUser;
     }
 
-    public void setTelefone(Integer telefone) {
-        this.telefone = telefone;
+    public void setTypeUser(TypeUser typeUser) {
+        this.typeUser = typeUser;
+    }
+
+    public String getDirection() {
+        return direction;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    public List<String> getNetworks() {
+        return networks;
+    }
+
+    public void setNetworks(List<String> networks) {
+        this.networks = networks;
     }
 }
