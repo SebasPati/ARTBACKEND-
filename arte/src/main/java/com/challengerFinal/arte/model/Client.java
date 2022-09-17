@@ -23,6 +23,7 @@ public class Client {
     private TypeUser typeUser;
     private String direction;
     private Integer ranking;
+    private String image;
     @ElementCollection
     @Column(name = "networks")
     private List<String> networks;
