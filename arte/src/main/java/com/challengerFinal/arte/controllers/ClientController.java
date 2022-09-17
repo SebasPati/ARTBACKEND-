@@ -22,7 +22,8 @@ public class ClientController {
     }
     @PostMapping("/client/current")
     public ResponseEntity<Object> registerUser(@RequestBody ClientRegisterDto user){
-        return new ResponseEntity<Object>(HttpStatus.CREATED);
+
+        return clientService.registerUser(user);
     }
 
 }
