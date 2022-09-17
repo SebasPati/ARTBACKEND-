@@ -6,6 +6,7 @@ import com.challengerFinal.arte.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -20,10 +21,14 @@ public class ClientController {
     public List<ClientsDto> getClientsAll() {
         return clientService.getUsers();
     }
-    @PostMapping("/client/current")
+    @PostMapping("/clients")
     public ResponseEntity<Object> registerUser(@RequestBody ClientRegisterDto user){
-
         return clientService.registerUser(user);
+    }
+    @GetMapping("/clients/current")
+    public ClientsDto getClient(Authentication authentication){
+
+        return clientService.getClient(authentication);
     }
 
 }
