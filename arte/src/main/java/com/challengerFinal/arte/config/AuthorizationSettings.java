@@ -21,27 +21,15 @@ public class AuthorizationSettings extends WebSecurityConfigurerAdapter {
 
 
         http.authorizeRequests()
-
-                .antMatchers(HttpMethod.POST, "/api/clients").permitAll()
-                // Con HttpMethod.POST le damos permiso solo a metodo POST para acceder a la ruta, por eso lo agregamos
-                .antMatchers(HttpMethod.GET, "/api/**").permitAll()
-                .antMatchers(HttpMethod.GET, "/api/clients/current").permitAll()
-                .antMatchers("/**").permitAll()
+                .antMatchers("/api/**").permitAll()
                 .antMatchers("/h2-console/**").permitAll();
 
-
-
-        //si se recibe una petición con la URL /data, se verifica primero contra el antMatcher(“/admin/**”)
-        // y si este no se cumple entonces pasa al
-        // siguiente, por lo que se valida contra antMatcher(“/**”)
-        // y como se cumple entonces Spring Security verificará que exista una sesión iniciada
-        // y que ese usuario tenga el rol USER para poder acceder a /data.
-
         http.formLogin().usernameParameter("email")
-                //establece lo que necesita el formulario para poder loguearse: mails, password y pagina
-                .passwordParameter("password")
-                .loginPage("/api/login"); // endpoint
 
+                .passwordParameter("password")
+                .loginPage("/api/login").permitAll();
+                // endpoint
+                //establece lo que necesita el formulario para poder loguearse: mails, password y pagina
         http.logout().logoutUrl("/api/logout");
         //indica la ruta url que desloguea la sesion, borra la cookie automaticamente
 

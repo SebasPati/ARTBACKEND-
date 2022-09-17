@@ -18,25 +18,33 @@ public class AuthenticationSettings  extends GlobalAuthenticationConfigurerAdapt
     @Autowired
     ClientRepository clientService;
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }
+    public void init(AuthenticationManagerBuilder authenticationUser) throws Exception {
 
-    public void init(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(inputName-> {
+        authenticationUser.userDetailsService(inputName ->{
+
             Client client = clientService.findByEmail(inputName);
+
             if (client != null) {
-                if (client.getTypeUser() == TypeUser.ADMIN){
-                    return new User(client.getEmail(), client.getPassword(),
+                if (client.getName().contains("admin")) {
+                    return new User(client.getEmail(),client.getPassword(),
+                            //AuthorityUtils.commaSeparatedStringToAuthorityList("CLIENT,ADMIN"));
                             AuthorityUtils.createAuthorityList("ADMIN"));
                 }else {
-                    return new User(client.getEmail(), client.getPassword(),
-                            AuthorityUtils.createAuthorityList("CLIENT","ARTIST"));
+                    return new User(client.getEmail(),client.getPassword(),
+                            //AuthorityUtils.commaSeparatedStringToAuthorityList("CLIENT"));
+                            AuthorityUtils.createAuthorityList("CLIENT"));
                 }
-            } else {
-                throw new UsernameNotFoundException("Unknown user: " + inputName);
+            }else{
+
+                throw new UsernameNotFoundException("User " + inputName + " not found");
+
             }
         });
+    }
+    @Bean
+    public PasswordEncoder/*codificación de contraseñas.*/ passwordEncoder() {
+
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+        //Crea un codificador de contraseña de delegación con asignaciones predeterminadas.
     }
 }

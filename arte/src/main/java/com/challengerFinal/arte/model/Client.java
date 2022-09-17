@@ -71,10 +71,6 @@ public class Client {
     return id;
    }
 
-   public void setId(Long id) {
-    this.id = id;
-   }
-
    public String getName() {
     return name;
    }
@@ -131,7 +127,23 @@ public class Client {
     this.typeUser = typeUser;
    }
 
-   public String getDirection() {
+    public Integer getRanking() {
+        return ranking;
+    }
+
+    public void setRanking(Integer ranking) {
+        this.ranking = ranking;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getDirection() {
     return direction;
    }
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -33,12 +34,15 @@ public class ArteApplication implements CommandLineRunner {
 	@Autowired
 	GoodsReceiptService goodsReceiptService;
 
+	@Autowired
+	PasswordEncoder passwordEncoder;
+
 	@Override
 	public void run(String... args) throws Exception {
 		List<String> socialNetwords = List.of("Twtter","Instagram","Tick Tock");
-		Client client = new Client("Juan","Da vinci","juda@goto.com","juanda","654", TypeUser.CLIENT);
-		Client artist = new Client("Homero","Simpson","Lord Simpson","hosi@goto.com","3100000","098765",TypeUser.ARTIST,"Cll siempre viva 123",socialNetwords);
-		Client admin = new Client("admin_db","Simpson","db@admin.com","31000000","admin1234",TypeUser.ADMIN);
+		Client client = new Client("Juan","Da vinci","juda@goto.com","juanda",passwordEncoder.encode("654"), TypeUser.CLIENT);
+		Client artist = new Client("Homero","Simpson","Lord Simpson","hosi@goto.com","3100000",passwordEncoder.encode("098765"),TypeUser.ARTIST,"Cll siempre viva 123",socialNetwords);
+		Client admin = new Client("admin_db","Simpson","db@admin.com","31000000",passwordEncoder.encode("admin1234"),TypeUser.ADMIN);
 		userGlobalRepository.save(client);
 		userGlobalRepository.save(artist);
 		userGlobalRepository.save(admin);

@@ -77,6 +77,7 @@ public class Product {
         this.category = category;
     }
 
+
     public void setDescription(String description) {
         this.description = description;
     }
