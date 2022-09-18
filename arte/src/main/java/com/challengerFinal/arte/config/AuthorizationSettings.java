@@ -22,7 +22,8 @@ public class AuthorizationSettings extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/api/**").permitAll()
-                .antMatchers("/h2-console/**").permitAll();
+                .antMatchers("/h2-console/**").permitAll()
+                .antMatchers("/").permitAll();
 
         http.formLogin().usernameParameter("email")
 
