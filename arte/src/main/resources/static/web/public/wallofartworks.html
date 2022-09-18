@@ -20,18 +20,30 @@
             <!-- HEADER CON NAV -->
             <header class="flex flex-col">
 
-                <div ref="navbar" class="flex justify-between w-screen p-2 fixed z-0 place-items-center">
+                <div ref="navbar" class="z-40 flex justify-between w-screen p-2 fixed place-items-center">
 
                     <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'" class="w-[3.5%] h-[3.5%] ml-4 p-2 aparecer transition-all ease-in-out duration-300" alt="logo">
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
+
+
+                          <div class="w-1/2">
+                            <button class="boton1s" @click="theme(1)">TEMA 1</button>
+                            <button class="boton1s" @click="theme(2)">TEMA 2</button>
+                            <button class="boton1s" @click="theme(3)">TEMA 3</button>
+                            <button class="boton1s" @click="theme(4)">TEMA 4</button>
+                            <button class="boton1s" @click="theme(5)">TEMA 5</button>
+                            <button class="boton1s" @click="theme(6)">TEMA 6</button>
+                        </div>
+
+
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/index.html">Home</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div> 
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/wallofartworks.html">Store</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div> 
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/wallofartist.html">Artists</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/shoppingcart.html">Shop cart</a>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/shoppingcart.html">Cart</a>
                         </div>
                         <div class="flex items-center mr-6 ml-6">
                             <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus" href="javascript:void(0);">Log in</a>
@@ -42,10 +54,11 @@
 
                 </div>
 
-                <div class="md:mt-36 mt-24  flex flex-col text-center md:text-start md:min-h-[300px] backHeaderGallery">
+                <div class="md:mt-36 mt-24  flex flex-col items-center md:items-start  md:text-start min-h-[300px] backHeaderGallery aparecer2">
 
                   <p class="md:ml-12 text-skin-muted font-bahnschrift text-xl md:text-2xl font-light">WELCOME TO THE</p>
-                  <p class="antialiased text-skin-accent font-cinzel text-5xl md:text-9xl md:ml-16">Art Gallery</p>
+                  <p class="antialiased text-skin-accent font-cinzel text-5xl md:text-[5.5rem] lg:text-9xl md:ml-16">Art Gallery</p>
+                  <img class="md:hidden w-5/6" :src="tema=='tema_1' || tema=='tema4' ? '/web/assets/david03a.png' : tema=='tema_2' || tema=='tema5' ? '/web/assets/david03b.png' : tema=='tema_3' || tema=='tema6' ? '/web/assets/david03c.png' : '' " alt="">
                 </div>
                 <div class="place-self-center bg-skin-accent h-[1.5px] lg:w-1/2 w-full mt-9 bg-opacity-20"></div><!-- LÍNEA -->
                 
@@ -56,34 +69,44 @@
             <!-- CUERPO -->
             <main class="mt-24">
 
-                <!-- ARRIBA -->
-                <section>
+                <!-- BARRA DE BÚSQUEDA -->
+                <section class="flex flex-col c-flex">
 
+                  <div class="c-flex flex-col-reverse w-full md:w-full transition-all ease-linear duration-300">
+                    <input class="peer pl-3 py-1 font-bahnschrift bg-skin-muted bg-opacity-[0.15] focus:bg-opacity-10 w-4/5 md:w-1/3 md:focus:w-1/2 text-skin-accent  border-2 border-skin-muted border-opacity-0 focus:border-opacity-30 rounded-sm focus focus:outline-none transition-all ease-linear duration-300" type="search" id="search" name="search">
+                    <label for="search" class="font-bahnschrift text-skin-muted text-opacity-80 peer-focus:text-opacity-100 pb-3">Search</label> 
+                  </div>
 
+                  <div class="flex mt-3">
+                    <span class="font-bahnschrift text-skin-base text-opacity-90">Filter by:</span><span class="ml-4">X X X X X</span>
+                  </div>
+
+                  <div class="place-self-center bg-skin-accent h-[1.5px] w-full mt-9 bg-opacity-20"></div><!-- LÍNEA -->
                 </section>
 
                 <!-- OBRAS DE ARTE -->
-                <section class="container">
+                <section class="flex p-8 flex-wrap justify-around">
 
-                  <a href="#" class="block overflow-hidden rounded-2xl">
-                    <div class="overflow-hidden aspect-card1 md:h-auto md:w-36">
+                  <a v-for="algo in prueba" href="#" class="group m-5 block overflow-hidden rounded-t-2xl md:w-[300px] aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.1)]">
+                    <div class="overflow-hidden aspect-card1 w-full">
 
                       <img
                       alt="venus"
                       src="https://i.pinimg.com/originals/bb/1d/57/bb1d571d7d778dae41451727fbfa808f.jpg"
-                      class="md:"/>
+                      class="saturate-[.9] hover:saturate-100 hover:scale-125 transition-all ease-in duration-300"/>
+
+                      <div class="absolute z-10">asdad</div>
 
                     </div>
 
+                    <div class="p-6 bg-skin-normal group-hover:bg-skin-base group-hover:bg-opacity-[.1] w-full h-96 transition-colors ease-in-out duration-200">
+                      <p class="text-xs font-quicksand text-skin-base">website.com</p>
                   
-                    <div class="p-4 bg-gray-900">
-                      <p class="text-xs text-gray-500">website.com</p>
-                  
-                      <h5 class="text-sm text-white">
+                      <h5 class="text-lg font-bahnschrift text-skin-accent">
                         How to position your furniture for positivity
                       </h5>
                   
-                      <p class="mt-1 text-xs text-gray-500">
+                      <p class="mt-1 text-xs font-quicksand text-skin-base text-opacity-90">
                         Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
                         aliquid accusamus? Sint, sequi voluptas.
                       </p>
@@ -95,8 +118,6 @@
             
                 <section class="p-12 text-skin-base">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae quo laboriosam totam amet. Perferendis voluptates aperiam autem veritatis! Unde ex quisquam asperiores quasi dignissimos, perspiciatis repudiandae? Aut id expedita eveniet atque, non ullam corporis assumenda animi deserunt eius quibusdam excepturi iusto, maxime ipsa dolores, amet suscipit modi consectetur esse laudantium labore rem quam. Voluptatem laboriosam, ea dolor aliquam delectus fuga corporis numquam voluptatum quisquam facere cupiditate in quasi itaque. Corrupti accusamus saepe et natus porro voluptatum sed doloremque sint excepturi dolorum provident aliquam voluptate cumque officiis molestiae, numquam commodi dignissimos quaerat inventore at quasi ratione? Distinctio, ullam quaerat minus vel saepe rem placeat porro recusandae itaque odio aliquam nemo rerum soluta est fugiat voluptas. Aspernatur exercitationem quisquam asperiores eos ut laborum! Deleniti, impedit dicta tempore aperiam at, ipsum placeat vero facere nisi ad cum cumque quaerat architecto consequatur, officiis unde. Ipsum illo necessitatibus ea consequuntur expedita nostrum reprehenderit delectus perspiciatis! Commodi veritatis corporis dolores nemo possimus voluptatibus nam magnam, molestias nostrum earum praesentium! Nihil modi magnam maxime, minus praesentium sit itaque sunt quisquam suscipit deserunt molestias eaque accusantium ex, perferendis aperiam et quasi cumque provident dolore? Nobis architecto cumque repellendus id excepturi fuga! Sapiente officia rem laboriosam, est inventore voluptatem alias iusto ratione dolorum odit itaque deleniti. Voluptatem, dolorem aspernatur architecto minima atque, molestias obcaecati reprehenderit, exercitationem odio distinctio iste quae culpa consequatur consectetur magnam esse. Ea consequuntur facilis asperiores molestias mollitia eveniet culpa, sint quia veritatis nulla dolor fugiat soluta obcaecati blanditiis sit repellat expedita in error ab officiis veniam? Aspernatur porro repellat tenetur. Molestias, eius reiciendis atque harum ipsam, dignissimos porro natus, ut nobis tenetur dolore velit? Molestiae commodi, numquam architecto quidem, cumque est dolorum debitis ipsum nihil deserunt eum sint recusandae suscipit vitae labore fugiat ipsam perspiciatis voluptates nemo rem pariatur asperiores ullam optio quaerat. Laboriosam, exercitationem!
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vel corporis quas rem provident alias deleniti rerum consectetur nisi amet delectus ullam saepe neque non, eligendi officia dolor modi ratione. Soluta sit, quidem distinctio ullam deleniti minima quos? Deserunt quae magnam nesciunt expedita ab dignissimos numquam sunt, placeat aut excepturi iusto ducimus atque quibusdam ipsum maxime quaerat, cumque quod veniam, fuga sit? Culpa voluptatum modi eum quos impedit veniam suscipit ex tempora quibusdam accusamus consequatur laborum eveniet reiciendis, obcaecati perspiciatis eos aliquam provident. Harum consequatur esse perferendis dolores totam repellendus quisquam accusamus porro dolorum ut. Vero voluptates exercitationem nesciunt dolor ratione in, sapiente facilis commodi adipisci quaerat sunt officia officiis numquam voluptatem quo molestiae quisquam? Sunt voluptatibus laborum, veritatis sit delectus quia cumque quas quod cupiditate minima tempore, asperiores debitis error, consequatur ab ex quidem. Veniam esse repellendus ab suscipit aliquid. In consequuntur assumenda sunt expedita nemo, sapiente est tenetur facere quae beatae esse doloribus, recusandae aliquam alias et, incidunt blanditiis provident perspiciatis quidem voluptate quo laboriosam totam officia nulla. Molestiae numquam quos, at in sed distinctio optio fuga illo odio quidem aperiam sunt dolorum porro itaque quae vel iure autem nihil eos obcaecati consequatur natus? Id aspernatur cupiditate nisi porro.
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Velit, saepe aspernatur repellat, maiores eius tempora molestiae explicabo totam nesciunt ipsam nemo officiis. Distinctio nulla minus accusantium quia! Tempora temporibus porro a omnis atque, enim delectus nihil praesentium recusandae veniam. Magnam, ipsam adipisci sunt quos quo qui voluptas neque doloribus repellendus et, magni vel molestiae suscipit porro sint incidunt commodi ut eaque dicta! Quos, animi. Iusto in error, autem ex dolore fugiat quos possimus quam architecto id labore dolorum commodi officiis incidunt dignissimos. Id possimus quia dolores, quas numquam sunt eum soluta officiis at odio veritatis voluptas quo voluptatem nulla eligendi, sequi expedita asperiores. Quidem aliquid corrupti, deleniti corporis quibusdam explicabo impedit nostrum quis quos quia inventore mollitia cupiditate, qui molestias sapiente. Ea quam vero iure nihil excepturi a voluptates vitae, quaerat molestiae numquam porro ipsa ullam totam aut id voluptatibus facere deserunt harum, cum, dolor similique. Odit explicabo aperiam deleniti voluptatum voluptate praesentium molestiae repellat? Amet soluta numquam at obcaecati aut ducimus eveniet placeat dolore distinctio ipsam aliquid itaque corporis, eligendi consequatur vel, ad est aliquam impedit sunt a, odio voluptate. Rem quis, fugiat corporis consequuntur sequi nulla laudantium, ipsa quidem reprehenderit minima quae quisquam sunt libero optio quas ducimus? Nemo possimus doloribus natus non dolorum consequuntur, illum culpa quam qui minima. A odit minus voluptatem porro nobis alias blanditiis, quia incidunt repudiandae temporibus qui tempore omnis id, cum fugiat voluptatibus! Maiores eum odio, deserunt dolor assumenda voluptatum quod illo optio, quo vel minus distinctio placeat aut nihil unde quidem dolorem omnis atque quis dolores qui aliquam. Distinctio molestiae nulla labore corrupti atque laudantium eum ut dolorum voluptatem commodi, quo id doloremque aliquid optio consequuntur dolor est ipsam aut consectetur necessitatibus molestias magni veniam ab nihil. Inventore illo sint dolor earum dignissimos aliquam sequi, itaque alias ipsam fugiat! Animi quidem quas laboriosam nostrum dolores libero illo aspernatur tempora deserunt temporibus maxime eveniet quaerat fuga explicabo, ea pariatur, minima consequuntur optio rem voluptate, doloremque sapiente nulla provident inventore. Totam labore illum sapiente illo tenetur quibusdam hic ducimus autem ipsum, amet quasi quos impedit rem modi expedita fugit, perferendis, saepe aperiam. Minus veritatis esse optio perferendis autem commodi ullam sapiente magni impedit eveniet, ipsam architecto voluptatibus voluptate explicabo vero error? Doloremque, beatae tenetur in molestias similique earum? Quasi quos placeat consequatur obcaecati porro molestiae exercitationem saepe inventore assumenda odit nemo ex atque cum, eveniet mollitia? Voluptas nihil nam quasi doloremque ea corporis animi sequi consequuntur rerum recusandae maxime iusto, quae neque quis placeat, pariatur aperiam iste nostrum. Repellendus eveniet nostrum eos. Rem in autem ratione voluptatum quibusdam corrupti. Necessitatibus quibusdam neque commodi perferendis quod rem labore accusamus reiciendis atque. Asperiores maxime consequatur inventore, voluptates fugiat maiores omnis explicabo vitae harum reiciendis impedit illum ratione odit quaerat a fuga quidem praesentium corrupti similique aspernatur suscipit quisquam dolore unde. Doloribus quia eius exercitationem. Aperiam, tempore rem blanditiis porro voluptates assumenda? Officia voluptates quos, laudantium itaque eveniet similique dolor deleniti. Quis ex ab blanditiis obcaecati, tempore, deserunt repellat officia voluptas minima tenetur laborum rerum consectetur nostrum inventore, illo eum amet nesciunt quo. Doloribus sint et quibusdam earum labore! Quam sit dicta id voluptatibus quia aperiam consectetur, excepturi perspiciatis alias tempora quas, fugiat consequatur eos accusamus obcaecati officiis harum inventore, suscipit libero. At ad ipsa illo cupiditate quasi voluptas consequatur asperiores est error quibusdam? Suscipit eum sint quos, ad obcaecati voluptas eius dolores facere sed recusandae laudantium, cumque at, maiores consectetur! Excepturi praesentium provident hic saepe eos animi, vitae minima quas aut neque dolore obcaecati perferendis error quam mollitia dolorem et expedita ratione in ad eligendi aliquid molestias. Dolor repudiandae dolores consectetur nesciunt deserunt voluptates commodi, delectus voluptatum, inventore dolorum blanditiis. Doloremque fugiat, commodi animi nemo totam accusamus consequuntur rerum dolor, itaque eaque debitis repellat sit id non deleniti dolore iusto exercitationem voluptatum earum magnam suscipit iure laborum reiciendis! Voluptates obcaecati laboriosam harum ipsum nihil officia veritatis minus earum deserunt quidem, expedita mollitia maiores! Ipsam vero architecto incidunt debitis ullam? Ab maxime nemo provident doloremque ea assumenda rem aperiam explicabo voluptatibus consequatur modi aspernatur in, minima excepturi deleniti facilis corporis repudiandae. Pariatur fugit eum accusamus, debitis ipsum ea tempora maiores quos saepe quibusdam vero placeat excepturi voluptatibus cupiditate odit mollitia ad rem error facere labore eius dolorum reiciendis laborum minima. Voluptatum tenetur molestiae, delectus, in numquam esse ea praesentium at neque earum autem labore repellat cumque corporis aut blanditiis voluptates! Nihil rem dolorem doloremque, sunt nisi illum rerum ullam eius eos distinctio laudantium quia vero quibusdam sint assumenda commodi inventore veritatis, ad pariatur. Deserunt, voluptatem! Ab molestiae recusandae sapiente porro, numquam repudiandae corporis est illum vitae optio aliquam exercitationem veniam, tenetur saepe omnis architecto quas. Unde libero earum quo ipsam odit voluptatum aut quidem, laudantium rem neque animi obcaecati omnis sit harum ipsa voluptate nihil tenetur temporibus impedit quisquam, beatae debitis eum! Perspiciatis, fugiat. Neque, dolorem. Ducimus recusandae error excepturi unde a corrupti? Similique, totam minima sit nisi quibusdam sapiente vitae iste magnam molestias, tempora quia autem, laborum nulla quam a quos? Blanditiis eos saepe sit laudantium nemo eum maiores omnis animi eveniet libero eaque, quos, fugiat at odit! Repellendus dicta laborum deserunt. Perferendis a quisquam quasi. Accusamus voluptatum eum iusto magni praesentium, sit explicabo quidem cupiditate numquam quam officiis odio libero eaque omnis fugiat harum ipsam animi hic, labore in incidunt aut, vel tempore. Numquam facere soluta modi perferendis ea velit non, voluptate assumenda iusto pariatur laborum sapiente beatae illo culpa explicabo necessitatibus optio ipsum! Qui tempora ducimus, non fuga doloribus delectus magni iusto, natus asperiores soluta accusamus autem quia, vel dolor! Provident minus impedit recusandae rem, ipsam odit eum reprehenderit sint eos numquam, eaque ducimus fugiat repudiandae labore aliquid iste repellat fugit harum, pariatur quis sed esse ab beatae. Aperiam nobis commodi ipsam nesciunt ut, illum perferendis dolorum omnis? Perspiciatis illum eligendi quam rem beatae laborum, possimus minus enim, veritatis, temporibus asperiores exercitationem nostrum praesentium totam excepturi quis quas alias deleniti incidunt voluptatum quod! Et ullam dolor ea, facilis est sit nostrum pariatur commodi perspiciatis temporibus quisquam corporis accusamus. Quod explicabo vel odio voluptate.
                 </section>
             
                 <!-- PRODUCTOS -->
