@@ -60,21 +60,23 @@ public class implementClient implements ClientService {
         if (registration.getEmail().isEmpty()
         || registration.getPassword().isEmpty()
         || registration.getName().isEmpty()
-        || registration.getLastName().isEmpty()){
+        || registration.getTypeUser() == null
+                || registration.getLastName().isEmpty()){
             return new ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
         String email = registration.getEmail();
 
         if (clientRepository.findByEmail(email) != null) {
 
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("the email address is already in use " + email,HttpStatus.FORBIDDEN);
         }
 
             Client newClient = new Client(
                     registration.getName(),
                     registration.getLastName(),
                     registration.getEmail(),
-                    passwordEncoder.encode(registration.getPassword()));
+                    passwordEncoder.encode(registration.getPassword())
+                    ,registration.getTypeUser());
 
             clientRepository.save(newClient);
             return new ResponseEntity<>(HttpStatus.CREATED);

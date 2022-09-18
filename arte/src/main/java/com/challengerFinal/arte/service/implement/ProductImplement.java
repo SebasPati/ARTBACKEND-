@@ -48,6 +48,7 @@ public class ProductImplement implements ServiceProduct {
                 createProductDto.getName().isEmpty()
                 || createProductDto.getCategory().isEmpty()
                 || createProductDto.getDimensionsList().isEmpty()
+                || createProductDto.getDescription().isEmpty()
                 ){
             return new  ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
