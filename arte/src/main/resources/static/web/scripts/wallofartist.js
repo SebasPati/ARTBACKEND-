@@ -4,6 +4,7 @@ const app = Vue.createApp({
     data() {
         return {
             tema: '',
+            prueba: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
         }
     },
     created() {

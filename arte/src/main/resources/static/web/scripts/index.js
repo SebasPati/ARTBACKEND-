@@ -1,12 +1,19 @@
 const app = Vue.createApp({
     data() {
         return {
+            tema: '',
             modal: "",
             usertype: '',
-            name: '',
-            lastName: '',
-            email: '',
-            password: '',
+            login: {
+                email: "",
+                password: ""
+            },
+            register: {
+                name: '',
+                lastName: '',
+                email: '',
+                password: ''
+            },
             repeatedPassword: ''
         }
     },
@@ -28,35 +35,24 @@ const app = Vue.createApp({
 
         /* PROPIOS DE LA PAG */
         createAccount() {
-            const request_body = {
-                "name": this.name,
-                "lastName": this.lastName,
-                "email": this.email,
-                "password": this.password
+            console.log(this.register)
+            if (this.register.password == this.repeatedPassword) {
+                axios.post('/api/clients', {
+                    "name": this.register.name,
+                    "lastName": this.register.lastName,
+                    "password": this.register.password,
+                    "email": this.register.email
+                })
+                    .then((response) => window.location.href = '/web/artistandartlovers/myprofile.html')
+                    .catch(() => console.log('error'))
             }
-
-            console.log(request_body)
-            axios.post('/api/clients', {
-                data: {
-                    "name": this.name,
-                    "lastName": this.lastName,
-                    "email": this.email,
-                    "password": this.password
-                }
-            },
-                { headers: { 'content-type': 'application/json' } })
-                .then(response => console.log("creado"))
-                .catch(error => alert(error.response.data))
-            /* console.log(this.name, this.lastName, this.email, this.password)
-            axios.post('/api/clients', {
-                "name": this.name,
-                "lastName": this.lastName,
-                "email": this.email,
-                "password": this.password
-            })
-                .then((response) => console.log('hecho'))
-                .catch((error) => console.log(error.response.data)) */
-
+        },
+        loginAccount(e) {
+            e.preventDefault()
+            console.log(this.login)
+            axios.post('api/login', this.login)
+                .then((response) => window.location.href = '/web/public/wallofartist.html')
+                .catch((error) => console.log("error"))
         }
     },
     computed: {
