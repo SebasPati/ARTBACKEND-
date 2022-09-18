@@ -5,6 +5,7 @@ import com.challengerFinal.arte.dtos.ProductDto;
 import com.challengerFinal.arte.dtos.UpdateProductDTO;
 import com.challengerFinal.arte.model.Product;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface ServiceProduct {
     List <ProductDto> getArtworksAll();
     ProductDto getArtworksId(Long id);
 
-    public ResponseEntity<Object> createProduct(
+    public ResponseEntity<Object> createProduct(Authentication authentication,
              CreateProductDto createProductDto);
 
     ResponseEntity<Object> updateProduct(@PathVariable("id") Long id, UpdateProductDTO updateProductDto);

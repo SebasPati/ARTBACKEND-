@@ -51,7 +51,8 @@ public class implementClient implements ClientService {
 
     @Override
     public ClientsDto getClient(Authentication authentication) {
-        return null;
+        Client client = this.clientRepository.findByEmail(authentication.getName());
+        return new ClientsDto(client);
     }
 
     @Override

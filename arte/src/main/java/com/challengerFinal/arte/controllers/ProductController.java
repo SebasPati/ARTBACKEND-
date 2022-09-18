@@ -3,9 +3,12 @@ package com.challengerFinal.arte.controllers;
 import com.challengerFinal.arte.dtos.CreateProductDto;
 import com.challengerFinal.arte.dtos.ProductDto;
 import com.challengerFinal.arte.dtos.UpdateProductDTO;
+import com.challengerFinal.arte.model.Client;
+import com.challengerFinal.arte.repositories.ClientRepository;
 import com.challengerFinal.arte.service.ServiceProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,6 +20,8 @@ import java.util.stream.Collectors;
 public class ProductController {
     @Autowired
     ServiceProduct productService;
+    @Autowired
+    ClientRepository clientRepository;
 
     @GetMapping(value = "/products")
     public List<ProductDto> getArtworks() {
@@ -27,10 +32,11 @@ public class ProductController {
         return productService.getArtworksId(id);
     }
 
-    @PostMapping("/products")
+    @PostMapping("/clients/current/products")
     public ResponseEntity<Object> createProduct(
+            Authentication authentication,
             @RequestBody CreateProductDto createProductDto) {
-        return productService.createProduct(createProductDto);
+        return productService.createProduct(authentication,createProductDto);
     }
 
     @PutMapping("/products/update/{id}")
