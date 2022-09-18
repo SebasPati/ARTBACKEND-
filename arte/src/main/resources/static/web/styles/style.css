@@ -7,7 +7,7 @@
 @import url('../assets/Cinzel-Regular.otf?family=Cinzel:wght@300;400;500;600;700;800&display=swap');
 @import url('../assets/Quicksand-VariableFont_wght.ttf?family=Quicksand:wght@300;400;500;600;700;800&display=swap');
 
-.body{
+body{
     box-sizing: border-box;
 }
 
@@ -137,7 +137,7 @@
 }
 
 .color_theme3 {
-    --color-text-base: #001e24;
+    --color-text-base: rgb(0, 30, 36);
     --color-text-inverted: rgb(240, 253, 255);
     --color-text-inverted-accent: rgb(129, 234, 255);
     --color-text-muted: rgb(255, 56, 189);
@@ -152,7 +152,7 @@
 }
 
 .color_theme4 {
-    --color-text-base: #f6fffd;
+    --color-text-base: rgb(246, 255, 253);
     --color-text-inverted: rgb(0, 82, 70);
     --color-text-inverted-accent: rgb(1, 108, 85);
     --color-text-muted: rgb(215, 227, 224);
@@ -166,7 +166,7 @@
 }
 
 .color_theme5 {
-    --color-text-base: #fff8f6;
+    --color-text-base: rgb(255, 248, 246);
     --color-text-inverted: rgb(32, 6, 0);
     --color-text-inverted-accent: rgb(123, 27, 0);
     --color-text-muted: rgb(134, 209, 198);
@@ -180,7 +180,7 @@
 }
 
 .color_theme6 {
-    --color-text-base: #f0fdff;
+    --color-text-base: rgb(240, 253, 255);
     --color-text-inverted: rgb(0, 30, 36);
     --color-text-inverted-accent: rgb(4, 85, 97);
     --color-text-muted: rgb(255, 56, 189);
@@ -312,7 +312,8 @@
     background-image: linear-gradient(325deg, rgba(255,252,255,0) 0%, rgba(255,255,255,0) 70%, rgba(var(--color-normal),1) var(--header-percentage-grad)), var(--david);
     background-size:32%;
     background-repeat: no-repeat;
-    background-position: right top;
+    background-position: 100%;
+    background-attachment: fixed;
 }
 
 /* FILTROS DE COLORES PARA ÍCONOS */
