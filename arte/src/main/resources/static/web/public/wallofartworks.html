@@ -22,7 +22,7 @@
 
                 <div ref="navbar" class="z-40 flex justify-between w-screen p-2 fixed place-items-center">
 
-                    <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'" class="w-[3.5%] h-[3.5%] ml-4 p-2 aparecer transition-all ease-in-out duration-300" alt="logo">
+                    <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'" class="w-[3.5%] h-[3.5%] ml-4 p-1 m-1 aparecer transition-all ease-in-out duration-300" alt="logo">
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
 
@@ -67,17 +67,17 @@
             </header>
 
             <!-- CUERPO -->
-            <main class="mt-24">
+            <main class="mt-20">
 
                 <!-- BARRA DE BÚSQUEDA -->
-                <section class="flex flex-col c-flex">
+                <section class="flex flex-col c-flex ">
 
                   <div class="c-flex flex-col-reverse w-full md:w-full transition-all ease-linear duration-300">
                     <input class="peer pl-3 py-1 font-bahnschrift bg-skin-muted bg-opacity-[0.15] focus:bg-opacity-10 w-4/5 md:w-1/3 md:focus:w-1/2 text-skin-accent  border-2 border-skin-muted border-opacity-0 focus:border-opacity-30 rounded-sm focus focus:outline-none transition-all ease-linear duration-300" type="search" id="search" name="search">
                     <label for="search" class="font-bahnschrift text-skin-muted text-opacity-80 peer-focus:text-opacity-100 pb-3">Search</label> 
                   </div>
 
-                  <div class="flex mt-3">
+                  <div class="flex mt-3 mb-6">
                     <span class="font-bahnschrift text-skin-base text-opacity-90">Filter by:</span><span class="ml-4">X X X X X</span>
                   </div>
 
@@ -87,7 +87,7 @@
                 <!-- OBRAS DE ARTE -->
                 <section class="flex p-8 flex-wrap justify-around">
 
-                  <a v-for="algo in prueba" href="#" class="group m-5 block overflow-hidden rounded-t-2xl md:w-[300px] aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.1)]">
+                  <a v-for="algo in prueba" href="#" class="group m-5 block overflow-hidden rounded-t-2xl md:w-[300px] aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.05)]">
                     <div class="overflow-hidden aspect-card1 w-full">
 
                       <img
