@@ -2,8 +2,9 @@ const app = Vue.createApp({
     data() {
         return {
             tema: '',
+            activeModal: "no",
+
             modal: "",
-            usertype: '',
             login: {
                 email: "",
                 password: ""
@@ -14,7 +15,11 @@ const app = Vue.createApp({
                 email: '',
                 password: ''
             },
-            repeatedPassword: ''
+            repeatedPassword: '',
+            mjeError: "",
+            termsOfServiceChecked: "",
+            userType: '',
+            user: "visitor",
         }
     },
     created() {
@@ -35,24 +40,46 @@ const app = Vue.createApp({
 
         /* PROPIOS DE LA PAG */
         createAccount() {
+            this.mjeError = ''
             console.log(this.register)
-            if (this.register.password == this.repeatedPassword) {
+            if (this.register.password != this.repeatedPassword) {
+                this.mjeError = "The passwords are not the same"
+            }
+            if (this.termsOfServiceChecked == false) {
+                this.mjeError = "You must agree the Terms of Service"
+            }
+            else {
                 axios.post('/api/clients', {
                     "name": this.register.name,
                     "lastName": this.register.lastName,
                     "password": this.register.password,
-                    "email": this.register.email
+                    "email": this.register.email,
+                    "typeUser": this.userType
                 })
-                    .then((response) => window.location.href = '/web/artistandartlovers/myprofile.html')
-                    .catch(() => console.log('error'))
+                    .then((response) => this.modal = 'login')
+                    .catch((error) => {
+                        this.mjeError = error.response.data
+
+                    })
             }
+
+
         },
         loginAccount(e) {
-            e.preventDefault()
+            e.preventDefault()/* window.location.href = "/web/public/wallofartist.html" */
             console.log(this.login)
-            axios.post('api/login', this.login)
-                .then((response) => window.location.href = '/web/public/wallofartist.html')
-                .catch((error) => console.log("error"))
+            axios.post(`/api/login?email=${this.login.email}&password=${this.login.password}`)
+                .then((response) => {
+                    window.alert("Successful login")
+                    this.user = "authenticated"
+
+                }).catch((error) => {
+                    this.mjeError = 'Wrong email or password'
+                    console.log(error)
+                })
+        },
+        logout() {
+            axios.post('/api/logout').then((response) => this.user = "visitor")
         }
     },
     computed: {

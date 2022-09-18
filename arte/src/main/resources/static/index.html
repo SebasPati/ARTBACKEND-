@@ -20,22 +20,27 @@
     <div id="app" v-cloak>
         <div :class="tema=='tema_1' ? '' : tema=='tema_2' ? 'theme2' : tema=='tema_3' ? 'theme3' : tema=='tema_4' ? 'theme4' : tema=='tema_5' ? 'theme5' : tema=='tema_6' ? 'theme6' : ''"
             class="min-h-screen bg-skin-normal aparecer2">
-            <!-- MODAL -->
-            <div class=" h-screen bg-black bg-opacity-50 c-flex">
-                <div class="bg-white ">Modal</div>
-            </div>
+
 
             <!-- HEADER CON NAV -->
             <header>
 
                 <div class=" glass1 flex justify-between w-screen p-2 fixed z-0 place-items-center">
-                    <div class="flex items-center mr-6 ml-6">
+                    <!-- botones si el usuario es visitante -->
+                    <div v-show="user=='visitor'" class="flex items-center mr-6 ml-6">
                         <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
                             href="javascript:void(0);" data-modal-toggle="defaultModal" @click="modal='login'">Log
-                            in</a>{{modal}}
+                            in</a>
                         <div class="font-xs opacity-30 text-skin-base">|</div>
                         <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);"
                             data-modal-toggle="defaultModal" @click="modal='register'">Sign in</a>
+                    </div>
+                    <!-- botones si el usuario es visitante -->
+                    <div v-show="user=='authenticated'" class="flex items-center mr-6 ml-6">
+                        profile image
+                        <div class="font-xs opacity-30 text-skin-base">|</div>
+                        <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);"
+                            @click="logout">Logout</a>
                     </div>
 
                     <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
@@ -68,7 +73,173 @@
                 </div>
 
             </header>
+            <!-- Modal content -->
 
+            <div class="relative  shadow  w-full glass1 rounded-lg">
+
+                <div class="flex justify-between items-start p-4 rounded-t-lg">
+
+                    <button type="button"
+                        class=" bg-white hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
+                        data-modal-toggle="defaultModal">
+                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd"
+                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                </div>
+                <!-- LOGIN -->
+                <div class="glass1  py-6 px-6 lg:px-8 w-full md:w-[640px] rounded-b-lg" v-show="modal=='login'">
+                    <h3 class="mb-4 text-xl font-medium text-skin-muted">Log in
+                    </h3>
+                    <form class="space-y-6" action="#">
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-skin-muted">Your
+                                email
+
+                                <input type="email" name="email"
+                                    class=" border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-skin-muted dark:placeholder-gray-400 text-skin-muted"
+                                    placeholder="name@company.com" required="" v-model="login.email">
+                            </label>
+
+                        </div>
+                        <div>
+                            <label class="block mb-2 text-sm font-medium text-skin-muted">Your
+                                password
+                                <input type="password" name="password" placeholder="••••••••"
+                                    class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 text-skin-muted"
+                                    required="" v-model="login.password">
+                            </label>
+
+                        </div>
+                        <button class="w-full text-skin-muted font-medium rounded-lg text-sm boton3 ml-0"
+                            @click="loginAccount">Login
+                            to your account</button>
+                        <div class="text-sm font-medium  text-opacity-60 "
+                            :class="tema=='tema_1' || tema=='tema_2' ||tema=='tema_3' ? 'text-black' : 'text-skin-base'">
+                            Not registered?
+                            <a class="text-skin-muted hover:underline " @click="modal='register'">Create
+                                account</a>
+                        </div>
+                        <p>{{mjeError}}</p>
+                    </form>
+
+                </div>
+                <!-- DIV REGISTER 1-->
+                <div v-show="modal=='register'"
+                    class="text-skin-accent glass1 body-font  rounded-lg md:h-[388px] h-[500px] flex flex-col justify-center items-center">
+                    <h2 class="text-xl font-bold">I am a...</h2>
+                    <div class="flex flex-col justify-center items-center md:flex-row">
+                        <button class=" px-4 md:mr-10 flex flex-col justify-center items-center boton2"
+                            @click="modal='register2', userType='CLIENT'">
+                            <div class="rounded-lg  overflow-hidden">
+                                <img alt="content"
+                                    class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
+                                    src="https://dummyimage.com/1201x501">
+                            </div>
+                            <h2 class="title-font text-sm font-medium text-white mt-2 mb-2">Art Lover
+                            </h2>
+                            <p class="leading-relaxed text-xs">I want to see the creations
+                            </p>
+
+                        </button>
+                        <button class="boton2 px-4 flex flex-col justify-center items-center"
+                            @click="modal='register2', userType='ARTIST'">
+                            <div class="rounded-lg overflow-hidden">
+                                <img alt="content"
+                                    class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
+                                    src="https://dummyimage.com/1202x502">
+                            </div>
+                            <h2 class="title-font text-sm font-medium text-white mt-2 mb-2">Artist</h2>
+                            <p class="leading-relaxed text-xs">I am a creator
+                            </p>
+
+                        </button>
+                    </div>
+
+                </div>
+                <!-- DIV REGISTER 2-->
+                <div v-show="modal=='register2'"
+                    class="mt-24 text-skin-accent glass1 body-font  rounded-lg  h-[500px] flex flex-col justify-center items-center">
+                    <form class="">
+                        <div class="md:flex ">
+                            <div>
+                                <div class="mb-3">
+                                    <label for="name"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
+                                        Name
+                                        <input type="text"
+                                            class=" text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
+                                            placeholder="Laura" required="" v-model="register.name">
+                                    </label>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="lastname"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
+                                        Last Name
+                                        <input type="text"
+                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
+                                            placeholder="Perez" required="" v-model="register.lastName">
+                                    </label>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
+                                        email
+                                        <input type="email"
+                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
+                                            placeholder="name@flowbite.com" required="" v-model="register.email">
+                                    </label>
+
+                                </div>
+                            </div>
+                            <div class="md: ml-3">
+                                <div class="mb-3">
+                                    <label for="password"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
+                                        password
+                                        <input type="password"
+                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
+                                            required="" v-model="register.password">
+                                    </label>
+
+                                </div>
+                                <div class="mb-3">
+                                    <label for="repeat-password"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Repeat
+                                        password
+                                        <input type="password"
+                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
+                                            required="" v-model="repeatedPassword">
+                                    </label>
+
+                                </div>
+                                <div class="flex items-start mb-3">
+                                    <div class="flex items-center h-5">
+                                        <input id="terms" type="checkbox" value=""
+                                            class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+                                            required="" v-model="termsOfServiceChecked">
+                                    </div>
+                                    <label for="terms"
+                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I
+                                        agree
+                                        with
+                                        the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms
+                                            and conditions</a></label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            @click="createAccount">Create Account</div>
+                    </form>
+                    <p>{{mjeError}}</p>
+                </div>
+            </div>
 
 
             <!-- CUERPO -->
@@ -652,181 +823,10 @@
                     </div>
                 </div>
             </footer>
-            <div id="defaultModal" tabindex="-1" aria-hidden="true "
-                class="glass1 bg-skin- hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full justify-center items-center">
 
-                <div class="relative p-4 w-screen c-flex max-w-2xl h-full md:h-auto ">
 
-                    <!-- Modal content -->
 
-                    <div class="relative  shadow  w-full glass1 rounded-lg">
 
-                        <div class="flex justify-between items-start p-4 rounded-t-lg">
-
-                            <button type="button"
-                                class=" bg-white hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                                data-modal-toggle="defaultModal">
-                                <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd"
-                                        d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                        clip-rule="evenodd"></path>
-                                </svg>
-                                <span class="sr-only">Close modal</span>
-                            </button>
-                        </div>
-                        <!-- LOGIN -->
-                        <div class="glass1  py-6 px-6 lg:px-8 w-full md:w-[640px] rounded-b-lg" v-show="modal=='login'">
-                            <h3 class="mb-4 text-xl font-medium text-skin-muted">Log in
-                            </h3>
-                            <form class="space-y-6" action="#">
-                                <div>
-                                    <label class="block mb-2 text-sm font-medium text-skin-muted">Your
-                                        email
-
-                                        <input type="email" name="email"
-                                            class=" border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-skin-muted dark:placeholder-gray-400 text-skin-muted"
-                                            placeholder="name@company.com" required="" v-model="login.email">
-                                    </label>
-
-                                </div>
-                                <div>
-                                    <label class="block mb-2 text-sm font-medium text-skin-muted">Your
-                                        password
-                                        <input type="password" name="password" placeholder="••••••••"
-                                            class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 text-skin-muted"
-                                            required="" v-model="login.password">
-                                    </label>
-
-                                </div>
-                                <button class="w-full text-skin-muted font-medium rounded-lg text-sm boton3 ml-0"
-                                    @click="loginAccount">Login
-                                    to your account</button>
-                                <div class="text-sm font-medium  text-opacity-60 "
-                                    :class="tema=='tema_1' || tema=='tema_2' ||tema=='tema_3' ? 'text-black' : 'text-skin-base'">
-                                    Not registered?
-                                    <a class="text-skin-muted hover:underline " @click="modal='register'">Create
-                                        account</a>
-                                </div>
-                            </form>
-
-                        </div>
-                        <!-- DIV REGISTER 1-->
-                        <div v-show="modal=='register'"
-                            class="text-skin-accent glass1 body-font  rounded-lg md:h-[388px] h-[500px] flex flex-col justify-center items-center">
-                            <h2 class="text-xl font-bold">I am an...</h2>
-                            <div class="flex flex-col justify-center items-center md:flex-row">
-                                <button class=" px-4 md:mr-10 flex flex-col justify-center items-center boton2"
-                                    @click="modal='register2', usertype='CLIENT'">
-                                    <div class="rounded-lg  overflow-hidden">
-                                        <img alt="content"
-                                            class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
-                                            src="https://dummyimage.com/1201x501">
-                                    </div>
-                                    <h2 class="title-font text-sm font-medium text-white mt-2 mb-2">Art Lover
-                                    </h2>
-                                    <p class="leading-relaxed text-xs">I want to see the creations
-                                    </p>
-
-                                </button>
-                                <button class="boton2 px-4 flex flex-col justify-center items-center"
-                                    @click="modal='register2', usertype='ARTIST'">
-                                    <div class="rounded-lg overflow-hidden">
-                                        <img alt="content"
-                                            class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
-                                            src="https://dummyimage.com/1202x502">
-                                    </div>
-                                    <h2 class="title-font text-sm font-medium text-white mt-2 mb-2">Artist</h2>
-                                    <p class="leading-relaxed text-xs">I am a creator
-                                    </p>
-
-                                </button>
-                            </div>
-
-                        </div>
-                        <!-- DIV REGISTER 2-->
-                        <div v-show="modal=='register2'"
-                            class="text-skin-accent glass1 body-font  rounded-lg  h-[500px] flex flex-col justify-center items-center">
-                            <form class="">
-                                <div class="md:flex ">
-                                    <div>
-                                        <div class="mb-3">
-                                            <label for="name"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                                Name
-                                                <input type="text"
-                                                    class=" text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                                    placeholder="Laura" required="" v-model="register.name">
-                                            </label>
-
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="lastname"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                                Last Name
-                                                <input type="text"
-                                                    class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                                    placeholder="Perez" required="" v-model="register.lastName">
-                                            </label>
-
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="email"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                                email
-                                                <input type="email"
-                                                    class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                                    placeholder="name@flowbite.com" required=""
-                                                    v-model="register.email">
-                                            </label>
-
-                                        </div>
-                                    </div>
-                                    <div class="md: ml-3">
-                                        <div class="mb-3">
-                                            <label for="password"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                                password
-                                                <input type="password"
-                                                    class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                                    required="" v-model="register.password">
-                                            </label>
-
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="repeat-password"
-                                                class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Repeat
-                                                password
-                                                <input type="password"
-                                                    class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                                    required="" v-model="repeatedPassword">
-                                            </label>
-
-                                        </div>
-                                        <div class="flex items-start mb-3">
-                                            <div class="flex items-center h-5">
-                                                <input id="terms" type="checkbox" value=""
-                                                    class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                                    required="">
-                                            </div>
-                                            <label for="terms"
-                                                class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I
-                                                agree
-                                                with
-                                                the <a href="#"
-                                                    class="text-blue-600 hover:underline dark:text-blue-500">terms
-                                                    and conditions</a></label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                                    @click="createAccount">Create Account</div>
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
     <!-- axios -->
