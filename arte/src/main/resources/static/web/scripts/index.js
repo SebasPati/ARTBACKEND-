@@ -2,7 +2,7 @@ const app = Vue.createApp({
     data() {
         return {
             tema: '',
-            activeModal: "no",
+            activeModal: false,
 
             modal: "",
             login: {

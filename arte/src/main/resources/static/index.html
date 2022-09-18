@@ -29,7 +29,7 @@
                     <!-- botones si el usuario es visitante -->
                     <div v-show="user=='visitor'" class="flex items-center mr-6 ml-6">
                         <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
-                            href="javascript:void(0);" data-modal-toggle="defaultModal" @click="modal='login'">Log
+                            href="javascript:void(0);"  @click="activeModal=true">Log
                             in</a>
                         <div class="font-xs opacity-30 text-skin-base">|</div>
                         <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);"
@@ -73,9 +73,55 @@
                 </div>
 
             </header>
+
+            <!-- MODAL DE INFORMATIVO -->
+            <div v-if="activeModal"
+                class="aparecer fixed top-0 left-0 flex justify-center bg-opacity-80 aparecer z-30 w-full h-full glass2">
+            </div>
+            <div v-if="activeModal"
+                class="aparecer fixed top-0 left-0 flex justify-center justify-items-center content-center w-full z-40">
+                <div
+                    class="flex flex-col justify-center items-center mt-10 bg-skin-normal text-skin-base filter-none w-96 h-96 rounded-2xl shadow-sm border border-slate-300 bg-opacity-50 hover:bg-opacity-70 transition-all ease-in duration-300">
+                    <div class="text-5xl font-bahnschrift opacity-80 inline">0hola</div>
+                    <p class="inline ml-4 mb-4 font-notosans font-bold text-sm">Type <b
+                            class="text-skin-muted text-lg">QUE
+                            tal</b></p>
+                    <div class="bg-skin-button-accent h-0.5 lg:w-1/2 w-full mt-2 mb-6 bg-opacity-70"></div>
+                    <!-- LÍNEA -->
+                    <div class="mb-2">
+
+                        <div>
+                            <p class="font-notosans font-bold text-xs opacity-60 inline ">REQUESTED AMOUNT</p>
+                            <p class="mb-2 font-bold text-lg opacity-90 inline">lalalala</b>
+                        </div>
+
+                        <div>
+                            <p class="font-notosans font-semibold text-xs opacity-60 inline">AMOUNT TO PAY $</p>
+                            <p class="mb-2 font-bold text-lg opacity-90 inline">lalalalala</p>
+                        </div>
+
+                        <div>
+                            <p class="font-notosans font-semibold text-xs opacity-60 inline">NUMBER OF PAYMENTS </p>
+                            <p class="mb-2 font-bold text-lg opacity-90 inline">lalalala</p>
+                        </div>
+
+                        <div>
+                            <p class="mb-1 font-notosans font-semibold text-xs opacity-60 inline">AMOUNT OF EACH PAYMENT
+                                $</p>
+                            <p class="font-bold text-lg opacity-90 inline">
+                                lalalalala</p>
+                        </div>
+
+                    </div>
+
+                    <button class="boton3" @click="activeModal=false">RETURN</button>
+                </div>
+            </div>
+
+
             <!-- Modal content -->
 
-            <div class="relative  shadow  w-full glass1 rounded-lg">
+            <!--             <div class="relative  shadow  w-full glass1 rounded-lg">
 
                 <div class="flex justify-between items-start p-4 rounded-t-lg">
 
@@ -91,7 +137,7 @@
                         <span class="sr-only">Close modal</span>
                     </button>
                 </div>
-                <!-- LOGIN -->
+                
                 <div class="glass1  py-6 px-6 lg:px-8 w-full md:w-[640px] rounded-b-lg" v-show="modal=='login'">
                     <h3 class="mb-4 text-xl font-medium text-skin-muted">Log in
                     </h3>
@@ -128,7 +174,7 @@
                     </form>
 
                 </div>
-                <!-- DIV REGISTER 1-->
+                
                 <div v-show="modal=='register'"
                     class="text-skin-accent glass1 body-font  rounded-lg md:h-[388px] h-[500px] flex flex-col justify-center items-center">
                     <h2 class="text-xl font-bold">I am a...</h2>
@@ -161,7 +207,7 @@
                     </div>
 
                 </div>
-                <!-- DIV REGISTER 2-->
+                
                 <div v-show="modal=='register2'"
                     class="mt-24 text-skin-accent glass1 body-font  rounded-lg  h-[500px] flex flex-col justify-center items-center">
                     <form class="">
@@ -239,7 +285,7 @@
                     </form>
                     <p>{{mjeError}}</p>
                 </div>
-            </div>
+            </div> -->
 
 
             <!-- CUERPO -->

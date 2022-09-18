@@ -3,6 +3,7 @@ const app = Vue.createApp({
     data() {
         return {
             tema: '',
+            activeModal: false
         }
     },
     created() {

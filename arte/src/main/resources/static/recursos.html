@@ -78,6 +78,14 @@
           <button class="boton3s w-24 h-14">BOTON Cs</button>
           <button class="boton4s w-28 h-14">BOTON Ds</button>
           <button class="boton5s w-24 h-14">BOTON Es</button>
+          <div class="w-1/4 transition all duration-500">
+            <a href="javascript:void(0);" @click="activeModal=true">
+                <div
+                    class="w-12 h-12 text-4xl text-center text-skin-base rounded-2xl hover:text-skin-inverted hover:rounded-full  hover:bg-skin-fill ease-in duration-200 shadow-[1px_1px_5px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-text-base),0.8)]">
+                    +</div>
+            </a>
+            <div class="font-bahnschrift text-xs mt-2 group-hover:text-skin-muted">DETAILS</div>
+        </div>
         </div>
 
 
@@ -86,6 +94,11 @@
 
 
       <div>
+
+        
+
+
+
 
       </div>
 
@@ -254,6 +267,51 @@
             </span>
           </div>
         </div>
+
+<!-- MODAL DE INFORMATIVO -->
+<div v-if="activeModal"
+class="aparecer fixed top-0 left-0 flex justify-center bg-opacity-80 aparecer z-30 w-full h-full glass2">
+</div>
+<div v-if="activeModal"
+class="aparecer fixed top-0 left-0 flex justify-center justify-items-center content-center w-full z-40">
+<div
+  class="flex flex-col justify-center items-center mt-10 bg-skin-normal text-skin-base filter-none w-96 h-96 rounded-2xl shadow-sm border border-slate-300 bg-opacity-50 hover:bg-opacity-70 transition-all ease-in duration-300">
+  <div class="text-5xl font-bahnschrift opacity-80 inline">0hola</div>
+  <p class="inline ml-4 mb-4 font-notosans font-bold text-sm">Type <b class="text-skin-muted text-lg">QUE
+      tal</b></p>
+  <div class="bg-skin-button-accent h-0.5 lg:w-1/2 w-full mt-2 mb-6 bg-opacity-70"></div>
+  <!-- LÍNEA -->
+  <div class="mb-2">
+
+    <div>
+      <p class="font-notosans font-bold text-xs opacity-60 inline ">REQUESTED AMOUNT</p>
+      <p class="mb-2 font-bold text-lg opacity-90 inline">lalalala</b>
+    </div>
+
+    <div>
+      <p class="font-notosans font-semibold text-xs opacity-60 inline">AMOUNT TO PAY $</p>
+      <p class="mb-2 font-bold text-lg opacity-90 inline">lalalalala</p>
+    </div>
+
+    <div>
+      <p class="font-notosans font-semibold text-xs opacity-60 inline">NUMBER OF PAYMENTS </p>
+      <p class="mb-2 font-bold text-lg opacity-90 inline">lalalala</p>
+    </div>
+
+    <div>
+      <p class="mb-1 font-notosans font-semibold text-xs opacity-60 inline">AMOUNT OF EACH PAYMENT
+        $</p>
+      <p class="font-bold text-lg opacity-90 inline">
+        lalalalala</p>
+    </div>
+
+  </div>
+
+  <button class="boton3" @click="activeModal=false">RETURN</button>
+</div>
+</div>
+
+
       </footer>
 
     </div>
