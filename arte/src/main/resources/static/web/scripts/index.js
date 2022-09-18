@@ -36,20 +36,22 @@ const app = Vue.createApp({
         /* PROPIOS DE LA PAG */
         createAccount() {
             console.log(this.register)
-            axios.post('/api/clients', {
-                "name": this.register.name,
-                "lastName": this.register.lastName,
-                "password": this.register.password,
-                "email": this.register.email
-            })
-                .then(() => console.log('created'))
-                .catch(() => console.log('error'))
+            if (this.register.password == this.repeatedPassword) {
+                axios.post('/api/clients', {
+                    "name": this.register.name,
+                    "lastName": this.register.lastName,
+                    "password": this.register.password,
+                    "email": this.register.email
+                })
+                    .then((response) => window.location.href = '/web/artistandartlovers/myprofile.html')
+                    .catch(() => console.log('error'))
+            }
         },
         loginAccount(e) {
             e.preventDefault()
             console.log(this.login)
             axios.post('api/login', this.login)
-                .then((response) => console.log("logueado"))
+                .then((response) => window.location.href = '/web/public/wallofartist.html')
                 .catch((error) => console.log("error"))
         }
     },
