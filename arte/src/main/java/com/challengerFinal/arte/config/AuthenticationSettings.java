@@ -25,14 +25,12 @@ public class AuthenticationSettings  extends GlobalAuthenticationConfigurerAdapt
             Client client = clientService.findByEmail(inputName);
 
             if (client != null) {
-                if (client.getName().contains("admin")) {
+                if (client.getEmail().contains("@admin")) {
                     return new User(client.getEmail(),client.getPassword(),
-                            //AuthorityUtils.commaSeparatedStringToAuthorityList("CLIENT,ADMIN"));
                             AuthorityUtils.createAuthorityList("ADMIN"));
                 }else {
                     return new User(client.getEmail(),client.getPassword(),
-                            //AuthorityUtils.commaSeparatedStringToAuthorityList("CLIENT"));
-                            AuthorityUtils.createAuthorityList("CLIENT"));
+                            AuthorityUtils.commaSeparatedStringToAuthorityList("CLIENT,ARTIST"));
                 }
             }else{
 

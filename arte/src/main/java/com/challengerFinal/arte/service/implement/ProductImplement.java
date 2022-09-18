@@ -15,6 +15,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -66,6 +67,13 @@ public class ProductImplement implements ServiceProduct {
 
     @Override
     public ResponseEntity<Object> updateProduct(Long id, UpdateProductDTO updateProductDto) {
+        Optional<Product> updateProduct = productRepository.findById(id);
+        //Si el product no existe
+        if (updateProduct.isPresent()) {
+            return new ResponseEntity<>("Product not updated",HttpStatus.FORBIDDEN);
+        }
+
+        productRepository.save(updateProduct.get());
         return null;
     }
 
