@@ -3,7 +3,8 @@ const app = Vue.createApp({
     data() {
         return {
             tema: '',
-            activeModal: false
+            activeModal: false,
+            modalSimple: false
         }
     },
     created() {
@@ -43,8 +44,15 @@ const app = Vue.createApp({
                     navbar.classList.remove(classToAdd);
                 }
             })
+        },
+        sacarModalSimple(){
+            setTimeout(()=>this.changeURL('/index.html'), 1600);
+        },
+        changeURL(location){
+            window.location.href = location;
         }
     },
     computed: {
+
     }
 }).mount('#app')
