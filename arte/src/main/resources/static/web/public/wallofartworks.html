@@ -58,7 +58,7 @@
 
                   <p class="md:ml-12 text-skin-muted font-bahnschrift text-xl md:text-2xl font-light">WELCOME TO THE</p>
                   <p class="antialiased text-skin-accent font-cinzel text-5xl md:text-[5.5rem] lg:text-9xl md:ml-16">Art Gallery</p>
-                  <img class="md:hidden w-5/6" :src="tema=='tema_1' || tema=='tema4' ? '/web/assets/david03a.png' : tema=='tema_2' || tema=='tema5' ? '/web/assets/david03b.png' : tema=='tema_3' || tema=='tema6' ? '/web/assets/david03c.png' : '' " alt="">
+                  <img class="md:hidden w-5/6" :src="tema=='tema_1' || tema=='tema_4' ? '/web/assets/david03a.png' : tema=='tema_2' || tema=='tema_5' ? '/web/assets/david03b.png' : tema=='tema_3' || tema=='tema_6' ? '/web/assets/david03c.png' : '' " alt="">
                 </div>
                 <div class="place-self-center bg-skin-accent h-[1.5px] lg:w-1/2 w-full mt-9 bg-opacity-20"></div><!-- LÍNEA -->
                 
@@ -87,31 +87,39 @@
                 <!-- OBRAS DE ARTE -->
                 <section class="flex p-8 flex-wrap justify-around">
 
-                  <a v-for="algo in prueba" href="#" class="group m-5 block overflow-hidden rounded-t-2xl md:w-[300px] aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.05)]">
-                    <div class="overflow-hidden aspect-card1 w-full">
+
+                  <!-- CARD OBRA DE ARTE -->
+                  <div v-for="algo in prueba" href="#" class="group m-5 block overflow-hidden rounded-t-2xl rounded-b-3xl md:w-[300px] aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.05)]">
+                    <div class="overflow-hidden aspect-card1 w-full border-b-[6px]  border-skin-muted border-opacity-60 group-hover:border-opacity-100">
 
                       <img
                       alt="venus"
                       src="https://i.pinimg.com/originals/bb/1d/57/bb1d571d7d778dae41451727fbfa808f.jpg"
-                      class="saturate-[.9] hover:saturate-100 hover:scale-125 transition-all ease-in duration-300"/>
+                      class="saturate-[.9] hover:saturate-100 group-hover:scale-125 transition-all ease-in duration-300"/>
 
-                      <div class="absolute z-10">asdad</div>
+                      <div class="absolute z-10">DIV PARA ÍCONOS</div>
 
                     </div>
 
-                    <div class="p-6 bg-skin-normal group-hover:bg-skin-base group-hover:bg-opacity-[.1] w-full h-96 transition-colors ease-in-out duration-200">
-                      <p class="text-xs font-quicksand text-skin-base">website.com</p>
-                  
-                      <h5 class="text-lg font-bahnschrift text-skin-accent">
-                        How to position your furniture for positivity
+                    <div class="flex flex-col p-6 bg-skin-normal group-hover:bg-skin-inverted w-full h-96 transition-all ease-in-out duration-1000">
+                      <h5 class="text-center text-lg font-bahnschrift text-skin-accent group-hover:text-skin-inverted-accent">
+                        EL NACIMIENTO DE VENUS
                       </h5>
+
+                      <p class="text-center text-xs font-quicksand text-skin-base text-opacity-60 group-hover:text-skin-inverted   group-hover:text-opacity-70">Pintura - 36cm x 87cm</p>
                   
-                      <p class="mt-1 text-xs font-quicksand text-skin-base text-opacity-90">
-                        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
+                      <p class="text-justify mt-3 text-xs font-quicksand text-skin-base group-hover:text-skin-inverted text-opacity-90">
+                        Descripción, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
                         aliquid accusamus? Sint, sequi voluptas.
                       </p>
+                      <div class="place-self-center bg-skin-muted h-[1.5px] w-full mt-6 bg-opacity-20"></div><!-- LÍNEA -->
+                      <div class="mt-5 c-flex flex-col">
+                         <p class="text-skin-base font-bahnschrift text-xs group-hover:text-skin-inverted-accent">SEBASTIAN PATIÑO</p>
+                         <img src="/web/assets/icons/pincel1.svg" alt="" class="w-4 h-4 mx-4" :class="tema=='tema_1' ? 'filter1' : tema=='tema_2' ? 'filter2' : tema=='tema_3' ? 'filter3' : tema=='tema_4' ? 'filter4' : tema=='tema_5' ? 'filter5' : ''">
+                      </div>
+      
                     </div>
-                  </a>
+                  </div>
                   
 
                 </section>

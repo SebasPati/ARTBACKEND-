@@ -16,6 +16,7 @@
     :root {
         --color-text-base: 0, 82, 70;
         --color-text-inverted: 240, 255, 252;
+        --color-text-inverted-accent: 111, 255, 233;
         --color-text-muted: 75, 128, 118;
         --color-text-accent: 209, 125, 0;
         --color-normal: 249, 249, 249;
@@ -31,6 +32,7 @@
     .theme2 {
         --color-text-base: 32, 6, 0;
         --color-text-inverted: 255, 248, 246;
+        --color-text-inverted-accent: 255, 142, 116;
         --color-text-muted: 60, 56, 55;
         --color-text-accent: 0, 110, 94;
         --color-normal: 249, 249, 249;
@@ -45,6 +47,7 @@
     .theme3 {
         --color-text-base: 0, 30, 36;
         --color-text-inverted: 240, 253, 255;
+        --color-text-inverted-accent: 129, 234, 255;
         --color-text-muted: 255, 56, 189;
         --color-text-accent: 0, 177, 211;
         --color-normal: 249, 249, 249;
@@ -59,6 +62,7 @@
     .theme4 {
         --color-text-base: 246, 255, 253;
         --color-text-inverted: 0, 82, 70;
+        --color-text-inverted-accent: 1, 108, 85;
         --color-text-muted: 215, 227, 224;
         --color-text-accent: 255, 176, 57;
         --color-normal: 18, 18, 18;
@@ -73,6 +77,7 @@
     .theme5 {
         --color-text-base: 255, 248, 246;
         --color-text-inverted: 32, 6, 0;
+        --color-text-inverted-accent: 123, 27, 0;
         --color-text-muted: 134, 209, 198;
         --color-text-accent: 227, 221, 219;
         --color-normal: 18, 18, 18;
@@ -87,6 +92,7 @@
     .theme6 {
         --color-text-base: 240, 253, 255;
         --color-text-inverted: 0, 30, 36;
+        --color-text-inverted-accent: 4, 85, 97;
         --color-text-muted: 255, 56, 189;
         --color-text-accent: 0, 177, 211;
         --color-normal: 18, 18, 18;
@@ -103,6 +109,7 @@
 .color_root {
     --color-text-base: rgb(0, 82, 70);
     --color-text-inverted: rgb(240, 255, 252);
+    --color-text-inverted-accent: rgb(111, 255, 233);
     --color-text-muted: rgb(75, 128, 118);
     --color-text-accent: rgb(209, 125, 0);
     --color-normal: rgb(249, 249, 249);
@@ -112,13 +119,12 @@
     --color-button-muted: rgb(75, 128, 118);
     --color-button-disabled: rgb(214, 226, 223);
     --logo-1: url('../assets/logo01.png');
-
-
 }
 
 .color_theme2 {
     --color-text-base: rgb(32, 6, 0);
     --color-text-inverted: rgb(255, 248, 246);
+    --color-text-inverted-accent: rgb(255, 142, 116);
     --color-text-muted: rgb(60, 56, 55);
     --color-text-accent: rgb(4, 161, 138);
     --color-normal: rgb(249, 249, 249);
@@ -131,8 +137,9 @@
 }
 
 .color_theme3 {
-    --color-text-base: rgb(0, 30, 36);
+    --color-text-base: #001e24;
     --color-text-inverted: rgb(240, 253, 255);
+    --color-text-inverted-accent: rgb(129, 234, 255);
     --color-text-muted: rgb(255, 56, 189);
     --color-text-accent: rgb(0, 177, 211);
     --color-normal: rgb(249, 249, 249);
@@ -145,8 +152,9 @@
 }
 
 .color_theme4 {
-    --color-text-base: rgb(246, 255, 253);
+    --color-text-base: #f6fffd;
     --color-text-inverted: rgb(0, 82, 70);
+    --color-text-inverted-accent: rgb(1, 108, 85);
     --color-text-muted: rgb(215, 227, 224);
     --color-text-accent: rgb(255, 176, 57);
     --color-normal: rgb(18, 18, 18);
@@ -158,8 +166,9 @@
 }
 
 .color_theme5 {
-    --color-text-base: rgb(255, 248, 246);
+    --color-text-base: #fff8f6;
     --color-text-inverted: rgb(32, 6, 0);
+    --color-text-inverted-accent: rgb(123, 27, 0);
     --color-text-muted: rgb(134, 209, 198);
     --color-text-accent: rgb(227, 221, 219);
     --color-normal: rgb(18, 18, 18);
@@ -171,8 +180,9 @@
 }
 
 .color_theme6 {
-    --color-text-base: rgb(240, 253, 255);
+    --color-text-base: #f0fdff;
     --color-text-inverted: rgb(0, 30, 36);
+    --color-text-inverted-accent: rgb(4, 85, 97);
     --color-text-muted: rgb(255, 56, 189);
     --color-text-accent: rgb(0, 177, 211);
     --color-normal: rgb(18, 18, 18);
@@ -304,6 +314,57 @@
     background-repeat: no-repeat;
     background-position: right top;
 }
+
+/* FILTROS DE COLORES PARA ÍCONOS */
+
+.filter1a{
+    filter: invert(21%) sepia(84%) saturate(628%) hue-rotate(127deg) brightness(97%) contrast(101%);
+}
+
+.filter1b{
+    
+}
+
+.filter2a{
+    filter: invert(4%) sepia(69%) saturate(5265%) hue-rotate(43deg) brightness(127%) contrast(114%);
+}
+
+.filter2b{
+    
+}
+
+.filter3a{
+    filter: invert(10%) sepia(13%) saturate(3461%) hue-rotate(145deg) brightness(97%) contrast(103%);
+}
+
+.filter3b{
+    
+}
+
+.filter4a{
+    filter: invert(100%) sepia(55%) saturate(1548%) hue-rotate(176deg) brightness(104%) contrast(107%);
+}
+
+.filter4b{
+    
+}
+
+.filter5a{
+    filter: invert(100%) sepia(30%) saturate(754%) hue-rotate(340deg) brightness(104%) contrast(112%);
+}
+
+.filter5b{
+    
+}
+
+.filter6a{
+    filter: invert(99%) sepia(20%) saturate(1176%) hue-rotate(172deg) brightness(100%) contrast(105%);
+}
+
+.filter6b{
+    
+}
+
 
 /* TRANSICIÓN AL CARGAR PÁGINA */
 .aparecer {

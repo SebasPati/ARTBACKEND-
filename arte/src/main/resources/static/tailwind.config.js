@@ -15,6 +15,7 @@ module.exports = {
         skin:{
           base: withOpacity('--color-text-base'),
           inverted: withOpacity('--color-text-inverted'),
+          'inverted-accent': withOpacity('--color-text-inverted-accent'),
           muted: withOpacity('--color-text-muted'),
           accent: withOpacity('--color-text-accent')
         }
@@ -26,7 +27,8 @@ module.exports = {
           base: withOpacity('--color-button-base'),
           accent: withOpacity('--color-button-accent'),
           muted: withOpacity('--color-button-muted'),
-          disabled: withOpacity('--color-button-disabled')
+          disabled: withOpacity('--color-button-disabled'),
+          inverted: withOpacity('--color-text-base')
         }
       },
       gradientColorStops:{
@@ -35,7 +37,8 @@ module.exports = {
           base: withOpacity('--color-button-base'),
           accent: withOpacity('--color-button-accent'),
           muted: withOpacity('--color-button-muted'),
-          disabled: withOpacity('--color-button-disabled')
+          disabled: withOpacity('--color-button-disabled'),
+          inverted: withOpacity('--color-text-base')
       },
       borderColor: {
          skin:{
@@ -43,7 +46,8 @@ module.exports = {
           base: withOpacity('--color-button-base'),
           accent: withOpacity('--color-button-accent'),
           muted: withOpacity('--color-button-muted'),
-          disabled: withOpacity('--color-button-disabled')
+          disabled: withOpacity('--color-button-disabled'),
+          inverted: withOpacity('--color-text-base')
          }
       },
       fontFamily: {
