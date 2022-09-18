@@ -26,8 +26,7 @@ public class AuthorizationSettings extends WebSecurityConfigurerAdapter {
                 .antMatchers("/web/artlover/**").hasAuthority("CLIENT")
                 .antMatchers("/public/","/index.html","/styles/**").permitAll()
                 .antMatchers("/api/**").permitAll()
-                .antMatchers("/h2-console/**").permitAll()
-                .antMatchers("/").permitAll();
+                .antMatchers("/h2-console/**").permitAll();
 
         http.formLogin().usernameParameter("email")
 
