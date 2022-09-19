@@ -4,7 +4,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,7 +32,7 @@ public class Product {
     private Client client;
     @OneToMany(mappedBy = "product",
             fetch = FetchType.EAGER)
-    private Set<OrderLineal> artworks = new HashSet<>();
+    private Set<ShoppingCart> artworks = new HashSet<>();
 
 
     public Product() {
@@ -144,11 +143,11 @@ public class Product {
         this.client = client;
     }
 
-    public Set<OrderLineal> getArtworks() {
+    public Set<ShoppingCart> getArtworks() {
         return artworks;
     }
 
-    public void setArtworks(Set<OrderLineal> artworks) {
+    public void setArtworks(Set<ShoppingCart> artworks) {
         this.artworks = artworks;
     }
 }

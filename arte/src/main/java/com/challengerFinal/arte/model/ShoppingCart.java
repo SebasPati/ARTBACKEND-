@@ -4,7 +4,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 @Entity
-public class OrderLineal {
+public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
     @GenericGenerator(strategy = "native",name = "native")
@@ -18,10 +18,10 @@ public class OrderLineal {
     @JoinColumn(name = "productRequest_id")
     private Product product;
 
-    public OrderLineal() {
+    public ShoppingCart() {
     }
 
-    public OrderLineal(Integer units,OrderRequest orderRequest, Product product) {
+    public ShoppingCart(Integer units, OrderRequest orderRequest, Product product) {
         this.units = units;
         this.orderRequest = orderRequest;
         this.product = product;
@@ -57,7 +57,7 @@ public class OrderLineal {
 
     @Override
     public String toString() {
-        return "OrderLineal{" +
+        return "ShoppingCart{" +
                 "id=" + id +
                 ", units=" + units +
                 ", orderRequest=" + orderRequest +

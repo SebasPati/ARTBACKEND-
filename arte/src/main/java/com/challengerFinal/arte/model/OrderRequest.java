@@ -16,15 +16,17 @@ public class OrderRequest {
     private Long id;
     private LocalDate date;
     private StatePedido state;
+
+    private Double price;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client")
-    private Client petitioner;
+    private Product petitioner;
 
-    @OneToMany(mappedBy = "orderRequest",fetch = FetchType.EAGER)
-    private Set<OrderLineal> orders = new HashSet<>();
+    @ManyToOne(fetch = FetchType.EAGER)
+    private ShoppingCart orders;
     public OrderRequest(){}
 
-    public OrderRequest(LocalDate date, StatePedido state, Client petitioner) {
+    public OrderRequest(LocalDate date, StatePedido state, Product petitioner) {
         this.date = date;
         this.state = state;
         this.petitioner = petitioner;
@@ -50,19 +52,27 @@ public class OrderRequest {
         this.state = state;
     }
 
-    public Client getPetitioner() {
+    public Product getPetitioner() {
         return petitioner;
     }
 
-    public void setPetitioner(Client petitioner) {
+    public void setPetitioner(Product petitioner) {
         this.petitioner = petitioner;
     }
 
-    public Set<OrderLineal> getOrders() {
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public ShoppingCart getOrders() {
         return orders;
     }
 
-    public void setOrders(Set<OrderLineal> orders) {
+    public void setOrders(ShoppingCart orders) {
         this.orders = orders;
     }
 

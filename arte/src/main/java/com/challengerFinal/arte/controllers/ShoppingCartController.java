@@ -1,7 +1,7 @@
 package com.challengerFinal.arte.controllers;
 
-import com.challengerFinal.arte.dtos.OrderLinealDto;
-import com.challengerFinal.arte.service.OrderLinealService;
+import com.challengerFinal.arte.dtos.ShoppingCartDto;
+import com.challengerFinal.arte.service.ShoppingCartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api")
-public class OrderLinealController {
+public class ShoppingCartController {
     @Autowired
-    OrderLinealService orderLinealService;
+    ShoppingCartService shoppingCartService;
 
     @GetMapping(value = "/orderLineal")
-    public List<OrderLinealDto> getOrderLineal() {
-        return orderLinealService.getAllOrdersLineals().stream().map(OrderLinealDto::new).collect(Collectors.toList());
+    public List<ShoppingCartDto> getOrderLineal() {
+        return shoppingCartService.getAllOrdersLineals().stream().map(ShoppingCartDto::new).collect(Collectors.toList());
     }
 }

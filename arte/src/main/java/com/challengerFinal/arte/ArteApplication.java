@@ -30,7 +30,7 @@ public class ArteApplication implements CommandLineRunner {
 	@Autowired
 	OrderService orderService;
 	@Autowired
-	OrderLinealService orderLinealService;
+	ShoppingCartService shoppingCartService;
 	@Autowired
 	GoodsReceiptService goodsReceiptService;
 
@@ -59,25 +59,25 @@ public class ArteApplication implements CommandLineRunner {
 		System.out.println(product1);
 		System.out.println(product2);
 
-		OrderRequest orderRequest = new OrderRequest(LocalDate.now(), StatePedido.CONFIRMED,client);
-		OrderRequest orderRequestDos = new OrderRequest(LocalDate.now(), StatePedido.CONFIRMED,client);
+		OrderRequest orderRequest = new OrderRequest(LocalDate.now(), StatePedido.CONFIRMED,product1);
+		OrderRequest orderRequestDos = new OrderRequest(LocalDate.now(), StatePedido.CONFIRMED,product2);
 		orderService.saveRequest(orderRequest);
 		orderService.saveRequest(orderRequestDos);
 		System.out.println(orderRequest);
 		System.out.println(orderRequestDos);
 
-		OrderLineal orderLineal = new OrderLineal(4,orderRequest, product1);
-		OrderLineal orderLinealDos = new OrderLineal(3,orderRequestDos, product1);
-		OrderLineal orderLinealTres = new OrderLineal(2,orderRequest, product2);
-		OrderLineal orderLinealCuster = new OrderLineal(1,orderRequestDos, product2);
-		orderLinealService.saveOrderLineal(orderLineal);
-		orderLinealService.saveOrderLineal(orderLinealDos);
-		orderLinealService.saveOrderLineal(orderLinealTres);
-		orderLinealService.saveOrderLineal(orderLinealCuster);
-		System.out.println(orderLineal);
-		System.out.println(orderLinealDos);
-		System.out.println(orderLinealTres);
-		System.out.println(orderLinealCuster);
+		ShoppingCart shoppingCart = new ShoppingCart(4,orderRequest, product1);
+		ShoppingCart shoppingCartDos = new ShoppingCart(3,orderRequestDos, product1);
+		ShoppingCart shoppingCartTres = new ShoppingCart(2,orderRequest, product2);
+		ShoppingCart shoppingCartCuster = new ShoppingCart(1,orderRequestDos, product2);
+		shoppingCartService.saveOrderLineal(shoppingCart);
+		shoppingCartService.saveOrderLineal(shoppingCartDos);
+		shoppingCartService.saveOrderLineal(shoppingCartTres);
+		shoppingCartService.saveOrderLineal(shoppingCartCuster);
+		System.out.println(shoppingCart);
+		System.out.println(shoppingCartDos);
+		System.out.println(shoppingCartTres);
+		System.out.println(shoppingCartCuster);
 
 		GoodsReceipt goodsReceiptOne = new GoodsReceipt(product1,2345.45,true,LocalDate.now(),2);
 		GoodsReceipt goodsReceiptTwo = new GoodsReceipt(product1,2845.45,true,LocalDate.now(),10);

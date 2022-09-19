@@ -71,7 +71,7 @@ public class ProductImplement implements ServiceProduct {
         productRepository.save(newProduct);
         return new ResponseEntity<>("Created a new work of art"+newProduct,HttpStatus.CREATED);
     }
-
+//No terminado.
     @Override
     public ResponseEntity<Object> updateProduct(Long id, UpdateProductDTO updateProductDto) {
         Optional<Product> updateProduct = productRepository.findById(id);
