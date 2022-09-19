@@ -53,7 +53,9 @@
       </header>
 
 
-      <div class="">
+      <div class="flex flex-col pt-20">
+
+        
 
         <div class="w-1/2 flex pt-20">
           <button class="boton1s" @click="theme(1)">TEMA 1</button>
@@ -64,6 +66,8 @@
           <button class="boton1s" @click="theme(6)">TEMA 6</button>
         </div>
 
+
+        <!-- BOTONES!!!! -->
         <div class="flex pt-20">
           <button class="boton1 w-24 h-14">BOTON A</button>
           <button class="boton2 w-28 h-14">BOTON B</button>
@@ -78,29 +82,29 @@
           <button class="boton3s w-24 h-14">BOTON Cs</button>
           <button class="boton4s w-28 h-14">BOTON Ds</button>
           <button class="boton5s w-24 h-14">BOTON Es</button>
-          <div class="w-1/4 transition all duration-500">
-            <a href="javascript:void(0);" @click="activeModal=true">
+          <div class="w-1/4">
+            <a href="javascript:void(0);" @click="activeModal=true" class="peer">
               <div
-                class="w-12 h-12 text-4xl text-center text-skin-base rounded-2xl hover:text-skin-inverted hover:rounded-full  hover:bg-skin-fill ease-in duration-200 shadow-[1px_1px_5px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-text-base),0.8)]">
+                class="w-12 h-12 text-4xl text-center text-skin-base rounded-2xl hover:text-skin-inverted hover:rounded-full  hover:bg-skin-accent ease-in duration-300 shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-accent),0.4)]">
                 +</div>
             </a>
-            <div class="font-bahnschrift text-xs mt-2 group-hover:text-skin-muted">MODAL 1</div>
+            <div class="font-bahnschrift text-skin-base text-xs mt-2 peer-hover:text-skin-muted">MODAL 1</div>
           </div>
 
           <button class="boton5s w-24 h-14" @click="modalSimple=true, sacarModalSimple()">MODAL SIMPLE</button>
         </div>
 
-        
+        <div class="element">q</div>
 
 
-      </div class="m-3 p-4">
+      </div>
 
 
 
       <div>
 
 
-
+<div class="box"></div>
 
 
 
@@ -339,7 +343,9 @@
   </div>
 
   <script src="https://unpkg.com/vue@3"></script>
+  <script src="/node_modules/basicscroll/dist/basicScroll.min.js"></script>
   <script src="./recursos.js"></script>
+  
 
 </body>
 

@@ -25,6 +25,7 @@ body{
         --color-button-accent: 209, 125, 0;
         --color-button-muted: 75, 128, 118;
         --color-button-disabled: 214, 226, 223;
+        --opacity: 100;
         --david: url("/web/assets/david03a.png");
 /*         --header-percentage-grad: 88%; */
     }
@@ -102,6 +103,10 @@ body{
         --color-button-muted: 165, 127, 70;
         --color-button-disabled: 131, 171, 180;
         --david: url("/web/assets/david03c.png");
+    }
+
+    .filter1b{
+        filter: invert(85%) sepia(45%) saturate(483%) hue-rotate(95deg) brightness(108%) contrast(106%);
     }
 }
 
@@ -259,14 +264,33 @@ body{
     @apply p-1 m-2 rounded bg-skin-normal text-skin-base text-xs font-quicksand hover:shadow-[0px_1px_4px_rgba(var(--color-button-accent),0.3)] transition-all ease-in-out duration-200;
 }
 
+/* ESTILOS MODAL MARIALE */
+
+
+
+
 /* VARIABLES PARA ANIMAR ESTILOS */
 
 
 
-
-
-
 /* OTROS ESTILOS PROPIOS */
+
+.element{
+    width: 100px;
+    height: 100px;
+    background-color: crimson;
+    opacity: var(--opacity);
+    will-change: opacity;
+}
+
+.box {
+    width: 5em;
+    height: 5em;
+    background: linear-gradient(135deg, #3cdddd, #ff1ac6);
+    transform: translateX(var(--tx)) rotate(var(--r));
+    transition: transform .1s linear;
+    will-change: transform;
+ }
 
 .sus{
     background-size: 230% 230% !important;
@@ -309,7 +333,7 @@ body{
 }
 
 .backHeaderGallery{
-    background-image: linear-gradient(0deg, rgba(255,252,255,0) 0%, rgba(255,255,255,0) 61%, rgba(var(--color-normal),1) 76%), var(--david);
+    background-image: linear-gradient(0deg, rgba(255,252,255,0) 0%, rgba(255,255,255,0) 68%, rgba(var(--color-normal),1) 82%), var(--david);
     background-size:100%, 32%;
     background-repeat: no-repeat;
     background-position: 100% 0%, 95% 90%;
@@ -322,8 +346,8 @@ body{
     filter: invert(21%) sepia(84%) saturate(628%) hue-rotate(127deg) brightness(97%) contrast(101%);
 }
 
-.filter1b{
-    
+.filter1{
+    @apply filter1a group-hover:filter1b;
 }
 
 .filter2a{
@@ -331,7 +355,7 @@ body{
 }
 
 .filter2b{
-    
+    filter: invert(82%) sepia(25%) saturate(4785%) hue-rotate(310deg) brightness(100%) contrast(102%);
 }
 
 .filter3a{
@@ -339,7 +363,7 @@ body{
 }
 
 .filter3b{
-    
+    filter: invert(75%) sepia(91%) saturate(419%) hue-rotate(164deg) brightness(104%) contrast(101%);
 }
 
 .filter4a{
@@ -347,7 +371,7 @@ body{
 }
 
 .filter4b{
-    
+    filter: invert(32%) sepia(16%) saturate(3608%) hue-rotate(128deg) brightness(90%) contrast(99%);
 }
 
 .filter5a{
@@ -355,7 +379,7 @@ body{
 }
 
 .filter5b{
-    
+    filter: invert(13%) sepia(80%) saturate(2784%) hue-rotate(7deg) brightness(93%) contrast(104%);
 }
 
 .filter6a{
@@ -363,7 +387,7 @@ body{
 }
 
 .filter6b{
-    
+    filter: invert(26%) sepia(16%) saturate(3528%) hue-rotate(147deg) brightness(93%) contrast(97%);
 }
 
 
