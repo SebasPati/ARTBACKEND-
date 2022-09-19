@@ -59,7 +59,7 @@ const app = Vue.createApp({
     }
 }).mount('#app')
 
-
+/* Para Nacimiento de Venus */
 document.querySelectorAll('.venus').forEach(element => {
     const modx = element.getAttribute('data-mod-x');
     const mody = element.getAttribute('data-mod-y');
@@ -68,8 +68,8 @@ document.querySelectorAll('.venus').forEach(element => {
 
     basicScroll.create({
         elem:element,
-        from:400,
-        to: 800,
+        from: 300,
+        to: 1800,
         direct: true,
         props:{
             '--translateX':{
@@ -83,3 +83,10 @@ document.querySelectorAll('.venus').forEach(element => {
         }
     }).start();
 });
+
+/* Para bienvenida a la página */
+var section = document.querySelector('#section');
+window.addEventListener('scroll' , function(){
+    var value = window.scrollY;
+    section.style.clipPath = "circle("+value+"px at center)"
+})
