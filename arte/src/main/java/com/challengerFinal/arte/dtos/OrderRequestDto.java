@@ -10,11 +10,15 @@ public class OrderRequestDto implements Serializable {
     private Long id;
     private LocalDate date;
     private StatePedido state;
+    private Integer units;
+    private Double price;
 
     public OrderRequestDto(OrderRequest orderRequest) {
         this.id = orderRequest.getId();
         this.date = orderRequest.getDate();
         this.state = orderRequest.getState();
+        this.units = orderRequest.getUnits();
+        this.price = orderRequest.getPrice();
 
     }
 
@@ -30,4 +34,11 @@ public class OrderRequestDto implements Serializable {
         return state;
     }
 
+    public Integer getUnits() {
+        return units;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
 }

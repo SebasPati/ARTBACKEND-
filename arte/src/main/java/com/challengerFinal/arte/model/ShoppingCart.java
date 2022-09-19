@@ -3,65 +3,53 @@ package com.challengerFinal.arte.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
     @GenericGenerator(strategy = "native",name = "native")
     private Long id;
-    private Integer units;
+    private boolean isShoppingCart;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "orderRequest_id")
-    private OrderRequest orderRequest;
+    @JoinColumn(name = "client")
+    private Client client;
+    @OneToMany(mappedBy = "orders",fetch = FetchType.EAGER)
+    private Set <OrderRequest> orderRequest = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "productRequest_id")
-    private Product product;
+    @OneToMany(mappedBy="payment", fetch=FetchType.EAGER)
+    Set<GoodsReceipt> payment = new HashSet<>();
 
     public ShoppingCart() {
     }
 
-    public ShoppingCart(Integer units, OrderRequest orderRequest, Product product) {
-        this.units = units;
-        this.orderRequest = orderRequest;
-        this.product = product;
+    public ShoppingCart(Client client) {
+        this.client = client;
+        this.isShoppingCart = true;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Integer getUnits() {
-        return units;
+
+
+    public boolean isShoppingCart() {
+        return isShoppingCart;
     }
 
-    public void setUnits(Integer units) {
-        this.units = units;
+    public void setShoppingCart(boolean shoppingCart) {
+        isShoppingCart = shoppingCart;
     }
 
-    public OrderRequest getOrderRequest() {
-        return orderRequest;
+    public Client getClient() {
+        return client;
     }
 
-    public void setOrderRequest(OrderRequest orderRequest) {
-        this.orderRequest = orderRequest;
+    public void setClient(Client client) {
+        this.client = client;
     }
 
-    public Product getArtworks() {
-        return product;
-    }
-
-    public void setArtworks(Product product) {
-        this.product = product;
-    }
-
-    @Override
-    public String toString() {
-        return "ShoppingCart{" +
-                "id=" + id +
-                ", units=" + units +
-                ", orderRequest=" + orderRequest +
-                ", product=" + product +
-                '}';
-    }
 }

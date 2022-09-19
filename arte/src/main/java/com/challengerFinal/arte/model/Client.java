@@ -21,6 +21,7 @@ public class Client {
     private String telephone;
     private String password;
     private TypeUser typeUser;
+    private Boolean isActive;
     private String direction;
     private Integer ranking;
     private String image;
@@ -48,6 +49,7 @@ public class Client {
         this.typeUser = typeUser;
         this.ranking = ranking;
         this.image = image;
+        this.isActive = true;
     }
 
     //Contructor con todas las propiedades
@@ -63,6 +65,8 @@ public class Client {
         this.ranking = ranking;
         this.image = image;
         this.networks = networks;
+        this.isActive = true;
+
     }
 
     public Long getId() {
@@ -93,7 +97,15 @@ public class Client {
     this.nickname = nickname;
    }
 
-   public String getEmail() {
+    public Boolean getActive() {
+        return isActive;
+    }
+
+    public void setActive(Boolean active) {
+        isActive = active;
+    }
+
+    public String getEmail() {
     return email;
    }
 

@@ -11,37 +11,45 @@ public class GoodsReceipt {
     @GeneratedValue(strategy = GenerationType.AUTO, generator ="native")
     @GenericGenerator(name = "native",strategy = "native")
     private Long id;
-    private Double price;
+    private Double totalPrice;
     private Boolean status;
     private LocalDate date;
-    private Integer units;
+    private Integer payments;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "product")
-    private Product productRec;
+    @JoinColumn(name = "shoppingCart_id")
+    private ShoppingCart shoppingCart;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "payment_id")
+    private Payment payment;
 
     public GoodsReceipt() {
     }
 
-    public GoodsReceipt(Product productRec,Double price, Boolean status, LocalDate date, Integer units) {
-        this.productRec = productRec;
-        this.price = price;
+    public GoodsReceipt(Double totalPrice, Boolean status, LocalDate date, Integer units, ShoppingCart shoppingCart, Payment payment) {
+        this.totalPrice = totalPrice;
         this.status = status;
         this.date = date;
-        this.units = units;
-
+        this.payments = units;
+        this.shoppingCart = shoppingCart;
+        this.payment = payment;
     }
 
     public Long getId() {
         return id;
     }
 
-    public Double getPrice() {
-        return price;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public Double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
     public Boolean getStatus() {
@@ -60,31 +68,40 @@ public class GoodsReceipt {
         this.date = date;
     }
 
-    public Integer getUnits() {
-        return units;
+    public Integer getPayments() {
+        return payments;
     }
 
-    public void setUnits(Integer units) {
-        this.units = units;
+    public void setPayments(Integer payments) {
+        this.payments = payments;
     }
 
-    public Product getProductRec() {
-        return productRec;
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
 
-    public void setProductRec(Product productRec) {
-        this.productRec = productRec;
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
+    }
+
+    public Payment getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Payment payment) {
+        this.payment = payment;
     }
 
     @Override
     public String toString() {
         return "GoodsReceipt{" +
                 "id=" + id +
-                ", price= $" + price +
+                ", totalPrice=" + totalPrice +
                 ", status=" + status +
                 ", date=" + date +
-                ", units=" + units +
-                ", productRec=" + productRec +
+                ", payments=" + payments +
+                ", shoppingCart=" + shoppingCart +
+                ", payment=" + payment +
                 '}';
     }
 }

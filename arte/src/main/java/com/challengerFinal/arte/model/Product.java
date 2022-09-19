@@ -30,9 +30,7 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client")
     private Client client;
-    @OneToMany(mappedBy = "product",
-            fetch = FetchType.EAGER)
-    private Set<ShoppingCart> artworks = new HashSet<>();
+
 
 
     public Product() {
@@ -143,11 +141,4 @@ public class Product {
         this.client = client;
     }
 
-    public Set<ShoppingCart> getArtworks() {
-        return artworks;
-    }
-
-    public void setArtworks(Set<ShoppingCart> artworks) {
-        this.artworks = artworks;
-    }
 }

@@ -17,13 +17,13 @@ public class GoodsReceiptController {
     @Autowired
     GoodsReceiptService goodsReceiptService;
 
-    @GetMapping(value = "/goodsReceipts")
+   /* @GetMapping(value = "/goodsReceipts")
     public List<GoodsReceiptDto> getExistAll(){
         return goodsReceiptService.getGoodsReceiptsAll().stream().map(GoodsReceiptDto::new).collect(Collectors.toList());
     }
     @GetMapping(value = "/goodsReceipts/{goodsReceiptId}")
     public GoodsReceiptDto getGoodsReceiptId(@PathVariable Long goodsReceiptId){
         return new GoodsReceiptDto(goodsReceiptService.getGoodsReceiptId(goodsReceiptId));
-    }
+    }*/
 
 }

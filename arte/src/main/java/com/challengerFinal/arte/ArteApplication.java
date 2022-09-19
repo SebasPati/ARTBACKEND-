@@ -59,41 +59,30 @@ public class ArteApplication implements CommandLineRunner {
 		System.out.println(product1);
 		System.out.println(product2);
 
-		OrderRequest orderRequest = new OrderRequest(LocalDate.now(), StatePedido.CONFIRMED,product1);
-		OrderRequest orderRequestDos = new OrderRequest(LocalDate.now(), StatePedido.CONFIRMED,product2);
-		orderService.saveRequest(orderRequest);
-		orderService.saveRequest(orderRequestDos);
-		System.out.println(orderRequest);
-		System.out.println(orderRequestDos);
 
-		ShoppingCart shoppingCart = new ShoppingCart(4,orderRequest, product1);
-		ShoppingCart shoppingCartDos = new ShoppingCart(3,orderRequestDos, product1);
-		ShoppingCart shoppingCartTres = new ShoppingCart(2,orderRequest, product2);
-		ShoppingCart shoppingCartCuster = new ShoppingCart(1,orderRequestDos, product2);
-		shoppingCartService.saveOrderLineal(shoppingCart);
-		shoppingCartService.saveOrderLineal(shoppingCartDos);
-		shoppingCartService.saveOrderLineal(shoppingCartTres);
-		shoppingCartService.saveOrderLineal(shoppingCartCuster);
+		ShoppingCart shoppingCart = new ShoppingCart(client);
+		ShoppingCart shoppingCartDos = new ShoppingCart(client);
+		ShoppingCart shoppingCartTres = new ShoppingCart(client);
+		ShoppingCart shoppingCartCuster = new ShoppingCart(client);
+		shoppingCartService.saveShoppingCard(shoppingCart);
+		shoppingCartService.saveShoppingCard(shoppingCartDos);
+		shoppingCartService.saveShoppingCard(shoppingCartTres);
+		shoppingCartService.saveShoppingCard(shoppingCartCuster);
 		System.out.println(shoppingCart);
 		System.out.println(shoppingCartDos);
 		System.out.println(shoppingCartTres);
 		System.out.println(shoppingCartCuster);
 
-		GoodsReceipt goodsReceiptOne = new GoodsReceipt(product1,2345.45,true,LocalDate.now(),2);
-		GoodsReceipt goodsReceiptTwo = new GoodsReceipt(product1,2845.45,true,LocalDate.now(),10);
-		GoodsReceipt goodsReceiptTree = new GoodsReceipt(product2,78729.45,true,LocalDate.now(),10);
-		GoodsReceipt goodsReceiptFour = new GoodsReceipt(product2,1345.45,true,LocalDate.now(),40);
-		GoodsReceipt goodsReceiptFive = new GoodsReceipt(product1,9345.45,true,LocalDate.now(),5);
+		OrderRequest orderRequest = new OrderRequest(product1,LocalDate.now(), StatePedido.CONFIRMED,234.4,12,shoppingCart);
+		OrderRequest orderRequestDos = new OrderRequest(product1,LocalDate.now(), StatePedido.CONFIRMED,25343.3,12,shoppingCart);
+		orderService.saveRequest(orderRequest);
+		orderService.saveRequest(orderRequestDos);
+		System.out.println(orderRequest);
+		System.out.println(orderRequestDos);
+
+		GoodsReceipt goodsReceiptOne = new GoodsReceipt();
 		goodsReceiptService.saveGoodsReceipt(goodsReceiptOne);
-		goodsReceiptService.saveGoodsReceipt(goodsReceiptTwo);
-		goodsReceiptService.saveGoodsReceipt(goodsReceiptTree);
-		goodsReceiptService.saveGoodsReceipt(goodsReceiptFour);
-		goodsReceiptService.saveGoodsReceipt(goodsReceiptFive);
 		System.out.println(goodsReceiptOne);
-		System.out.println(goodsReceiptTwo);
-		System.out.println(goodsReceiptTree);
-		System.out.println(goodsReceiptFour);
-		System.out.println(goodsReceiptFive);
 
 	}
 }

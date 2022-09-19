@@ -3,9 +3,9 @@ package com.challengerFinal.arte.controllers;
 import com.challengerFinal.arte.dtos.OrderRequestDto;
 import com.challengerFinal.arte.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +17,20 @@ public class OrderController {
     OrderService orderService;
     @GetMapping("/orders")
     public List<OrderRequestDto> getOrderRequestsAll() {
-        return orderService.getOrderRequestsAll().stream().map(OrderRequestDto::new).collect(Collectors.toList());
+        return orderService.getOrderRequestsAll();
+    }
+    @PostMapping("/addItemToCart")
+    public ResponseEntity<Object> createPurchaseOrder(
+            @RequestParam String nameProduct,
+            @RequestParam int cant,
+            Authentication authentication
+    ) {
+        return orderService.createPurchaseOrder(nameProduct, cant, authentication);
+    }
+
+    @DeleteMapping("/deleteItemFromCart/{id}")
+    public ResponseEntity<Object> deleteItem(
+            @PathVariable("id")Long id){
+        return orderService.deleteItem(id);
     }
 }

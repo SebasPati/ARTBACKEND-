@@ -16,20 +16,24 @@ public class OrderRequest {
     private Long id;
     private LocalDate date;
     private StatePedido state;
-
+    private Integer units;
     private Double price;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "client")
+    @JoinColumn(name = "petitioner")
     private Product petitioner;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "orderRequest_id")
     private ShoppingCart orders;
     public OrderRequest(){}
 
-    public OrderRequest(LocalDate date, StatePedido state, Product petitioner) {
+    public OrderRequest(Product petitioner,LocalDate date, StatePedido state,Double price,Integer units,ShoppingCart orders) {
+        this.petitioner = petitioner;
         this.date = date;
         this.state = state;
-        this.petitioner = petitioner;
+        this.price = price;
+        this.units = units;
+        this.orders = orders;
     }
 
     public Long getId() {
@@ -66,6 +70,14 @@ public class OrderRequest {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Integer getUnits() {
+        return units;
+    }
+
+    public void setUnits(Integer units) {
+        this.units = units;
     }
 
     public ShoppingCart getOrders() {
