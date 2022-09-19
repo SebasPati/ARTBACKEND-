@@ -23,17 +23,17 @@
 
 
             <!-- HEADER CON NAV -->
-            <header>
+            <header class="">
 
-                <div class=" glass1 flex justify-between w-screen p-2 fixed z-0 place-items-center">
+                <div class="hidden glass1 md:flex justify-between w-screen p-2 fixed z-0 place-items-center">
                     <!-- botones si el usuario es visitante -->
                     <div v-show="user=='visitor'" class="flex items-center mr-6 ml-6">
                         <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
-                            href="javascript:void(0);"  @click="activeModal=true">Log
+                            href="javascript:void(0);" @click="activeModal=true, modal='login'">Log
                             in</a>
                         <div class="font-xs opacity-30 text-skin-base">|</div>
                         <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);"
-                            data-modal-toggle="defaultModal" @click="modal='register'">Sign in</a>
+                            data-modal-toggle="defaultModal" @click="activeModal=true, modal='register'">Sign in</a>
                     </div>
                     <!-- botones si el usuario es visitante -->
                     <div v-show="user=='authenticated'" class="flex items-center mr-6 ml-6">
@@ -73,21 +73,87 @@
                 </div>
 
             </header>
+            <header class="md:hidden ">
+                <div class="flex flex-col justify-center items-center py-2 fixed top-0 glass1 w-full z-50">
+                    <div class="mb-6 mt-2 flex justify-around">
+                        <div>
+                            <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
+                                class=" ml-4 aparecer transition-all ease-in-out duration-300 fixed left-0" alt="logo"
+                                style="width: 40px; height: 40px;">
+                        </div>
+
+                        <div class="fixed right-0 flex">
+                            <a class="px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
+                                href="javascript:void(0);">Log in</a>
+
+                            <a class=" px-5 py-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
+                        </div>
+
+                    </div>
+
+                    <div class="mt-10 self-start ml-3 pb-3">
+                        <button id="dropdownRightButton" data-dropdown-toggle="dropdownRight"
+                            data-dropdown-placement="right" class="boton1s" type="button"><img
+                                src="/web/assets/icons/theme.svg" alt="temas" class="w-5 h-5 "
+                                :class="tema=='tema_1' ? 'filter1a' : tema=='tema_2' ? 'filter2b' : tema=='tema_3' ? 'filter3b' : tema=='tema_4' ? 'filter4b' : tema=='tema_5' ? 'filter5b' : 'filter1b'"></button>
+                        <!-- Dropdown menu -->
+                        <div id="dropdownRight" class="hidden z-10 w-4" data-popper-reference-hidden=""
+                            data-popper-escaped="" data-popper-placement="bottom"
+                            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform:z translate(0px, 810px);">
+                            <ul class="flex py-1 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefault">
+                                <li>
+                                    <button class="boton1s" @click="theme(1)">TEMA 1</button>
+                                </li>
+                                <li>
+                                    <button class="boton1s" @click="theme(2)">TEMA 2</button>
+                                </li>
+                                <li>
+                                    <button class="boton1s" @click="theme(3)">TEMA 3</button>
+                                </li>
+                                <li>
+                                    <button class="boton1s" @click="theme(4)">TEMA 4</button>
+                                </li>
+                                <li>
+                                    <button class="boton1s" @click="theme(5)">TEMA 5</button>
+                                </li>
+                                <li>
+                                    <button class="boton1s" @click="theme(6)">TEMA 6</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="flex justify-center fixed bottom-0 glass1 w-full py-3 font-extrabold z-50">
+                    <nav class="flex">
+                        <div class="flex items-center">
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/index.html">Home</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/web/public/wallofartworks.html">Store</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/web/public/wallofartist.html">Artists</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/web/public/shoppingcart.html">Shop cart</a>
+                        </div>
+                    </nav>
+                </div>
+            </header>
 
             <!-- MODAL DE INFORMATIVO -->
-            <div v-if="activeModal"
+            <!-- <div v-if="activeModal"
                 class="aparecer fixed top-0 left-0 flex justify-center bg-opacity-80 aparecer z-30 w-full h-full glass2">
             </div>
             <div v-if="activeModal"
                 class="aparecer fixed top-0 left-0 flex justify-center justify-items-center content-center w-full z-40">
                 <div
                     class="flex flex-col justify-center items-center mt-10 bg-skin-normal text-skin-base filter-none w-96 h-96 rounded-2xl shadow-sm border border-slate-300 bg-opacity-50 hover:bg-opacity-70 transition-all ease-in duration-300">
-                    <div class="text-5xl font-bahnschrift opacity-80 inline">0hola</div>
-                    <p class="inline ml-4 mb-4 font-notosans font-bold text-sm">Type <b
-                            class="text-skin-muted text-lg">QUE
-                            tal</b></p>
-                    <div class="bg-skin-button-accent h-0.5 lg:w-1/2 w-full mt-2 mb-6 bg-opacity-70"></div>
-                    <!-- LÍNEA -->
+                    <div class="text-3xl font-bahnschrift opacity-80 inline">Login</div>
                     <div class="mb-2">
 
                         <div>
@@ -116,176 +182,142 @@
 
                     <button class="boton3" @click="activeModal=false">RETURN</button>
                 </div>
+            </div> -->
+            <!-- MI MODAL -->
+            <div class="fixed top-0 left-0 w-full h-full glass2 c-flex aparecer bg-opacity-80 " v-show="activeModal">
+                <div
+                    class=" w-full md:w-auto mx-3 flex flex-col justify-between items-center glass1 aparecer rounded-lg">
+                    <!-- X -->
+                    <div class="flex justify-end items-end content-end w-full">
+                        <button class="mt-2 mr-4" @click="activeModal=false">X</button>
+                    </div>
+                    <!-- content login-->
+
+                    <div class="flex flex-col justify-center items-center h-full w-full md:w-auto"
+                        v-show="modal=='login'">
+                        <h2 class="text-lg font-bold text-skin-muted md:text-2xl md:mb-5 ">Login</h2>
+                        <div class="w-full  flex flex-col justify-center px-7 text-sm">
+                            <div class="w-full flex  justify-between items-center mb-3 md:mb-5">
+                                <label class="mr-3" for="login-email">Your email</label>
+                                <input id="login-email" type="text"
+                                    class=" rounded-md dark:placeholder-gray-400 text-skin-muted "
+                                    placeholder="name@company.com" required="" v-model="login.email">
+                            </div>
+                            <div class="w-full flex  justify-between items-center md:mb-5">
+                                <label class="mr-3" for="login-password">Your Password</label>
+                                <input id="login-password" type="password"
+                                    class="rounded-md dark:placeholder-gray-400 text-skin-muted" placeholder="••••••••"
+                                    required="" v-model="login.password">
+                            </div>
+
+                        </div>
+                        <div class="w-full flex flex-col justify-center items-center">
+                            <button class="w-3/4 text-skin-muted font-medium rounded-lg text-sm boton3 mx-4"
+                                @click="loginAccount">Login
+                                to your account</button>
+                            <div class="text-sm font-medium  text-opacity-60 "
+                                :class="tema=='tema_1' || tema=='tema_2' ||tema=='tema_3' ? 'text-black' : 'text-skin-base'">
+                                Not registered?
+                                <a class="text-skin-muted hover:underline " @click="modal='register'">Create
+                                    account</a>
+                            </div>
+                            <p>{{mjeError}}</p>
+                        </div>
+                    </div>
+
+                    <!-- content register -->
+                    <div v-show="modal=='register'"
+                        class="flex flex-col justify-center items-center h-full w-full aparecer">
+                        <h2 class="text-lg font-bold text-skin-muted md:text-2xl">I am a...</h2>
+                        <div class="flex flex-col justify-center items-center md:flex-row">
+                            <button class=" px-4 md:mr-10 flex flex-col justify-center items-center boton2"
+                                @click="modal='register2', userType='CLIENT'">
+                                <div class="rounded-lg  overflow-hidden">
+                                    <img alt="content"
+                                        class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
+                                        src="https://dummyimage.com/1201x501">
+                                </div>
+                                <h2 class="title-font text-sm font-medium text-skin-accent mt-2 mb-2">Art Lover
+                                </h2>
+                                <p class="leading-relaxed text-xs text-gray-800 text-opacity-70">I want to see the
+                                    creations
+                                </p>
+
+                            </button>
+                            <button class="boton2 px-4 flex flex-col justify-center items-center"
+                                @click="modal='register2', userType='ARTIST'">
+                                <div class="rounded-lg overflow-hidden">
+                                    <img alt="content"
+                                        class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
+                                        src="https://dummyimage.com/1202x502">
+                                </div>
+                                <h2 class="title-font text-sm font-medium text-skin-accent mt-2 mb-2">Artist</h2>
+                                <p class="leading-relaxed text-xs text-gray-800 text-opacity-70">I am a creator
+                                </p>
+
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- content register2 -->
+                    <div v-show="modal=='register2'"
+                        class="flex flex-col justify-center items-center aparecer my-6 w-full px-7">
+                        <h2 class=" text-center text-lg font-bold text-skin-muted md:text-2xl mb-3"
+                            v-show="userType=='ARTIST'">Mr. Artist
+                            please complete the form</h2>
+                        <h2 class="text-lg font-bold text-skin-muted md:text-2xl mb-3" v-show="userType=='CLIENT'">Mr.
+                            Art
+                            Lover please complete the form</h2>
+                        <div class="text-xs md:text-lg">
+                            <div class="w-full flex  justify-between items-center mb-2">
+                                <label class="mr-3" for="register-name">Name:</label>
+                                <input id="register-name" type="text"
+                                    class=" rounded-md dark:placeholder-gray-400 text-skin-muted " placeholder="Blake"
+                                    required="" v-model="register.name">
+                            </div>
+                            <div class="w-full flex  justify-between items-center mb-2">
+                                <label class="mr-3" for="register-lastname">Last Name:</label>
+                                <input id="register-lastname" type="text"
+                                    class="rounded-md dark:placeholder-gray-400 text-skin-muted" placeholder="Walker"
+                                    required="" v-model="register.lastName">
+                            </div>
+                            <div class="w-full flex  justify-between items-center mb-2">
+                                <label class="mr-3" for="register-email">Email:</label>
+                                <input id="register-email" type="text"
+                                    class=" rounded-md dark:placeholder-gray-400 text-skin-muted "
+                                    placeholder="name@company.com" required="" v-model="register.email">
+                            </div>
+                            <div class="w-full flex  justify-between items-center mb-2">
+                                <label class="mr-3" for="register-password">Password</label>
+                                <input id="register-password" type="password"
+                                    class="rounded-md dark:placeholder-gray-400 text-skin-muted" placeholder="••••••••"
+                                    required="" v-model="register.password">
+                            </div>
+                            <div class="w-full flex  justify-between items-center mb-4">
+                                <label class="mr-3" for="register-password2">Password (again)</label>
+                                <input id="register-password2" type="password"
+                                    class="rounded-md dark:placeholder-gray-400 text-skin-muted" placeholder="••••••••"
+                                    required="" v-model="repeatedPassword">
+                            </div>
+                            <div class="w-full flex  justify-between items-center mb-2">
+                                <input id="terms" type="checkbox" value="" class="w-4 h-4" required=""
+                                    v-model="termsOfServiceChecked">
+                                <label for="terms">I
+                                    agree
+                                    with
+                                    the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms
+                                        and conditions</a></label>
+                            </div>
+
+
+                        </div>
+                        <div class="boton3" @click="createAccount">Create Account</div>
+                        <p class="text-red-500 text-bold text-sm md:text-lg">{{mjeError}}</p>
+                    </div>
+                </div>
             </div>
 
 
-            <!-- Modal content -->
-
-            <!--             <div class="relative  shadow  w-full glass1 rounded-lg">
-
-                <div class="flex justify-between items-start p-4 rounded-t-lg">
-
-                    <button type="button"
-                        class=" bg-white hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center "
-                        data-modal-toggle="defaultModal">
-                        <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path fill-rule="evenodd"
-                                d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
-                        <span class="sr-only">Close modal</span>
-                    </button>
-                </div>
-                
-                <div class="glass1  py-6 px-6 lg:px-8 w-full md:w-[640px] rounded-b-lg" v-show="modal=='login'">
-                    <h3 class="mb-4 text-xl font-medium text-skin-muted">Log in
-                    </h3>
-                    <form class="space-y-6" action="#">
-                        <div>
-                            <label class="block mb-2 text-sm font-medium text-skin-muted">Your
-                                email
-
-                                <input type="email" name="email"
-                                    class=" border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 bg-skin-muted dark:placeholder-gray-400 text-skin-muted"
-                                    placeholder="name@company.com" required="" v-model="login.email">
-                            </label>
-
-                        </div>
-                        <div>
-                            <label class="block mb-2 text-sm font-medium text-skin-muted">Your
-                                password
-                                <input type="password" name="password" placeholder="••••••••"
-                                    class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 text-skin-muted"
-                                    required="" v-model="login.password">
-                            </label>
-
-                        </div>
-                        <button class="w-full text-skin-muted font-medium rounded-lg text-sm boton3 ml-0"
-                            @click="loginAccount">Login
-                            to your account</button>
-                        <div class="text-sm font-medium  text-opacity-60 "
-                            :class="tema=='tema_1' || tema=='tema_2' ||tema=='tema_3' ? 'text-black' : 'text-skin-base'">
-                            Not registered?
-                            <a class="text-skin-muted hover:underline " @click="modal='register'">Create
-                                account</a>
-                        </div>
-                        <p>{{mjeError}}</p>
-                    </form>
-
-                </div>
-                
-                <div v-show="modal=='register'"
-                    class="text-skin-accent glass1 body-font  rounded-lg md:h-[388px] h-[500px] flex flex-col justify-center items-center">
-                    <h2 class="text-xl font-bold">I am a...</h2>
-                    <div class="flex flex-col justify-center items-center md:flex-row">
-                        <button class=" px-4 md:mr-10 flex flex-col justify-center items-center boton2"
-                            @click="modal='register2', userType='CLIENT'">
-                            <div class="rounded-lg  overflow-hidden">
-                                <img alt="content"
-                                    class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
-                                    src="https://dummyimage.com/1201x501">
-                            </div>
-                            <h2 class="title-font text-sm font-medium text-white mt-2 mb-2">Art Lover
-                            </h2>
-                            <p class="leading-relaxed text-xs">I want to see the creations
-                            </p>
-
-                        </button>
-                        <button class="boton2 px-4 flex flex-col justify-center items-center"
-                            @click="modal='register2', userType='ARTIST'">
-                            <div class="rounded-lg overflow-hidden">
-                                <img alt="content"
-                                    class="object-cover object-center h-[140px] w-[175px] md:h-[200px] md:w-[200px]"
-                                    src="https://dummyimage.com/1202x502">
-                            </div>
-                            <h2 class="title-font text-sm font-medium text-white mt-2 mb-2">Artist</h2>
-                            <p class="leading-relaxed text-xs">I am a creator
-                            </p>
-
-                        </button>
-                    </div>
-
-                </div>
-                
-                <div v-show="modal=='register2'"
-                    class="mt-24 text-skin-accent glass1 body-font  rounded-lg  h-[500px] flex flex-col justify-center items-center">
-                    <form class="">
-                        <div class="md:flex ">
-                            <div>
-                                <div class="mb-3">
-                                    <label for="name"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                        Name
-                                        <input type="text"
-                                            class=" text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                            placeholder="Laura" required="" v-model="register.name">
-                                    </label>
-
-                                </div>
-                                <div class="mb-3">
-                                    <label for="lastname"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                        Last Name
-                                        <input type="text"
-                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                            placeholder="Perez" required="" v-model="register.lastName">
-                                    </label>
-
-                                </div>
-                                <div class="mb-3">
-                                    <label for="email"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                        email
-                                        <input type="email"
-                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                            placeholder="name@flowbite.com" required="" v-model="register.email">
-                                    </label>
-
-                                </div>
-                            </div>
-                            <div class="md: ml-3">
-                                <div class="mb-3">
-                                    <label for="password"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Your
-                                        password
-                                        <input type="password"
-                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                            required="" v-model="register.password">
-                                    </label>
-
-                                </div>
-                                <div class="mb-3">
-                                    <label for="repeat-password"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Repeat
-                                        password
-                                        <input type="password"
-                                            class="text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:border-gray-600 dark:placeholder-gray-400 "
-                                            required="" v-model="repeatedPassword">
-                                    </label>
-
-                                </div>
-                                <div class="flex items-start mb-3">
-                                    <div class="flex items-center h-5">
-                                        <input id="terms" type="checkbox" value=""
-                                            class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
-                                            required="" v-model="termsOfServiceChecked">
-                                    </div>
-                                    <label for="terms"
-                                        class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">I
-                                        agree
-                                        with
-                                        the <a href="#" class="text-blue-600 hover:underline dark:text-blue-500">terms
-                                            and conditions</a></label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-                            @click="createAccount">Create Account</div>
-                    </form>
-                    <p>{{mjeError}}</p>
-                </div>
-            </div> -->
 
 
             <!-- CUERPO -->
@@ -386,20 +418,17 @@
                             <!-- PERFIL CARD -->
                             <!-- -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -->
                             <div class="absolute w-full h-full py-4 flex items-center justify-evenly px-4">
-                                <div
-                                    class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                                    v-for="artist in arrayArtists1">
 
                                     <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
+                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="artist.image">
                                         <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
+                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                                                {{artist.name + " " +artist.lastName}}
                                             </h5>
                                             <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
+                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Artist</span>
                                             <div class="hidden md:block mt-4 space-x-3 md:mt-6">
                                                 <a href="./web/public/watchartist.html" class="boton2">View Page</a>
                                                 <a href="./web/public/wallofartist.html" class="boton1 ">See more
@@ -408,50 +437,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div
-                                    class="hidden sm:block w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
 
-                                    <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
-                                        <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
-                                            </h5>
-                                            <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
-                                            <div class="hidden md:block mt-4 space-x-3 md:mt-6">
-                                                <a href="./web/public/watchartist.html" class="boton2">View Page</a>
-                                                <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                    artists</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="hidden md:block w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-                                    <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
-                                        <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
-                                            </h5>
-                                            <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
-                                            <div class="hidden md:block mt-4 space-x-3 md:mt-6">
-                                                <a href="./web/public/watchartist.html" class="boton2">View Page</a>
-                                                <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                    artists</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
 
                         </div>
@@ -461,64 +447,17 @@
                             <!-- PERFIL CARD -->
                             <!-- -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -->
                             <div class="absolute w-full h-full py-4 flex items-center justify-evenly px-4">
-                                <div
-                                    class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                                    v-for="artist in arrayArtists2">
 
                                     <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
+                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="artist.image">
                                         <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
+                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                                                {{artist.name + " " +artist.lastName}}
                                             </h5>
                                             <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
-                                            <div class="hidden md:block mt-4 space-x-3 md:mt-6">
-                                                <a href="./web/public/watchartist.html" class="boton2">View Page</a>
-                                                <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                    artists</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="hidden sm:block w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-                                    <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
-                                        <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
-                                            </h5>
-                                            <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
-                                            <div class="hidden md:block mt-4 space-x-3 md:mt-6">
-                                                <a href="./web/public/watchartist.html" class="boton2">View Page</a>
-                                                <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                    artists</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="hidden md:block w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-                                    <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
-                                        <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
-                                            </h5>
-                                            <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
+                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Artist</span>
                                             <div class="hidden md:block mt-4 space-x-3 md:mt-6">
                                                 <a href="./web/public/watchartist.html" class="boton2">View Page</a>
                                                 <a href="./web/public/wallofartist.html" class="boton1 ">See more
@@ -536,60 +475,14 @@
                             <!-- PERFIL CARD -->
                             <!-- -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -->
                             <div class="absolute w-full h-full py-4 flex items-center justify-evenly px-4">
-                                <div
-                                    class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
+                                <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                                    v-for="artist in arrayArtists3">
 
                                     <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
+                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="artist.image">
                                         <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
-                                            </h5>
-                                            <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
-                                            <div class="hidden md:block mt-4 space-x-3 md:mt-6">
-                                                <a href="./web/public/watchartist.html" class="boton2">View Page</a>
-                                                <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                    artists</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="hidden sm:block w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-                                    <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
-                                        <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
-                                            </h5>
-                                            <span
-                                                class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                Designer</span>
-                                            <div class="hidden md:block mt-4 space-x-3 md:mt-6">
-                                                <a href="./web/public/watchartist.html" class="boton2">View Page</a>
-                                                <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                    artists</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div
-                                    class="hidden md:block w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
-
-                                    <div class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                        <img class="mb-3 w-24 h-24 rounded-full shadow-lg"
-                                            src="https://media.istockphoto.com/photos/human-brain-with-circulatory-system-anatomy-picture-id1053560424?k=20&m=1053560424&s=612x612&w=0&h=LQIdDpiVe6bnlLzxlppnajWHPb5n2AD20BWhSbL_Wv0="
-                                            alt="Bonnie image">
-                                        <div class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">Bonnie
-                                                Green
+                                            <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                                                {{artist.name + " " +artist.lastName}}
                                             </h5>
                                             <span
                                                 class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
@@ -684,32 +577,64 @@
                             <div class="flex flex-wrap w-1/2">
                                 <div class="md:p-2 p-1 w-1/2 ">
                                     <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://dummyimage.com/500x300">
+                                        src="https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=">
                                 </div>
                                 <div class="md:p-2 p-1 w-1/2">
                                     <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://dummyimage.com/501x301">
+                                        src="https://media.istockphoto.com/photos/retro-picture-frame-picture-id693192054?k=20&m=693192054&s=612x612&w=0&h=rq6q8v6Jx1cL0mJSkrmpFwITVpPzTIvaZ2EGOfROskA=">
                                 </div>
-                                <div class="md:p-2 p-1 w-full">
-                                    <img alt="gallery" class="w-full h-full object-cover object-center block"
-                                        src="https://dummyimage.com/600x360">
+                                <div class="md:p-2 p-1 w-full overflow-hidden object-cover object-center">
+                                    <img alt="gallery"
+                                        class="w-full h-full object-cover object-center block overflow-hidden"
+                                        src="https://media.istockphoto.com/photos/ancient-scribe-picture-id960021118?k=20&m=960021118&s=612x612&w=0&h=bDOftV47rBcA4yrIJTuGTFUHYkCIT13sFp15i3hCht0=">
                                 </div>
                             </div>
                             <div class="flex flex-wrap w-1/2">
                                 <div class="md:p-2 p-1 w-full">
                                     <img alt="gallery" class="w-full h-full object-cover object-center block"
-                                        src="https://dummyimage.com/601x361">
+                                        src="https://media.istockphoto.com/photos/still-life-with-lobster-picture-id1170386061?k=20&m=1170386061&s=612x612&w=0&h=aO2DIaD7uqboNgsYGdLsJhbUSbWnQipuuoYTegMhJVc=">
                                 </div>
                                 <div class="md:p-2 p-1 w-1/2">
                                     <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://dummyimage.com/502x302">
+                                        src="https://media.istockphoto.com/illustrations/queen-elizabeth-i-illustration-id174632351?k=20&m=174632351&s=612x612&w=0&h=35NuEJZat75Nth2M69JjIadmCrOvoStHZQgTcYH_bk8=">
                                 </div>
                                 <div class="md:p-2 p-1 w-1/2">
                                     <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://dummyimage.com/503x303">
+                                        src="https://media.istockphoto.com/photos/cherubim-angels-picture-id590056270?k=20&m=590056270&s=612x612&w=0&h=it-b08pMMS_Z_A_9VLTfLJ6-5wyF4Mtcn1zKidvd9es=">
                                 </div>
                             </div>
                         </div>
+                        <!-- <div class="flex flex-wrap md:-m-2 -m-1">
+                            <div class="flex flex-wrap w-1/2">
+                                <div class="md:p-2 p-1 w-1/2 ">
+                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
+                                        src="https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=">
+                                </div>
+                                <div class="md:p-2 p-1 w-1/2">
+                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
+                                        src="https://media.istockphoto.com/photos/retro-picture-frame-picture-id693192054?k=20&m=693192054&s=612x612&w=0&h=rq6q8v6Jx1cL0mJSkrmpFwITVpPzTIvaZ2EGOfROskA=">
+                                </div>
+                                <div class="md:p-2 p-1 w-full overflow-hidden object-cover object-center">
+                                    <img alt="gallery"
+                                        class="w-full h-full object-cover object-center block overflow-hidden"
+                                        src="https://media.istockphoto.com/photos/ancient-scribe-picture-id960021118?k=20&m=960021118&s=612x612&w=0&h=bDOftV47rBcA4yrIJTuGTFUHYkCIT13sFp15i3hCht0=">
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap w-1/2">
+                                <div class="md:p-2 p-1 w-full">
+                                    <img alt="gallery" class="w-full h-full object-cover object-center block"
+                                        src="https://media.istockphoto.com/photos/still-life-with-lobster-picture-id1170386061?k=20&m=1170386061&s=612x612&w=0&h=aO2DIaD7uqboNgsYGdLsJhbUSbWnQipuuoYTegMhJVc=">
+                                </div>
+                                <div class="md:p-2 p-1 w-1/2">
+                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
+                                        src="https://media.istockphoto.com/illustrations/queen-elizabeth-i-illustration-id174632351?k=20&m=174632351&s=612x612&w=0&h=35NuEJZat75Nth2M69JjIadmCrOvoStHZQgTcYH_bk8=">
+                                </div>
+                                <div class="md:p-2 p-1 w-1/2">
+                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
+                                        src="https://media.istockphoto.com/photos/cherubim-angels-picture-id590056270?k=20&m=590056270&s=612x612&w=0&h=it-b08pMMS_Z_A_9VLTfLJ6-5wyF4Mtcn1zKidvd9es=">
+                                </div>
+                            </div>
+                        </div> -->
                     </div>
                 </section>
 

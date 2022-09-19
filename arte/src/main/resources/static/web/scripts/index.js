@@ -20,10 +20,18 @@ const app = Vue.createApp({
             termsOfServiceChecked: "",
             userType: '',
             user: "visitor",
+            artists: [],
+            arrayArtists1: [],
+            arrayArtists2: [],
+            arrayArtists3: [],
+            products: [],
+            preduct1: {},
         }
     },
     created() {
         this.initialTheme();
+        this.getClients();
+        this.getProducts()
     },
     mounted() {
     },
@@ -38,10 +46,11 @@ const app = Vue.createApp({
             }
         },
 
-        /* PROPIOS DE LA PAG */
+        /* REQUESTS */
         createAccount() {
             this.mjeError = ''
             console.log(this.register)
+            console.log(this.userType)
             if (this.register.password != this.repeatedPassword) {
                 this.mjeError = "The passwords are not the same"
             }
@@ -56,7 +65,10 @@ const app = Vue.createApp({
                     "email": this.register.email,
                     "typeUser": this.userType
                 })
-                    .then((response) => this.modal = 'login')
+                    .then((response) => {
+                        this.modal = 'login'
+                        console.log('registrado')
+                    })
                     .catch((error) => {
                         this.mjeError = error.response.data
 
@@ -80,6 +92,32 @@ const app = Vue.createApp({
         },
         logout() {
             axios.post('/api/logout').then((response) => this.user = "visitor")
+        },
+        getClients() {
+            axios.get('api/clients')
+                .then((response) => {
+                    this.clients = response.data
+                    this.artists = response.data.filter((client) => client.typeUser == "ARTIST")
+                    this.arrayArtists1 = this.artists.slice(0, 3)
+                    this.arrayArtists2 = this.artists.slice(3, 6)
+                    this.arrayArtists3 = this.artists.slice(6, 9)
+                    console.log(this.clients)
+                    console.log(this.artists)
+                    console.log(this.arrayArtists1)
+                    console.log(this.arrayArtists2)
+                    console.log(this.arrayArtists3)
+                })
+                .catch((error) => console.log(error))
+        },
+        getProducts() {
+            axios.get('/api/products')
+                .then((response) => {
+                    console.log(response.data)
+                    this.products = response.data
+                    this.product1 = this.products.slice(0, 1)
+                    console.log(this.product1)
+                })
+                .catch((error) => console.log(error))
         }
     },
     computed: {
