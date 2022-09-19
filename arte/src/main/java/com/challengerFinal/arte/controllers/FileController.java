@@ -19,9 +19,9 @@ public class FileController {
     private FileService fileService;
 
     @PostMapping("/upload")
-    public ResponseEntity<Object> uploadFiles(@RequestParam("files") List<MultipartFile> files){
+    public ResponseEntity<Object> uploadFiles(@RequestParam("files") MultipartFile file){
         try {
-            fileService.save(files);
+            System.out.println(fileService.save(file, "pruebaimg"));
             return new ResponseEntity<Object>(HttpStatus.CREATED);
         } catch (Exception e) {
             System.out.println(e.toString());
@@ -29,10 +29,4 @@ public class FileController {
         }
     }
 
-    @GetMapping("/{filename:.+}")
-    public ResponseEntity<String> getFile(@PathVariable String filename) throws Exception{
-        Resource resource = fileService.load(filename);
-        ResponseEntity<String> response = new ResponseEntity<String>(resource.getFile().toString(), new HttpHeaders(), HttpStatus.OK);
-        return response;
-    }
 }
