@@ -1,19 +1,14 @@
 package com.challengerFinal.arte.service.implement;
 
 import com.challengerFinal.arte.service.FileService;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.stream.Stream;
 
 import org.apache.commons.io.FilenameUtils;
 @Service
@@ -22,7 +17,7 @@ public class FileServiceImplement implements FileService {
     private final Path rootFolder = Paths.get("src/main/resources/static/images");
 
     @Override
-    public String save(MultipartFile file, String name) throws Exception {
+    public String saveFile(MultipartFile file, String name) throws Exception {
         String serverUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
         System.out.println(serverUrl + "/images/" + fileName);
@@ -35,18 +30,21 @@ public class FileServiceImplement implements FileService {
     }
 
     @Override
-    public void save(List<MultipartFile> files, String name) throws Exception {
+    public void saveFile(List<MultipartFile> files, String name) throws Exception {
         for (MultipartFile file : files) {
-            this.save(file, name);
+            this.saveFile(file, name);
         }
     }
 
     @Override
-    public String updateFile(MultipartFile file, String name) throws IOException {
+    public String updateFile(MultipartFile file, String name) throws Exception {
         String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+        if(Files.exists(rootFolder.resolve(fileName))) {
+            System.out.println("Exist");
+        }
         Files.deleteIfExists(rootFolder.resolve(fileName));
-        
-        return null;
+
+        return this.saveFile(file, name);
     }
 
 }
