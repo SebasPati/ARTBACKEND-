@@ -9,11 +9,12 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ClientsDto implements Serializable {
-    private final Integer ranking;
+
     private Long id;
     private String name;
     private String lastName;
     private String nickname;
+    private Integer ranking;
     private String email;
     private String telephone;
     private TypeUser typeUser;
@@ -39,9 +40,7 @@ public class ClientsDto implements Serializable {
         this.claimant = client.getClaimant().stream().map(OrderRequestDto::new).collect(Collectors.toSet());
     }
 
-    public Integer getRanking() {
-        return ranking;
-    }
+
 
     public Long getId() {
         return id;
@@ -59,6 +58,7 @@ public class ClientsDto implements Serializable {
         return nickname;
     }
 
+    public Integer getRanking() { return ranking; }
     public String getEmail() {
         return email;
     }
