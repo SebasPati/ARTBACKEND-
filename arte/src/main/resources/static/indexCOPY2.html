@@ -552,7 +552,7 @@
                                 forget,
                                 everything you do here will grow infinitely!</h1>
                             <button class="boton1 w-20" data-modal-toggle="authentication-modal"
-                                @click="modal='login'">Log in</button>
+                                @click="activeModal=true, modal='login'">Log in</button>
                         </div>
                     </div>
                 </section>
@@ -573,71 +573,34 @@
                                 better.
                             </p>
                         </div>
-                        <div class="flex flex-wrap md:-m-2 -m-1">
+                        <p>{{arrayDeImagenes[0]}}</p>
+                        <div class="flex flex-wrap md:-m-2 -m-1 w-screen h-screen">
+                            <!-- <div class="bg-[url('')] bg-cover bg-center bg-no-repeat"></div> -->
                             <div class="flex flex-wrap w-1/2">
-                                <div class="md:p-2 p-1 w-1/2 ">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=">
+                                <div class="h-2/5 flex w-full">
+
+                                    <div class=" bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2" :class="img1">
+
+                                    </div>
+                                    <div class="bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2" :class="img2">
+                                    </div>
                                 </div>
-                                <div class="md:p-2 p-1 w-1/2">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/photos/retro-picture-frame-picture-id693192054?k=20&m=693192054&s=612x612&w=0&h=rq6q8v6Jx1cL0mJSkrmpFwITVpPzTIvaZ2EGOfROskA=">
-                                </div>
-                                <div class="md:p-2 p-1 w-full overflow-hidden object-cover object-center">
-                                    <img alt="gallery"
-                                        class="w-full h-full object-cover object-center block overflow-hidden"
-                                        src="https://media.istockphoto.com/photos/ancient-scribe-picture-id960021118?k=20&m=960021118&s=612x612&w=0&h=bDOftV47rBcA4yrIJTuGTFUHYkCIT13sFp15i3hCht0=">
+                                <div class="bg-cover bg-center bg-no-repeat w-full p-1 md:p-2 h-3/5" :class="img3">
                                 </div>
                             </div>
                             <div class="flex flex-wrap w-1/2">
-                                <div class="md:p-2 p-1 w-full">
-                                    <img alt="gallery" class="w-full h-full object-cover object-center block"
-                                        src="https://media.istockphoto.com/photos/still-life-with-lobster-picture-id1170386061?k=20&m=1170386061&s=612x612&w=0&h=aO2DIaD7uqboNgsYGdLsJhbUSbWnQipuuoYTegMhJVc=">
+                                <div class="bg-cover bg-center bg-no-repeat w-full p-1 md:p-2 h-3/5" :class="img4">
                                 </div>
-                                <div class="md:p-2 p-1 w-1/2">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/illustrations/queen-elizabeth-i-illustration-id174632351?k=20&m=174632351&s=612x612&w=0&h=35NuEJZat75Nth2M69JjIadmCrOvoStHZQgTcYH_bk8=">
-                                </div>
-                                <div class="md:p-2 p-1 w-1/2">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/photos/cherubim-angels-picture-id590056270?k=20&m=590056270&s=612x612&w=0&h=it-b08pMMS_Z_A_9VLTfLJ6-5wyF4Mtcn1zKidvd9es=">
+                                <div class="h-2/5 flex w-full">
+                                    <div class="bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2" :class="img5">
+                                    </div>
+                                    <div class="bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2" :class="img6">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <!-- <div class="flex flex-wrap md:-m-2 -m-1">
-                            <div class="flex flex-wrap w-1/2">
-                                <div class="md:p-2 p-1 w-1/2 ">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=">
-                                </div>
-                                <div class="md:p-2 p-1 w-1/2">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/photos/retro-picture-frame-picture-id693192054?k=20&m=693192054&s=612x612&w=0&h=rq6q8v6Jx1cL0mJSkrmpFwITVpPzTIvaZ2EGOfROskA=">
-                                </div>
-                                <div class="md:p-2 p-1 w-full overflow-hidden object-cover object-center">
-                                    <img alt="gallery"
-                                        class="w-full h-full object-cover object-center block overflow-hidden"
-                                        src="https://media.istockphoto.com/photos/ancient-scribe-picture-id960021118?k=20&m=960021118&s=612x612&w=0&h=bDOftV47rBcA4yrIJTuGTFUHYkCIT13sFp15i3hCht0=">
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap w-1/2">
-                                <div class="md:p-2 p-1 w-full">
-                                    <img alt="gallery" class="w-full h-full object-cover object-center block"
-                                        src="https://media.istockphoto.com/photos/still-life-with-lobster-picture-id1170386061?k=20&m=1170386061&s=612x612&w=0&h=aO2DIaD7uqboNgsYGdLsJhbUSbWnQipuuoYTegMhJVc=">
-                                </div>
-                                <div class="md:p-2 p-1 w-1/2">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/illustrations/queen-elizabeth-i-illustration-id174632351?k=20&m=174632351&s=612x612&w=0&h=35NuEJZat75Nth2M69JjIadmCrOvoStHZQgTcYH_bk8=">
-                                </div>
-                                <div class="md:p-2 p-1 w-1/2">
-                                    <img alt="gallery" class="w-full object-cover h-full object-center block"
-                                        src="https://media.istockphoto.com/photos/cherubim-angels-picture-id590056270?k=20&m=590056270&s=612x612&w=0&h=it-b08pMMS_Z_A_9VLTfLJ6-5wyF4Mtcn1zKidvd9es=">
-                                </div>
-                            </div>
-                        </div> -->
                     </div>
                 </section>
-
                 <!-- SECTION artist of the year -->
 
                 <section class="text-black bg-skin-accent body-font rounded-b-lg">
@@ -658,7 +621,7 @@
                                 pickled ennui celiac mlkshk freegan photo booth af fingerstache pitchfork.</p>
                             <div class="flex justify-center">
                                 <a href="#" class="boton2">See the artist</a>
-                                <a @click="modal='register'" class="boton1 c-flex">Join me!</a>
+                                <a @click="activeModal=true, modal='register'" class=" boton1 c-flex">Join me!</a>
                             </div>
                         </div>
                     </div>

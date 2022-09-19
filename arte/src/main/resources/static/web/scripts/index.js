@@ -26,6 +26,14 @@ const app = Vue.createApp({
             arrayArtists3: [],
             products: [],
             preduct1: {},
+            galleryImage1: "",
+            arrayDeImagenes: [],
+            img1: "",
+            img2: "",
+            img3: "",
+            img4: "",
+            img5: "",
+            img6: "",
         }
     },
     created() {
@@ -115,7 +123,16 @@ const app = Vue.createApp({
                     console.log(response.data)
                     this.products = response.data
                     this.product1 = this.products.slice(0, 1)
-                    console.log(this.product1)
+                    console.log(this.products)
+                    this.galleryImage1 = this.product1[0].image
+                    /* de los productos, traerme un array con cada nombre de cada productos */
+                    this.arrayDeImagenes = this.products.map((product) => product.image)
+                    this.img1 = `bg-[url('${this.arrayDeImagenes[0]}')]`
+                    this.img2 = `bg-[url('${this.arrayDeImagenes[1]}')]`
+                    this.img3 = `bg-[url('${this.arrayDeImagenes[2]}')]`
+                    this.img4 = `bg-[url('${this.arrayDeImagenes[3]}')]`
+                    this.img5 = `bg-[url('${this.arrayDeImagenes[4]}')]`
+                    this.img6 = `bg-[url('${this.arrayDeImagenes[5]}')]`
                 })
                 .catch((error) => console.log(error))
         }
