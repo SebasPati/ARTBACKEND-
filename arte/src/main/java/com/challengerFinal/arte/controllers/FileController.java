@@ -1,6 +1,7 @@
 package com.challengerFinal.arte.controllers;
 
 import com.challengerFinal.arte.service.FileService;
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ public class FileController {
     private FileService fileService;
 
     @PostMapping("/upload")
-    public ResponseEntity<Object> uploadFiles(@RequestParam("files") MultipartFile file){
+    public ResponseEntity<Object> uploadFiles(@RequestParam("files") MultipartFile file, Authentication authentication){
         try {
             System.out.println(fileService.saveFile(file, "pruebaimg"));
             return new ResponseEntity<Object>(HttpStatus.CREATED);

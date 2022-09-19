@@ -36,7 +36,7 @@ public class ProductImplement implements ServiceProduct {
         return productRepository.findAll().stream().map(ProductDto::new).collect(Collectors.toList());
     }
     @Override
-    public ProductDto getArtworksId(Long id) {
+    public ProductDto getArtworkById(Long id) {
         return productRepository.findById(id).map(ProductDto::new).orElse(null);
     }
 

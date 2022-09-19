@@ -20,8 +20,8 @@ public class FileServiceImplement implements FileService {
     public String saveFile(MultipartFile file, String name) throws Exception {
         String serverUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-        System.out.println(serverUrl + "/images/" + fileName);
-        System.out.println(file.getOriginalFilename());
+//        System.out.println(serverUrl + "/images/" + fileName);
+//        System.out.println(file.getOriginalFilename());
         if(!file.getContentType().contains("image")) {
             return null;
         }
@@ -39,11 +39,7 @@ public class FileServiceImplement implements FileService {
     @Override
     public String updateFile(MultipartFile file, String name) throws Exception {
         String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-        if(Files.exists(rootFolder.resolve(fileName))) {
-            System.out.println("Exist");
-        }
         Files.deleteIfExists(rootFolder.resolve(fileName));
-
         return this.saveFile(file, name);
     }
 
