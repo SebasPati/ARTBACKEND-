@@ -269,11 +269,56 @@ body{
 
 
 
-/* VARIABLES PARA ANIMAR ESTILOS */
+/* ESTILOS PARA ANIMAR */
 
+.venus{
+    position: absolute;
+    transform: translate(var(--translateX), var(--translateY));
+	will-change: transform;
+}
 
+.n-front{
+    width: 100px;
+    height: 100px;
+    opacity: 60%;
+    background-color: white;
+}
 
-/* OTROS ESTILOS PROPIOS */
+.n_left{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(156, 74, 74);
+}
+
+.n_right{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(145, 0, 143);
+}
+
+.n.center{
+    width: 100px;
+    height: 100px;
+    background-color: orange;
+}
+
+.n_back1{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(255, 122, 253);
+}
+
+.n_back2{
+    width: 100%;
+    height: 100%;
+    background-color:  yellowgreen;
+}
+
+.nacimiento{
+/*     background-color: red; */
+    height: 100vh;
+    width: screen;
+}
 
 .element{
     width: 100px;
@@ -291,6 +336,12 @@ body{
     transition: transform .1s linear;
     will-change: transform;
  }
+
+
+
+
+
+/* OTROS ESTILOS PROPIOS */
 
 .sus{
     background-size: 230% 230% !important;

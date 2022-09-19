@@ -60,21 +60,26 @@ const app = Vue.createApp({
 }).mount('#app')
 
 
-const instance = basicScroll.create({
-    elem: document.querySelector('.box'),
-    from: 'bottom-bottom',
-    to: 'top-top',
-    direct: true,
-    props: {
-       '--r': {
-          from: '0',
-          to: '1turn'
-       },
-       '--tx': {
-          from: '-100px',
-          to: '100px'
-       }
-    }
- })
- 
- instance.start()
+document.querySelectorAll('.venus').forEach(element => {
+    const modx = element.getAttribute('data-mod-x');
+    const mody = element.getAttribute('data-mod-y');
+    console.log(modx);
+    console.log(mody);
+
+    basicScroll.create({
+        elem:element,
+        from:400,
+        to: 800,
+        direct: true,
+        props:{
+            '--translateX':{
+                from: '0',
+                to: `${10 * modx}px`
+            },
+            '--translateY':{
+                from: '0',
+                to: `${10 * mody}px`
+            }
+        }
+    }).start();
+});
