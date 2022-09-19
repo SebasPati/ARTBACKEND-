@@ -262,11 +262,11 @@ body{
 }
 
 .tclaro{
-    @apply w-12 h-12 m-2 text-center text-gray-200 rounded-full shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-muted),0.4)] transition-all ease-in duration-300;
+    @apply w-12 h-12 m-1 text-center bg-gray-200 rounded-full shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-muted),0.4)] transition-all ease-in duration-300;
 }
 
 .toscuro{
-    @apply w-12 h-12 m-2 text-center text-gray-800 rounded-full shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-muted),0.4)] transition-all ease-in duration-300;
+    @apply w-12 h-12 m-1 text-center bg-gray-800 rounded-full shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-muted),0.4)] transition-all ease-in duration-300;
 }
 
 
