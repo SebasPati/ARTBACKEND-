@@ -94,6 +94,8 @@ public class OrderRequest {
                 "id=" + id +
                 ", date=" + date +
                 ", state=" + state +
+                ", units=" + units +
+                ", price=" + price +
                 ", petitioner=" + petitioner +
                 ", orders=" + orders +
                 '}';

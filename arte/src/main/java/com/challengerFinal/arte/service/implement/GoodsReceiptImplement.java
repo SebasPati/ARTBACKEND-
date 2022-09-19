@@ -4,7 +4,6 @@ import com.challengerFinal.arte.dtos.GoodsReceiptDto;
 import com.challengerFinal.arte.model.*;
 import com.challengerFinal.arte.repositories.*;
 import com.challengerFinal.arte.service.GoodsReceiptService;
-import com.challengerFinal.arte.service.MailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

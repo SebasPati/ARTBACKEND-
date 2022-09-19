@@ -141,4 +141,20 @@ public class Product {
         this.client = client;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", category='" + category + '\'' +
+                ", price=" + price +
+                ", status=" + status +
+                ", date=" + date +
+                ", units=" + units +
+                ", dimensionsList=" + dimensionsList +
+                ", image=" + image +
+                ", client=" + client +
+                '}';
+    }
 }
