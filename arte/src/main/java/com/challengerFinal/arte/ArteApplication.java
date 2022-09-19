@@ -102,6 +102,42 @@ public class ArteApplication implements CommandLineRunner {
 		GoodsReceipt goodsReceiptOne = new GoodsReceipt((orderRequest.getPrice()*1.010)*12,true,LocalDate.now(),12,shoppingCart,payment1);
 		goodsReceiptService.saveGoodsReceipt(goodsReceiptOne);
 		System.out.println(goodsReceiptOne);
+		//CLAU:
+		Client cc9 = new Client("cc9", "cc9", "cc", "cc", TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc1= new Client("cc1+p=1", "cc1l", "cc1@art.com", "cc1", TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc2= new Client("cc2+p=2", "cc2l", "cc2@art.com", "cc2", TypeUser.ARTIST, 1,  "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc3= new Client("cc3", "cc3l", "cc3@art.com", "cc3", TypeUser.ARTIST, 5 , "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc4= new Client("cc4", "cc4l", "cc4@art.com", "cc4", TypeUser.ARTIST, 1 , "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc5= new Client("cc5+5=p", "cc5l", "cc5@art.com", "cc5", TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc6= new Client("cc6", "cc6l", "cc6@art.com", "cc6", TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc7= new Client("cc7", "cc7l", "cc7@art.com", "cc7", TypeUser.ARTIST, 7, "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		Client cc8= new Client("cc8", "cc8l", "cc8@art.com", "cc8", TypeUser.ARTIST, 10, "https://media.istockphoto.com/photos/portrait-of-medieval-african-young-woman-in-black-vintage-dress-with-picture-id1325210422?k=20&m=1325210422&s=612x612&w=0&h=l6BX2_nzVxsBgroqdmAbjS2B6ITJ3MKnpGgHewULy9Q=");
+		userGlobalRepository.save(cc1);
+		userGlobalRepository.save(cc2);
+		userGlobalRepository.save(cc3);
+		userGlobalRepository.save(cc4);
+		userGlobalRepository.save(cc5);
+		userGlobalRepository.save(cc6);
+		userGlobalRepository.save(cc7);
+		userGlobalRepository.save(cc8);
+		userGlobalRepository.save(cc9);
+		//CLAU PRODUCTOS
+		Product cp1 = new Product("cp1", "cpdescrip", List.of(30.00,10.00), "category", cc1);
+		Product cp2 = new Product("cp2", "cpdescrip", List.of(30.00,10.00), "category2", cc2);
+		Product cp3 = new Product("cp3", "cpdescrip", List.of(30.00,10.00), "category", cc2);
+		Product cp4 = new Product("cp4", "cpdescrip", List.of(30.00,10.00), "category2", cc5);
+		Product cp5 = new Product("cp5", "cpdescrip", List.of(30.00,10.00), "category", cc5);
+		Product cp6 = new Product("cp6", "cpdescrip", List.of(30.00,10.00), "category3", cc5);
+		Product cp7 = new Product("cp7", "cpdescrip", List.of(30.00,10.00), "category3", cc5);
+		Product cp8 = new Product("cp8", "cpdescrip", List.of(30.00,10.00), "category3", cc5);
+		artworksService.saveArtworks(cp1);
+		artworksService.saveArtworks(cp2);
+		artworksService.saveArtworks(cp3);
+		artworksService.saveArtworks(cp4);
+		artworksService.saveArtworks(cp5);
+		artworksService.saveArtworks(cp6);
+		artworksService.saveArtworks(cp7);
+		artworksService.saveArtworks(cp8);
 
 
 	}
