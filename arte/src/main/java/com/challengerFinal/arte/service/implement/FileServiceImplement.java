@@ -1,46 +1,50 @@
 package com.challengerFinal.arte.service.implement;
 
 import com.challengerFinal.arte.service.FileService;
-import org.springframework.core.io.Resource;
-import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.stream.Stream;
 
+import org.apache.commons.io.FilenameUtils;
 @Service
 public class FileServiceImplement implements FileService {
 
     private final Path rootFolder = Paths.get("src/main/resources/static/images");
 
     @Override
-    public void save(MultipartFile file) throws Exception {
-        System.out.println(file.getContentType());
-        String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new java.util.Date());
-        Files.copy(file.getInputStream(), rootFolder.resolve(timeStamp));
+    public String saveFile(MultipartFile file, String name) throws Exception {
+        String serverUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
+        String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+        System.out.println(serverUrl + "/images/" + fileName);
+        System.out.println(file.getOriginalFilename());
+        if(!file.getContentType().contains("image")) {
+            return null;
+        }
+        Files.copy(file.getInputStream(), rootFolder.resolve(fileName));
+        return serverUrl + "/images/" + fileName;
     }
 
     @Override
-    public Resource load(String name) throws Exception {
-        Path file = rootFolder.resolve(name);
-        Resource resource = new UrlResource(file.toUri());
-        return resource;
-    }
-
-    @Override
-    public void save(List<MultipartFile> files) throws Exception {
+    public void saveFile(List<MultipartFile> files, String name) throws Exception {
         for (MultipartFile file : files) {
-            this.save(file);
+            this.saveFile(file, name);
         }
     }
 
     @Override
-    public Stream<Path> loadAll() throws Exception {
-        return null;
+    public String updateFile(MultipartFile file, String name) throws Exception {
+        String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+        if(Files.exists(rootFolder.resolve(fileName))) {
+            System.out.println("Exist");
+        }
+        Files.deleteIfExists(rootFolder.resolve(fileName));
+
+        return this.saveFile(file, name);
     }
+
 }

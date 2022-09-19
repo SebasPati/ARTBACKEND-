@@ -21,7 +21,7 @@
       <!-- HEADER CON NAV -->
       <header>
 
-        <div ref="navbar" class="flex justify-between w-screen p-2 fixed z-0 place-items-center">
+        <div ref="navbar" class="flex justify-between w-screen p-2 fixed z-50 place-items-center">
 
           <img
             :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
@@ -55,7 +55,7 @@
 
       <div class="flex flex-col pt-20">
 
-        
+
 
         <div class="w-1/2 flex pt-20">
           <button class="boton1s" @click="theme(1)">TEMA 1</button>
@@ -101,14 +101,35 @@
 
 
 
+
+
+
+
+
+
       <div>
 
 
-<div class="box"></div>
+        <div class="box"></div>
+
+        <div class="nacimiento flex justify-center overflow-hidden">
 
 
+          <div class="n_back2 venus z-[27] left-0" data-mod-y="10" data-mod-x="0">soy 2do Fondo</div>
+          <div class="n-front venus z-[29] self-center" data-mod-y="30" data-mod-x="4" >soy flores</div>
+          <div class="n_left venus z-[28] " data-mod-y="15" data-mod-x="40" >somos un par de dioses</div>
+          <div class="n_center venus z-[28] self-center" data-mod-y="13" data-mod-x="0">soy venus</div>
+          <div class="n_right venus z-[28] ml-96 mt-96" data-mod-y="15" data-mod-x="-40">soy una ninfa</div>
+
+          <div class="n_back1 venus relative z-[27] self-center" data-mod-y="10" data-mod-x="0">soy flores del fondo</div>
+
+          
+
+        </div>
 
       </div>
+
+
 
       <div class="text-skin-base p-8">
         <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Similique cum accusantium architecto nostrum itaque
@@ -345,7 +366,7 @@
   <script src="https://unpkg.com/vue@3"></script>
   <script src="/node_modules/basicscroll/dist/basicScroll.min.js"></script>
   <script src="./recursos.js"></script>
-  
+
 
 </body>
 
