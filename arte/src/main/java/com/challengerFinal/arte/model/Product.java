@@ -3,6 +3,7 @@ package com.challengerFinal.arte.model;
 import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -17,6 +18,10 @@ public class Product {
     private String name;
     private String description;
     private String category;
+    private Double price;
+    private Boolean status;
+    private LocalDate date;
+    private Integer units;
     @ElementCollection
     @Column(name = "Dimensions")
     private List<Double> dimensionsList;
@@ -26,14 +31,10 @@ public class Product {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client")
     private Client client;
-
     @OneToMany(mappedBy = "product",
             fetch = FetchType.EAGER)
     private Set<OrderLineal> artworks = new HashSet<>();
 
-    @OneToMany(mappedBy = "productRec",
-            fetch = FetchType.EAGER)
-    private Set<GoodsReceipt> existing = new HashSet<>();
 
     public Product() {
     }
@@ -46,9 +47,14 @@ public class Product {
         this.client = client;
     }
 
-    public Product(String name, String description, List<Double> dimensionsList, List<String> image, Client client) {
+    public Product(String name, String description, String category, Double price, Boolean status, LocalDate date, Integer units, List<Double> dimensionsList, List<String> image, Client client) {
         this.name = name;
         this.description = description;
+        this.category = category;
+        this.price = price;
+        this.status = status;
+        this.date = date;
+        this.units = units;
         this.dimensionsList = dimensionsList;
         this.image = image;
         this.client = client;
@@ -70,6 +76,10 @@ public class Product {
         return description;
     }
 
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getCategory() {
         return category;
     }
@@ -78,15 +88,41 @@ public class Product {
         this.category = category;
     }
 
+    public Double getPrice() {
+        return price;
+    }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public Integer getUnits() {
+        return units;
+    }
+
+    public void setUnits(Integer units) {
+        this.units = units;
     }
 
     public List<Double> getDimensionsList() {
         return dimensionsList;
     }
-
 
     public void setDimensionsList(List<Double> dimensionsList) {
         this.dimensionsList = dimensionsList;
@@ -114,25 +150,5 @@ public class Product {
 
     public void setArtworks(Set<OrderLineal> artworks) {
         this.artworks = artworks;
-    }
-
-    public Set<GoodsReceipt> getExisting() {
-        return existing;
-    }
-
-    public void setExisting(Set<GoodsReceipt> existing) {
-        this.existing = existing;
-    }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", dimensionsList=" + dimensionsList +
-                ", existing=" + existing +
-                ", artist=" + client +
-                '}';
     }
 }

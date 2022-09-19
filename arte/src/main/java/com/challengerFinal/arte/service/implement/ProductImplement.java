@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -50,15 +51,21 @@ public class ProductImplement implements ServiceProduct {
                 || createProductDto.getCategory().isEmpty()
                 || createProductDto.getDimensionsList().isEmpty()
                 || createProductDto.getDescription().isEmpty()
+                || createProductDto.getImage().isEmpty()
                 ){
             return new  ResponseEntity<>(HttpStatus.FORBIDDEN);
         }
 
         Product newProduct =new Product (
                 createProductDto.getName(),
-                createProductDto.getCategory(),
-                createProductDto.getDimensionsList(),
                 createProductDto.getDescription(),
+                createProductDto.getCategory(),
+                createProductDto.getPrice(),
+                true,
+                LocalDate.now(),
+                createProductDto.getUnits(),
+                createProductDto.getDimensionsList(),
+                createProductDto.getImage(),
                 client
                 );
         productRepository.save(newProduct);

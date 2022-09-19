@@ -1,6 +1,9 @@
 package com.challengerFinal.arte.dtos;
 
+import com.challengerFinal.arte.model.Client;
+
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
 public class UpdateProductDTO implements Serializable {
@@ -10,14 +13,12 @@ public class UpdateProductDTO implements Serializable {
     private String category;
     private List<Double> dimensionsList;
     private List<String> image;
+    private Double price;
+    private Boolean status;
+    private LocalDate date;
+    private Integer units;
 
-    public UpdateProductDTO(Long id, String name, String description, String category, List<Double> dimensionsList, List<String> image) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.dimensionsList = dimensionsList;
-        this.image = image;
+    public UpdateProductDTO() {
     }
 
     public Long getId() {
@@ -42,5 +43,57 @@ public class UpdateProductDTO implements Serializable {
 
     public List<String> getImage() {
         return image;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Integer getUnits() {
+        return units;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public void setDimensionsList(List<Double> dimensionsList) {
+        this.dimensionsList = dimensionsList;
+    }
+
+    public void setImage(List<String> image) {
+        this.image = image;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public void setUnits(Integer units) {
+        this.units = units;
     }
 }

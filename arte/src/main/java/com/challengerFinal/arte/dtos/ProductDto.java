@@ -2,6 +2,7 @@ package com.challengerFinal.arte.dtos;
 
 import com.challengerFinal.arte.model.Product;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -10,15 +11,25 @@ public class ProductDto {
     private  String name;
     private  String description;
     private  List<Double> dimensionsList;
-    private List<GoodsReceiptDto> existing;
+    private List<String> image;
+    private Double price;
+    private Boolean status;
+    private LocalDate date;
+    private Integer units;
+
 
     public ProductDto(Product product) {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
         this.dimensionsList = product.getDimensionsList();
-        this.existing = product.getExisting().stream().map(GoodsReceiptDto::new).collect(Collectors.toList());
-    }
+        this.image = product.getImage();
+        this.price = product.getPrice();
+        this.status = product.getStatus();
+        this.date = product.getDate();
+        this.units = product.getUnits();
+
+          }
 
     public Long getId() {
         return id;
@@ -36,8 +47,23 @@ public class ProductDto {
         return dimensionsList;
     }
 
-    public List<GoodsReceiptDto> getExisting() {
-        return existing;
+    public List<String> getImage() {
+        return image;
     }
 
+    public Double getPrice() {
+        return price;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public Integer getUnits() {
+        return units;
+    }
 }
