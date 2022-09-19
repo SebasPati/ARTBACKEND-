@@ -4,6 +4,7 @@ import com.challengerFinal.arte.model.*;
 import com.challengerFinal.arte.model.enums.StatePedido;
 import com.challengerFinal.arte.model.enums.TypeUser;
 import com.challengerFinal.arte.repositories.ClientRepository;
+import com.challengerFinal.arte.repositories.PaymentRepository;
 import com.challengerFinal.arte.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -33,6 +34,9 @@ public class ArteApplication implements CommandLineRunner {
 	ShoppingCartService shoppingCartService;
 	@Autowired
 	GoodsReceiptService goodsReceiptService;
+
+	@Autowired
+	PaymentRepository paymentRepository;
 
 	@Autowired
 	PasswordEncoder passwordEncoder;
@@ -80,9 +84,25 @@ public class ArteApplication implements CommandLineRunner {
 		System.out.println(orderRequest);
 		System.out.println(orderRequestDos);
 
-		GoodsReceipt goodsReceiptOne = new GoodsReceipt();
+
+
+		List<Integer> paymentsDebitCard = List.of(1);
+		List<Integer> paymentsCreditCard = List.of(1, 3, 6,12,24,36);
+		List<Integer> paymentsCash = List.of(1);
+
+
+		Payment payment1 = new Payment("Cash",paymentsCash);
+		Payment payment2 = new Payment("Credit",paymentsCreditCard);
+		Payment payment3 = new Payment("Debit",paymentsDebitCard);
+
+		paymentRepository.save(payment1);
+		paymentRepository.save(payment2);
+		paymentRepository.save(payment3);
+
+		GoodsReceipt goodsReceiptOne = new GoodsReceipt((orderRequest.getPrice()*1.010)*12,true,LocalDate.now(),12,shoppingCart,payment1);
 		goodsReceiptService.saveGoodsReceipt(goodsReceiptOne);
 		System.out.println(goodsReceiptOne);
+
 
 	}
 }

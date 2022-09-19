@@ -67,4 +67,15 @@ public class ShoppingCart {
     public void setPayment(Set<GoodsReceipt> payment) {
         this.payment = payment;
     }
+
+    @Override
+    public String toString() {
+        return "ShoppingCart{" +
+                "id=" + id +
+                ", isShoppingCart=" + isShoppingCart +
+                ", client=" + client +
+                ", orderRequest=" + orderRequest +
+                ", payment=" + payment +
+                '}';
+    }
 }
