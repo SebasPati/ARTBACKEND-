@@ -81,10 +81,10 @@
                         src="/web/assets/icons/theme.svg" alt="temas" class="w-5 h-5 "
                         :class="tema=='tema_1' ? 'filter1a' : tema=='tema_2' ? 'filter2b' : tema=='tema_3' ? 'filter3b' : tema=='tema_4' ? 'filter4b' : tema=='tema_5' ? 'filter5b' : 'filter1b'"></button>
 
-                <div id="dropdownRight" class="hidden z-10 w-4" data-popper-reference-hidden=""
+                <div id="dropdownRight" class="hidden z-10 w-4 fixed pt-[78px] aparecer" data-popper-reference-hidden=""
                     data-popper-escaped="" data-popper-placement="bottom"
                     style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform:z translate(0px, 810px);">
-                    <ul class="flex py-1 text-sm text-gray-700 dark:text-gray-200"
+                    <ul class="flex py-1 text-sm text-gray-700 dark:text-gray-200 c-flex"
                         aria-labelledby="dropdownDefault">
                         <li>
                             <button class="w-6 h-6 c-flex tclaro" @click="theme(1)"><img src="/web/assets/icons/pincel1.svg" class="w-4 h-4 filter1a" alt="theme1"></button>
