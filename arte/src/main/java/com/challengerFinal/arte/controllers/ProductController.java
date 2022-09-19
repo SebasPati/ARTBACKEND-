@@ -3,7 +3,6 @@ package com.challengerFinal.arte.controllers;
 import com.challengerFinal.arte.dtos.CreateProductDto;
 import com.challengerFinal.arte.dtos.ProductDto;
 import com.challengerFinal.arte.dtos.UpdateProductDTO;
-import com.challengerFinal.arte.model.Client;
 import com.challengerFinal.arte.repositories.ClientRepository;
 import com.challengerFinal.arte.service.ServiceProduct;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +11,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -29,7 +26,7 @@ public class ProductController {
     }
     @GetMapping(value = "/products/{id}")
     public ProductDto getArtworksId(@PathVariable Long id) {
-        return productService.getArtworksId(id);
+        return productService.getArtworkById(id);
     }
 
     @PostMapping("/clients/current/products")

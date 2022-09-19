@@ -207,9 +207,6 @@ body{
 
 /* ACCIÓN AL SCROLLEAR */
 
-/* .navbar.scrolled {
-    @apply glass1;
-  } */
 
 
 /* ESTILOS POSICIÓN */
@@ -264,60 +261,60 @@ body{
     @apply p-1 m-2 rounded bg-skin-normal text-skin-base text-xs font-quicksand hover:shadow-[0px_1px_4px_rgba(var(--color-button-accent),0.3)] transition-all ease-in-out duration-200;
 }
 
-/* ESTILOS MODAL MARIALE */
+.tclaro{
+    @apply w-12 h-12 m-1 text-center bg-gray-200 rounded-full shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-muted),0.4)] transition-all ease-in duration-300;
+}
+
+.toscuro{
+    @apply w-12 h-12 m-1 text-center bg-gray-800 rounded-full shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-muted),0.4)] transition-all ease-in duration-300;
+}
 
 
+/* ESTILOS EXTRAS MARIALE */
+
+#section{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #ff000000;
+    background-position: 25% 25%;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    clip-path: circle(0px at center);
+}
+.contenedor{
+    position: relative;
+    margin-top:  200vh;
+    background: #fff;
+    padding: 100px;
+}
+.h2{
+    display: flex;
+    justify-content: center;
+    align-items:flex-end;
+    margin-top: 300px;
+    
+}
 
 
 /* ESTILOS PARA ANIMAR */
 
 .venus{
-    position: absolute;
+    position: relative;
     transform: translate(var(--translateX), var(--translateY));
 	will-change: transform;
-}
-
-.n-front{
-    width: 100px;
-    height: 100px;
-    opacity: 60%;
-    background-color: white;
-}
-
-.n_left{
-    width: 100px;
-    height: 100px;
-    background-color: rgb(156, 74, 74);
-}
-
-.n_right{
-    width: 100px;
-    height: 100px;
-    background-color: rgb(145, 0, 143);
-}
-
-.n.center{
-    width: 100px;
-    height: 100px;
-    background-color: orange;
-}
-
-.n_back1{
-    width: 100px;
-    height: 100px;
-    background-color: rgb(255, 122, 253);
-}
-
-.n_back2{
-    width: 100%;
-    height: 100%;
-    background-color:  yellowgreen;
 }
 
 .nacimiento{
 /*     background-color: red; */
     height: 100vh;
     width: screen;
+    background: url('/web/assets/index/Venusborn/birth_back.jpg');
+    background-repeat: no-repeat;
+    background-size: 130%;
+    
 }
 
 .element{

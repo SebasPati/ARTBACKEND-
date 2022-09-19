@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class ClientsDto implements Serializable {
+    private final Integer ranking;
     private Long id;
     private String name;
     private String lastName;
@@ -28,6 +29,7 @@ public class ClientsDto implements Serializable {
         this.name = client.getName();
         this.lastName = client.getLastName();
         this.nickname = client.getNickname();
+        this.ranking = client.getRanking();
         this.email = client.getEmail();
         this.telephone = client.getTelephone();
         this.typeUser = client.getTypeUser();
@@ -35,6 +37,10 @@ public class ClientsDto implements Serializable {
         this.networks = client.getNetworks();
         this.artworks = client.getArtworks().stream().map(ProductDto::new).collect(Collectors.toSet());
         this.claimant = client.getClaimant().stream().map(OrderRequestDto::new).collect(Collectors.toSet());
+    }
+
+    public Integer getRanking() {
+        return ranking;
     }
 
     public Long getId() {

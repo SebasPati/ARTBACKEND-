@@ -66,4 +66,14 @@ public class Payment {
     public void setInvoices(Set<GoodsReceipt> invoices) {
         this.invoices = invoices;
     }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", payments=" + payments +
+                ", invoices=" + invoices +
+                '}';
+    }
 }

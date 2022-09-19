@@ -13,7 +13,7 @@ import java.util.List;
 public interface ServiceProduct {
     Product saveArtworks(Product product);
     List <ProductDto> getArtworksAll();
-    ProductDto getArtworksId(Long id);
+    ProductDto getArtworkById(Long id);
 
     public ResponseEntity<Object> createProduct(Authentication authentication,
              CreateProductDto createProductDto);
