@@ -1,13 +1,16 @@
 
+
 const app = Vue.createApp({
     data() {
         return {
             tema: '',
-            activeModal: false
+            activeModal: false,
+            modalSimple: false
         }
     },
     created() {
         this.initialTheme();
+        
     },
     mounted() {
         this.addClassY('navbar',50,'glass1');
@@ -43,8 +46,35 @@ const app = Vue.createApp({
                     navbar.classList.remove(classToAdd);
                 }
             })
+        },
+        sacarModalSimple(){
+            setTimeout(()=>this.changeURL('/index.html'), 1600);
+        },
+        changeURL(location){
+            window.location.href = location;
         }
     },
     computed: {
+
     }
 }).mount('#app')
+
+
+const instance = basicScroll.create({
+    elem: document.querySelector('.box'),
+    from: 'bottom-bottom',
+    to: 'top-top',
+    direct: true,
+    props: {
+       '--r': {
+          from: '0',
+          to: '1turn'
+       },
+       '--tx': {
+          from: '-100px',
+          to: '100px'
+       }
+    }
+ })
+ 
+ instance.start()
