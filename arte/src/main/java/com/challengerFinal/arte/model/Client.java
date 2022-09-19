@@ -39,36 +39,33 @@ public class Client {
 
     public Client() {
     }
-
-    public Client(String name, String lastName, String email, String password,TypeUser typeUser) {
+    //Constructor de usuario basico para todos los usuarios
+    public Client(String name, String lastName, String email, String password, TypeUser typeUser, Integer ranking, String image) {
         this.name = name;
         this.lastName = lastName;
         this.email = email;
         this.password = password;
         this.typeUser = typeUser;
+        this.ranking = ranking;
+        this.image = image;
     }
 
-    public Client(String name, String lastName, String email, String telephone, String password, TypeUser typeUser) {
-      this.name = name;
-      this.lastName = lastName;
-      this.email = email;
-      this.telephone = telephone;
-      this.password = password;
-      this.typeUser = typeUser;
-   }
-   public Client(String name, String lastName, String nickname, String email, String telephone, String password, TypeUser typeUser, String direction, List<String> networks) {
-      this.name = name;
-      this.lastName = lastName;
-      this.nickname = nickname;
-      this.email = email;
-      this.telephone = telephone;
-      this.password = password;
-      this.typeUser = typeUser;
-      this.direction = direction;
-      this.networks = networks;
-   }
+    //Contructor con todas las propiedades
+    public Client(String name, String lastName, String nickname, String email, String telephone, String password, TypeUser typeUser, String direction, Integer ranking, String image, List<String> networks) {
+        this.name = name;
+        this.lastName = lastName;
+        this.nickname = nickname;
+        this.email = email;
+        this.telephone = telephone;
+        this.password = password;
+        this.typeUser = typeUser;
+        this.direction = direction;
+        this.ranking = ranking;
+        this.image = image;
+        this.networks = networks;
+    }
 
-   public Long getId() {
+    public Long getId() {
     return id;
    }
 

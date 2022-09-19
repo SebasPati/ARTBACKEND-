@@ -61,9 +61,11 @@ public class implementClient implements ClientService {
         || registration.getPassword().isEmpty()
         || registration.getName().isEmpty()
         || registration.getTypeUser() == null
-                || registration.getLastName().isEmpty()){
-            return new ResponseEntity<>(HttpStatus.FORBIDDEN);
+        || registration.getLastName().isEmpty()){
+
+            return new ResponseEntity<>("Missing Data",HttpStatus.FORBIDDEN);
         }
+
         String email = registration.getEmail();
 
         if (clientRepository.findByEmail(email) != null) {
@@ -76,7 +78,9 @@ public class implementClient implements ClientService {
                     registration.getLastName(),
                     registration.getEmail(),
                     passwordEncoder.encode(registration.getPassword())
-                    ,registration.getTypeUser());
+                    ,registration.getTypeUser(),
+                    0,
+                    registration.getImage());
 
             clientRepository.save(newClient);
             return new ResponseEntity<>(HttpStatus.CREATED);
