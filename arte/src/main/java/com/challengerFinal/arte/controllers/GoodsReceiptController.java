@@ -3,11 +3,11 @@ package com.challengerFinal.arte.controllers;
 import com.challengerFinal.arte.dtos.GoodsReceiptDto;
 import com.challengerFinal.arte.service.GoodsReceiptService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,13 +17,28 @@ public class GoodsReceiptController {
     @Autowired
     GoodsReceiptService goodsReceiptService;
 
-   /* @GetMapping(value = "/goodsReceipts")
+   @GetMapping(value = "/goodsReceipts")
     public List<GoodsReceiptDto> getExistAll(){
-        return goodsReceiptService.getGoodsReceiptsAll().stream().map(GoodsReceiptDto::new).collect(Collectors.toList());
+        return goodsReceiptService.getGoodsReceiptsAll();
     }
-    @GetMapping(value = "/goodsReceipts/{goodsReceiptId}")
-    public GoodsReceiptDto getGoodsReceiptId(@PathVariable Long goodsReceiptId){
-        return new GoodsReceiptDto(goodsReceiptService.getGoodsReceiptId(goodsReceiptId));
-    }*/
+
+    @PostMapping("/pay")
+    public ResponseEntity<Object> createInvoices(
+            @RequestParam int payments,
+            @RequestParam String typePayment,
+            @RequestParam String numCard,
+            @RequestParam String fechaVen,
+            @RequestParam String cvv,
+            Authentication authentication
+    ) {
+        LocalDate thruDate = LocalDate.parse(fechaVen);
+        return goodsReceiptService.createGoodsReceipt(payments,
+                typePayment,
+                numCard,
+                thruDate,
+                cvv,
+                authentication);
+    }
+
 
 }

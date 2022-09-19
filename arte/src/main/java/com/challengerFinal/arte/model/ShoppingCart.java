@@ -52,4 +52,19 @@ public class ShoppingCart {
         this.client = client;
     }
 
+    public Set<OrderRequest> getOrderRequest() {
+        return orderRequest;
+    }
+
+    public void setOrderRequest(Set<OrderRequest> orderRequest) {
+        this.orderRequest = orderRequest;
+    }
+
+    public Set<GoodsReceipt> getPayment() {
+        return payment;
+    }
+
+    public void setPayment(Set<GoodsReceipt> payment) {
+        this.payment = payment;
+    }
 }

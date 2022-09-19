@@ -1,6 +1,5 @@
 package com.challengerFinal.arte.service.implement;
 
-import com.challengerFinal.arte.dtos.AddItemDTO;
 import com.challengerFinal.arte.dtos.OrderRequestDto;
 import com.challengerFinal.arte.model.Client;
 import com.challengerFinal.arte.model.OrderRequest;
@@ -51,12 +50,12 @@ public class OrderImplement implements OrderService {
     public ResponseEntity<Object> createPurchaseOrder(String nameProduct, int cant, Authentication authentication) {
         Client clientConected = clientRepository.findByEmail(authentication.getName());
         Product requestedProduct = productRepository.findByName(nameProduct);
-        //ShoppingCart shoppingCart = shoppingCartRepository.findByClientAndIsActive(clientConected,true);
-        ShoppingCart shoppingCart = new ShoppingCart(clientConected);
+        ShoppingCart shoppingCart = shoppingCartRepository.findByClient(clientConected);
+        //ShoppingCart shoppingCart = new ShoppingCart(clientConected);
 
-        /*if (shoppingCart == null) {
+        if (shoppingCart == null) {
             return new ResponseEntity<>("Esribir aquí una nota"+shoppingCart,HttpStatus.FORBIDDEN);
-        }*/
+        }
         if (nameProduct.isEmpty() || cant==0) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }

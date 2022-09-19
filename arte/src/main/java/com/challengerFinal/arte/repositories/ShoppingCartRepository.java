@@ -7,5 +7,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 @RepositoryRestResource
 public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long> {
-    //ShoppingCart findByClientAndIsActive(Client client, Boolean isActive);
+    ShoppingCart findByClient(Client client);
 }
