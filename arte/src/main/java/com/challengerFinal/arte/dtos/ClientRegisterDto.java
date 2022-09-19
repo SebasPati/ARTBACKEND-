@@ -14,6 +14,7 @@ public class ClientRegisterDto {
     private String password;
     private TypeUser typeUser;
     private String direction;
+    private String image;
     private List<String> networks;
 
     public ClientRegisterDto() {
@@ -29,6 +30,14 @@ public class ClientRegisterDto {
 
     public String getName() {
         return name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public void setName(String name) {
@@ -98,4 +107,5 @@ public class ClientRegisterDto {
     public void setNetworks(List<String> networks) {
         this.networks = networks;
     }
+
 }

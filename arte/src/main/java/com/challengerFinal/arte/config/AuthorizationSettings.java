@@ -25,11 +25,11 @@ public class AuthorizationSettings extends WebSecurityConfigurerAdapter {
                 .antMatchers("/web/artist/**").hasAuthority("ARTIST")
                 .antMatchers("/web/artlover/**").hasAuthority("CLIENT")
                 .antMatchers("/public/","/index.html","/styles/**").permitAll()
-                .antMatchers("/api/**").permitAll()
+                .antMatchers(HttpMethod.POST,"/api/**").permitAll()
+                .antMatchers(HttpMethod.GET,"/api/**").permitAll()//de momento
                 .antMatchers("/h2-console/**").permitAll();
 
         http.formLogin().usernameParameter("email")
-
                 .passwordParameter("password")
                 .loginPage("/api/login").permitAll();
                 // endpoint

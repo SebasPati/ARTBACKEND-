@@ -78,7 +78,9 @@ public class implementClient implements ClientService {
                     registration.getLastName(),
                     registration.getEmail(),
                     passwordEncoder.encode(registration.getPassword())
-                    ,registration.getTypeUser());
+                    ,registration.getTypeUser(),
+                    0,
+                    registration.getImage());
 
             clientRepository.save(newClient);
             return new ResponseEntity<>(HttpStatus.CREATED);
