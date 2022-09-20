@@ -5,8 +5,6 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
 
 @Entity
 public class OrderRequest {
@@ -19,21 +17,21 @@ public class OrderRequest {
     private Integer units;
     private Double price;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "petitioner")
-    private Product petitioner;
+    @JoinColumn(name = "product")
+    private Product product;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "orderRequest_id")
-    private ShoppingCart orders;
+    private ShoppingCart shoppingCart;
     public OrderRequest(){}
 
-    public OrderRequest(Product petitioner,LocalDate date, StatePedido state,Double price,Integer units,ShoppingCart orders) {
-        this.petitioner = petitioner;
+    public OrderRequest(Product product, LocalDate date, StatePedido state, Double price, Integer units, ShoppingCart shoppingCart) {
+        this.product = product;
         this.date = date;
         this.state = state;
         this.price = price;
         this.units = units;
-        this.orders = orders;
+        this.shoppingCart = shoppingCart;
     }
 
     public Long getId() {
@@ -56,12 +54,12 @@ public class OrderRequest {
         this.state = state;
     }
 
-    public Product getPetitioner() {
-        return petitioner;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setPetitioner(Product petitioner) {
-        this.petitioner = petitioner;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public Double getPrice() {
@@ -80,12 +78,12 @@ public class OrderRequest {
         this.units = units;
     }
 
-    public ShoppingCart getOrders() {
-        return orders;
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
     }
 
-    public void setOrders(ShoppingCart orders) {
-        this.orders = orders;
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 
     @Override
@@ -96,8 +94,8 @@ public class OrderRequest {
                 ", state=" + state +
                 ", units=" + units +
                 ", price=" + price +
-                ", petitioner=" + petitioner +
-                ", orders=" + orders +
+                ", product=" + product +
+                ", shoppingCart=" + shoppingCart +
                 '}';
     }
 }

@@ -55,7 +55,7 @@ public class GoodsReceiptImplement implements GoodsReceiptService {
                                                      Authentication authentication) {
 
             Client clientConected=clientRepository.findByEmail(authentication.getName());
-            ShoppingCart shoppingCartNow= shoppingCartRepository.findByClientAndActive(clientConected,true);
+            ShoppingCart shoppingCartNow= shoppingCartRepository.findByClient(clientConected);
             Payment paymentType= paymentRepository.findByName(typePayment);
 
             if (shoppingCartNow == null){
@@ -91,7 +91,7 @@ public class GoodsReceiptImplement implements GoodsReceiptService {
             }
 
             //List<OrderRequest> purchaseOrders= orderRepository.findByShoppingCart(shoppingCartNow);
-            List <OrderRequest> orderRequest = orderRepository.findByOrders(shoppingCartNow);
+            List <OrderRequest> orderRequest = orderRepository.findByShoppingCart(shoppingCartNow);
             Double totalPrice = 0.0;
 
             for (int x = 0 ;x < shoppingCartNow.getOrderRequest().size();x++){
@@ -114,7 +114,7 @@ public class GoodsReceiptImplement implements GoodsReceiptService {
                     + "Tipo de pago: " + invoice.getPayment().getName()
                     + ". En: "+invoice.getPayments()+" cuotas." + "\n"
                     + "Compraste: "+ shoppingCartNow.getOrderRequest().stream()
-                    .map(purchaseOrder -> purchaseOrder.getPetitioner().getName()).collect(Collectors.toSet());
+                    .map(purchaseOrder -> purchaseOrder.getProduct().getName()).collect(Collectors.toSet());
 
             /*mailService.sendMail("confirm@gmail.com",
                     clientConected.getEmail(),"MarketSito: Compra realizada :)", message);*/

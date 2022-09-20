@@ -47,7 +47,7 @@ public class OrderImplement implements OrderService {
         return orderRepository.save(orderRequest);
     }
 
-    @Override
+    /*@Override
     public ResponseEntity<Object> createOrder(String nameProduct, int cant, Authentication authentication) {
         Client clientConected = clientRepository.findByEmail(authentication.getName());
         Product requestedProduct = productRepository.findByName(nameProduct);
@@ -85,7 +85,44 @@ public class OrderImplement implements OrderService {
                 "Request created",
                 HttpStatus.CREATED);
     }
+*/
+    @Override
+    public ResponseEntity<Object> createOrder(String nameProduct,
+                                              int cant,
+                                              Authentication authentication) {
 
+        Client clientConected=clientRepository.findByEmail(authentication.getName());
+        Product product= productRepository.findByName(nameProduct);
+        ShoppingCart shoppingCartNow = shoppingCartRepository.findByClient(clientConected);
+
+        if (shoppingCartNow == null){
+            return new ResponseEntity<>("No existe el carrito", HttpStatus.FORBIDDEN);
+        }
+
+        if (nameProduct.isEmpty() || cant==0) {
+            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
+        }
+
+        if (product ==  null) {
+            return new ResponseEntity<>("No vendemos ese producto", HttpStatus.FORBIDDEN);
+        }
+
+        if (product.getUnits() <  cant) {
+            return new ResponseEntity<>("No hay suficiente stock para ese pedido", HttpStatus.FORBIDDEN);
+        }
+
+        //Crear PurchaseOrder
+        OrderRequest order=new OrderRequest(product,LocalDate.now(),StatePedido.CONFIRMED,product.getPrice()*cant,cant,shoppingCartNow);
+        orderRepository.save(order);
+
+        int stock = product.getUnits() - cant;
+        product.setUnits(stock);
+        productRepository.save(product);
+
+
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
+    }
     @Override
     public ResponseEntity<Object> deleteItem(Long id) {
         OrderRequest toitemDelete = orderRepository.findById(id).orElse(null);
@@ -105,7 +142,7 @@ public class OrderImplement implements OrderService {
     public ResponseEntity<Object> addItem(Long id, AddItemDTO addItemDTO) {
 
         OrderRequest itemActualizar = orderRepository.findById(id).orElse(null);
-        Product producto = productRepository.findById(itemActualizar.getPetitioner().getId()).orElse(null);
+        Product producto = productRepository.findById(itemActualizar.getProduct().getId()).orElse(null);
         double precioActualizado = 0;
 
         if(itemActualizar == null) {
@@ -113,7 +150,7 @@ public class OrderImplement implements OrderService {
         }
         if (addItemDTO.getUnits() != 0){
             itemActualizar.setUnits(addItemDTO.getUnits());
-            precioActualizado = itemActualizar.getPetitioner().getPrice() * itemActualizar.getUnits();
+            precioActualizado = itemActualizar.getProduct().getPrice() * itemActualizar.getUnits();
             itemActualizar.setPrice(precioActualizado);
             assert producto != null;
             producto.setUnits(producto.getUnits() - itemActualizar.getUnits());

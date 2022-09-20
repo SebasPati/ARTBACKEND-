@@ -16,7 +16,7 @@ public interface OrderService {
     List<OrderRequestDto> getOrderRequestsAll();
     OrderRequest saveRequest(OrderRequest orderRequest);
     ResponseEntity<Object> createOrder(
-            @RequestParam String nameProduct, @RequestParam int cant, Authentication authentication
+            @RequestParam String name, @RequestParam int cant, Authentication authentication
     );
 
     ResponseEntity<Object> deleteItem(@PathVariable("id") Long id);

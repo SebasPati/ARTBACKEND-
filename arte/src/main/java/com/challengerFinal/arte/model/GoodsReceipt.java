@@ -101,7 +101,7 @@ public class GoodsReceipt {
                 ", date=" + date +
                 ", payments=" + payments +
                 ", shoppingCart=" + shoppingCart +
-                ", payment=" + payment +
+                ", goodsReceipts=" + payment +
                 '}';
     }
 }

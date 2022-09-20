@@ -59,9 +59,9 @@ public class ArteApplication implements CommandLineRunner {
 		List<Double> dimensions = List.of(12.5,24.6,36.5);
 		String image = "image/jpeg";
 
-			Product product1 = new Product("Mona lisa","lorem Ipsum","categoría",232.2,true,LocalDate.now(),12,dimensions,image,artist);
+			Product product1 = new Product("lisa","lorem Ipsum","categoría",232.2,true,LocalDate.now(),12,dimensions,image,artist);
 		artworksService.saveArtworks(product1);
-		Product product2 = new Product("Mona lisa","lorem Ipsum",dimensions,"category",artist);
+		Product product2 = new Product("Mona","lorem Ipsum",dimensions,"category",artist);
 		artworksService.saveArtworks(product2);
 		System.out.println(product1);
 		System.out.println(product2);
@@ -141,7 +141,7 @@ public class ArteApplication implements CommandLineRunner {
 		Product art10= new Product("Robotic Coronation", "Metal sculpture, a robot with a crown of polished spikes. Created 3000 years ago and cared for until then by the descendants of the creator.", "sculpture", 630.00, true, LocalDate.now(), 3, List.of(70.00, 80.00), "https://i.pinimg.com/originals/a9/90/5e/a9905eded97106bd2300dd873a213f48.jpg", artist2);
 		Product art6= new Product("Michelangelo Spirit", "Marble sculpture by Michelangelo David. Exported from the United States.", "sculpture", 8000.00, true, LocalDate.now(), 3, List.of(300.00, 40.00), "https://i.pinimg.com/originals/f8/49/bf/f849bfd7cc2da33e949a1f5cd9db71a6.png", artist2);
 		Product art5= new Product("Venus", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, true, LocalDate.now(), 1, List.of(40.00, 40.00), "https://i.pinimg.com/736x/a8/36/fd/a836fdf1ba811157586054afffff3074.jpg", artist2);
-		Product art13= new Product("Venus", "Modern conceptual art poster with ancient statue of bust of venus of  picture", "digital art", 46000.00, true, LocalDate.now(), 9, List.of(), "https://media.istockphoto.com/photos/modern-conceptual-art-poster-with-ancient-statue-of-bust-of-venus-of-picture-id1171968802?k=20&m=1171968802&s=612x612&w=0&h=rvkR9L4wT6wxkO705Rpw01lidI60BaaU8x_M8y1wgyQ=", artist1);
+		Product art78= new Product("Prob", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, true, LocalDate.now(), 1, List.of(40.00, 40.00), "https://i.pinimg.com/736x/a8/36/fd/a836fdf1ba811157586054afffff3074.jpg", artist2);
 		artworksService.saveArtworks(art1);
 		artworksService.saveArtworks(art2);
 		artworksService.saveArtworks(art3);
@@ -154,7 +154,8 @@ public class ArteApplication implements CommandLineRunner {
 		artworksService.saveArtworks(art10);
 		artworksService.saveArtworks(art11);
 		artworksService.saveArtworks(art12);
-		artworksService.saveArtworks(art13);
+		artworksService.saveArtworks(art78);
+
 
 	}
 }

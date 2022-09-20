@@ -16,11 +16,11 @@ public class ShoppingCart {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client")
     private Client client;
-    @OneToMany(mappedBy = "orders",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "shoppingCart",fetch = FetchType.EAGER)
     private Set <OrderRequest> orderRequest = new HashSet<>();
 
     @OneToMany(mappedBy="payment", fetch=FetchType.EAGER)
-    Set<GoodsReceipt> payment = new HashSet<>();
+    private Set<GoodsReceipt> goodsReceipts = new HashSet<>();
 
     public ShoppingCart() {
     }
@@ -61,12 +61,12 @@ public class ShoppingCart {
         this.orderRequest = orderRequest;
     }
 
-    public Set<GoodsReceipt> getPayment() {
-        return payment;
+    public Set<GoodsReceipt> getGoodsReceipts() {
+        return goodsReceipts;
     }
 
-    public void setPayment(Set<GoodsReceipt> payment) {
-        this.payment = payment;
+    public void setGoodsReceipts(Set<GoodsReceipt> goodsReceipts) {
+        this.goodsReceipts = goodsReceipts;
     }
 
     @Override
@@ -76,7 +76,7 @@ public class ShoppingCart {
                 ", isShoppingCart=" + active +
                 ", client=" + client +
                 ", orderRequest=" + orderRequest +
-                ", payment=" + payment +
+                ", goodsReceipts=" + goodsReceipts +
                 '}';
     }
 }

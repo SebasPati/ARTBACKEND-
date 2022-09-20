@@ -18,7 +18,7 @@ public class ShoppingCartController {
     @Autowired
     ShoppingCartService shoppingCartService;
 
-    @GetMapping(value = "/orderLineal")
+    @GetMapping(value = "/shoppingCarts")
     public List<ShoppingCartDto> getOrderLineal() {
         return shoppingCartService.getAllShoppingCard();
     }

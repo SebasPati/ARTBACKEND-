@@ -33,11 +33,6 @@ public class Client {
             fetch = FetchType.EAGER)
     private Set<Product> products = new HashSet<>();
 
-    @OneToMany(
-            mappedBy = "petitioner",
-            fetch = FetchType.EAGER)
-    private Set<OrderRequest> claimant = new HashSet<>();
-
     public Client() {
     }
     //Constructor de usuario basico para todos los usuarios
@@ -175,14 +170,6 @@ public class Client {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
-    }
-
-    public Set<OrderRequest> getClaimant() {
-        return claimant;
-    }
-
-    public void setClaimant(Set<OrderRequest> claimant) {
-        this.claimant = claimant;
     }
 
     public void addClients(Product product) {
