@@ -5,17 +5,18 @@ import com.challengerFinal.arte.dtos.ClientsDto;
 import com.challengerFinal.arte.dtos.ToUpdateClientsDto;
 import com.challengerFinal.arte.model.Client;
 import com.challengerFinal.arte.model.Product;
-import com.challengerFinal.arte.model.enums.TypeUser;
 import com.challengerFinal.arte.repositories.ClientRepository;
 import com.challengerFinal.arte.repositories.ProductRepository;
 import com.challengerFinal.arte.service.ClientService;
+import com.challengerFinal.arte.service.FileService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,6 +29,9 @@ public class implementClient implements ClientService {
     PasswordEncoder passwordEncoder;
     @Autowired
     ProductRepository productRepository;
+
+    @Autowired
+    private FileService fileService;
 
     @Override
     public List<ClientsDto> getUsers() {
@@ -193,9 +197,26 @@ public class implementClient implements ClientService {
         if (deleteClient == null) {
             return new ResponseEntity<>("El cliente indicado no existe", HttpStatus.FORBIDDEN);
         } else {
-
             clientRepository.deleteById(deleteClient.getId());
         }
         return new ResponseEntity<>("Cliente eliminado", HttpStatus.OK);
     }
+    @Override
+    public ResponseEntity<Object> uploadFile(@RequestParam("files") MultipartFile file, Authentication authentication){
+        try {
+            if (authentication == null) {
+                return new ResponseEntity<Object>("You're not logged in",HttpStatus.FORBIDDEN);
+            }
+            Client authClient = clientRepository.findByEmail(authentication.getName());
+            String fileUrl = fileService.updateFile(file, authClient.getId().toString(), "client");
+            authClient.setImage(fileUrl);
+            clientRepository.save(authClient);
+            return new ResponseEntity<Object>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
+
+
 }
