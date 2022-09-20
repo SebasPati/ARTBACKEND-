@@ -6,17 +6,31 @@ const app = Vue.createApp({
             tema: '',
             artist: [],
             products: [],
+            formularioProduct: false,
             formulario: false,
-            name: "",
-            description: "",
-            price: 0,
-            category: "",
-            image: [],
-            height: 0,
-            width: 0,
-            large: 0,
-            units: 0,
-            formularioProduct: false
+            formEdit:{
+                name: "",
+                description: "",
+                price: 0,
+                category: "",
+                image: [],
+                height: 0,
+                width: 0,
+                large: 0,
+                units: 0,
+            },
+            formLoad:{
+                name: "",
+                description: "",
+                price: 0,
+                category: "",
+                image: [],
+                height: 0,
+                width: 0,
+                large: 0,
+                units: 0,
+            },
+            Product: {},
         }
     },
     created() {
@@ -58,23 +72,16 @@ const app = Vue.createApp({
             })
         },
         updateProduct(product){
-            console.log(product.id);
-            console.log(this.name);
-            console.log(this.category);
-            console.log(this.width);
-            console.log(this.height);
-            console.log(this.large);
-            console.log(this.price);
-            console.log(this.units);
+            console.log(product);
             axios.patch(`/api/clients/current/products/update/${product.id}`,{
-                "name": this.name,
-                "description" : this.description,
-                "category" : this.category,
-                "dimensionsList" : [this.width,this.large,this.height],
+                "name": this.formEdit.name,
+                "description" : this.formEdit.description,
+                "category" : this.formEdit.category,
+                "dimensionsList" : [this.formEdit.width,this.formEdit.large,this.formEdit.height],
                 "image": "https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg=",
-                "price" : this.price,
+                "price" : this.formEdit.price,
                 "status": true,
-                "units" : this.units
+                "units" : this.formEdit.units
             })
             .then(response => {
                 console.log("ok");
@@ -84,17 +91,18 @@ const app = Vue.createApp({
             })
         },
         loadProduct(){
+
             axios.post("/api/clients/current/products",{
-                "name": this.name,
-                "description" : this.description,
-                "category" : this.category,
-                "dimensionsList" : [this.large,this.width,this.height],
+                "name": this.formLoad.name,
+                "description" : this.formLoad.description,
+                "category" : this.formLoad.category,
+                "dimensionsList" : [this.formLoad.large,this.formLoad.width,this.formLoad.height],
                 "image": "https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg=",
-                "price" : this.price,
+                "price" : this.formLoad.price,
                 "status": true,
-                "units" : this.units
+                "units" : this.formLoad.units
             }).then(response => {
-                console.log("ok");
+                location.reload()
             }).catch(error => {
                 console.log(error);
             })
