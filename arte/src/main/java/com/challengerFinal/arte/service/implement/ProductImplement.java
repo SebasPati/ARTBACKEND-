@@ -76,7 +76,7 @@ public class ProductImplement implements ServiceProduct {
         Client client = clientRepository.findByEmail(authentication.getName());
         Optional<Product> updateProduct = productRepository.findById(id);
         //Si el product no existe
-        if (updateProduct.isPresent()) {
+        if (updateProduct == null) {
             return new ResponseEntity<>("Product not updated",HttpStatus.FORBIDDEN);
         }
         updateProduct.get().setName(updateProductDto.getName());
@@ -98,8 +98,4 @@ public class ProductImplement implements ServiceProduct {
         return null;
     }
 
-    @Override
-    public ResponseEntity<Object> patchProduct(Long id, UpdateProductDTO updateProductDto) {
-        return null;
-    }
 }

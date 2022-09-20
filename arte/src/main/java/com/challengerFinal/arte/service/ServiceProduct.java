@@ -22,5 +22,4 @@ public interface ServiceProduct {
 
     ResponseEntity<Object> deleteProduct(@PathVariable ("id") Long id);
 
-    ResponseEntity<Object> patchProduct(Long id, UpdateProductDTO updateProductDto);
 }
