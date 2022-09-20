@@ -46,7 +46,7 @@ public class ProductController {
 
     }
 
-    @PatchMapping("/products/update/{id}")
+    @PatchMapping("/clients/current/products/update/{id}")
     public ResponseEntity<Object> patchProduct(
             @RequestBody UpdateProductDTO updateProductDTO,
             @PathVariable ("id") Long id){

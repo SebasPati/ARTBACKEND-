@@ -152,6 +152,5 @@ public class ArteApplication implements CommandLineRunner {
 		artworksService.saveArtworks(art12);
 		artworksService.saveArtworks(art13);
 
-
 	}
 }
