@@ -20,7 +20,6 @@ public class ClientsDto implements Serializable {
     private TypeUser typeUser;
     private Boolean active;
     private String direction;
-    private Integer ranking;
     private String image;
     private List<String> networks;
     private Set<ProductDto> products;
@@ -40,13 +39,10 @@ public class ClientsDto implements Serializable {
         this.direction = client.getDirection();
         this.networks = client.getNetworks();
         this.image = client.getImage();
-        this.ranking = client.getRanking();
         this.active = client.getActive();
         this.products = client.getProducts().stream().map(ProductDto::new).collect(Collectors.toSet());
         this.claimant = client.getClaimant().stream().map(OrderRequestDto::new).collect(Collectors.toSet());
     }
-
-
 
     public Long getId() {
         return id;
@@ -64,7 +60,10 @@ public class ClientsDto implements Serializable {
         return nickname;
     }
 
-    public Integer getRanking() { return ranking; }
+    public Integer getRanking() {
+        return ranking;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -77,8 +76,16 @@ public class ClientsDto implements Serializable {
         return typeUser;
     }
 
+    public Boolean getActive() {
+        return active;
+    }
+
     public String getDirection() {
         return direction;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public List<String> getNetworks() {
@@ -88,19 +95,8 @@ public class ClientsDto implements Serializable {
     public Set<ProductDto> getProducts() {
         return products;
     }
+
     public Set<OrderRequestDto> getClaimant() {
         return claimant;
-    }
-
-    public Boolean getActive() {
-        return active;
-    }
-
-    public Integer getRanking() {
-        return ranking;
-    }
-
-    public String getImage() {
-        return image;
     }
 }

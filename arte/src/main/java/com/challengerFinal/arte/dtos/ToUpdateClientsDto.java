@@ -6,30 +6,20 @@ import java.io.Serializable;
 import java.util.List;
 
 public class ToUpdateClientsDto implements Serializable {
-    private final Long id;
-    private final String name;
-    private final String lastName;
-    private final String nickname;
-    private final String email;
-    private final String telephone;
-    private final String password;
-    private final TypeUser typeUser;
-    private final String direction;
+    private Long id;
+    private String name;
+    private String lastName;
+    private String nickname;
+    private String email;
+    private String telephone;
+    private String password;
+    private TypeUser typeUser;
+    private String direction;
     private String image;
-    private final List<String> networks;
+    private List<String> networks;
 
-    public ToUpdateClientsDto(Long id, String name, String lastName, String nickname, String email, String telephone, String password, TypeUser typeUser, String direction, List<String> networks, String image) {
-        this.id = id;
-        this.name = name;
-        this.lastName = lastName;
-        this.nickname = nickname;
-        this.email = email;
-        this.telephone = telephone;
-        this.password = password;
-        this.typeUser = typeUser;
-        this.direction = direction;
-        this.networks = networks;
-        this.image = image;
+    public ToUpdateClientsDto() {
+
     }
 
     public Long getId() {
@@ -74,5 +64,49 @@ public class ToUpdateClientsDto implements Serializable {
 
     public String getImage() {
         return image;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setTypeUser(TypeUser typeUser) {
+        this.typeUser = typeUser;
+    }
+
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public void setNetworks(List<String> networks) {
+        this.networks = networks;
     }
 }

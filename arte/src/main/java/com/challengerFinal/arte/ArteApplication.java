@@ -42,15 +42,11 @@ public class ArteApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		List<String> socialNetwords = List.of("Twtter","Instagram","Tick Tock");
-<<<<<<< Updated upstream
-		Client client = new Client("Juan","Da vinci","juda1@goto.com",passwordEncoder.encode("654"),TypeUser.CLIENT,0,"image/jpeg");
-		Client artist = new Client("Juan","Da vinci","juda2@goto.com",passwordEncoder.encode("654"),TypeUser.ARTIST,0,"image/jpeg");
-		Client admin = new Client("Juan","Da vinci","juda3@goto.com",passwordEncoder.encode("654"),TypeUser.ADMIN,0,"image/jpeg");
-=======
+
 		Client client = new Client("Juan","Da vinci","juda@goto.com",passwordEncoder.encode("654"),TypeUser.CLIENT,0,"image/jpeg");
 		Client artist = new Client("Juan","Da vinci","don Bot","juda@goto.com","3124523424",passwordEncoder.encode("654"),TypeUser.ARTIST,"cerca de la casa",0,"image/jpeg",socialNetwords);
 		Client admin = new Client("Juan","Da vinci","juda@goto.com",passwordEncoder.encode("654"),TypeUser.ADMIN,0,"image/jpeg");
->>>>>>> Stashed changes
+
 		userGlobalRepository.save(client);
 		userGlobalRepository.save(artist);
 		userGlobalRepository.save(admin);
