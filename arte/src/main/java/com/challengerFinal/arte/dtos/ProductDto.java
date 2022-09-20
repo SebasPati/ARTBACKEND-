@@ -12,6 +12,8 @@ public class ProductDto {
     private  String description;
     private  List<Double> dimensionsList;
     private String image;
+
+    private String category;
     private Double price;
     private Boolean status;
     private LocalDate date;
@@ -22,6 +24,7 @@ public class ProductDto {
         this.id = product.getId();
         this.name = product.getName();
         this.description = product.getDescription();
+        this.category = product.getCategory();
         this.dimensionsList = product.getDimensionsList();
         this.image = product.getImage();
         this.price = product.getPrice();
@@ -30,6 +33,10 @@ public class ProductDto {
         this.units = product.getUnits();
 
           }
+
+    public String getCategory() {
+        return category;
+    }
 
     public Long getId() {
         return id;
