@@ -70,72 +70,80 @@ public class Client {
     }
 
     public Long getId() {
-    return id;
-   }
+        return id;
+    }
 
-   public String getName() {
-    return name;
-   }
+    public String getName() {
+        return name;
+    }
 
-   public void setName(String name) {
-    this.name = name;
-   }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-   public String getLastName() {
-    return lastName;
-   }
+    public String getLastName() {
+        return lastName;
+    }
 
-   public void setLastName(String lastName) {
-    this.lastName = lastName;
-   }
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-   public String getNickname() {
-    return nickname;
-   }
+    public String getNickname() {
+        return nickname;
+    }
 
-   public void setNickname(String nickname) {
-    this.nickname = nickname;
-   }
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public TypeUser getTypeUser() {
+        return typeUser;
+    }
+
+    public void setTypeUser(TypeUser typeUser) {
+        this.typeUser = typeUser;
+    }
 
     public Boolean getActive() {
         return active;
     }
 
     public void setActive(Boolean active) {
-        active = active;
+        this.active = active;
     }
 
-    public String getEmail() {
-    return email;
-   }
+    public String getDirection() {
+        return direction;
+    }
 
-   public void setEmail(String email) {
-    this.email = email;
-   }
-
-   public String getTelephone() {
-    return telephone;
-   }
-
-   public void setTelephone(String telephone) {
-    this.telephone = telephone;
-   }
-
-   public String getPassword() {
-    return password;
-   }
-
-   public void setPassword(String password) {
-    this.password = password;
-   }
-
-   public TypeUser getTypeUser() {
-    return typeUser;
-   }
-
-   public void setTypeUser(TypeUser typeUser) {
-    this.typeUser = typeUser;
-   }
+    public void setDirection(String direction) {
+        this.direction = direction;
+    }
 
     public Integer getRanking() {
         return ranking;
@@ -153,39 +161,31 @@ public class Client {
         this.image = image;
     }
 
-    public String getDirection() {
-    return direction;
-   }
+    public List<String> getNetworks() {
+        return networks;
+    }
 
-   public void setDirection(String direction) {
-    this.direction = direction;
-   }
+    public void setNetworks(List<String> networks) {
+        this.networks = networks;
+    }
 
-   public List<String> getNetworks() {
-    return networks;
-   }
+    public Set<Product> getProducts() {
+        return products;
+    }
 
-   public void setNetworks(List<String> networks) {
-    this.networks = networks;
-   }
+    public void setProducts(Set<Product> products) {
+        this.products = products;
+    }
 
-   public Set<Product> getProducts() {
-    return products;
-   }
+    public Set<OrderRequest> getClaimant() {
+        return claimant;
+    }
 
-   public void setProducts(Set<Product> products) {
-    this.products = products;
-   }
+    public void setClaimant(Set<OrderRequest> claimant) {
+        this.claimant = claimant;
+    }
 
-   public Set<OrderRequest> getClaimant() {
-    return claimant;
-   }
-
-   public void setClaimant(Set<OrderRequest> claimant) {
-    this.claimant = claimant;
-   }
-
- public void addClients(Product product) {
+    public void addClients(Product product) {
      product.setClient(this);
         products.add(product);
     }

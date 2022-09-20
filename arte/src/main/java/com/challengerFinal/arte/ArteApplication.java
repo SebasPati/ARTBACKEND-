@@ -43,8 +43,8 @@ public class ArteApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		List<String> socialNetwords = List.of("Twtter","Instagram","Tick Tock");
 
-		Client client = new Client("Juan","Da vinci","juda@goto.com",passwordEncoder.encode("654"),TypeUser.CLIENT,0,"image/jpeg");
-		Client artist = new Client("Juan","Da vinci","don Bot","juda@goto.com","3124523424",passwordEncoder.encode("654"),TypeUser.ARTIST,"cerca de la casa",0,"image/jpeg",socialNetwords);
+		Client client = new Client("Juan","Da vinci","juda1@goto.com",passwordEncoder.encode("654"),TypeUser.CLIENT,0,"image/jpeg");
+		Client artist = new Client("Juan","Da vinci","don Bot","juda4@goto.com","3124523424",passwordEncoder.encode("654"),TypeUser.ARTIST,"cerca de la casa",0,"image/jpeg",socialNetwords);
 		Client admin = new Client("Juan","Da vinci","juda@goto.com",passwordEncoder.encode("654"),TypeUser.ADMIN,0,"image/jpeg");
 
 		userGlobalRepository.save(client);

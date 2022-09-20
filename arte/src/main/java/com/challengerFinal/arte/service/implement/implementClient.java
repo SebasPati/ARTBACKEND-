@@ -140,39 +140,40 @@ public class implementClient implements ClientService {
                                                      ToUpdateClientsDto toUpdateClientsDto) {
         Client clientToUpdate = clientRepository.findByEmail(authentication.getName());
         if (clientToUpdate == null) {
-            return new ResponseEntity<>("Client to update "+clientToUpdate,HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>("Client to update "+ clientToUpdate,HttpStatus.FORBIDDEN);
         }
-        else {
             if (clientToUpdate.getName() != null) {
                 clientToUpdate.setName(toUpdateClientsDto.getName());
             }
             if (clientToUpdate.getLastName() != null) {
                 clientToUpdate.setLastName(toUpdateClientsDto.getLastName());
             }
-            if (clientToUpdate.getNickname() != null) {
+
                 clientToUpdate.setNickname(toUpdateClientsDto.getNickname());
-            }
+
             if (clientToUpdate.getEmail() != null) {
                 clientToUpdate.setEmail(toUpdateClientsDto.getEmail());
             }
-            if (clientToUpdate.getTelephone() != null) {
+
                 clientToUpdate.setTelephone(toUpdateClientsDto.getTelephone());
-            }
+
             if (clientToUpdate.getPassword() != null) {
                 clientToUpdate.setPassword(toUpdateClientsDto.getPassword());
             }
             if (clientToUpdate.getTypeUser() != null) {
                 clientToUpdate.setTypeUser(toUpdateClientsDto.getTypeUser());
             }
-            if (clientToUpdate.getDirection() != null) {
+
                 clientToUpdate.setDirection(toUpdateClientsDto.getDirection());
-            }
+
             if (clientToUpdate.getNetworks() != null) {
                 clientToUpdate.setNetworks(toUpdateClientsDto.getNetworks());
             }
+            if (clientToUpdate.getImage() != null) {
+                clientToUpdate.setImage(toUpdateClientsDto.getImage());
+            }
 
             this.clientRepository.save(clientToUpdate);
-        }
         return new ResponseEntity<>("Client to update "+clientToUpdate,HttpStatus.CREATED);
     }
     @Override
