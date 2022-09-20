@@ -71,7 +71,7 @@ const app = Vue.createApp({
                 "description" : this.description,
                 "category" : this.category,
                 "dimensionsList" : [this.width,this.large,this.height],
-                "image": ["https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg="],
+                "image": "https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg=",
                 "price" : this.price,
                 "status": true,
                 "units" : this.units
@@ -89,7 +89,7 @@ const app = Vue.createApp({
                 "description" : this.description,
                 "category" : this.category,
                 "dimensionsList" : [this.large,this.width,this.height],
-                "image": ["https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg="],
+                "image": "https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg=",
                 "price" : this.price,
                 "status": true,
                 "units" : this.units
