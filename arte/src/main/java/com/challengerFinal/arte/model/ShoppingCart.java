@@ -30,6 +30,7 @@ public class ShoppingCart {
         this.isShoppingCart = true;
     }
 
+
     public Long getId() {
         return id;
     }

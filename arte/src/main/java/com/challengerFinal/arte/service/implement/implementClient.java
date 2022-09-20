@@ -121,10 +121,13 @@ public class implementClient implements ClientService {
                 clientToUpdate.setTypeUser(toUpdateClientsDto.getTypeUser());
             }
             if (clientToUpdate.getDirection() != null) {
-                clientToUpdate.setDirection(toUpdateClientsDto.getAddress());
+                clientToUpdate.setDirection(toUpdateClientsDto.getDirection());
             }
             if (clientToUpdate.getNetworks() != null) {
                 clientToUpdate.setNetworks(toUpdateClientsDto.getNetworks());
+            }
+            if (clientToUpdate.getImage() != null) {
+                clientToUpdate.setImage(toUpdateClientsDto.getImage());
             }
             this.clientRepository.save(clientToUpdate);
         }
@@ -162,7 +165,7 @@ public class implementClient implements ClientService {
                 clientToUpdate.setTypeUser(toUpdateClientsDto.getTypeUser());
             }
             if (clientToUpdate.getDirection() != null) {
-                clientToUpdate.setDirection(toUpdateClientsDto.getAddress());
+                clientToUpdate.setDirection(toUpdateClientsDto.getDirection());
             }
             if (clientToUpdate.getNetworks() != null) {
                 clientToUpdate.setNetworks(toUpdateClientsDto.getNetworks());

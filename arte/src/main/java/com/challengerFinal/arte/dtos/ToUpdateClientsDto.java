@@ -14,10 +14,11 @@ public class ToUpdateClientsDto implements Serializable {
     private final String telephone;
     private final String password;
     private final TypeUser typeUser;
-    private final String address;
+    private final String direction;
+    private String image;
     private final List<String> networks;
 
-    public ToUpdateClientsDto(Long id, String name, String lastName, String nickname, String email, String telephone, String password, TypeUser typeUser, String direction, List<String> networks) {
+    public ToUpdateClientsDto(Long id, String name, String lastName, String nickname, String email, String telephone, String password, TypeUser typeUser, String direction, List<String> networks, String image) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
@@ -26,8 +27,9 @@ public class ToUpdateClientsDto implements Serializable {
         this.telephone = telephone;
         this.password = password;
         this.typeUser = typeUser;
-        this.address = direction;
+        this.direction = direction;
         this.networks = networks;
+        this.image = image;
     }
 
     public Long getId() {
@@ -62,12 +64,15 @@ public class ToUpdateClientsDto implements Serializable {
         return typeUser;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
     public List<String> getNetworks() {
         return networks;
     }
 
+    public String getDirection() {
+        return direction;
+    }
+
+    public String getImage() {
+        return image;
+    }
 }

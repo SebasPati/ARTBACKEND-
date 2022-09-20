@@ -21,7 +21,7 @@ public class Client {
     private String telephone;
     private String password;
     private TypeUser typeUser;
-    private Boolean isActive;
+    private Boolean active;
     private String direction;
     private Integer ranking;
     private String image;
@@ -31,7 +31,7 @@ public class Client {
     @OneToMany(
             mappedBy = "client",
             fetch = FetchType.EAGER)
-    private Set<Product> artworks = new HashSet<>();
+    private Set<Product> products = new HashSet<>();
 
     @OneToMany(
             mappedBy = "petitioner",
@@ -49,7 +49,7 @@ public class Client {
         this.typeUser = typeUser;
         this.ranking = ranking;
         this.image = image;
-        this.isActive = true;
+        this.active = true;
     }
 
     //Contructor con todas las propiedades
@@ -65,7 +65,7 @@ public class Client {
         this.ranking = ranking;
         this.image = image;
         this.networks = networks;
-        this.isActive = true;
+        this.active = true;
 
     }
 
@@ -98,11 +98,11 @@ public class Client {
    }
 
     public Boolean getActive() {
-        return isActive;
+        return active;
     }
 
     public void setActive(Boolean active) {
-        isActive = active;
+        active = active;
     }
 
     public String getEmail() {
@@ -169,12 +169,12 @@ public class Client {
     this.networks = networks;
    }
 
-   public Set<Product> getArtworks() {
-    return artworks;
+   public Set<Product> getProducts() {
+    return products;
    }
 
-   public void setArtworks(Set<Product> artworks) {
-    this.artworks = artworks;
+   public void setProducts(Set<Product> products) {
+    this.products = products;
    }
 
    public Set<OrderRequest> getClaimant() {
@@ -185,9 +185,9 @@ public class Client {
     this.claimant = claimant;
    }
 
- public void addClients(Product artwork) {
-        artwork.setClient(this);
-        artworks.add(artwork);
+ public void addClients(Product product) {
+     product.setClient(this);
+        products.add(product);
     }
     @Override
     public String toString() {
@@ -200,7 +200,10 @@ public class Client {
                 ", telephone='" + telephone + '\'' +
                 ", password='" + password + '\'' +
                 ", typeUser=" + typeUser +
+                ", active=" + active +
                 ", direction='" + direction + '\'' +
+                ", ranking=" + ranking +
+                ", image='" + image + '\'' +
                 ", networks=" + networks +
                 '}';
     }

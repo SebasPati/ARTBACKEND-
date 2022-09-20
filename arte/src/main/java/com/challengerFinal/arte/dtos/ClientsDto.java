@@ -18,9 +18,12 @@ public class ClientsDto implements Serializable {
     private String email;
     private String telephone;
     private TypeUser typeUser;
+    private Boolean active;
     private String direction;
+    private Integer ranking;
+    private String image;
     private List<String> networks;
-    private Set<ProductDto> artworks;
+    private Set<ProductDto> products;
     private Set<OrderRequestDto> claimant;
 
 
@@ -36,7 +39,10 @@ public class ClientsDto implements Serializable {
         this.typeUser = client.getTypeUser();
         this.direction = client.getDirection();
         this.networks = client.getNetworks();
-        this.artworks = client.getArtworks().stream().map(ProductDto::new).collect(Collectors.toSet());
+        this.image = client.getImage();
+        this.ranking = client.getRanking();
+        this.active = client.getActive();
+        this.products = client.getProducts().stream().map(ProductDto::new).collect(Collectors.toSet());
         this.claimant = client.getClaimant().stream().map(OrderRequestDto::new).collect(Collectors.toSet());
     }
 
@@ -79,10 +85,22 @@ public class ClientsDto implements Serializable {
         return networks;
     }
 
-    public Set<ProductDto> getArtworks() {
-        return artworks;
+    public Set<ProductDto> getProducts() {
+        return products;
     }
     public Set<OrderRequestDto> getClaimant() {
         return claimant;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public Integer getRanking() {
+        return ranking;
+    }
+
+    public String getImage() {
+        return image;
     }
 }
