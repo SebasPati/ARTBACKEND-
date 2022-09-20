@@ -141,10 +141,9 @@
               <p class=" flex flex-row items-center "> <img src="/web/assets/icons/icon-2.png" class=" w-7 m-3"
                   alt="">{{product.name}}</p>
               <p>{{product.description}}</p>
-              <p>art</p>
+              <p>{{product.category}}</p>
               <p>{{product.price}}</p>
               <p>{{product.units}}</p>
-              <button class="boton1s w-24 h-14">#Buy 🎨</button>
               <button class="boton1s w-24 h-14" @click="formulario = true">editar 🖌️</button>
               <form v-show="formulario" v-on:submit.prevent>
                 <div class="form-floating mb-3">
