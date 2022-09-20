@@ -6,6 +6,7 @@ const app = Vue.createApp({
             modalSimple: false,
             modalDetails: true,
             productSelected: "",
+            productSelectedimg: "",
             goTo: "",
             location: "",
             modal: "",
@@ -48,6 +49,7 @@ const app = Vue.createApp({
         this.getClients();
         this.getProducts();
         this.getCurrentClient()
+
     },
     mounted() {
     },
@@ -135,9 +137,7 @@ const app = Vue.createApp({
                     this.ej = this.products[0]
                     console.log(this.products[0])
                     this.product1 = this.products.slice(0, 1)
-                    /* console.log(this.products) */
                     this.galleryImage1 = this.product1[0].image
-                    /* de los productos, traerme un array con cada nombre de cada productos */
                     this.arrayDeImagenes = this.products.map((product) => product.image)
                     this.img1 = `bg-[url('${this.arrayDeImagenes[0]}')]`
                     this.img2 = `bg-[url('${this.arrayDeImagenes[1]}')]`
@@ -145,6 +145,8 @@ const app = Vue.createApp({
                     this.img4 = `bg-[url('${this.arrayDeImagenes[3]}')]`
                     this.img5 = `bg-[url('${this.arrayDeImagenes[4]}')]`
                     this.img6 = `bg-[url('${this.arrayDeImagenes[5]}')]`
+                    console.log(this.img2)
+                    console.log(this.arrayDeImagenes)
                 })
                 .catch((error) => console.log(error))
         },
@@ -159,6 +161,17 @@ const app = Vue.createApp({
         getCurrentClient() {
             axios.get('/api/clients/current')
                 .then((response) => console.log(response.data))
+        },
+        modifyProductSelected(item) {
+            this.productSelected = item
+            this.productSelectedimg = this.productSelected.image.toString()
+            let selectUnits = document.getElementById("selectUnits");
+            let child = ""
+            for (i = 1; i < this.productSelected.units + 1; i++) {
+                child += `<option>${i}</option>`
+            }
+            selectUnits.innerHTML = child
+
         }
     },
     computed: {
