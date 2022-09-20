@@ -4,10 +4,13 @@ const app = Vue.createApp({
     data() {
         return {
             tema: '',
+            artist: [],
+            products: [],
         }
     },
     created() {
         this.initialTheme();
+        this.loadData();
     },
     mounted() {
         this.vueScrollNav();
@@ -31,7 +34,19 @@ const app = Vue.createApp({
                     navbar.classList.remove("glass1");
                 }
             })
-        }
+        },
+        loadData(){
+            const urlParams = new URLSearchParams(window.location.search);
+            const Id = urlParams.get('id');
+            axios.get(`/api/clients/${Id}`)
+            .then(response => {
+                this.artist = response.data
+                console.log(this.artist)
+                this.products = this.artist.products
+                console.log(this.products);
+            })
+        },
+
     },
     computed: {
     }

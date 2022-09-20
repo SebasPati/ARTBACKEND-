@@ -64,33 +64,33 @@
               </div>
               <div class=" flex md:flex-row">
                 <div>
-                  <img  class=" w-44" src="../assets/img1.png" alt="modern david">
+                  <img  class=" w-44" :src="artist.image" alt="modern david">
                 </div>
                 <div class=" flex flex-col justify-end ">
-                  <p>Nickname artista</p>
-                  <p>Ranking</p>
+                  <p>{{artist.nickname}}</p>
+                  <p>{{artist.ranking}}</p>
                 </div>
               </div>   
                 <div class=" md:flex md:flex-row " >
                   <div lass=" md:flex md:flex-row">
                     <p class=" text-skin-base text-xl">About Me </p>
-                    <p class=" flex flex-row items-center"> <img src="/web/assets/icons/icon-2.png"  class=" w-10 m-3" alt="">Nombre artista</p>
-                    <p>Apellido artista</p>
-                    <p>Email Artista</p>
-                    <p>Telefono Artista</p>
+                    <p class=" flex flex-row items-center"> <img src="/web/assets/icons/icon-2.png"  class=" w-10 m-3" alt="">{{artist.name}}</p>
+                    <p>{{artist.lastName}}</p>
+                    <p>{{artist.email}}</p>
+                    <p>{{artist.telephone}}</p>
                   </div>
                 </div>
 
-                <div class=" md:flex md:flex-row ">
-                  <div class="  bg-gray-600">
+                <div class=" md:flex md:flex-row" v-for="product in products">
+                  <div class="  bg-gray-600 mt-4" >
                     <div>
-                      <img  class=" w-48"src="https://i.pinimg.com/736x/77/3b/8a/773b8aedcd243b4b49af53a0cb455d89.jpg" alt="">
+                      <img  class=" w-48" :src="product.image" alt="">
                     </div>
-                    <p class=" flex flex-row items-center "> <img src="/web/assets/icons/icon-2.png"  class=" w-7 m-3" alt="">Nombre</p>
-                    <p>Descripcion</p>
-                    <p>Categoria</p>
-                    <p>Precio</p>
-                    <p>Unidades</p>
+                    <p class=" flex flex-row items-center "> <img src="/web/assets/icons/icon-2.png"  class=" w-7 m-3" alt="">{{product.name}}</p>
+                    <p>{{product.description}}</p>
+                    <p>art</p>
+                    <p>{{product.price}}</p>
+                    <p>{{product.units}}</p>
                     <button class="boton1s w-24 h-14">#Buy 🎨</button>
                   </div>
                 </div>
@@ -214,6 +214,7 @@
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="/web/scripts/artistpage.js"></script>
 </body>
