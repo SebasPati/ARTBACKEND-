@@ -2,220 +2,281 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/web/styles/tailwind.css">
-    <link rel="shortcut icon" href="/web/assets/logo01.png" type="image/x-icon">
-    <title>Artist den</title>
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/web/styles/tailwind.css">
+  <link rel="shortcut icon" href="/web/assets/logo01.png" type="image/x-icon">
+  <title>Artist den</title>
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+  <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 </head>
 
 <body>
 
-    <div id="app" v-cloak>
-        <div :class="tema=='tema_1' ? '' : tema=='tema_2' ? 'theme2' : tema=='tema_3' ? 'theme3' : tema=='tema_4' ? 'theme4' : tema=='tema_5' ? 'theme5' : tema=='tema_6' ? 'theme6' : ''"
-            class="w-full min-h-screen flex flex-col aparecer2 bg-skin-normal">
+  <div id="app" v-cloak>
+    <div
+      :class="tema=='tema_1' ? '' : tema=='tema_2' ? 'theme2' : tema=='tema_3' ? 'theme3' : tema=='tema_4' ? 'theme4' : tema=='tema_5' ? 'theme5' : tema=='tema_6' ? 'theme6' : ''"
+      class="w-full min-h-screen flex flex-col aparecer2 bg-skin-normal">
 
 
-            <!-- HEADER CON NAV -->
-            <header>
+      <!-- HEADER CON NAV -->
+      <header>
 
-                <div ref="navbar" class="flex justify-between w-screen p-2 fixed z-0 place-items-center">
+        <div ref="navbar" class="flex justify-between w-screen p-2 fixed z-0 place-items-center">
 
-                    <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'" class="w-[3.5%] h-[3.5%] ml-4 aparecer transition-all ease-in-out duration-300" alt="logo">
-                    <nav class="flex font-bahnschrift">
-                        <div class="flex items-center">
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/index.html">Home</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/wallofartworks.html">Store</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/wallofartist.html">Artists</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/shoppingcart.html">Shop cart</a>
-                        </div>
-                        <div class="flex items-center mr-6 ml-6">
-                            <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus" href="javascript:void(0);">Log in</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
-                        </div>
-
-                        <div class="w-1/2">
-                            <button class="boton1s" @click="theme(1)">TEMA 1</button>
-                            <button class="boton1s" @click="theme(2)">TEMA 2</button>
-                            <button class="boton1s" @click="theme(3)">TEMA 3</button>
-                            <button class="boton1s" @click="theme(4)">TEMA 4</button>
-                            <button class="boton1s" @click="theme(5)">TEMA 5</button>
-                            <button class="boton1s" @click="theme(6)">TEMA 6</button>
-            
-                        </div>
-                    </nav>
-
-                </div>
-
-            </header> 
-           
-
-            <main class=" mt-24 p-8 ">
-            <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-              <div class="flex flex-row">
-                <p>Artist Profile</p>
-              </div>
-              <div class=" flex md:flex-row">
-                <div>
-                  <img  class=" w-44" src="../assets/img1.png" alt="modern david">
-                </div>
-                <div class=" flex flex-col justify-end ">
-                  <p>Nickname artista</p>
-                  <p>Ranking</p>
-                </div>
-              </div>   
-                <div class=" md:flex md:flex-row " >
-                  <div lass=" md:flex md:flex-row">
-                    <p class=" text-skin-base text-xl">About Me </p>
-                    <p class=" flex flex-row items-center"> <img src="/web/assets/icons/icon-2.png"  class=" w-10 m-3" alt="">Nombre artista</p>
-                    <p>Apellido artista</p>
-                    <p>Email Artista</p>
-                    <p>Telefono Artista</p>
-                  </div>
-                </div>
-
-                <div class=" md:flex md:flex-row ">
-                  <div class="  bg-gray-600">
-                    <div>
-                      <img  class=" w-48"src="https://i.pinimg.com/736x/77/3b/8a/773b8aedcd243b4b49af53a0cb455d89.jpg" alt="">
-                    </div>
-                    <p class=" flex flex-row items-center "> <img src="/web/assets/icons/icon-2.png"  class=" w-7 m-3" alt="">Nombre</p>
-                    <p>Descripcion</p>
-                    <p>Categoria</p>
-                    <p>Precio</p>
-                    <p>Unidades</p>
-                    <button class="boton1s w-24 h-14">#Buy 🎨</button>
-                  </div>
-                </div>
+          <img
+            :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
+            class="w-[3.5%] h-[3.5%] ml-4 aparecer transition-all ease-in-out duration-300" alt="logo">
+          <nav class="flex font-bahnschrift">
+            <div class="flex items-center">
+              <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                href="/index.html">Home</a>
+              <div class="font-xs opacity-30 text-skin-base">|</div>
+              <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                href="/web/public/wallofartworks.html">Store</a>
+              <div class="font-xs opacity-30 text-skin-base">|</div>
+              <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                href="/web/public/wallofartist.html">Artists</a>
+              <div class="font-xs opacity-30 text-skin-base">|</div>
+              <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                href="/web/public/shoppingcart.html">Shop cart</a>
             </div>
-            </main>
-           
+            <div class="flex items-center mr-6 ml-6">
+              <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
+                href="javascript:void(0);">Log in</a>
+              <div class="font-xs opacity-30 text-skin-base">|</div>
+              <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
+            </div>
 
-            <div class="place-self-center bg-skin-muted h-[1.2px] lg:w-1/2 w-full mt-9 bg-opacity-20"></div><!-- LÍNEA -->
+            <div class="w-1/2">
+              <button class="boton1s" @click="theme(1)">TEMA 1</button>
+              <button class="boton1s" @click="theme(2)">TEMA 2</button>
+              <button class="boton1s" @click="theme(3)">TEMA 3</button>
+              <button class="boton1s" @click="theme(4)">TEMA 4</button>
+              <button class="boton1s" @click="theme(5)">TEMA 5</button>
+              <button class="boton1s" @click="theme(6)">TEMA 6</button>
 
-            <!-- FOOTER -->
-            <footer class="font-quicksand">
-
-                    
-                <div class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
-                  <div class="w-64 flex-shrink-0 md:mx-0 mx-auto md:text-left md:mt-0 mt-10 flex items-center md:justify-start justify-center place-items-center content-center">
-                    <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02L.png' : '/web/assets/logo01L.png'" class="w-[60%] h-[60%] aparecer transition-all ease-in-out duration-1000" alt="logo">
-                  </div>
-                  <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
-                    <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                      <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-                      <nav class="list-none mb-10">
-                        <li>
-                          <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                        </li>
-                        <li>
-                          <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                        </li>
-                        <li>
-                          <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                        </li>
-                        <li>
-                          <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                        </li>
-                      </nav>
-                    </div>
-                    <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-                        <nav class="list-none mb-10">
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                          </li>
-                        </nav>
-                    </div>
-                    <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-                        <nav class="list-none mb-10">
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                          </li>
-                        </nav>
-                    </div>
-                    <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
-                        <nav class="list-none mb-10">
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                          </li>
-                          <li>
-                            <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                          </li>
-                        </nav>
-                    </div>
-                  </div>
-                </div>
-                <div class="bg-skin-muted bg-opacity-20">
-                  <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-                    <p class="text-gray-500 text-sm text-center sm:text-left">© 2022 MindHub —
-                      <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1" target="_blank">@knyttneve</a>
-                    </p>
-                    <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-                      <a class="text-gray-500">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                        </svg>
-                      </a>
-                      <a class="ml-3 text-gray-500">
-                        <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                          <path d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z"></path>
-                        </svg>
-                      </a>
-                      <a class="ml-3 text-gray-500">
-                        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                          <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                          <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                        </svg>
-                      </a>
-                      <a class="ml-3 text-gray-500">
-                        <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                          <path stroke="none" d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
-                          <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                        </svg>
-                      </a>
-                    </span>
-                  </div>
-                </div>
-              </footer>
+            </div>
+          </nav>
 
         </div>
+
+      </header>
+
+
+      <main class=" mt-24 p-8 ">
+        <div class="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+          <div class="flex flex-row">
+            <p>Artist Profile</p>
+          </div>
+          <div class=" flex md:flex-row">
+            <div>
+              <img class=" w-44" :src="artist.image" alt="modern david">
+            </div>
+            <div class=" flex flex-col justify-end ">
+              <p>{{artist.nickname}}</p>
+              <p>{{artist.ranking}}</p>
+            </div>
+          </div>
+          <div class=" md:flex md:flex-row ">
+            <div lass=" md:flex md:flex-row">
+              <p class=" text-skin-base text-xl">About Me </p>
+              <p class=" flex flex-row items-center"> <img src="/web/assets/icons/icon-2.png" class=" w-10 m-3"
+                  alt="">{{artist.name}}</p>
+              <p>{{artist.lastName}}</p>
+              <p>{{artist.email}}</p>
+              <p>{{artist.telephone}}</p>
+            </div>
+          </div>
+
+          <div class=" md:flex md:flex-row" v-for="product in products">
+            <div class="  bg-gray-600 mt-4">
+              <div>
+                <img class=" w-48" :src="product.image" alt="">
+              </div>
+              <p class=" flex flex-row items-center "> <img src="/web/assets/icons/icon-2.png" class=" w-7 m-3"
+                  alt="">{{product.name}}</p>
+              <p>{{product.description}}</p>
+              <p>art</p>
+              <p>{{product.price}}</p>
+              <p>{{product.units}}</p>
+              <button class="boton1s w-24 h-14">#Buy 🎨</button>
+              <button class="boton1s w-24 h-14" @click="formulario = true">editar 🖌️</button>
+              <form v-show="formulario" v-on:submit.prevent>
+                <div class="form-floating mb-3">
+                  <label for="name">Name:</label>
+                  <input type="text" id="name" class="form-control" v-model="name">
+
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="description">Description:</label>
+                  <input type="text" id="description" class="form-control" v-model="description" name="description">
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="price">Price:</label>
+                  <input type="number" id="price" class="form-control" v-model="price" name="price">
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="category">Category:</label>
+                  <input type="text" id="category" class="form-control" v-model="category" name="category">
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="avatar">Choose a image:</label>
+                  <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                </div>
+                <div class="form-floating mb-3">
+                  <h3>Dimensions:</h3>
+                  <label for="height">Height:</label>
+                  <input type="number" id="height" class="form-control" v-model="height" name="height">
+                  <label for="width">width:</label>
+                  <input type="number" id="width" class="form-control" v-model="width" name="width">
+                  <label for="large">Large:</label>
+                  <input type="number" id="large" class="form-control" v-model="large" name="large">
+                </div>
+                <div class="form-floating mb-3">
+                  <label for="stock">Stock:</label>
+                  <input type="number" id="stock" class="form-control" v-model="units" name="units">
+                </div>
+                <button type="submit" class="boton1s w-24 h-14" @click="updateProduct(product)">editar 🖌️</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </main>
+
+
+      <div class="place-self-center bg-skin-muted h-[1.2px] lg:w-1/2 w-full mt-9 bg-opacity-20"></div><!-- LÍNEA -->
+
+      <!-- FOOTER -->
+      <footer class="font-quicksand">
+
+
+        <div
+          class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+          <div
+            class="w-64 flex-shrink-0 md:mx-0 mx-auto md:text-left md:mt-0 mt-10 flex items-center md:justify-start justify-center place-items-center content-center">
+            <img
+              :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02L.png' : '/web/assets/logo01L.png'"
+              class="w-[60%] h-[60%] aparecer transition-all ease-in-out duration-1000" alt="logo">
+          </div>
+          <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+              <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES</h2>
+              <nav class="list-none mb-10">
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
+                </li>
+                <li>
+                  <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
+                </li>
+              </nav>
+            </div>
+          </div>
+        </div>
+        <div class="bg-skin-muted bg-opacity-20">
+          <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
+            <p class="text-gray-500 text-sm text-center sm:text-left">© 2022 MindHub —
+              <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1"
+                target="_blank">@knyttneve</a>
+            </p>
+            <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
+              <a class="text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+                  viewBox="0 0 24 24">
+                  <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5"
+                  viewBox="0 0 24 24">
+                  <path
+                    d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                  </path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  class="w-5 h-5" viewBox="0 0 24 24">
+                  <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                  <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                </svg>
+              </a>
+              <a class="ml-3 text-gray-500">
+                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                  stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                  <path stroke="none"
+                    d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"></path>
+                  <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                </svg>
+              </a>
+            </span>
+          </div>
+        </div>
+      </footer>
+
     </div>
-    <script src="https://unpkg.com/vue@3"></script>
-    <script src="/web/scripts/artistpage.js"></script>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://unpkg.com/vue@3"></script>
+  <script src="/web/scripts/artistpage.js"></script>
 </body>
 
 </html>
