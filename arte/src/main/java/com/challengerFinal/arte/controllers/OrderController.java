@@ -20,12 +20,12 @@ public class OrderController {
         return orderService.getOrderRequestsAll();
     }
     @PostMapping("/addItemToCart")
-    public ResponseEntity<Object> createPurchaseOrder(
+    public ResponseEntity<Object> createOrder(
             @RequestParam String nameProduct,
             @RequestParam int cant,
             Authentication authentication
     ) {
-        return orderService.createPurchaseOrder(nameProduct, cant, authentication);
+        return orderService.createOrder(nameProduct, cant, authentication);
     }
 
     @DeleteMapping("/deleteItemFromCart/{id}")
@@ -33,4 +33,5 @@ public class OrderController {
             @PathVariable("id")Long id){
         return orderService.deleteItem(id);
     }
+
 }

@@ -1,5 +1,6 @@
 package com.challengerFinal.arte.service.implement;
 
+import com.challengerFinal.arte.dtos.AddItemDTO;
 import com.challengerFinal.arte.dtos.OrderRequestDto;
 import com.challengerFinal.arte.model.Client;
 import com.challengerFinal.arte.model.OrderRequest;
@@ -47,7 +48,7 @@ public class OrderImplement implements OrderService {
     }
 
     @Override
-    public ResponseEntity<Object> createPurchaseOrder(String nameProduct, int cant, Authentication authentication) {
+    public ResponseEntity<Object> createOrder(String nameProduct, int cant, Authentication authentication) {
         Client clientConected = clientRepository.findByEmail(authentication.getName());
         Product requestedProduct = productRepository.findByName(nameProduct);
         ShoppingCart shoppingCart = shoppingCartRepository.findByClientAndActive(clientConected,true);
@@ -99,5 +100,30 @@ public class OrderImplement implements OrderService {
 
         return new ResponseEntity<>("Item removed from cart", HttpStatus.OK);
     }
+
+    /*@Override
+    public ResponseEntity<Object> addItem(Long id, AddItemDTO addItemDTO) {
+
+        OrderRequest itemActualizar = orderRepository.findById(id).orElse(null);
+        Product producto = productRepository.findById(itemActualizar.getPetitioner().getId()).orElse(null);
+        double precioActualizado = 0;
+
+        if(itemActualizar == null) {
+            return new ResponseEntity<>("No encontrado", HttpStatus.FORBIDDEN);
+        }
+        if (addItemDTO.getUnits() != 0){
+            itemActualizar.setUnits(addItemDTO.getUnits());
+            precioActualizado = itemActualizar.getPetitioner().getPrice() * itemActualizar.getUnits();
+            itemActualizar.setPrice(precioActualizado);
+            assert producto != null;
+            producto.setUnits(producto.getUnits() - itemActualizar.getUnits());
+        }
+        productRepository.save(producto);
+        orderRepository.save(itemActualizar);
+
+        return new ResponseEntity<>("Cantidad del item actualizado", HttpStatus.CREATED);
+
+    }
+*/
 
 }
