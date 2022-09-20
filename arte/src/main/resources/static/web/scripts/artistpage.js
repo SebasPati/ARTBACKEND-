@@ -16,6 +16,7 @@ const app = Vue.createApp({
             width: 0,
             large: 0,
             units: 0,
+            formularioProduct: false
         }
     },
     created() {
@@ -70,12 +71,29 @@ const app = Vue.createApp({
                 "description" : this.description,
                 "category" : this.category,
                 "dimensionsList" : [this.width,this.large,this.height],
-                "image": ["img1","img2"],
+                "image": ["https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg="],
                 "price" : this.price,
                 "status": true,
                 "units" : this.units
             })
             .then(response => {
+                console.log("ok");
+                location.reload()
+            }).catch(error => {
+                console.log(error);
+            })
+        },
+        loadProduct(){
+            axios.post("/api/clients/current/products",{
+                "name": this.name,
+                "description" : this.description,
+                "category" : this.category,
+                "dimensionsList" : [this.large,this.width,this.height],
+                "image": ["https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg="],
+                "price" : this.price,
+                "status": true,
+                "units" : this.units
+            }).then(response => {
                 console.log("ok");
             }).catch(error => {
                 console.log(error);
