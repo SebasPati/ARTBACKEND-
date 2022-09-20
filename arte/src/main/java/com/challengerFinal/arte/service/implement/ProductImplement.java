@@ -17,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -73,15 +72,25 @@ public class ProductImplement implements ServiceProduct {
     }
 //No terminado.
     @Override
-    public ResponseEntity<Object> updateProduct(Long id, UpdateProductDTO updateProductDto) {
+    public ResponseEntity<Object> updateProduct(Long id, UpdateProductDTO updateProductDto,Authentication authentication) {
+        Client client = clientRepository.findByEmail(authentication.getName());
         Optional<Product> updateProduct = productRepository.findById(id);
         //Si el product no existe
         if (updateProduct.isPresent()) {
             return new ResponseEntity<>("Product not updated",HttpStatus.FORBIDDEN);
         }
+        updateProduct.get().setName(updateProductDto.getName());
+        updateProduct.get().setCategory(updateProductDto.getCategory());
+        updateProduct.get().setDate(LocalDate.now());
+        updateProduct.get().setDescription(updateProductDto.getDescription());
+        updateProduct.get().setImage(updateProductDto.getImage());
+        updateProduct.get().setPrice(updateProductDto.getPrice());
+        updateProduct.get().setStatus(updateProductDto.getStatus());
+        updateProduct.get().setUnits(updateProductDto.getUnits());
+        updateProduct.get().setClient(client);
 
         productRepository.save(updateProduct.get());
-        return null;
+        return new ResponseEntity<>("Producto actualizado", HttpStatus.CREATED);
     }
 
     @Override
