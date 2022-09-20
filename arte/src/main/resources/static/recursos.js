@@ -63,13 +63,14 @@ const app = Vue.createApp({
 document.querySelectorAll('.venus').forEach(element => {
     const modx = element.getAttribute('data-mod-x');
     const mody = element.getAttribute('data-mod-y');
+    const scala =element.getAttribute('scala');
     console.log(modx);
     console.log(mody);
 
     basicScroll.create({
         elem:element,
         from: 300,
-        to: 1800,
+        to: 2700,
         direct: true,
         props:{
             '--translateX':{
@@ -79,6 +80,10 @@ document.querySelectorAll('.venus').forEach(element => {
             '--translateY':{
                 from: '0',
                 to: `${10 * mody}px`
+            },
+            '--scala': {
+                from: '1',
+                to: `${1 * scala}`
             }
         }
     }).start();

@@ -286,7 +286,7 @@ body{
 }
 .contenedor{
     position: relative;
-    margin-top:  200vh;
+    margin-top:  350vh;
     background: #fff;
     padding: 100px;
 }
@@ -302,9 +302,14 @@ body{
 /* ESTILOS PARA ANIMAR */
 
 .venus{
-    position: relative;
+/*     position: relative; */
     transform: translate(var(--translateX), var(--translateY));
 	will-change: transform;
+}
+
+.centro{
+    transform: scale(var(--scala));
+    will-change: transform;
 }
 
 .nacimiento{
