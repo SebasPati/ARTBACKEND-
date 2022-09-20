@@ -7,12 +7,15 @@ import com.challengerFinal.arte.model.Client;
 import com.challengerFinal.arte.model.Product;
 import com.challengerFinal.arte.repositories.ClientRepository;
 import com.challengerFinal.arte.repositories.ProductRepository;
+import com.challengerFinal.arte.service.FileService;
 import com.challengerFinal.arte.service.ServiceProduct;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -25,6 +28,9 @@ public class ProductImplement implements ServiceProduct {
     ProductRepository productRepository;
     @Autowired
     ClientRepository clientRepository;
+
+    @Autowired
+    private FileService fileService;
 
     @Override
     public Product saveArtworks(Product product) {
@@ -50,9 +56,13 @@ public class ProductImplement implements ServiceProduct {
                 || createProductDto.getCategory().isEmpty()
                 || createProductDto.getDimensionsList().isEmpty()
                 || createProductDto.getDescription().isEmpty()
-                || createProductDto.getImage().isEmpty()
-                ){
+            ) {
             return new  ResponseEntity<>(HttpStatus.FORBIDDEN);
+        }
+
+        String image = createProductDto.getImage();
+        if (image == null) {
+            image = "http://localhost:8080/images/product/default_image.jpg";
         }
 
         Product newProduct =new Product (
@@ -64,7 +74,7 @@ public class ProductImplement implements ServiceProduct {
                 LocalDate.now(),
                 createProductDto.getUnits(),
                 createProductDto.getDimensionsList(),
-                createProductDto.getImage(),
+                image,
                 client
                 );
         productRepository.save(newProduct);
@@ -98,4 +108,30 @@ public class ProductImplement implements ServiceProduct {
         return null;
     }
 
+    @Override
+    public ResponseEntity<Object> uploadFile(@RequestParam("files") MultipartFile file, long idProduct, Authentication authentication){
+        try {
+            if (authentication == null) {
+                return new ResponseEntity<Object>("You're not logged in",HttpStatus.FORBIDDEN);
+            }
+            Client authClient = clientRepository.findByEmail(authentication.getName());
+            Product product = productRepository.findById(idProduct).orElse(null);
+
+            if (product == null) {
+                return new ResponseEntity<Object>("Product not found",HttpStatus.FORBIDDEN);
+            }
+
+            if (!authClient.getProducts().contains(product)) {
+                return new ResponseEntity<Object>("You're not the owner of the product",HttpStatus.FORBIDDEN);
+            }
+
+            String fileUrl = fileService.updateFile(file, product.getId().toString(), "product");
+            product.setImage(fileUrl);
+            clientRepository.save(authClient);
+            return new ResponseEntity<Object>(HttpStatus.CREATED);
+        } catch (Exception e) {
+            System.out.println(e);
+            return new ResponseEntity<Object>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+    }
 }

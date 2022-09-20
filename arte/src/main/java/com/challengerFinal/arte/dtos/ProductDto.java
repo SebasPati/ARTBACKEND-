@@ -11,7 +11,7 @@ public class ProductDto {
     private  String name;
     private  String description;
     private  List<Double> dimensionsList;
-    private List<String> image;
+    private String image;
     private Double price;
     private Boolean status;
     private LocalDate date;
@@ -47,7 +47,7 @@ public class ProductDto {
         return dimensionsList;
     }
 
-    public List<String> getImage() {
+    public String getImage() {
         return image;
     }
 

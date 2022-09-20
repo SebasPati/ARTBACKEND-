@@ -24,9 +24,8 @@ public class Product {
     @ElementCollection
     @Column(name = "Dimensions")
     private List<Double> dimensionsList;
-    @ElementCollection
-    @Column(name = "ImgArtworks")
-    private List<String> image;
+
+    private String image;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client")
     private Client client;
@@ -44,7 +43,7 @@ public class Product {
         this.client = client;
     }
 
-    public Product(String name, String description, String category, Double price, Boolean status, LocalDate date, Integer units, List<Double> dimensionsList, List<String> image, Client client) {
+    public Product(String name, String description, String category, Double price, Boolean status, LocalDate date, Integer units, List<Double> dimensionsList, String image, Client client) {
         this.name = name;
         this.description = description;
         this.category = category;
@@ -125,11 +124,11 @@ public class Product {
         this.dimensionsList = dimensionsList;
     }
 
-    public List<String> getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(List<String> image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

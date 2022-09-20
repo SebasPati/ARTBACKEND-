@@ -10,7 +10,7 @@ public class CreateProductDto implements Serializable {
     private String description;
     private String category;
     private List<Double> dimensionsList;
-    private List<String> image;
+    private String image;
     private Double price;
     private Boolean status;
     private LocalDate date;
@@ -60,11 +60,11 @@ public class CreateProductDto implements Serializable {
         this.dimensionsList = dimensionsList;
     }
 
-    public List<String> getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(List<String> image) {
+    public void setImage(String image) {
         this.image = image;
     }
 

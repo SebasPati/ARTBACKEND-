@@ -30,7 +30,7 @@ public class FileServiceImplement implements FileService {
     @Override
     public String updateFile(MultipartFile file, String name, String directory) throws Exception {
         String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-        Path rootFolder = Paths.get("src/main/resources/static/images" + directory);
+        Path rootFolder = Paths.get("src/main/resources/static/images/" + directory);
         Files.deleteIfExists(rootFolder.resolve(fileName));
         return this.saveFile(file, name, directory);
     }
