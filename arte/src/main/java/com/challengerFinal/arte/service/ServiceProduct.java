@@ -18,9 +18,8 @@ public interface ServiceProduct {
     public ResponseEntity<Object> createProduct(Authentication authentication,
              CreateProductDto createProductDto);
 
-    ResponseEntity<Object> updateProduct(@PathVariable("id") Long id, UpdateProductDTO updateProductDto);
+    ResponseEntity<Object> updateProduct(@PathVariable("id") Long id, UpdateProductDTO updateProductDto,Authentication authentication);
 
     ResponseEntity<Object> deleteProduct(@PathVariable ("id") Long id);
 
-    ResponseEntity<Object> patchProduct(Long id, UpdateProductDTO updateProductDto);
 }

@@ -36,21 +36,11 @@ public class ProductController {
         return productService.createProduct(authentication,createProductDto);
     }
 
-    @PutMapping("/products/update/{id}")
-    //si son metodos diferentes puedo ponerle la misma ruta
-    //Lo pongo para identificar a que parametro se refiere si tengo mas de uno en la ruta, ej /{nombre}
-    public ResponseEntity<Object> updateProduct(
-            @PathVariable("id")Long id,@RequestBody UpdateProductDTO updateProductDTO) {
-        return productService.updateProduct(id,updateProductDTO);
-        //PathVariable se usa para los id
-
-    }
-
     @PatchMapping("/clients/current/products/update/{id}")
-    public ResponseEntity<Object> patchProduct(
+    public ResponseEntity<Object> updateProduct(
             @RequestBody UpdateProductDTO updateProductDTO,
-            @PathVariable ("id") Long id){
-        return productService.patchProduct(id, updateProductDTO);
+            @PathVariable ("id") Long id,Authentication authentication){
+        return productService.updateProduct(id, updateProductDTO,authentication);
         //con requestBody mandamos un objeto, va a usar un solo dato
         // y va a construir un objeto con un solo dato, por ende necesita un contructor para cada atributo
     }

@@ -12,7 +12,7 @@ public class ShoppingCart {
     @GeneratedValue(strategy = GenerationType.AUTO,generator = "native")
     @GenericGenerator(strategy = "native",name = "native")
     private Long id;
-    private boolean isShoppingCart;
+    private boolean active;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client")
     private Client client;
@@ -27,7 +27,7 @@ public class ShoppingCart {
 
     public ShoppingCart(Client client) {
         this.client = client;
-        this.isShoppingCart = true;
+        this.active = true;
     }
 
 
@@ -37,12 +37,12 @@ public class ShoppingCart {
 
 
 
-    public boolean isShoppingCart() {
-        return isShoppingCart;
+    public boolean isActive() {
+        return active;
     }
 
-    public void setShoppingCart(boolean shoppingCart) {
-        isShoppingCart = shoppingCart;
+    public void setActive(boolean active) {
+        this.active = active;
     }
 
     public Client getClient() {
@@ -73,7 +73,7 @@ public class ShoppingCart {
     public String toString() {
         return "ShoppingCart{" +
                 "id=" + id +
-                ", isShoppingCart=" + isShoppingCart +
+                ", isShoppingCart=" + active +
                 ", client=" + client +
                 ", orderRequest=" + orderRequest +
                 ", payment=" + payment +

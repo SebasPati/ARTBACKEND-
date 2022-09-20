@@ -50,7 +50,7 @@ public class OrderImplement implements OrderService {
     public ResponseEntity<Object> createPurchaseOrder(String nameProduct, int cant, Authentication authentication) {
         Client clientConected = clientRepository.findByEmail(authentication.getName());
         Product requestedProduct = productRepository.findByName(nameProduct);
-        ShoppingCart shoppingCart = shoppingCartRepository.findByClient(clientConected);
+        ShoppingCart shoppingCart = shoppingCartRepository.findByClientAndActive(clientConected,true);
         //ShoppingCart shoppingCart = new ShoppingCart(clientConected);
 
         if (shoppingCart == null) {
