@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/api")
-public class GoodsReceiptController {
+public class ReceiptController {
     @Autowired
     GoodsReceiptService goodsReceiptService;
 
