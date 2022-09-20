@@ -14,33 +14,25 @@ import org.apache.commons.io.FilenameUtils;
 @Service
 public class FileServiceImplement implements FileService {
 
-    private final Path rootFolder = Paths.get("src/main/resources/static/images");
-
     @Override
-    public String saveFile(MultipartFile file, String name) throws Exception {
-        String serverUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
-        String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
-//        System.out.println(serverUrl + "/images/" + fileName);
-//        System.out.println(file.getOriginalFilename());
+    public String saveFile(MultipartFile file, String name, String directory) throws Exception {
         if(!file.getContentType().contains("image")) {
             return null;
         }
-        Files.copy(file.getInputStream(), rootFolder.resolve(fileName));
-        return serverUrl + "/images/" + fileName;
-    }
-
-    @Override
-    public void saveFile(List<MultipartFile> files, String name) throws Exception {
-        for (MultipartFile file : files) {
-            this.saveFile(file, name);
-        }
-    }
-
-    @Override
-    public String updateFile(MultipartFile file, String name) throws Exception {
+        Path rootFolder = Paths.get("src/main/resources/static/images/" + directory);
+        String serverUrl = ServletUriComponentsBuilder.fromCurrentContextPath().build().toUriString();
         String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+        Files.copy(file.getInputStream(), rootFolder.resolve(fileName));
+        return serverUrl + "/images/" + directory + "/" + fileName;
+    }
+
+
+    @Override
+    public String updateFile(MultipartFile file, String name, String directory) throws Exception {
+        String fileName = name + "." + FilenameUtils.getExtension(file.getOriginalFilename());
+        Path rootFolder = Paths.get("src/main/resources/static/images" + directory);
         Files.deleteIfExists(rootFolder.resolve(fileName));
-        return this.saveFile(file, name);
+        return this.saveFile(file, name, directory);
     }
 
 }

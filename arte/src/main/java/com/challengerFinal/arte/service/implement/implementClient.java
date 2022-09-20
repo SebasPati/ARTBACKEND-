@@ -61,7 +61,7 @@ public class implementClient implements ClientService {
         || registration.getPassword().isEmpty()
         || registration.getName().isEmpty()
         || registration.getTypeUser() == null
-        || registration.getLastName().isEmpty()){
+        || registration.getLastName().isEmpty()) {
 
             return new ResponseEntity<>("Missing Data",HttpStatus.FORBIDDEN);
         }
@@ -72,7 +72,11 @@ public class implementClient implements ClientService {
 
             return new ResponseEntity<>("the email address is already in use " + email,HttpStatus.FORBIDDEN);
         }
+        String image = registration.getImage();
 
+        if (image == null) {
+            image = "http://localhost:8080/images/client/default_image.jpg";
+        }
             Client newClient = new Client(
                     registration.getName(),
                     registration.getLastName(),
@@ -80,7 +84,7 @@ public class implementClient implements ClientService {
                     passwordEncoder.encode(registration.getPassword())
                     ,registration.getTypeUser(),
                     0,
-                    registration.getImage());
+                    image);
 
             clientRepository.save(newClient);
             return new ResponseEntity<>(HttpStatus.CREATED);

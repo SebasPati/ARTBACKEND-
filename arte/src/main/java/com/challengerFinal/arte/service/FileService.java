@@ -7,11 +7,9 @@ import java.util.List;
 
 @Service
 public interface FileService {
-    public String saveFile(MultipartFile file, String name) throws Exception;
+    public String saveFile(MultipartFile file, String name, String directory) throws Exception;
 
-    public void saveFile(List<MultipartFile> file, String name) throws  Exception;
-
-    public String updateFile(MultipartFile file, String name) throws Exception;
+    public String updateFile(MultipartFile file, String name, String directory) throws Exception;
 
 
 
