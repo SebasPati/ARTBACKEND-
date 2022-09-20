@@ -4,11 +4,13 @@ const app = Vue.createApp({
     data() {
         return {
             tema: '',
-            prueba: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
+            prueba: [1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1],
+            user : 'visitor'
         }
     },
     created() {
         this.initialTheme();
+        this.getCurrentClient();
     },
     mounted() {
         this.addClassY('navbar',40,'glass1');
@@ -33,6 +35,10 @@ const app = Vue.createApp({
                 }
             })
         },
+        getCurrentClient(){
+            axios.get('/api/clients/current')
+                        .then((response) => console.log(response.data )) 
+                    },
     },
     computed: {
     }

@@ -34,12 +34,15 @@
                             <div class="font-xs opacity-30 text-skin-base">|</div> 
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/shoppingcart.html">Shop cart</a>
                         </div>
-                        <div class="flex items-center mr-6 ml-6">
-                            <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus" href="javascript:void(0);">Log in</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
-                        </div>
-
+                        <div v-show="user == 'visitor'" class="flex items-center mr-6 ml-6">
+                          <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus" href="javascript:void(0);">Log in</a>
+                          <div class="font-xs opacity-30 text-skin-base">|</div> 
+                          <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
+                      </div>
+                      <div v-show= "user == 'authenticated'" class="relative">
+                        <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="">
+                        <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                    </div>
                         <div class="w-1/2">
                             <button class="boton1s" @click="theme(1)">TEMA 1</button>
                             <button class="boton1s" @click="theme(2)">TEMA 2</button>
@@ -247,8 +250,9 @@
 
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
-    <script src="/web/scripts/artistpage.js"></script>
+    <script src="/web/scripts/myfavorites.js"></script>
 </body>
 
 </html>

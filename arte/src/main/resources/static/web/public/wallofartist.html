@@ -11,8 +11,8 @@
 
 <body class=" bg-gray-100">
 
-    <!--     <div id="app" v-cloak> -->
-
+     <div id="app" v-cloak> 
+    
     <!-- HEADER CON NAV -->
     <header>
 
@@ -27,10 +27,15 @@
                     <a class="mr-6 ml-6" href="/web/public/wallofcourses.html">Courses</a>
                     <a class="mr-6 ml-6" href="/web/public/shoppingcart.html">Shop cart</a>
                 </div>
-                <div class="class="mr-6 ml-6">
-                    <a class="mr-6 ml-6" href="javascript:void(0);">Log in</a>
-                    <a class="mr-6 ml-6" href="javascript:void(0);">Sign in</a>
+                <div v-show="user == 'visitor'" class="flex items-center mr-6 ml-6">
+                    <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus" href="javascript:void(0);">Log in</a>
+                    <div class="font-xs opacity-30 text-skin-base">|</div> 
+                    <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
                 </div>
+                <div v-show= "user == 'authenticated'" class="relative">
+                  <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="">
+                  <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+              </div>
             </nav>
 
         </div>
@@ -62,7 +67,12 @@
 
 
 
-    <!--     </div> -->
+       </div> 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="/web/scripts/wallofartist.js"></script>
 
 
 
