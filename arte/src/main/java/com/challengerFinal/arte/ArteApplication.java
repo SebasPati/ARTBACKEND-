@@ -106,15 +106,16 @@ public class ArteApplication implements CommandLineRunner {
 		goodsReceiptService.saveGoodsReceipt(goodsReceiptOne);
 		System.out.println(goodsReceiptOne);
 //CLAU:
-		Client artist1 = new Client("cc9", "cc9", "cc", passwordEncoder.encode("cc"), TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/selfemployed-painter-looking-at-the-camera-cheerfully-picture-id1364209752?k=20&m=1364209752&s=612x612&w=0&h=yH-XL4ga0E7ixxn-KHexzIC5wWoBdTAX-q6NsHLOOcA=");
-		Client artist2= new Client("cc1+p=1", "cc1l", "cc1@art.com", passwordEncoder.encode("cc1"), TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/portrait-of-young-dark-haired-concentrated-caucasian-white-male-with-picture-id1333064056?k=20&m=1333064056&s=612x612&w=0&h=WIBoskVGacXKcFocqymTxwzntfZx2PieiJR3Zptes8w=");
-		Client artist3= new Client("cc2+p=2", "cc2l", "cc2@art.com", passwordEncoder.encode("cc2"), TypeUser.ARTIST, 1,  "https://media.istockphoto.com/photos/smiling-young-woman-female-artist-in-apron-looking-at-camera-standing-picture-id1327671241?k=20&m=1327671241&s=612x612&w=0&h=xDAfS2QuFeGQG_F9d671q03TLXhNtKoDR962VETfOao=");
-		Client artist4= new Client("cc3", "cc3l", "cc3@art.com", passwordEncoder.encode("cc3"), TypeUser.ARTIST, 5 , "https://media.istockphoto.com/photos/beautiful-afro-woman-with-pigtails-and-stylish-clothes-picture-id1342849839?k=20&m=1342849839&s=612x612&w=0&h=kzIoHr71R1RG4oTrCUc6FqNkf8fF6_Tx1KlWJGAFV1c=");
-		Client artist5= new Client("cc4", "cc4l", "cc4@art.com", passwordEncoder.encode("cc4"), TypeUser.ARTIST, 1 , "https://media.istockphoto.com/photos/working-on-creative-ideas-at-night-picture-id1356061017?k=20&m=1356061017&s=612x612&w=0&h=PoVD5yO_5fpPMxsvTkXeS83LLykkzecO2NKFh1OSsVU=");
-		Client artist6= new Client("cc5+5=p", "cc5l", "cc5@art.com", passwordEncoder.encode("cc5"), TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/ceramic-workshop-picture-id1126452727?k=20&m=1126452727&s=612x612&w=0&h=puqfmxVU_61aohW5XxB05kUYI_p1gP8bkw01nanlW9g=");
-		Client artist7= new Client("cc6", "cc6l", "cc6@art.com", passwordEncoder.encode("cc6"), TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/young-professional-female-singer-recording-a-new-song-album-inside-picture-id1319579584?k=20&m=1319579584&s=612x612&w=0&h=wEVsZ-9SXhRX7SFgnvSgx1t7DfzuwRzHLhaTKZYKWxw=");
-		Client artist8= new Client("cc7", "cc7l", "cc7@art.com", passwordEncoder.encode("cc7"), TypeUser.ARTIST, 7, "https://media.istockphoto.com/photos/talented-male-artist-energetically-and-violently-using-paint-brush-he-picture-id1183183769?k=20&m=1183183769&s=612x612&w=0&h=2XU8_xIH02_6sfTQjusOoJGbBN-_hkC8WU4HSrrrblU=");
-		Client artist9= new Client("cc8", "cc8l", "cc8@art.com", passwordEncoder.encode("cc8"), TypeUser.ARTIST, 10, "https://media.istockphoto.com/photos/young-african-musician-smiling-at-camera-picture-id1200779750?k=20&m=1200779750&s=612x612&w=0&h=lE3pHr2wAotZ3n02myTdy0UKMrcw8ar_q8aZR0ohVE8=");
+		//CLAU:
+		Client artist1 = new Client("Rosalia", "Ferrando", "roasliaferrando@art.com", passwordEncoder.encode("00"), TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/selfemployed-painter-looking-at-the-camera-cheerfully-picture-id1364209752?k=20&m=1364209752&s=612x612&w=0&h=yH-XL4ga0E7ixxn-KHexzIC5wWoBdTAX-q6NsHLOOcA=");
+		Client artist2= new Client("Francisco José", "Manzanares", "franciscojose@art.com", "00", TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/portrait-of-young-dark-haired-concentrated-caucasian-white-male-with-picture-id1333064056?k=20&m=1333064056&s=612x612&w=0&h=WIBoskVGacXKcFocqymTxwzntfZx2PieiJR3Zptes8w=");
+		Client artist3= new Client("María Lucía", "Encinas", "marialucia@art.com", "00", TypeUser.ARTIST, 1,  "https://media.istockphoto.com/photos/smiling-young-woman-female-artist-in-apron-looking-at-camera-standing-picture-id1327671241?k=20&m=1327671241&s=612x612&w=0&h=xDAfS2QuFeGQG_F9d671q03TLXhNtKoDR962VETfOao=");
+		Client artist4= new Client("Triana", "Ribes", "trianaribes@art.com", "00", TypeUser.ARTIST, 5 , "https://media.istockphoto.com/photos/beautiful-afro-woman-with-pigtails-and-stylish-clothes-picture-id1342849839?k=20&m=1342849839&s=612x612&w=0&h=kzIoHr71R1RG4oTrCUc6FqNkf8fF6_Tx1KlWJGAFV1c=");
+		Client artist5= new Client("Avelino", "Torre", "avelinotorre@art.com", "00", TypeUser.ARTIST, 1 , "https://media.istockphoto.com/photos/working-on-creative-ideas-at-night-picture-id1356061017?k=20&m=1356061017&s=612x612&w=0&h=PoVD5yO_5fpPMxsvTkXeS83LLykkzecO2NKFh1OSsVU=");
+		Client artist6= new Client("Adelina", "Barroso", "adelinabarroso@art.com", "00", TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/ceramic-workshop-picture-id1126452727?k=20&m=1126452727&s=612x612&w=0&h=puqfmxVU_61aohW5XxB05kUYI_p1gP8bkw01nanlW9g=");
+		Client artist7= new Client("Mar", "Beltran", "marbeltran@art.com", "00", TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/young-professional-female-singer-recording-a-new-song-album-inside-picture-id1319579584?k=20&m=1319579584&s=612x612&w=0&h=wEVsZ-9SXhRX7SFgnvSgx1t7DfzuwRzHLhaTKZYKWxw=");
+		Client artist8= new Client("Mariano", "Mayor", "marianomayor@art.com", "00", TypeUser.ARTIST, 7, "https://media.istockphoto.com/photos/talented-male-artist-energetically-and-violently-using-paint-brush-he-picture-id1183183769?k=20&m=1183183769&s=612x612&w=0&h=2XU8_xIH02_6sfTQjusOoJGbBN-_hkC8WU4HSrrrblU=");
+		Client artist9= new Client("Julio", "Romo", "julioromo@art.com", "00", TypeUser.ARTIST, 10, "https://media.istockphoto.com/photos/young-african-musician-smiling-at-camera-picture-id1200779750?k=20&m=1200779750&s=612x612&w=0&h=lE3pHr2wAotZ3n02myTdy0UKMrcw8ar_q8aZR0ohVE8=");
 		userGlobalRepository.save(artist1);
 		userGlobalRepository.save(artist2);
 		userGlobalRepository.save(artist3);
@@ -124,6 +125,9 @@ public class ArteApplication implements CommandLineRunner {
 		userGlobalRepository.save(artist7);
 		userGlobalRepository.save(artist8);
 		userGlobalRepository.save(artist9);
+
+
+
 		//CLAU PRODUCTOS
 		Product art1= new Product("Angel in Fesccoes", "A painting of angels in heaven made by one of the most renowned artists up to that time. The texture of us canvas creates an unforgettable experience", "paint", 200000.00, true, LocalDate.now(), 2, List.of(20.00, 40.00), List.of("https://media.istockphoto.com/photos/angel-in-frescoes-in-the-dome-of-brunelleschi-picture-id502278435?k=20&m=502278435&s=612x612&w=0&h=JZTuiLZ5RKPS5eZbK8f6IHxTTBVB-d4OMsFbYPuXsxU="), artist1);
 		Product art2= new Product("Adam Picture", "The Creation of Adam is a fresco on the vault of the Sistine Chapel, painted by Michael... the Tuscan artist, in which God gives life to Adam, the first man.", "paint", 56000.00, true, LocalDate.now(), 6, List.of(20.00, 40.00), List.of("https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg="), artist1);

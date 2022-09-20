@@ -6,6 +6,16 @@ const app = Vue.createApp({
             tema: '',
             artist: [],
             products: [],
+            formulario: false,
+            name: "",
+            description: "",
+            price: 0,
+            category: "",
+            image: [],
+            height: 0,
+            width: 0,
+            large: 0,
+            units: 0,
         }
     },
     created() {
@@ -46,7 +56,31 @@ const app = Vue.createApp({
                 console.log(this.products);
             })
         },
-
+        updateProduct(product){
+            console.log(product.id);
+            console.log(this.name);
+            console.log(this.category);
+            console.log(this.width);
+            console.log(this.height);
+            console.log(this.large);
+            console.log(this.price);
+            console.log(this.units);
+            axios.patch(`/api/clients/current/products/update/${product.id}`,{
+                "name": this.name,
+                "description" : this.description,
+                "category" : this.category,
+                "dimensionsList" : [this.width,this.large,this.height],
+                "image": ["img1","img2"],
+                "price" : this.price,
+                "status": true,
+                "units" : this.units
+            })
+            .then(response => {
+                console.log("ok");
+            }).catch(error => {
+                console.log(error);
+            })
+        }
     },
     computed: {
     }
