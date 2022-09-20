@@ -3,6 +3,9 @@ const app = Vue.createApp({
         return {
             tema: '',
             activeModal: false,
+            modalSimple: false,
+            goTo: "",
+            location: "",
 
             modal: "",
             login: {
@@ -34,6 +37,8 @@ const app = Vue.createApp({
             img4: "",
             img5: "",
             img6: "",
+            artistsOrderedByRanking: {},
+            bestArtist: {}
         }
     },
     created() {
@@ -62,7 +67,7 @@ const app = Vue.createApp({
             if (this.register.password != this.repeatedPassword) {
                 this.mjeError = "The passwords are not the same"
             }
-            if (this.termsOfServiceChecked == false) {
+            else if (this.termsOfServiceChecked == false) {
                 this.mjeError = "You must agree the Terms of Service"
             }
             else {
@@ -90,8 +95,10 @@ const app = Vue.createApp({
             console.log(this.login)
             axios.post(`/api/login?email=${this.login.email}&password=${this.login.password}`)
                 .then((response) => {
-                    window.alert("Successful login")
                     this.user = "authenticated"
+
+                    this.modalSimple = true
+                    this.activeModal = false
 
                 }).catch((error) => {
                     this.mjeError = 'Wrong email or password'
@@ -109,21 +116,20 @@ const app = Vue.createApp({
                     this.arrayArtists1 = this.artists.slice(0, 3)
                     this.arrayArtists2 = this.artists.slice(3, 6)
                     this.arrayArtists3 = this.artists.slice(6, 9)
-                    console.log(this.clients)
+                    /* console.log(this.clients) */
                     console.log(this.artists)
-                    console.log(this.arrayArtists1)
-                    console.log(this.arrayArtists2)
-                    console.log(this.arrayArtists3)
+                    this.artistsOrderedByRanking = this.artists.sort((a, b) => (a.ranking < b.ranking) ? 1 : -1)
+                    this.bestArtist = this.artistsOrderedByRanking[0]
                 })
                 .catch((error) => console.log(error))
         },
         getProducts() {
             axios.get('/api/products')
                 .then((response) => {
-                    console.log(response.data)
+                    /* console.log(response.data) */
                     this.products = response.data
                     this.product1 = this.products.slice(0, 1)
-                    console.log(this.products)
+                    /* console.log(this.products) */
                     this.galleryImage1 = this.product1[0].image
                     /* de los productos, traerme un array con cada nombre de cada productos */
                     this.arrayDeImagenes = this.products.map((product) => product.image)
@@ -135,6 +141,14 @@ const app = Vue.createApp({
                     this.img6 = `bg-[url('${this.arrayDeImagenes[5]}')]`
                 })
                 .catch((error) => console.log(error))
+        },
+        Redirect() {
+
+            if (this.goTo == 'Store') { this.location = "/web/public/wallofartworks.html" }
+            if (this.goTo == 'Profile') { this.location = "/web/artistandartlovers/myprofile.html" }
+            console.log(this.location)
+
+            window.location.href = this.location
         }
     },
     computed: {
