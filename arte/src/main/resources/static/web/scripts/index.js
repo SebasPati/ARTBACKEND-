@@ -4,9 +4,10 @@ const app = Vue.createApp({
             tema: '',
             activeModal: false,
             modalSimple: false,
+            modalDetails: true,
+            productSelected: "",
             goTo: "",
             location: "",
-
             modal: "",
             login: {
                 email: "",
@@ -38,13 +39,15 @@ const app = Vue.createApp({
             img5: "",
             img6: "",
             artistsOrderedByRanking: {},
-            bestArtist: {}
+            bestArtist: {},
+            ej: {},
         }
     },
     created() {
         this.initialTheme();
         this.getClients();
-        this.getProducts()
+        this.getProducts();
+        this.getCurrentClient()
     },
     mounted() {
     },
@@ -128,6 +131,9 @@ const app = Vue.createApp({
                 .then((response) => {
                     /* console.log(response.data) */
                     this.products = response.data
+                    console.log(this.products)
+                    this.ej = this.products[0]
+                    console.log(this.products[0])
                     this.product1 = this.products.slice(0, 1)
                     /* console.log(this.products) */
                     this.galleryImage1 = this.product1[0].image
@@ -149,6 +155,10 @@ const app = Vue.createApp({
             console.log(this.location)
 
             window.location.href = this.location
+        },
+        getCurrentClient() {
+            axios.get('/api/clients/current')
+                .then((response) => console.log(response.data))
         }
     },
     computed: {
