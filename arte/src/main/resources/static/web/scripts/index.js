@@ -41,14 +41,15 @@ const app = Vue.createApp({
             img6: "",
             artistsOrderedByRanking: {},
             bestArtist: {},
-            ej: {},
+            profileInfo: "",
+            profileImage: "",
         }
     },
     created() {
         this.initialTheme();
         this.getClients();
         this.getProducts();
-        this.getCurrentClient()
+
 
     },
     mounted() {
@@ -104,6 +105,7 @@ const app = Vue.createApp({
 
                     this.modalSimple = true
                     this.activeModal = false
+                    this.getCurrentClient()
 
                 }).catch((error) => {
                     this.mjeError = 'Wrong email or password'
@@ -133,9 +135,6 @@ const app = Vue.createApp({
                 .then((response) => {
                     /* console.log(response.data) */
                     this.products = response.data
-                    console.log(this.products)
-                    this.ej = this.products[0]
-                    console.log(this.products[0])
                     this.product1 = this.products.slice(0, 1)
                     this.galleryImage1 = this.product1[0].image
                     this.arrayDeImagenes = this.products.map((product) => product.image)
@@ -145,8 +144,6 @@ const app = Vue.createApp({
                     this.img4 = `bg-[url('${this.arrayDeImagenes[3]}')]`
                     this.img5 = `bg-[url('${this.arrayDeImagenes[4]}')]`
                     this.img6 = `bg-[url('${this.arrayDeImagenes[5]}')]`
-                    console.log(this.img2)
-                    console.log(this.arrayDeImagenes)
                 })
                 .catch((error) => console.log(error))
         },
@@ -160,7 +157,12 @@ const app = Vue.createApp({
         },
         getCurrentClient() {
             axios.get('/api/clients/current')
-                .then((response) => console.log(response.data))
+                .then((response) => {
+                    console.log(response.data)
+                    this.profileInfo = response.data
+                    this.profileImage = this.profileInfo.image
+                    console.log(this.profileImage)
+                })
         },
         modifyProductSelected(item) {
             this.productSelected = item
