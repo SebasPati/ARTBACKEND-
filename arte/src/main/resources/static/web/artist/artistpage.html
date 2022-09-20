@@ -97,20 +97,20 @@
             <form v-show="formularioProduct" v-on:submit.prevent>
               <div class="form-floating mb-3">
                 <label for="name">Name:</label>
-                <input type="text" id="name" class="form-control" v-model="name">
+                <input type="text" id="name" class="form-control" v-model="formLoad.name">
 
               </div>
               <div class="form-floating mb-3">
                 <label for="description">Description:</label>
-                <input type="text" id="description" class="form-control" v-model="description" name="description">
+                <input type="text" id="description" class="form-control" v-model="formLoad.description" name="description">
               </div>
               <div class="form-floating mb-3">
                 <label for="price">Price:</label>
-                <input type="number" id="price" class="form-control" v-model="price" name="price">
+                <input type="number" id="price" class="form-control" v-model="formLoad.price" name="price">
               </div>
               <div class="form-floating mb-3">
                 <label for="category">Category:</label>
-                <input type="text" id="category" class="form-control" v-model="category" name="category">
+                <input type="text" id="category" class="form-control" v-model="formLoad.category" name="category">
               </div>
               <div class="form-floating mb-3">
                 <label for="avatar">Choose a image:</label>
@@ -119,20 +119,59 @@
               <div class="form-floating mb-3">
                 <h3>Dimensions:</h3>
                 <label for="height">Height:</label>
-                <input type="number" id="height" class="form-control" v-model="height" name="height">
+                <input type="number" id="height" class="form-control" v-model="formLoad.height" name="height">
                 <label for="width">width:</label>
-                <input type="number" id="width" class="form-control" v-model="width" name="width">
+                <input type="number" id="width" class="form-control" v-model="formLoad.width" name="width">
                 <label for="large">Large:</label>
-                <input type="number" id="large" class="form-control" v-model="large" name="large">
+                <input type="number" id="large" class="form-control" v-model="formLoad.large" name="large">
               </div>
               <div class="form-floating mb-3">
                 <label for="stock">Stock:</label>
-                <input type="number" id="stock" class="form-control" v-model="units" name="units">
+                <input type="number" id="stock" class="form-control" v-model="formLoad.units" name="units">
               </div>
               <button type="submit" class="boton1s w-24 h-14" @click="loadProduct()">Load 🏵️</button>
             </form>
           </div>
 
+
+          <!-- FORMULARIO EDITAR -->
+          <form v-show="formulario" v-on:submit.prevent>
+            <div class="form-floating mb-3">
+              <label for="name">Name:</label>
+              <input type="text" id="name" class="form-control" v-model="name">
+
+            </div>
+            <div class="form-floating mb-3">
+              <label for="description">Description:</label>
+              <input type="text" id="description" class="form-control" v-model="formEdit.description" name="description">
+            </div>
+            <div class="form-floating mb-3">
+              <label for="price">Price:</label>
+              <input type="number" id="price" class="form-control" v-model="formEdit.price" name="price">
+            </div>
+            <div class="form-floating mb-3">
+              <label for="category">Category:</label>
+              <input type="text" id="category" class="form-control" v-model="formEdit.category" name="category">
+            </div>
+            <div class="form-floating mb-3">
+              <label for="avatar">Choose a image:</label>
+              <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+            </div>
+            <div class="form-floating mb-3">
+              <h3>Dimensions:</h3>
+              <label for="height">Height:</label>
+              <input type="number" id="height" class="form-control" v-model="formEdit.height" name="height">
+              <label for="width">width:</label>
+              <input type="number" id="width" class="form-control" v-model="formEdit.width" name="width">
+              <label for="large">Large:</label>
+              <input type="number" id="large" class="form-control" v-model="formEdit.large" name="large">
+            </div>
+            <div class="form-floating mb-3">
+              <label for="stock">Stock:</label>
+              <input type="number" id="stock" class="form-control" v-model="formEdit.units" name="units">
+            </div>
+            <button type="submit" class="boton1s w-24 h-14" @click="updateProduct(Product)">edit 🖌️</button>
+          </form>
           <div class=" md:flex md:flex-row" v-for="product in products">
             <div class="  bg-gray-600 mt-4">
               <div>
@@ -141,48 +180,10 @@
               <p class=" flex flex-row items-center "> <img src="/web/assets/icons/icon-2.png" class=" w-7 m-3"
                   alt="">{{product.name}}</p>
               <p>{{product.description}}</p>
-              <p>art</p>
+              <p>{{product.category}}</p>
               <p>{{product.price}}</p>
               <p>{{product.units}}</p>
-              <button class="boton1s w-24 h-14">#Buy 🎨</button>
-              <button class="boton1s w-24 h-14" @click="formulario = true">editar 🖌️</button>
-              <form v-show="formulario" v-on:submit.prevent>
-                <div class="form-floating mb-3">
-                  <label for="name">Name:</label>
-                  <input type="text" id="name" class="form-control" v-model="name">
-
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="description">Description:</label>
-                  <input type="text" id="description" class="form-control" v-model="description" name="description">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="price">Price:</label>
-                  <input type="number" id="price" class="form-control" v-model="price" name="price">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="category">Category:</label>
-                  <input type="text" id="category" class="form-control" v-model="category" name="category">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="avatar">Choose a image:</label>
-                  <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
-                </div>
-                <div class="form-floating mb-3">
-                  <h3>Dimensions:</h3>
-                  <label for="height">Height:</label>
-                  <input type="number" id="height" class="form-control" v-model="height" name="height">
-                  <label for="width">width:</label>
-                  <input type="number" id="width" class="form-control" v-model="width" name="width">
-                  <label for="large">Large:</label>
-                  <input type="number" id="large" class="form-control" v-model="large" name="large">
-                </div>
-                <div class="form-floating mb-3">
-                  <label for="stock">Stock:</label>
-                  <input type="number" id="stock" class="form-control" v-model="units" name="units">
-                </div>
-                <button type="submit" class="boton1s w-24 h-14" @click="updateProduct(product)">edit 🖌️</button>
-              </form>
+              <button class="boton1s w-24 h-14" @click="formulario = true, Product = product">editar 🖌️</button>
             </div>
           </div>
         </div>

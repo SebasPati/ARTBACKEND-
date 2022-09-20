@@ -37,10 +37,14 @@
                     </div>
                     <!-- botones si el usuario es visitante -->
                     <div v-show="user=='authenticated'" class="flex items-center mr-6 ml-6">
-                        profile image
+
+                        <img :src="profileImage" v-show="profileInfo.typeUser == 'CLIENT'" alt="" class="w-14 h-14  bg-cover bg-no-repeat rounded-full">
                         <div class="font-xs opacity-30 text-skin-base">|</div>
                         <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);"
                             @click="logout">Logout</a>
+                        <a v-show="profileInfo.typeUser == 'ARTIST'" :href="'/web/artist/artistpage.html?id='+profileInfo.id"><img :src="profileImage" alt="" class="w-14 h-14  bg-cover bg-no-repeat rounded-full"></a>
+                        
+                        
                     </div>
 
                     <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
@@ -54,7 +58,7 @@
                                 href="/web/public/wallofartworks.html">Store</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="/web/public/wallofartist.html">Artists</a>
+                                href="/web/artistandartlovers/artistpage.html">Artists</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
                                 href="/web/public/shoppingcart.html">Shop cart</a>
@@ -445,6 +449,7 @@
                 <div v-for="product in products.slice(0,7)" class="w-96 h-96 inline">
                     <div @click="modifyProductSelected(product)">
                         <img :src="product.image" alt="" class="w-96 h-96 inline">
+                        <p>{{product.name}}</p>
                     </div>
                 </div>
                 <!-- DETALLES -->
