@@ -55,7 +55,7 @@ public class GoodsReceiptImplement implements GoodsReceiptService {
                                                      Authentication authentication) {
 
             Client clientConected=clientRepository.findByEmail(authentication.getName());
-            ShoppingCart shoppingCartNow= shoppingCartRepository.findByClient(clientConected);
+            ShoppingCart shoppingCartNow= shoppingCartRepository.findByClientAndActive(clientConected,true);
             Payment paymentType= paymentRepository.findByName(typePayment);
 
             if (shoppingCartNow == null){
@@ -102,7 +102,7 @@ public class GoodsReceiptImplement implements GoodsReceiptService {
             GoodsReceipt invoice = new GoodsReceipt();
             goodsReceiptRepository.save(invoice);
 
-            shoppingCartNow.setShoppingCart(false);
+            shoppingCartNow.setActive(false);
             shoppingCartRepository.save(shoppingCartNow);
             ShoppingCart newShoppingCart = new ShoppingCart(clientConected);
             shoppingCartRepository.save(newShoppingCart);

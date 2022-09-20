@@ -35,7 +35,7 @@ public class ShoppingCartImplement implements ShoppingCartService {
     public ResponseEntity<Object> createCart( Authentication authentication) {
         Client clientConected = clientRepository.findByEmail(authentication.getName());
         ShoppingCart shoppingCartNow = new ShoppingCart(clientConected);
-        shoppingCartNow.setShoppingCart(true);
+        shoppingCartNow.setActive(true);
         return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
