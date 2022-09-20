@@ -36,7 +36,6 @@ public class ProductController {
         return productService.createProduct(authentication,createProductDto);
     }
 
-
     @PatchMapping("/clients/current/products/update/{id}")
     public ResponseEntity<Object> updateProduct(
             @RequestBody UpdateProductDTO updateProductDTO,
