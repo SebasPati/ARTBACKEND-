@@ -13,7 +13,7 @@ const app = Vue.createApp({
         
     },
     mounted() {
-        this.addClassY('navbar',50,'glass1');
+        this.addClassY('navbar',2700,'glass1','hidden');
         this.changethemesY();
     },
     methods: {
@@ -28,22 +28,24 @@ const app = Vue.createApp({
         },
         changethemesY(){
             window.addEventListener("scroll",()=>{
-                if(window.scrollY>200 && window.scrollY<450){
+                if(window.scrollY>200 && window.scrollY<400){
                     this.theme(1);
-                }else if(window.scrollY>450 && window.scrollY<950){
+                }else if(window.scrollY>400 && window.scrollY<1050){
                     this.theme(4);
-                }else if(window.scrollY>950){
+                }else if(window.scrollY>1050){
                     this.theme(3);
                 }
             })
         },
-        addClassY(ref,yTrigger,classToAdd) {
-            const navbar = eval(`this.$refs.${ref}`);
+        addClassY(ref,yTrigger,classToAdd, classToRemove) {
+            const element = eval(`this.$refs.${ref}`);
             window.addEventListener("scroll", () => {
                 if (window.scrollY > yTrigger) {
-                    navbar.classList.add(classToAdd);
+                    element.classList.add(classToAdd);
+                    element.classList.remove(classToRemove);
                 } else {
-                    navbar.classList.remove(classToAdd);
+                    element.classList.remove(classToAdd);
+                    element.classList.add(classToRemove);
                 }
             })
         },
@@ -67,7 +69,7 @@ document.querySelectorAll('.venus').forEach(element => {
     console.log(modx);
     console.log(mody);
 
-    basicScroll.create({
+   const venus = basicScroll.create({
         elem:element,
         from: 300,
         to: 2700,
