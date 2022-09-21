@@ -13,7 +13,7 @@ const app = Vue.createApp({
         
     },
     mounted() {
-        this.addClassY('navbar',2700,'glass1','hidden');
+        this.addClassY('navbar',2700,'glass1','opacity-0');
         this.changethemesY();
     },
     methods: {
