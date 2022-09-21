@@ -6,16 +6,32 @@ const app = Vue.createApp({
             tema: '',
             artist: [],
             products: [],
+            formularioProduct: false,
             formulario: false,
-            name: "",
-            description: "",
-            price: 0,
-            category: "",
-            image: [],
-            height: 0,
-            width: 0,
-            large: 0,
-            units: 0,
+            formEdit:{
+                name: "",
+                description: "",
+                price: 0,
+                category: "",
+                image: [],
+                height: 0,
+                width: 0,
+                large: 0,
+                units: 0,
+            },
+            formLoad:{
+                name: "",
+                description: "",
+                price: 0,
+                category: "",
+                image: [],
+                height: 0,
+                width: 0,
+                large: 0,
+                units: 0,
+            },
+            Product: {},
+            file:[]
         }
     },
     created() {
@@ -57,30 +73,72 @@ const app = Vue.createApp({
             })
         },
         updateProduct(product){
-            console.log(product.id);
-            console.log(this.name);
-            console.log(this.category);
-            console.log(this.width);
-            console.log(this.height);
-            console.log(this.large);
-            console.log(this.price);
-            console.log(this.units);
+            console.log(product);
             axios.patch(`/api/clients/current/products/update/${product.id}`,{
-                "name": this.name,
-                "description" : this.description,
-                "category" : this.category,
-                "dimensionsList" : [this.width,this.large,this.height],
-                "image": ["img1","img2"],
-                "price" : this.price,
+                "name": this.formEdit.name,
+                "description" : this.formEdit.description,
+                "category" : this.formEdit.category,
+                "dimensionsList" : [this.formEdit.width,this.formEdit.large,this.formEdit.height],
+                "image": "",
+                "price" : this.formEdit.price,
                 "status": true,
-                "units" : this.units
+                "units" : this.formEdit.units
             })
             .then(response => {
                 console.log("ok");
+                this.fileUpdate(product)
             }).catch(error => {
                 console.log(error);
             })
-        }
+        },
+        loadProduct(){
+
+            axios.post("/api/clients/current/products",{
+                "name": this.formLoad.name,
+                "description" : this.formLoad.description,
+                "category" : this.formLoad.category,
+                "dimensionsList" : [this.formLoad.large,this.formLoad.width,this.formLoad.height],
+                "image": "",
+                "price" : this.formLoad.price,
+                "status": true,
+                "units" : this.formLoad.units
+            }).then(response => {
+                let productUpdate = []
+                const urlParams = new URLSearchParams(window.location.search);
+                const Id = urlParams.get('id');
+                axios.get(`/api/clients/${Id}`)
+                .then(response => {
+                    this.artist = response.data
+                    console.log(this.artist)
+                    this.products = this.artist.products
+                    console.log(this.products);
+                    productUpdate = this.products.filter(product => product.name == this.formLoad.name)
+                    console.log(productUpdate[0]);
+                    this.fileUpdate(productUpdate[0])
+                })
+                
+            }).catch(error => {
+                console.log(error);
+            })
+        },
+        fileUpdate(product){
+            let formData = new FormData()
+            let idProduct = product.id
+            formData.append("files", this.file)
+            formData.append("idProduct", idProduct)
+            axios.post('/api/files/upload/product',
+                formData,
+                { headers: { 'content-type': 'multipart/form-data' } })
+                .then(response => {
+                    location.reload()
+                })
+                .catch(error => alert(error.response.data))
+        },
+        select_file(event) {
+            this.file = event.target.files[0]
+            console.log(this.file)
+        },
+        
     },
     computed: {
     }

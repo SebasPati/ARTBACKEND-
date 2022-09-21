@@ -23,9 +23,6 @@ public class ClientsDto implements Serializable {
     private String image;
     private List<String> networks;
     private Set<ProductDto> products;
-    private Set<OrderRequestDto> claimant;
-
-
 
     public ClientsDto(Client client) {
         this.id = client.getId();
@@ -41,7 +38,6 @@ public class ClientsDto implements Serializable {
         this.image = client.getImage();
         this.active = client.getActive();
         this.products = client.getProducts().stream().map(ProductDto::new).collect(Collectors.toSet());
-        this.claimant = client.getClaimant().stream().map(OrderRequestDto::new).collect(Collectors.toSet());
     }
 
     public Long getId() {
@@ -96,7 +92,4 @@ public class ClientsDto implements Serializable {
         return products;
     }
 
-    public Set<OrderRequestDto> getClaimant() {
-        return claimant;
-    }
 }

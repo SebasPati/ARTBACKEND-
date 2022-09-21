@@ -23,10 +23,14 @@ public class FileController {
     ServiceProduct serviceProduct;
 
     @PostMapping("/upload/client")
-    public ResponseEntity<Object> uploadFile(@RequestParam("files") MultipartFile file, Authentication authentication){
+    public ResponseEntity<Object> uploadFileClient(@RequestParam("files") MultipartFile file, Authentication authentication){
         return clientService.uploadFile(file, authentication);
     }
 
+    @PostMapping("/upload/product")
+    public ResponseEntity<Object> uploadFileProduct(@RequestParam("files") MultipartFile file, long idProduct, Authentication authentication){
+        return serviceProduct.uploadFile(file, idProduct, authentication);
+    }
 
 
 }

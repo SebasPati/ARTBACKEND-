@@ -9,5 +9,5 @@ import java.util.List;
 
 @RepositoryRestResource
 public interface OrderRepository extends JpaRepository<OrderRequest, Long> {
-    List <OrderRequest> findByOrders(ShoppingCart shoppingCart);
+    List <OrderRequest> findByShoppingCart(ShoppingCart shoppingCart);
 }

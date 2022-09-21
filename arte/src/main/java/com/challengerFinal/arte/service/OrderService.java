@@ -1,6 +1,5 @@
 package com.challengerFinal.arte.service;
 
-
 import com.challengerFinal.arte.dtos.OrderRequestDto;
 import com.challengerFinal.arte.model.OrderRequest;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +13,14 @@ public interface OrderService {
     OrderRequestDto getOrderRequest(Long id);
     List<OrderRequestDto> getOrderRequestsAll();
     OrderRequest saveRequest(OrderRequest orderRequest);
-    ResponseEntity<Object> createPurchaseOrder(
-            @RequestParam String nameProduct, @RequestParam int cant, Authentication authentication
+    ResponseEntity<Object> createOrder(
+
+            @RequestParam String name, @RequestParam int cant, Authentication authentication
+
+
     );
 
     ResponseEntity<Object> deleteItem(@PathVariable("id") Long id);
+    //ResponseEntity<Object> addItem(Long id, AddItemDTO addItemDTO);
 
 }

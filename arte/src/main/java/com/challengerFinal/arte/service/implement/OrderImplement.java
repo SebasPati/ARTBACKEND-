@@ -1,5 +1,6 @@
 package com.challengerFinal.arte.service.implement;
 
+import com.challengerFinal.arte.dtos.AddItemDTO;
 import com.challengerFinal.arte.dtos.OrderRequestDto;
 import com.challengerFinal.arte.model.Client;
 import com.challengerFinal.arte.model.OrderRequest;
@@ -16,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -46,45 +48,44 @@ public class OrderImplement implements OrderService {
         return orderRepository.save(orderRequest);
     }
 
-    @Override
-    public ResponseEntity<Object> createPurchaseOrder(String nameProduct, int cant, Authentication authentication) {
-        Client clientConected = clientRepository.findByEmail(authentication.getName());
-        Product requestedProduct = productRepository.findByName(nameProduct);
-        ShoppingCart shoppingCart = shoppingCartRepository.findByClientAndActive(clientConected,true);
-        //ShoppingCart shoppingCart = new ShoppingCart(clientConected);
 
-        if (shoppingCart == null) {
-            return new ResponseEntity<>("Esribir aquí una nota"+shoppingCart,HttpStatus.FORBIDDEN);
+    @Override
+    public ResponseEntity<Object> createOrder(String nameProduct,
+                                              int cant,
+                                              Authentication authentication) {
+
+        Client clientConected=clientRepository.findByEmail(authentication.getName());
+        Product product= productRepository.findByName(nameProduct);
+        ShoppingCart shoppingCartNow = shoppingCartRepository.findByClient(clientConected);
+
+        if (shoppingCartNow == null){
+            return new ResponseEntity<>("No existe el carrito", HttpStatus.FORBIDDEN);
         }
+
         if (nameProduct.isEmpty() || cant==0) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
 
-        if (requestedProduct ==  null) {
-            return new ResponseEntity<>("We do not sell this product", HttpStatus.FORBIDDEN);
+        if (product ==  null) {
+            return new ResponseEntity<>("No vendemos ese producto", HttpStatus.FORBIDDEN);
         }
 
-        if (requestedProduct.getUnits() <  cant) {
-            return new ResponseEntity<>("There is not enough stock for this order", HttpStatus.FORBIDDEN);
+        if (product.getUnits() <  cant) {
+            return new ResponseEntity<>("No hay suficiente stock para ese pedido", HttpStatus.FORBIDDEN);
         }
-        //Creamos la order de pedido del product.
-        OrderRequest orderRequest = new OrderRequest(
-                requestedProduct,
-                LocalDate.now(),
-                StatePedido.CONFIRMED,
-                ((requestedProduct.getPrice()*1.010) * cant),
-                cant,shoppingCart);
-        orderRepository.save(orderRequest);
 
-        int currentUnits = requestedProduct.getUnits()  - cant;
-        requestedProduct.setUnits(currentUnits);
-        productRepository.save(requestedProduct);
+        //Crear PurchaseOrder
+        OrderRequest order=new OrderRequest(product,LocalDate.now(),StatePedido.CONFIRMED,product.getPrice()*cant,cant,shoppingCartNow);
+        orderRepository.save(order);
 
-        return new ResponseEntity<>(
-                "Request created",
-                HttpStatus.CREATED);
+        int stock = product.getUnits() - cant;
+        product.setUnits(stock);
+        productRepository.save(product);
+
+
+
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
-
     @Override
     public ResponseEntity<Object> deleteItem(Long id) {
         OrderRequest toitemDelete = orderRepository.findById(id).orElse(null);
@@ -99,5 +100,30 @@ public class OrderImplement implements OrderService {
 
         return new ResponseEntity<>("Item removed from cart", HttpStatus.OK);
     }
+
+    /*@Override
+    public ResponseEntity<Object> addItem(Long id, AddItemDTO addItemDTO) {
+
+        OrderRequest itemActualizar = orderRepository.findById(id).orElse(null);
+        Product producto = productRepository.findById(itemActualizar.getProduct().getId()).orElse(null);
+        double precioActualizado = 0;
+
+        if(itemActualizar == null) {
+            return new ResponseEntity<>("No encontrado", HttpStatus.FORBIDDEN);
+        }
+        if (addItemDTO.getUnits() != 0){
+            itemActualizar.setUnits(addItemDTO.getUnits());
+            precioActualizado = itemActualizar.getProduct().getPrice() * itemActualizar.getUnits();
+            itemActualizar.setPrice(precioActualizado);
+            assert producto != null;
+            producto.setUnits(producto.getUnits() - itemActualizar.getUnits());
+        }
+        productRepository.save(producto);
+        orderRepository.save(itemActualizar);
+
+        return new ResponseEntity<>("Cantidad del item actualizado", HttpStatus.CREATED);
+
+    }
+*/
 
 }

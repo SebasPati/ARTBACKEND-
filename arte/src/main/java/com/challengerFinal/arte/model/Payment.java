@@ -18,7 +18,7 @@ public class Payment {
     private String name;
 
     @ElementCollection
-    @Column(name = "payment")
+    @Column(name = "goodsReceipts")
     private List<Integer> payments = new ArrayList<>();
 
     @OneToMany (mappedBy="payment", fetch=FetchType.EAGER)
