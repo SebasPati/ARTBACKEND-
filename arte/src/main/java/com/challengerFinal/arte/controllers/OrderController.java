@@ -5,6 +5,7 @@ import com.challengerFinal.arte.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,18 +20,19 @@ public class OrderController {
     public List<OrderRequestDto> getOrderRequestsAll() {
         return orderService.getOrderRequestsAll();
     }
+    @Transactional
     @PostMapping("/addItemToCart")
     public ResponseEntity<Object> createOrder(
-            @RequestParam String nameProduct,
+            @RequestParam String name,
             @RequestParam int cant,
             Authentication authentication
     ) {
-        return orderService.createOrder(nameProduct, cant, authentication);
+        return orderService.createOrder(name, cant, authentication);
     }
 
     @DeleteMapping("/deleteItemFromCart/{id}")
     public ResponseEntity<Object> deleteItem(
-            @PathVariable("id")Long id){
+            @PathVariable("id") Long id){
         return orderService.deleteItem(id);
     }
 
