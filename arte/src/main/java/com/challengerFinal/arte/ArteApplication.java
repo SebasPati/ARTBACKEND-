@@ -88,12 +88,9 @@ public class ArteApplication implements CommandLineRunner {
 		System.out.println(orderRequest);
 		System.out.println(orderRequestDos);
 
-
-
 		List<Integer> paymentsDebitCard = List.of(1);
 		List<Integer> paymentsCreditCard = List.of(1, 3, 6,12,24,36);
 		List<Integer> paymentsCash = List.of(1);
-
 
 		Payment payment1 = new Payment("Cash",paymentsCash);
 		Payment payment2 = new Payment("Credit",paymentsCreditCard);

@@ -16,7 +16,8 @@ public class ShoppingCart {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "client")
     private Client client;
-    @OneToMany(mappedBy = "shoppingCart",fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "shoppingCart",
+            fetch = FetchType.EAGER)
     private Set <OrderRequest> orderRequest = new HashSet<>();
 
     @OneToMany(mappedBy="payment", fetch=FetchType.EAGER)
@@ -67,6 +68,16 @@ public class ShoppingCart {
 
     public void setGoodsReceipts(Set<GoodsReceipt> goodsReceipts) {
         this.goodsReceipts = goodsReceipts;
+    }
+
+    public void addGoodsReceipt(GoodsReceipt goodsReceipt){
+        goodsReceipt.setShoppingCart(this);
+        goodsReceipts.add(goodsReceipt);
+    }
+
+    public void addOrder(OrderRequest orderReques){
+        orderReques.setShoppingCart(this);
+        orderRequest.add(orderReques);
     }
 
     @Override

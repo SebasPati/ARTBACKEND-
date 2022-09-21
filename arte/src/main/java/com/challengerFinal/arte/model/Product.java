@@ -30,7 +30,9 @@ public class Product {
     @JoinColumn(name = "client")
     private Client client;
 
-
+    @OneToMany(mappedBy = "product",
+            fetch = FetchType.EAGER)
+    Set<OrderRequest> orderRequest = new HashSet<>();
 
     public Product() {
     }
@@ -138,6 +140,14 @@ public class Product {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public Set<OrderRequest> getOrderRequest() {
+        return orderRequest;
+    }
+
+    public void setOrderRequest(Set<OrderRequest> orderRequest) {
+        this.orderRequest = orderRequest;
     }
 
     @Override
