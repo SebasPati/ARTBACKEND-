@@ -11,7 +11,16 @@ createApp({
       categoriesFilter: [],
       categoriesSelect: [],
       nombre: "",
-      productsFilter:[]
+      productsFilter:[],
+      articuloCarrito:[],
+      elementosCarrito:[],
+      itemCarrito:{
+        id:0,
+        stock:0,
+        cantidad:0
+      },
+      cond:false,
+      cantidad:0
     }
   },
   created() {
@@ -86,6 +95,80 @@ createApp({
       this.productsFilter = products.filter(product =>
       (product.name.toLowerCase().includes(this.nombre.toLowerCase()) |  product.artistName.toLowerCase().includes(this.nombre.toLowerCase()) | product.artistLastName.toLowerCase().includes(this.nombre.toLowerCase())) );
     },
+    cantidadProducto(id){
+      this.articuloCarrito = JSON.parse(localStorage.getItem('articulos'))
+      let filter_repeated = this.articuloCarrito.filter(articulo => articulo.id == (id))
+      if (filter_repeated.length){
+        index = this.articuloCarrito.findIndex(articulo => articulo.id == id)
+        this.cantidad = this.articuloCarrito[index].cantidad
+      }else{
+        this.cantidad = 0
+      }
+    },
+    escuchadorCarrito(producto) {
+      console.log(producto);
+      console.log(this.cantidad);
+      this.articuloCarrito = JSON.parse(localStorage.getItem('articulos'))
+      this.itemCarrito.id = producto.id
+      this.itemCarrito.stock = producto.units
+      if (this.articuloCarrito != null) {
+        let filter_repeated = this.articuloCarrito.filter(articulo => articulo.id == (producto.id))
+
+        if (filter_repeated.length) {
+          this.itemCarrito.id = filter_repeated.id
+          this.itemCarrito.stock = filter_repeated.units
+          this.itemCarrito.cantidad = filter_repeated.cantidad
+          index = this.articuloCarrito.findIndex(articulo => articulo.id == producto.id)
+
+          if (this.articuloCarrito[index].cantidad < this.articuloCarrito[index].stock) {
+            this.articuloCarrito[index].cantidad += 1
+          }else{
+            console.log("no stock");
+          }
+        } else {
+          this.itemCarrito.cantidad = 1
+          this.cantidad = 1
+          this.articuloCarrito.push(this.itemCarrito)
+        }
+        console.log(this.articuloCarrito);
+        localStorage.setItem('articulos', JSON.stringify(this.articuloCarrito))
+      } else {
+        this.articuloCarrito = []
+        this.itemCarrito.cantidad = 1
+        this.articuloCarrito.push(this.itemCarrito)
+        this.cantidad = 1
+        console.log(this.articuloCarrito);
+        localStorage.setItem('articulos', JSON.stringify(this.articuloCarrito))
+        console.log(this.cantidad);
+      }
+      this.cond=true
+    },
+    sumarArticulo(idArticulo) {
+      this.articuloCarrito = JSON.parse(localStorage.getItem('articulos'))
+      console.log(this.articuloCarrito);
+      index = this.articuloCarrito.findIndex(articulo => articulo.id == idArticulo)
+      if ((this.articuloCarrito[index].cantidad + 1) <= this.articuloCarrito[index].stock) {
+        this.articuloCarrito[index].cantidad += 1
+        this.cantidad += 1
+      } else {
+        console.log("no");
+      }
+      localStorage.setItem('articulos', JSON.stringify(this.articuloCarrito))
+    },
+    restarArticulo(idArticulo) {
+      
+      this.articuloCarrito = JSON.parse(localStorage.getItem('articulos'))
+      index = this.articuloCarrito.findIndex(articulo => articulo.id == idArticulo)
+      if ((this.articuloCarrito[index].cantidad) > 1) {
+        this.articuloCarrito[index].cantidad -= 1
+        this.cantidad -= 1
+      } else {
+        this.articuloCarrito = this.articuloCarrito.filter(articulo => articulo.id != idArticulo)
+        this.cantidad = 0
+      }
+      localStorage.setItem('articulos', JSON.stringify(this.articuloCarrito))
+    },
+
   },
   computed:{
     buscador(){
@@ -99,6 +182,6 @@ createApp({
       if(this.nombre != ''){
         this.filtrarPorNombre(this.productsFilter)
       }
-    }
+    },
   }
 }).mount('#app')
