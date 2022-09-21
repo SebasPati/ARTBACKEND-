@@ -22,65 +22,39 @@
             class="min-h-screen bg-skin-normal aparecer2">
 
             <!-- HEADER CON NAV -->
-            <header class="">
+            <header>
 
-                <div ref="navbar" class="hidden opacity-0 glass1 md:flex justify-between w-screen p-2 fixed z-50 place-items-center">
-                    <!-- botones si el usuario es visitante -->
-                    <div v-show="user=='visitor'" class="flex items-center mr-6 ml-6">
-                        <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
-                            href="javascript:void(0);" @click="activeModal=true, modal='login', goTo='Store'">Log
-                            in</a>
-                        <div class="font-xs opacity-30 text-skin-base">|</div>
-                        <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);"
-                            data-modal-toggle="defaultModal"
-                            @click="activeModal=true, modal='register', goTo='Profile'">Sign in</a>
-                    </div>
-                    <!-- botones si el usuario está autenticado -->
-                    <div v-show="user=='authenticated'" class="flex items-center mr-6 ml-6">
-
-                        <img :src="profileImage" v-show="profileInfo.typeUser == 'CLIENT'" alt="" class="w-14 h-14  bg-cover bg-no-repeat rounded-full">
-                        <div class="font-xs opacity-30 text-skin-base">|</div>
-                        <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);"
-                            @click="logout">Logout</a>
-
-                        <a v-show="profileInfo.typeUser == 'ARTIST'" :href="'/web/artist/artistpage.html?id='+profileInfo.id"><img :src="profileImage" alt="" class="w-14 h-14  bg-cover bg-no-repeat rounded-full"></a>
-                        <button  class="boton1s w-24 h-14" @click="editPhoto" > upload photo</button>
-                        <div class="form-floating mb-3">
-                            <label for="avatar">Choose a image:</label>
-                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" @change="select_file">
-                        </div>
-
-                    </div>
+                <div ref="navbar"
+                    class="opacity-0 hidden md:flex justify-between w-screen p-2 fixed z-50 place-items-center">
 
                     <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
                         class="w-[3.5%] h-[3.5%] ml-4 aparecer transition-all ease-in-out duration-300" alt="logo">
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="#">Home</a>
+                                href="/index.html">Home</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
                                 href="/web/public/wallofartworks.html">Store</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="/web/artistandartlovers/artistpage.html">Artists</a>
+                                href="/web/public/wallofartist.html">Artists</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
                                 href="/web/public/shoppingcart.html">Shop cart</a>
                         </div>
-
+                        <div class="flex items-center mr-6 ml-6">
+                            <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
+                                href="javascript:void(0);">Log in</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
+                            <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
+                        </div>
                     </nav>
-                    <div class="w-1/2">
-                        <button class="boton1s" @click="theme(1)">TEMA 1</button>
-                        <button class="boton1s" @click="theme(2)">TEMA 2</button>
-                        <button class="boton1s" @click="theme(3)">TEMA 3</button>
-                        <button class="boton1s" @click="theme(4)">TEMA 4</button>
-                        <button class="boton1s" @click="theme(5)">TEMA 5</button>
-                        <button class="boton1s" @click="theme(6)">TEMA 6</button>
-                    </div>
+
                 </div>
 
             </header>
+
             <!-- NAV-BAR MOBILE -->
             <div class="self-start ml-16 mt-6 pb-3 fixed z-50">
                 <button id="dropdownRightButton" data-dropdown-toggle="dropdownRight" data-dropdown-placement="right"
@@ -159,68 +133,62 @@
                 </div>
             </header>
 
-      <!-- ANIMACIÓN INICIAL -->
-      <div class="mt-28 c-flex">
-        <img class="w-60" src="/web/assets/logo01L.png" alt="">
-        <section id="section">
+            <!-- ANIMACIÓN INICIAL -->
+            <div class="pt-28 c-flex">
+                <img class="w-60"
+                    :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02L.png' : '/web/assets/logo01L.png'"
+                    alt="">
+                <section id="section">
 
-          <!-- EL NACIMIENTO DE VENUS -->
-          <div class="nacimiento  overflow-hidden">
+                    <!-- EL NACIMIENTO DE VENUS -->
+                    <div class="nacimiento  overflow-hidden">
 
-            <!-- Flores -->
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat top-0 w-[60rem]  h-[60rem] z-[27] "
-              data-mod-y="2" data-mod-x="4"></div>
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat top-12 right-12 w-[60rem]  h-[60rem] z-[27]  rotate-45 left-96"
-              data-mod-y="2" data-mod-x="8"></div>
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[60rem]  h-[60rem] z-[27] rotate-90 right-96"
-              data-mod-y="2" data-mod-x="6"></div>
+                        <!-- Flores -->
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat top-0 w-[60rem]  h-[60rem] z-[27] "
+                            data-mod-y="2" data-mod-x="4"></div>
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat top-12 right-12 w-[60rem]  h-[60rem] z-[27]  rotate-45 left-96"
+                            data-mod-y="2" data-mod-x="8"></div>
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[60rem]  h-[60rem] z-[27] rotate-90 right-96"
+                            data-mod-y="2" data-mod-x="6"></div>
 
-            <!-- SUJETOS A LA IZQUIERDA -->
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/v03.png')] bg-contain bg-no-repeat -top-[4.5rem] -left-36  w-[45rem]  h-[45rem] z-[29] -translate-x-96"
-              data-mod-y="8" data-mod-x="10"></div>
+                        <!-- SUJETOS A LA IZQUIERDA -->
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v03.png')] bg-contain bg-no-repeat -top-[4.5rem] -left-36  w-[45rem]  h-[45rem] z-[29] -translate-x-96"
+                            data-mod-y="8" data-mod-x="10"></div>
 
-            <!-- VEEEEEEEENUS -->
-            <div
-              class="venus centro fixed bg-[url('/web/assets/index/Venusborn/v01.png')] bg-contain bg-no-repeat right-10 w-[60rem]  h-[60rem] z-[29] top-12"
-              data-mod-y="20" data-mod-x="0" scala="1.15"></div>
+                        <!-- VEEEEEEEENUS -->
+                        <div class="venus centro fixed bg-[url('/web/assets/index/Venusborn/v01.png')] bg-contain bg-no-repeat right-10 w-[60rem]  h-[60rem] z-[29] top-12"
+                            data-mod-y="20" data-mod-x="0" scala="1.15"></div>
 
-            <!-- NINFA A LA DERECHA -->
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/v04.png')] bg-contain bg-no-repeat -top-36 left-[70rem] w-[70rem]  h-[70rem] z-[28]"
-              data-mod-y="10" data-mod-x="-5"></div>
+                        <!-- NINFA A LA DERECHA -->
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v04.png')] bg-contain bg-no-repeat -top-36 left-[70rem] w-[70rem]  h-[70rem] z-[28]"
+                            data-mod-y="10" data-mod-x="-5"></div>
 
-            <!-- FLORES FRENTE -->
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[70rem]  h-[70rem] z-[30] blur-[1px] -rotate-45"
-              data-mod-y="4" data-mod-x="-25"></div>
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[150rem]  h-[150rem] z-[30] blur-[2px] left-[30rem] -top-[30rem] -rotate-45"
-              data-mod-y="6" data-mod-x="-60"></div>
-            <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[300rem]  h-[300rem] z-[30] blur-[6px] left-[5rem] bottom-3
+                        <!-- FLORES FRENTE -->
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[70rem]  h-[70rem] z-[30] blur-[1px] -rotate-45"
+                            data-mod-y="4" data-mod-x="-25"></div>
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[150rem]  h-[150rem] z-[30] blur-[2px] left-[30rem] -top-[30rem] -rotate-45"
+                            data-mod-y="6" data-mod-x="-60"></div>
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/v02.png')] bg-contain bg-no-repeat  w-[300rem]  h-[300rem] z-[30] blur-[6px] left-[5rem] bottom-3
                -rotate-90" data-mod-y="10" data-mod-x="-190"></div>
 
-            <!-- NIEBLA FRENTE -->
+                        <!-- NIEBLA FRENTE -->
 
-            <div
-              class="venus fixed bg-[url('/web/assets/index/Venusborn/niebla.png')] bg-contain bg-no-repeat  w-[130rem]  h-[130rem] z-[31] blur-[4px] -bottom-[90rem] right-[1rem]"
-              data-mod-y="-70" data-mod-x="10"></div>
+                        <div class="venus fixed bg-[url('/web/assets/index/Venusborn/niebla.png')] bg-contain bg-no-repeat  w-[130rem]  h-[130rem] z-[31] blur-[4px] -bottom-[90rem] right-[1rem]"
+                            data-mod-y="-70" data-mod-x="10"></div>
 
 
-          </div>
+                    </div>
 
-      </div>
-
+            </div>
 
             <!-- CUERPO -->
 
-            <main class=" pt-24">
+            <main class="contenedor">
+
+
+
                 <!-- SECTION Publicity -->
-                <section
-                    class=" text-skin-inverted c-flex flex-col md:h-screen  px-5 py-5 md:py-0 bg-skin-muted rounded-t-lg">
+                <section class=" text-skin-inverted c-flex flex-col md:h-screen py-5 md:py-0 bg-skin-muted">
                     <h2
                         class="title-font sm:text-4xl text-3xl  md:mb-14 font-medium text-white py-5 md:py-0 text-center">
                         The
@@ -232,6 +200,11 @@
 
                             <div
                                 class="bg-gray-400 h-[400px] w-[250px] md:h-[450px] md:w-[375px] bg-[url('https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center bg-no-repeat group-hover:scale-125 transition-all ease-in duration-300">
+                            </div>
+
+                            <div class="relative w-20 h-auto">
+                                <img src="/web/assets/est09s2.png"
+                                    class="absolute w-80 md:w-auto h-auto bottom-0 left-0 z-50 m-0" alt="">
                             </div>
                         </div>
                         <div class="flex flex-col justify-center items-center md:pl-10">
@@ -253,7 +226,43 @@
                             </div>
                         </div>
                     </div>
+
+
                 </section>
+
+
+                <!-- BANNER PUBLICITY -->
+                <section class="flex justify-around w-full h-[80vh] bg-skin-normal overflow-hidden">
+
+                    <div class="w-full h-full flex">
+
+                        <div class="overflow-hidden relative w-1/3 h-full border-r-4 border-skin-normal md:c-flex">
+                            <img class="bannerA relative md:min-w-[1322px] min-w-[1000px] h-auto md:bottom-[100px] bottom-40  "
+                                src="https://pro2-bar-s3-cdn-cf5.myportfolio.com/49837808-3263-4d2a-a921-3c23a3b02733/64d9f299-f1a5-46c2-a276-d6734cf23d71_rw_1920.jpg?h=8234f29f81b2503f6f9c24e9fe212c4b"
+                                alt="" data-mod-y="20">
+                        </div>
+
+                        <div class="overflow-hidden relative w-1/3 h-full c-flex border-x-8 border-skin-normal">
+                            <img class="bannerA relative md:min-w-[880px] min-w-[750px] h-auto -bottom-40 "
+                                src="https://i.etsystatic.com/13820090/r/il/5a453f/1063170828/il_fullxfull.1063170828_kqy0.jpg"
+                                data-mod-y="-30" alt="">
+                        </div>
+
+                        <div class="overflow-hidden relative w-1/3 h-full border-skin-normal md:c-flex">
+                            <img class="bannerA relative md:min-w-[1322px] min-w-[1000px] h-auto md:bottom-[100px] bottom-40 md:-left-[300px] -left-[700px] contrast-125"
+                                src="https://guerrerohistory.files.wordpress.com/2013/12/botticelli-birth-of-venus-detail.jpg"
+                                alt="" data-mod-y="20">
+                        </div>
+
+
+
+
+
+
+
+
+                </section>
+
 
                 <!-- SECTION publicity2 -->
                 <section class="bg-skin-base text-skin-base body-font rounded-b-lg">
@@ -560,137 +569,185 @@
                         </div>
                     </div>
                 </section>
-            </main>
-
-            <!-- FOOTER -->
-            <!-- bg-skin-disabled font-bahnschrift text-skin-base -->
-            <!-- FOOTER -->
-            <footer class="font-quicksand">
 
 
-                <div
-                    class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
+                <!-- FOOTER -->
+                <footer class="md:ml-40 font-quicksand">
+
+
+
                     <div
-                        class="w-64 flex-shrink-0 md:mx-0 mx-auto md:text-left md:mt-0 mt-10 flex items-center md:justify-start justify-center place-items-center content-center">
-                        <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02L.png' : '/web/assets/logo01L.png'"
-                            class="w-[60%] h-[60%] aparecer transition-all ease-in-out duration-1000" alt="logo">
+                        class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col overflow-hidden">
+                        <div
+                            class="w-64 flex-shrink-0 md:mx-0 mx-auto md:text-left md:mt-0 mt-10 flex items-center md:justify-start justify-center place-items-center content-center">
+                            <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02L.png' : '/web/assets/logo01L.png'"
+                                class="w-[60%] h-[60%] aparecer transition-all ease-in-out duration-1000 hover:filtro1"
+                                :class="tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? 'filtro2 hover:filtro1' : 'filtro1 hover:filtro2'"
+                                alt="logo">
+                        </div>
+
+
+                        <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
+                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                                <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">ART
+                                    GALLERIES AROUND THE
+                                    WORLD</h2>
+                                <nav class="list-none mb-10">
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://morettigallery.com/">Galleria Moretti</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://ariaartgallery.com/">Aria Art Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://www.florenceartgallery.com/">Florence Art Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://www.fornaciaiartgallery.com/">Fornaciai Art Gallery</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="http://www.galleriafaustini.it/site/en/">Galleria D'Arte Faustini</a>
+                                    </li>
+                                </nav>
+                            </div>
+                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                                <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">LIST
+                                    OF NGOS</h2>
+                                <nav class="list-none mb-10">
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://ngobridges.com/ngo?categories[]=3">Riga German Culture
+                                            Society</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://ngobridges.com/ngo?categories[]=3">Linking Foundation</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://ngobridges.com/ngo?categories[]=3">MTU Jazzon</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://ngobridges.com/ngo?categories[]=3">Island Panorama Center</a>
+                                    </li>
+                                </nav>
+                            </div>
+                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                                <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">LIST
+                                    OF AWARDS</h2>
+                                <nav class="list-none mb-10">
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://en.wikipedia.org/wiki/Leonardo_da_Vinci_World_Award_of_Arts">Leonardo
+                                            da Vinci World
+                                            Award of Arts</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://en.wikipedia.org/wiki/M%26C_Fine_Arts_Awards">M&C Fine Arts
+                                            Awards</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://en.wikipedia.org/wiki/Musgrave_Medal">Musgrave Medal</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://en.wikipedia.org/wiki/PIPA_Prize">PIPA Prize </a>
+                                    </li>
+                                </nav>
+                            </div>
+                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                                <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">ART
+                                    SCHOLARSHIPS AROUND
+                                    THE WORLD</h2>
+                                <nav class="list-none mb-10">
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://www.unsw.edu.au/arts-design-architecture/study-with-us/scholarships-and-prizes">Art
+                                            and design Scholarships @ UNSW</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://www.rmit.edu.au/students/careers-opportunities/scholarships">Art,
+                                            fashion and textiles
+                                            scholarships @ RMIT University </a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://finearts-music.unimelb.edu.au/study-with-us/scholarships">Fine
+                                            arts and music
+                                            scholarships</a>
+                                    </li>
+                                    <li>
+                                        <a class="text-skin-base text-opacity-60 hover:text-opacity-100"
+                                            href="https://www.krylon.com/community/krylon-clear-choice-art-scholarship/">Krylon
+                                            Clear Choice Art
+                                            Scholarship </a>
+                                    </li>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
-                    <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
-                        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES
-                            </h2>
-                            <nav class="list-none mb-10">
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                                </li>
-                            </nav>
+                    <div class="bg-skin-muted bg-opacity-20">
+                        <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row md:pl-20 pl-72">
+                            <p class="text-gray-500 text-sm text-center sm:text-left">© 2022 MindHub —
+                                <a href="https://twitter.com/knyttneve" rel="noopener noreferrer"
+                                    class="text-gray-600 ml-1" target="_blank">@knyttneve</a>
+                            </p>
+                            <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start filtro1">
+                                <a class="text-gray-500 hover:filtro2">
+                                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-gray-500 hover:filtro2">
+                                    <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path
+                                            d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
+                                        </path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-gray-500 hover:filtro2">
+                                    <svg fill="none" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                        <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
+                                    </svg>
+                                </a>
+                                <a class="ml-3 text-gray-500 hover:filtro2">
+                                    <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
+                                        stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
+                                        <path stroke="none"
+                                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
+                                        </path>
+                                        <circle cx="4" cy="4" r="2" stroke="none"></circle>
+                                    </svg>
+                                </a>
+                            </span>
+
                         </div>
-                        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES
-                            </h2>
-                            <nav class="list-none mb-10">
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                                </li>
-                            </nav>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES
-                            </h2>
-                            <nav class="list-none mb-10">
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                                </li>
-                            </nav>
-                        </div>
-                        <div class="lg:w-1/4 md:w-1/2 w-full px-4">
-                            <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">CATEGORIES
-                            </h2>
-                            <nav class="list-none mb-10">
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">First Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Second Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Third Link</a>
-                                </li>
-                                <li>
-                                    <a class="text-skin-base text-opacity-60 hover:text-opacity-100">Fourth Link</a>
-                                </li>
-                            </nav>
-                        </div>
+
                     </div>
+
+
+                </footer>
+
+                <div class="relative">
+                    <img src="/web/assets/est09s2.png" class="absolute w-80 md:w-60 h-auto bottom-0 left-0 z-20 m-0"
+                        alt="">
                 </div>
-                <div class="bg-skin-muted bg-opacity-20">
-                    <div class="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-                        <p class="text-gray-500 text-sm text-center sm:text-left">© 2022 MindHub —
-                            <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" class="text-gray-600 ml-1"
-                                target="_blank">@knyttneve</a>
-                        </p>
-                        <span class="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
-                            <a class="text-gray-500">
-                                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
-                                </svg>
-                            </a>
-                            <a class="ml-3 text-gray-500">
-                                <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path
-                                        d="M23 3a10.9 10.9 0 01-3.14 1.53 4.48 4.48 0 00-7.86 3v1A10.66 10.66 0 013 4s-4 9 5 13a11.64 11.64 0 01-7 2c9 5 20 0 20-11.5a4.5 4.5 0 00-.08-.83A7.72 7.72 0 0023 3z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a class="ml-3 text-gray-500">
-                                <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
-                                    stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
-                                    <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path>
-                                </svg>
-                            </a>
-                            <a class="ml-3 text-gray-500">
-                                <svg fill="currentColor" stroke="currentColor" stroke-linecap="round"
-                                    stroke-linejoin="round" stroke-width="0" class="w-5 h-5" viewBox="0 0 24 24">
-                                    <path stroke="none"
-                                        d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z">
-                                    </path>
-                                    <circle cx="4" cy="4" r="2" stroke="none"></circle>
-                                </svg>
-                            </a>
-                        </span>
-                    </div>
-                </div>
-            </footer>
+
+
+            </main>
 
 
 
