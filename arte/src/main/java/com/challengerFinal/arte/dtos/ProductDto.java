@@ -19,6 +19,12 @@ public class ProductDto {
     private LocalDate date;
     private Integer units;
 
+    private long artistId;
+
+    private String artistName;
+
+    private String artistLastName;
+
 
     public ProductDto(Product product) {
         this.id = product.getId();
@@ -31,8 +37,23 @@ public class ProductDto {
         this.status = product.getStatus();
         this.date = product.getDate();
         this.units = product.getUnits();
+        this.artistId = product.getClient().getId();
+        this.artistName = product.getClient().getName();
+        this.artistLastName = product.getClient().getLastName();
 
           }
+
+    public String getArtistName() {
+        return artistName;
+    }
+
+    public String getArtistLastName() {
+        return artistLastName;
+    }
+
+    public long getArtistId() {
+        return artistId;
+    }
 
     public String getCategory() {
         return category;

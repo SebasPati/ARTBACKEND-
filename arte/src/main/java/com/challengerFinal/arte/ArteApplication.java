@@ -94,6 +94,7 @@ public class ArteApplication implements CommandLineRunner {
 
 
 
+
 		//CLAU PRODUCTOS
 		Product art1= new Product("Angel in Fesccoes", "A painting of angels in heaven made by one of the most renowned artists up to that time. The texture of us canvas creates an unforgettable experience", "paint", 200000.00, true, LocalDate.now(), 2, List.of(20.00, 40.00), "https://media.istockphoto.com/photos/angel-in-frescoes-in-the-dome-of-brunelleschi-picture-id502278435?k=20&m=502278435&s=612x612&w=0&h=JZTuiLZ5RKPS5eZbK8f6IHxTTBVB-d4OMsFbYPuXsxU=", artist1);
 		Product art2= new Product("Adam Picture", "The Creation of Adam is a fresco on the vault of the Sistine Chapel, painted by Michael... the Tuscan artist, in which God gives life to Adam, the first man.", "paint", 56000.00, true, LocalDate.now(), 6, List.of(20.00, 40.00), "https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg=", artist1);
@@ -145,8 +146,46 @@ public class ArteApplication implements CommandLineRunner {
 		goodsReceiptService.saveGoodsReceipt(goodsReceiptOne);
 		System.out.println(goodsReceiptOne);
 //CLAU:
+		Client artist10= new Client("HEATHER", "ROONEY", "heatherrooney@art.com", passwordEncoder.encode("00"), TypeUser.ARTIST, 20, "https://i.pinimg.com/564x/0a/62/32/0a623223087d848e472f4e7a14b2a45c.jpg");
+		userGlobalRepository.save(artist10);
+		Client artist11= new Client("YIFAN", "ZHANG", "yiganzhang@art.com", passwordEncoder.encode("00"), TypeUser.ARTIST, 21, "https://i.pinimg.com/564x/46/cb/38/46cb3853959404f3c28189f477169751.jpg");
+		userGlobalRepository.save(artist11);
+		Client artist12= new Client("TOKIRA", "YAGAMOTO", "tokira@art.com", passwordEncoder.encode("00"), TypeUser.ARTIST, 22, "https://i.pinimg.com/564x/54/f6/e5/54f6e58e763cf6b5bdb4d1da4d6bc621.jpg");
+		userGlobalRepository.save(artist12);
 
 
 
+		Product art20= new Product("Michael Jackson", "handmade portrait with 2,4,6,8B pencils of the artist michael jackson, on high density paper", "draw", 10000.00, true, LocalDate.now(), 1, List.of(20.00, 40.00), "https://i.pinimg.com/564x/ec/a5/1d/eca51d40d6e0d974444f0499b41d59f1.jpg", artist10);
+		Product art21= new Product("Wild Lion", "handmade portrait with 2,4,6,8B pencils of wild lion in color, on high density paper", "draw", 3500.00, true, LocalDate.now(), 1, List.of(50.00, 30.00), "https://i.pinimg.com/originals/bb/20/9d/bb209d4affc02f195f1e5e369ebaca2c.jpg", artist10);
+		Product art22= new Product("The greatest comedians", "handmade portrait with 2,4,6,8B pencils of comedians in black and white, on high density paper", "draw", 1500.00, true, LocalDate.now(), 1, List.of(60.00, 10.00), "https://pbs.twimg.com/media/E3S4jFZWYAMhDsz.jpg:large", artist10);
+		Product art23= new Product("Rihanna", "handmade portrait with prismacolor colored pencils of the singer and songwriter Rihanna, on high density paper", "draw", 800.00, true, LocalDate.now(), 1, List.of(200.00, 100.00), "https://i.pinimg.com/originals/e7/7a/f2/e77af2a953963836e492454a782a8d65.jpg", artist10);
+		Product art24= new Product("Leonardo DiCaprio", "handmade portrait with prismacolor colored pencils of the actor and producer Leonardo DiCaprio, on high density paper", "draw", 7900.00, true, LocalDate.now(), 1, List.of(50.00, 90.00), "https://i.pinimg.com/736x/78/7c/66/787c663ec479b4539b42a7cc704e488b.jpg", artist10);
+		artworksService.saveArtworks(art20);
+		artworksService.saveArtworks(art21);
+		artworksService.saveArtworks(art22);
+		artworksService.saveArtworks(art23);
+		artworksService.saveArtworks(art24);
+
+		Product art25= new Product("Medici", "a colorful painting mixing Renaissance and contemporary art in oil on extra-large canvas", "paint", 10000.00, true, LocalDate.now(), 1, List.of(210.00, 50.00), "https://i.pinimg.com/564x/24/7d/55/247d557a02970f5a6914c775f0c7b972.jpg", artist11);
+		Product art26= new Product("Blue Line", "I thought my life was a tragedy, but now I know it is a comedy", "paint", 1200.00, true, LocalDate.now(), 1, List.of(20.00, 40.00), "https://i.pinimg.com/564x/53/77/de/5377de0a45b1ec3117326ccb4e36da13.jpg", artist11);
+		Product art27= new Product("Apolo", "the exemplification of beauty with modern touches in a medium oil on canvas", "paint", 34000.00, true, LocalDate.now(), 1, List.of(30.00, 30.00), "https://i.pinimg.com/564x/3c/71/1b/3c711becd64bea9663bafcc089d994fd.jpg", artist11);
+		Product art28= new Product("I don't Care", "make your own assumptions xd", "paint", 5600.00, true, LocalDate.now(), 1, List.of(40.00, 20.00), "https://i.pinimg.com/564x/03/9e/1e/039e1e33c6b30bc6c22a6a210a16fcc8.jpg", artist11);
+		Product art29= new Product("Marilyn", "the beauty of this world icon together with the beauty of a historical icon of art", "paint", 12300.00, true, LocalDate.now(), 1, List.of(50.00, 10.00), "https://i.pinimg.com/564x/8e/e1/1e/8ee11e8fa0a2e82b41cadacce445853d.jpg", artist11);
+		artworksService.saveArtworks(art25);
+		artworksService.saveArtworks(art26);
+		artworksService.saveArtworks(art27);
+		artworksService.saveArtworks(art28);
+		artworksService.saveArtworks(art29);
+
+		Product art30= new Product("Kanae", "male character smoking and playing guitar", "manga", 40.00, true, LocalDate.now(), 3, List.of(21.00, 34.00), "https://i.pinimg.com/564x/5f/3b/05/5f3b058d3411f37e7aa6b1f9fcc41e74.jpg", artist12);
+		Product art31= new Product("Nous", "bloodied male character from the famous anime tokyo ghoul", "manga", 120.00, true, LocalDate.now(), 4, List.of(120.00, 23.40), "https://i.pinimg.com/564x/ba/c9/aa/bac9aa56721beef3a87673fe832ca9ee.jpg", artist12);
+		Product art32= new Product("Aestethic Girl", "Give this gesture a name that could well mean many things", "manga", 300.00, true, LocalDate.now(), 1, List.of(23.00, 34.80), "https://i.pinimg.com/564x/d4/28/0d/d4280d078d43001a8ffcdd5833204ce5.jpg", artist12);
+		Product art33= new Product("Portgas D. Ace", "the famous brother of luffy and son of the pirate king in the one piece series", "manga", 230.00, true, LocalDate.now(), 6, List.of(50.00, 12.40), "https://i.pinimg.com/564x/69/ce/03/69ce03d90e4046030f38f5edefeb4f94.jpg", artist12);
+		Product art34= new Product("Eren Jaeger", "Hero or villain?, we still don't know", "manga", 56.00, true, LocalDate.now(), 9, List.of(80.00, 56.80), "https://i.pinimg.com/564x/17/b0/f2/17b0f2003e2c5e6c4f78cfe78785486b.jpg", artist12);
+		artworksService.saveArtworks(art30);
+		artworksService.saveArtworks(art31);
+		artworksService.saveArtworks(art32);
+		artworksService.saveArtworks(art33);
+		artworksService.saveArtworks(art34);
 	}
 }

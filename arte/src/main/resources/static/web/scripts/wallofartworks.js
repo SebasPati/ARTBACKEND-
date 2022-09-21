@@ -6,7 +6,12 @@ createApp({
       tema: '',
       activeModal: false,
       products: [],
-      productDetail: []
+      productDetail: [],
+      categories: [],
+      categoriesFilter: [],
+      categoriesSelect: [],
+      nombre: "",
+      productsFilter:[]
     }
   },
   created() {
@@ -24,7 +29,16 @@ createApp({
       axios.get('/api/products')
         .then((response) => {
           this.products = response.data
+          this.productsFilter = this.products
           console.log(this.products)
+          this.categories = this.products.map(product => product.category)
+          for(var i = 0; i < this.categories.length; i++) {
+            const elemento = this.categories[i];
+            if (!this.categoriesFilter.includes(this.categories[i])) {
+              this.categoriesFilter.push(elemento);
+            }
+          }
+          console.log(this.categoriesFilter);
           // this.ej = this.products[0]
           // console.log(this.products[0])
           // this.product1 = this.products.slice(0, 1)
@@ -68,5 +82,23 @@ createApp({
     function(number){
       return new Intl.NumberFormat('en-US', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(number);
     },
+    filtrarPorNombre(products){
+      this.productsFilter = products.filter(product =>
+      (product.name.toLowerCase().includes(this.nombre.toLowerCase()) |  product.artistName.toLowerCase().includes(this.nombre.toLowerCase()) | product.artistLastName.toLowerCase().includes(this.nombre.toLowerCase())) );
+    },
+  },
+  computed:{
+    buscador(){
+      if(this.categoriesSelect.length != 0){
+        this.productsFilter = this.products.filter(product =>{ 
+        return this.categoriesSelect.includes(product.category)})
+
+      }else{
+          this.productsFilter = this.products
+      }
+      if(this.nombre != ''){
+        this.filtrarPorNombre(this.productsFilter)
+      }
+    }
   }
 }).mount('#app')
