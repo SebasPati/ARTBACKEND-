@@ -1,5 +1,6 @@
 package com.challengerFinal.arte.controllers;
 
+import com.challengerFinal.arte.dtos.AddItemDTO;
 import com.challengerFinal.arte.dtos.OrderRequestDto;
 import com.challengerFinal.arte.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +35,11 @@ public class OrderController {
     public ResponseEntity<Object> deleteItem(
             @PathVariable("id") Long id){
         return orderService.deleteItem(id);
+    }
+    @PatchMapping("/update/items/{id}")
+    public ResponseEntity<Object> addItem(@RequestBody AddItemDTO addItemDTO,
+                                          @PathVariable ("id") Long id){
+        return orderService.addItem(id, addItemDTO);
     }
 
 }

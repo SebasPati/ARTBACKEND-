@@ -54,76 +54,73 @@ public class OrderImplement implements OrderService {
                                               int cant,
                                               Authentication authentication) {
 
-        Client clientConected=clientRepository.findByEmail(authentication.getName());
-        Product product= productRepository.findByName(nameProduct);
-        ShoppingCart shoppingCartNow = shoppingCartRepository.findByClient(clientConected);
+        Client clientConnected=clientRepository.findByEmail(authentication.getName());
+        Product addProduct= productRepository.findByName(nameProduct);
+        ShoppingCart shoppingCartNow = shoppingCartRepository.findByClientAndActive(clientConnected,true);
 
         if (shoppingCartNow == null){
             return new ResponseEntity<>("No existe el carrito", HttpStatus.FORBIDDEN);
         }
-
         if (nameProduct.isEmpty() || cant==0) {
             return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
         }
-
-        if (product ==  null) {
+        if (addProduct ==  null) {
             return new ResponseEntity<>("No vendemos ese producto", HttpStatus.FORBIDDEN);
         }
-
-        if (product.getUnits() <  cant) {
+        if (addProduct.getUnits() <  cant) {
             return new ResponseEntity<>("No hay suficiente stock para ese pedido", HttpStatus.FORBIDDEN);
         }
 
-        //Crear PurchaseOrder
-        OrderRequest order=new OrderRequest(product,LocalDate.now(),StatePedido.CONFIRMED,product.getPrice()*cant,cant,shoppingCartNow);
+        //Crear Order
+        OrderRequest order=new OrderRequest(
+                addProduct,
+                LocalDate.now(),
+                StatePedido.CONFIRMED,
+                addProduct.getPrice()*cant,
+                cant,
+                shoppingCartNow);
         orderRepository.save(order);
 
-        int stock = product.getUnits() - cant;
-        product.setUnits(stock);
-        productRepository.save(product);
-
-
+        int stock = addProduct.getUnits() - cant;
+        addProduct.setUnits(stock);
+        productRepository.save(addProduct);
 
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
     @Override
     public ResponseEntity<Object> deleteItem(Long id) {
-        OrderRequest toitemDelete = orderRepository.findById(id).orElse(null);
-        if (toitemDelete == null) {
+        OrderRequest toItemDelete = orderRepository.findById(id).orElse(null);
+        if (toItemDelete == null) {
 
             return new ResponseEntity<>(
                     "El item no está en el carrito",
                     HttpStatus.FORBIDDEN);
         }
 
-        orderRepository.deleteById(toitemDelete.getId());
+        orderRepository.deleteById(toItemDelete.getId());
 
         return new ResponseEntity<>("Item removed from cart", HttpStatus.OK);
     }
 
-    /*@Override
+    @Override
     public ResponseEntity<Object> addItem(Long id, AddItemDTO addItemDTO) {
-
-        OrderRequest itemActualizar = orderRepository.findById(id).orElse(null);
-        Product producto = productRepository.findById(itemActualizar.getProduct().getId()).orElse(null);
+        OrderRequest itemActualize = orderRepository.findById(id).orElse(null);
+        Product product = productRepository.findById(itemActualize.getProduct().getId()).orElse(null);
         double precioActualizado = 0;
 
-        if(itemActualizar == null) {
-            return new ResponseEntity<>("No encontrado", HttpStatus.FORBIDDEN);
-        }
         if (addItemDTO.getUnits() != 0){
-            itemActualizar.setUnits(addItemDTO.getUnits());
-            precioActualizado = itemActualizar.getProduct().getPrice() * itemActualizar.getUnits();
-            itemActualizar.setPrice(precioActualizado);
-            assert producto != null;
-            producto.setUnits(producto.getUnits() - itemActualizar.getUnits());
+            itemActualize.setUnits(addItemDTO.getUnits());
+            precioActualizado = itemActualize.getProduct().getPrice() * itemActualize.getUnits();
+            itemActualize.setPrice(precioActualizado);
+            assert product != null;
+            product.setUnits(product.getUnits() - itemActualize.getUnits());
         }
-        productRepository.save(producto);
-        orderRepository.save(itemActualizar);
+        assert product != null;
+        productRepository.save(product);
+        orderRepository.save(itemActualize);
 
         return new ResponseEntity<>("Cantidad del item actualizado", HttpStatus.CREATED);
-
     }
-*/
+
 
 }
