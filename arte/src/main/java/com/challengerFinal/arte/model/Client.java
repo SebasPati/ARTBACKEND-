@@ -32,6 +32,10 @@ public class Client {
             mappedBy = "client",
             fetch = FetchType.EAGER)
     private Set<Product> products = new HashSet<>();
+    @OneToMany(
+            mappedBy = "client",
+            fetch = FetchType.EAGER)
+    private Set<ShoppingCart> client = new HashSet<>();
 
     public Client() {
     }

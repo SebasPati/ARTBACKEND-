@@ -18,10 +18,11 @@ public class ShoppingCart {
     private Client client;
     @OneToMany(mappedBy = "shoppingCart",
             fetch = FetchType.EAGER)
-    private Set <OrderRequest> orderRequest = new HashSet<>();
+    Set <OrderRequest> orderRequest = new HashSet<>();
 
-    @OneToMany(mappedBy="payment", fetch=FetchType.EAGER)
-    private Set<GoodsReceipt> goodsReceipts = new HashSet<>();
+    @OneToMany(mappedBy= "shoppingCart",
+            fetch=FetchType.EAGER)
+    Set<GoodsReceipt> goodsReceipts = new HashSet<>();
 
     public ShoppingCart() {
     }
@@ -35,8 +36,6 @@ public class ShoppingCart {
     public Long getId() {
         return id;
     }
-
-
 
     public boolean isActive() {
         return active;

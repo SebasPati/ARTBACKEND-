@@ -2,15 +2,9 @@ package com.challengerFinal.arte.service.implement;
 
 import com.challengerFinal.arte.dtos.AddItemDTO;
 import com.challengerFinal.arte.dtos.OrderRequestDto;
-import com.challengerFinal.arte.model.Client;
-import com.challengerFinal.arte.model.OrderRequest;
-import com.challengerFinal.arte.model.Product;
-import com.challengerFinal.arte.model.ShoppingCart;
+import com.challengerFinal.arte.model.*;
 import com.challengerFinal.arte.model.enums.StatePedido;
-import com.challengerFinal.arte.repositories.ClientRepository;
-import com.challengerFinal.arte.repositories.OrderRepository;
-import com.challengerFinal.arte.repositories.ProductRepository;
-import com.challengerFinal.arte.repositories.ShoppingCartRepository;
+import com.challengerFinal.arte.repositories.*;
 import com.challengerFinal.arte.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -56,7 +50,7 @@ public class OrderImplement implements OrderService {
 
         Client clientConnected=clientRepository.findByEmail(authentication.getName());
         Product addProduct= productRepository.findByName(nameProduct);
-        ShoppingCart shoppingCartNow = shoppingCartRepository.findByClientAndActive(clientConnected,true);
+        ShoppingCart shoppingCartNow = shoppingCartRepository.findByClient(clientConnected);
 
         if (shoppingCartNow == null){
             return new ResponseEntity<>("No existe el carrito", HttpStatus.FORBIDDEN);

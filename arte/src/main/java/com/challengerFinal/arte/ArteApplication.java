@@ -4,7 +4,6 @@ import com.challengerFinal.arte.model.*;
 import com.challengerFinal.arte.model.enums.StatePedido;
 import com.challengerFinal.arte.model.enums.TypeUser;
 import com.challengerFinal.arte.repositories.ClientRepository;
-import com.challengerFinal.arte.repositories.CompradorRepository;
 import com.challengerFinal.arte.repositories.PaymentRepository;
 import com.challengerFinal.arte.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,7 +37,7 @@ public class ArteApplication implements CommandLineRunner {
 	@Autowired
 	PaymentRepository paymentRepository;
 	@Autowired
-	CompradorRepository compradorRepository;
+	ClientRepository compradorRepository;
 	@Autowired
 	PasswordEncoder passwordEncoder;
 
@@ -51,8 +50,7 @@ public class ArteApplication implements CommandLineRunner {
 		Client artist = new Client("Juan","Da vinci","don Bot","juda2@goto.com","3124523424",passwordEncoder.encode("654"),TypeUser.ARTIST,"cerca de la casa",0,"image/jpeg",socialNetwords);
 		Client admin = new Client("Juan","Da vinci","juda3@goto.com",passwordEncoder.encode("654"),TypeUser.ADMIN,0,"image/jpeg");
 
-		Comprador comprador = new Comprador("Juan","Da vinci","comprador@goto.com","ag",passwordEncoder.encode("654"));
-		compradorRepository.save(comprador);
+
 		userGlobalRepository.save(client);
 		userGlobalRepository.save(artist);
 		userGlobalRepository.save(admin);
@@ -64,10 +62,10 @@ public class ArteApplication implements CommandLineRunner {
 		String image = "image/jpeg";
 
 
-		ShoppingCart shoppingCart = new ShoppingCart(comprador);
-		ShoppingCart shoppingCartDos = new ShoppingCart(comprador);
-		ShoppingCart shoppingCartTres = new ShoppingCart(comprador);
-		ShoppingCart shoppingCartCuster = new ShoppingCart(comprador);
+		ShoppingCart shoppingCart = new ShoppingCart(client);
+		ShoppingCart shoppingCartDos = new ShoppingCart(client);
+		ShoppingCart shoppingCartTres = new ShoppingCart(client);
+		ShoppingCart shoppingCartCuster = new ShoppingCart(client);
 		shoppingCartService.saveShoppingCard(shoppingCart);
 		shoppingCartService.saveShoppingCard(shoppingCartDos);
 		shoppingCartService.saveShoppingCard(shoppingCartTres);
