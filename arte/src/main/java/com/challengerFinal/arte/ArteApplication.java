@@ -4,6 +4,7 @@ import com.challengerFinal.arte.model.*;
 import com.challengerFinal.arte.model.enums.StatePedido;
 import com.challengerFinal.arte.model.enums.TypeUser;
 import com.challengerFinal.arte.repositories.ClientRepository;
+import com.challengerFinal.arte.repositories.CompradorRepository;
 import com.challengerFinal.arte.repositories.PaymentRepository;
 import com.challengerFinal.arte.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +38,8 @@ public class ArteApplication implements CommandLineRunner {
 	@Autowired
 	PaymentRepository paymentRepository;
 	@Autowired
+	CompradorRepository compradorRepository;
+	@Autowired
 	PasswordEncoder passwordEncoder;
 
 	@Override
@@ -48,7 +51,8 @@ public class ArteApplication implements CommandLineRunner {
 		Client artist = new Client("Juan","Da vinci","don Bot","juda2@goto.com","3124523424",passwordEncoder.encode("654"),TypeUser.ARTIST,"cerca de la casa",0,"image/jpeg",socialNetwords);
 		Client admin = new Client("Juan","Da vinci","juda3@goto.com",passwordEncoder.encode("654"),TypeUser.ADMIN,0,"image/jpeg");
 
-
+		Comprador comprador = new Comprador("Juan","Da vinci","comprador@goto.com","ag",passwordEncoder.encode("654"));
+		compradorRepository.save(comprador);
 		userGlobalRepository.save(client);
 		userGlobalRepository.save(artist);
 		userGlobalRepository.save(admin);
@@ -60,10 +64,10 @@ public class ArteApplication implements CommandLineRunner {
 		String image = "image/jpeg";
 
 
-		ShoppingCart shoppingCart = new ShoppingCart(client);
-		ShoppingCart shoppingCartDos = new ShoppingCart(client);
-		ShoppingCart shoppingCartTres = new ShoppingCart(client);
-		ShoppingCart shoppingCartCuster = new ShoppingCart(client);
+		ShoppingCart shoppingCart = new ShoppingCart(comprador);
+		ShoppingCart shoppingCartDos = new ShoppingCart(comprador);
+		ShoppingCart shoppingCartTres = new ShoppingCart(comprador);
+		ShoppingCart shoppingCartCuster = new ShoppingCart(comprador);
 		shoppingCartService.saveShoppingCard(shoppingCart);
 		shoppingCartService.saveShoppingCard(shoppingCartDos);
 		shoppingCartService.saveShoppingCard(shoppingCartTres);
@@ -108,6 +112,7 @@ public class ArteApplication implements CommandLineRunner {
 		Product art10= new Product("Robotic Coronation", "Metal sculpture, a robot with a crown of polished spikes. Created 3000 years ago and cared for until then by the descendants of the creator.", "sculpture", 630.00, true, LocalDate.now(), 3, List.of(70.00, 80.00), "https://i.pinimg.com/originals/a9/90/5e/a9905eded97106bd2300dd873a213f48.jpg", artist2);
 		Product art6= new Product("Michelangelo Spirit", "Marble sculpture by Michelangelo David. Exported from the United States.", "sculpture", 8000.00, true, LocalDate.now(), 3, List.of(300.00, 40.00), "https://i.pinimg.com/originals/f8/49/bf/f849bfd7cc2da33e949a1f5cd9db71a6.png", artist2);
 		Product art5= new Product("Venus", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, true, LocalDate.now(), 1, List.of(40.00, 40.00), "https://i.pinimg.com/736x/a8/36/fd/a836fdf1ba811157586054afffff3074.jpg", artist2);
+		Product pru= new Product("uno", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, 1);
 
 		artworksService.saveArtworks(art1);
 		artworksService.saveArtworks(art2);
@@ -121,6 +126,8 @@ public class ArteApplication implements CommandLineRunner {
 		artworksService.saveArtworks(art10);
 		artworksService.saveArtworks(art11);
 		artworksService.saveArtworks(art12);
+		artworksService.saveArtworks(pru);
+
 
 
 		OrderRequest orderRequest = new OrderRequest(art1,LocalDate.now(), StatePedido.CONFIRMED,234.4,12,shoppingCart);

@@ -21,8 +21,8 @@ public class Payment {
     @Column(name = "goodsReceipts")
     private List<Integer> payments = new ArrayList<>();
 
-    @OneToMany (mappedBy="payment", fetch=FetchType.EAGER)
-    Set<GoodsReceipt> invoices = new HashSet<>();
+    @OneToMany (mappedBy= "payment", fetch=FetchType.EAGER)
+    Set<GoodsReceipt> goodsReceipts = new HashSet<>();
 
     public Payment() {
     }
@@ -59,12 +59,12 @@ public class Payment {
         this.payments = payments;
     }
 
-    public Set<GoodsReceipt> getInvoices() {
-        return invoices;
+    public Set<GoodsReceipt> getGoodsReceipts() {
+        return goodsReceipts;
     }
 
-    public void setInvoices(Set<GoodsReceipt> invoices) {
-        this.invoices = invoices;
+    public void setGoodsReceipts(Set<GoodsReceipt> goodsReceipts) {
+        this.goodsReceipts = goodsReceipts;
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Payment {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", payments=" + payments +
-                ", invoices=" + invoices +
+                ", goodsReceipts=" + goodsReceipts +
                 '}';
     }
 }

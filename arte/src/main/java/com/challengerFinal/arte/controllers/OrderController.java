@@ -21,13 +21,12 @@ public class OrderController {
     public List<OrderRequestDto> getOrderRequestsAll() {
         return orderService.getOrderRequestsAll();
     }
-    @Transactional
+
     @PostMapping("/addItemToCart")
     public ResponseEntity<Object> createOrder(
             @RequestParam String name,
             @RequestParam int cant,
-            Authentication authentication
-    ) {
+            Authentication authentication) {
         return orderService.createOrder(name, cant, authentication);
     }
 

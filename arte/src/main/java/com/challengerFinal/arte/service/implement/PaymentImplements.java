@@ -117,7 +117,7 @@ public class PaymentImplements implements PaymentService {
             return new ResponseEntity<>("Does not exist", HttpStatus.FORBIDDEN);
         }
         //Primero borrar el asociado:
-        Set<GoodsReceipt> invoicesList = paymentDelete.getInvoices();
+        Set<GoodsReceipt> invoicesList = paymentDelete.getGoodsReceipts();
         goodsReceiptRepository.deleteAll(invoicesList);
         paymentRepository.deleteById(paymentDelete.getId());
 

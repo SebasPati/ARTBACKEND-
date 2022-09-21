@@ -17,7 +17,7 @@ public class GoodsReceipt {
     private Integer payments;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "shoppingCart_id")
+    @JoinColumn(name = "shoppingCart")
     private ShoppingCart shoppingCart;
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -27,12 +27,12 @@ public class GoodsReceipt {
     public GoodsReceipt() {
     }
 
-    public GoodsReceipt(Double totalPrice, Boolean status, LocalDate date, Integer units, ShoppingCart shoppingCart, Payment payment) {
+    public GoodsReceipt(Double totalPrice, Boolean status, LocalDate date, Integer payments, ShoppingCart goodsReceipts, Payment payment) {
         this.totalPrice = totalPrice;
         this.status = status;
         this.date = date;
-        this.payments = units;
-        this.shoppingCart = shoppingCart;
+        this.payments = payments;
+        this.shoppingCart = goodsReceipts;
         this.payment = payment;
     }
 
@@ -40,9 +40,6 @@ public class GoodsReceipt {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Double getTotalPrice() {
         return totalPrice;
@@ -101,7 +98,7 @@ public class GoodsReceipt {
                 ", date=" + date +
                 ", payments=" + payments +
                 ", shoppingCart=" + shoppingCart +
-                ", goodsReceipts=" + payment +
+                ", payment=" + payment +
                 '}';
     }
 }
