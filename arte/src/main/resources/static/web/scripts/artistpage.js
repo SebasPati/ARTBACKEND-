@@ -31,6 +31,7 @@ const app = Vue.createApp({
                 units: 0,
             },
             Product: {},
+            file:[]
         }
     },
     created() {
@@ -78,14 +79,14 @@ const app = Vue.createApp({
                 "description" : this.formEdit.description,
                 "category" : this.formEdit.category,
                 "dimensionsList" : [this.formEdit.width,this.formEdit.large,this.formEdit.height],
-                "image": "https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg=",
+                "image": "",
                 "price" : this.formEdit.price,
                 "status": true,
                 "units" : this.formEdit.units
             })
             .then(response => {
                 console.log("ok");
-                location.reload()
+                this.fileUpdate(product)
             }).catch(error => {
                 console.log(error);
             })
@@ -97,16 +98,47 @@ const app = Vue.createApp({
                 "description" : this.formLoad.description,
                 "category" : this.formLoad.category,
                 "dimensionsList" : [this.formLoad.large,this.formLoad.width,this.formLoad.height],
-                "image": "https://media.istockphoto.com/photos/adam-picture-id92879541?k=20&m=92879541&s=612x612&w=0&h=Q-Lfu2NI1dwrROrmXkYzke66tVTaWrwMbHBEgJZeJVg=",
+                "image": "",
                 "price" : this.formLoad.price,
                 "status": true,
                 "units" : this.formLoad.units
             }).then(response => {
-                location.reload()
+                let productUpdate = []
+                const urlParams = new URLSearchParams(window.location.search);
+                const Id = urlParams.get('id');
+                axios.get(`/api/clients/${Id}`)
+                .then(response => {
+                    this.artist = response.data
+                    console.log(this.artist)
+                    this.products = this.artist.products
+                    console.log(this.products);
+                    productUpdate = this.products.filter(product => product.name == this.formLoad.name)
+                    console.log(productUpdate[0]);
+                    this.fileUpdate(productUpdate[0])
+                })
+                
             }).catch(error => {
                 console.log(error);
             })
-        }
+        },
+        fileUpdate(product){
+            let formData = new FormData()
+            let idProduct = product.id
+            formData.append("files", this.file)
+            formData.append("idProduct", idProduct)
+            axios.post('/api/files/upload/product',
+                formData,
+                { headers: { 'content-type': 'multipart/form-data' } })
+                .then(response => {
+                    location.reload()
+                })
+                .catch(error => alert(error.response.data))
+        },
+        select_file(event) {
+            this.file = event.target.files[0]
+            console.log(this.file)
+        },
+        
     },
     computed: {
     }

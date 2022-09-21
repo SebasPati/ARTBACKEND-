@@ -114,7 +114,7 @@
               </div>
               <div class="form-floating mb-3">
                 <label for="avatar">Choose a image:</label>
-                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+                <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" @change="select_file">
               </div>
               <div class="form-floating mb-3">
                 <h3>Dimensions:</h3>
@@ -155,7 +155,7 @@
             </div>
             <div class="form-floating mb-3">
               <label for="avatar">Choose a image:</label>
-              <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg">
+              <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" @change="select_file">
             </div>
             <div class="form-floating mb-3">
               <h3>Dimensions:</h3>
