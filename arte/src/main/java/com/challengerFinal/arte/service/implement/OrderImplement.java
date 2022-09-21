@@ -17,6 +17,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -47,45 +48,7 @@ public class OrderImplement implements OrderService {
         return orderRepository.save(orderRequest);
     }
 
-    /*@Override
-    public ResponseEntity<Object> createOrder(String nameProduct, int cant, Authentication authentication) {
-        Client clientConected = clientRepository.findByEmail(authentication.getName());
-        Product requestedProduct = productRepository.findByName(nameProduct);
-        ShoppingCart shoppingCart = shoppingCartRepository.findByClientAndActive(clientConected,true);
-        //ShoppingCart shoppingCart = new ShoppingCart(clientConected);
 
-        if (shoppingCart == null) {
-            return new ResponseEntity<>("Esribir aquí una nota"+shoppingCart,HttpStatus.FORBIDDEN);
-        }
-        if (nameProduct.isEmpty() || cant==0) {
-            return new ResponseEntity<>("Missing data", HttpStatus.FORBIDDEN);
-        }
-
-        if (requestedProduct ==  null) {
-            return new ResponseEntity<>("We do not sell this product", HttpStatus.FORBIDDEN);
-        }
-
-        if (requestedProduct.getUnits() <  cant) {
-            return new ResponseEntity<>("There is not enough stock for this order", HttpStatus.FORBIDDEN);
-        }
-        //Creamos la order de pedido del product.
-        OrderRequest orderRequest = new OrderRequest(
-                requestedProduct,
-                LocalDate.now(),
-                StatePedido.CONFIRMED,
-                ((requestedProduct.getPrice()*1.010) * cant),
-                cant,shoppingCart);
-        orderRepository.save(orderRequest);
-
-        int currentUnits = requestedProduct.getUnits()  - cant;
-        requestedProduct.setUnits(currentUnits);
-        productRepository.save(requestedProduct);
-
-        return new ResponseEntity<>(
-                "Request created",
-                HttpStatus.CREATED);
-    }
-*/
     @Override
     public ResponseEntity<Object> createOrder(String nameProduct,
                                               int cant,

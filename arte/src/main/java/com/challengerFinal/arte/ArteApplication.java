@@ -59,9 +59,10 @@ public class ArteApplication implements CommandLineRunner {
 		List<Double> dimensions = List.of(12.5,24.6,36.5);
 		String image = "image/jpeg";
 
-			Product product1 = new Product("lisa","lorem Ipsum","categoría",232.2,true,LocalDate.now(),12,dimensions,image,artist);
+		Product product1 = new Product("lisa","lorem Ipsum","categoría",232.2,true,LocalDate.now(),12,dimensions,image,artist);
 		artworksService.saveArtworks(product1);
 		Product product2 = new Product("Mona","lorem Ipsum",dimensions,"category",artist);
+
 		artworksService.saveArtworks(product2);
 		System.out.println(product1);
 		System.out.println(product2);
