@@ -1,10 +1,7 @@
 package com.challengerFinal.arte.config;
 
 import com.challengerFinal.arte.model.Client;
-import com.challengerFinal.arte.model.Comprador;
-import com.challengerFinal.arte.model.enums.TypeUser;
 import com.challengerFinal.arte.repositories.ClientRepository;
-import com.challengerFinal.arte.repositories.CompradorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,23 +16,20 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 public class AuthenticationSettings  extends GlobalAuthenticationConfigurerAdapter {
     @Autowired
     ClientRepository clientService;
-    @Autowired
-    CompradorRepository compradorRepository;
 
     public void init(AuthenticationManagerBuilder authenticationUser) throws Exception {
 
         authenticationUser.userDetailsService(inputName ->{
 
 
-            //Client client = clientService.findByEmail(inputName);
-            Comprador comprador = compradorRepository.findByEmail(inputName);
+            Client client = clientService.findByEmail(inputName);
 
-            if (comprador != null ) {
-                if (comprador.getEmail().contains("@admin") || comprador.getEmail().contains("@admin")) {
-                    return new User(comprador.getEmail(),comprador.getPassword(),
+            if (client != null ) {
+                if (client.getEmail().contains("@admin")) {
+                    return new User(client.getEmail(),client.getPassword(),
                             AuthorityUtils.createAuthorityList("ADMIN"));
                 }else {
-                    return new User(comprador.getEmail(),comprador.getPassword(),
+                    return new User(client.getEmail(),client.getPassword(),
                             AuthorityUtils.commaSeparatedStringToAuthorityList("CLIENT,ARTIST"));
                 }
             }else{
