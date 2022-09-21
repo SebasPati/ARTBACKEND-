@@ -45,14 +45,6 @@ public class Product {
         this.client = client;
     }
 
-    public Product(String name, String description, String category, Double price, Integer units) {
-        this.name = name;
-        this.description = description;
-        this.category = category;
-        this.price = price;
-        this.units = units;
-    }
-
     public Product(String name, String description, String category, Double price, Boolean status, LocalDate date, Integer units, List<Double> dimensionsList, String image, Client client) {
         this.name = name;
         this.description = description;

@@ -110,7 +110,6 @@ public class ArteApplication implements CommandLineRunner {
 		Product art10= new Product("Robotic Coronation", "Metal sculpture, a robot with a crown of polished spikes. Created 3000 years ago and cared for until then by the descendants of the creator.", "sculpture", 630.00, true, LocalDate.now(), 3, List.of(70.00, 80.00), "https://i.pinimg.com/originals/a9/90/5e/a9905eded97106bd2300dd873a213f48.jpg", artist2);
 		Product art6= new Product("Michelangelo Spirit", "Marble sculpture by Michelangelo David. Exported from the United States.", "sculpture", 8000.00, true, LocalDate.now(), 3, List.of(300.00, 40.00), "https://i.pinimg.com/originals/f8/49/bf/f849bfd7cc2da33e949a1f5cd9db71a6.png", artist2);
 		Product art5= new Product("Venus", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, true, LocalDate.now(), 1, List.of(40.00, 40.00), "https://i.pinimg.com/736x/a8/36/fd/a836fdf1ba811157586054afffff3074.jpg", artist2);
-		Product pru= new Product("uno", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, 1);
 
 		artworksService.saveArtworks(art1);
 		artworksService.saveArtworks(art2);
@@ -124,9 +123,6 @@ public class ArteApplication implements CommandLineRunner {
 		artworksService.saveArtworks(art10);
 		artworksService.saveArtworks(art11);
 		artworksService.saveArtworks(art12);
-		artworksService.saveArtworks(pru);
-
-
 
 		OrderRequest orderRequest = new OrderRequest(art1,LocalDate.now(), StatePedido.CONFIRMED,234.4,12,shoppingCart);
 		OrderRequest orderRequestDos = new OrderRequest(art1,LocalDate.now(), StatePedido.CONFIRMED,25343.3,12,shoppingCart);
