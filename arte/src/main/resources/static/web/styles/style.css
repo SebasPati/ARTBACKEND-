@@ -27,7 +27,18 @@ body{
         --color-button-disabled: 214, 226, 223;
         --opacity: 100;
         --david: url("/web/assets/david03a.png");
-/*         --header-percentage-grad: 88%; */
+        --invert1: 21%; 
+        --sepia1: 84%;
+        --saturate1: 628%; 
+        --hue1: 127deg;
+        --brightness1: 97%;
+        --contrast1: 101%;
+        --invert2: 85%; 
+        --sepia2: 45%;
+        --saturate2: 483%; 
+        --hue2: 95deg;
+        --brightness2: 108%;
+        --contrast2: 106%;
     }
 
     .theme2 {
@@ -43,6 +54,18 @@ body{
         --color-button-muted: 75, 128, 118;
         --color-button-disabled: 196, 158, 100;
         --david: url("/web/assets/david03b.png");
+        --invert1: 4%; 
+        --sepia1: 69%;
+        --saturate1: 5265%; 
+        --hue1: 43deg;
+        --brightness1: 127%;
+        --contrast1: 114%;
+        --invert2: 82%; 
+        --sepia2: 25%;
+        --saturate2: 4785%; 
+        --hue2: 310deg;
+        --brightness2: 100%;
+        --contrast2: 102%;
     }
 
     .theme3 {
@@ -58,6 +81,18 @@ body{
         --color-button-muted: 209, 125, 0;
         --color-button-disabled: 103, 191, 208;
         --david: url("/web/assets/david03c.png");
+        --invert1: 10%; 
+        --sepia1: 13%;
+        --saturate1: 3461%; 
+        --hue1: 145deg;
+        --brightness1: 97%;
+        --contrast1: 103%;
+        --invert2: 75%; 
+        --sepia2: 91%;
+        --saturate2: 419%; 
+        --hue2: 164deg;
+        --brightness2: 104%;
+        --contrast2: 101%;
     }
 
     .theme4 {
@@ -73,12 +108,24 @@ body{
         --color-button-muted: 91, 120, 115;
         --color-button-disabled: 113, 123, 120;
         --david: url("/web/assets/david03a.png");
+        --invert1: 100%; 
+        --sepia1: 55%;
+        --saturate1: 1548%; 
+        --hue1: 176deg;
+        --brightness1: 104%;
+        --contrast1: 107%;
+        --invert2: 32%; 
+        --sepia2: 16%;
+        --saturate2: 3608%; 
+        --hue2: 128deg;
+        --brightness2: 90%;
+        --contrast2: 99%;
     }
     
     .theme5 {
         --color-text-base: 255, 248, 246;
         --color-text-inverted: 32, 6, 0;
-        --color-text-inverted-accent: 123, 27, 0;
+        --color-text-inverted-accent: 173, 87, 0;
         --color-text-muted: 134, 209, 198;
         --color-text-accent: 227, 221, 219;
         --color-normal: 18, 18, 18;
@@ -88,6 +135,18 @@ body{
         --color-button-muted: 13, 155, 129;
         --color-button-disabled: 164, 137, 96;
         --david: url("/web/assets/david03b.png");
+        --invert1: 100%; 
+        --sepia1: 30%;
+        --saturate1: 754%; 
+        --hue1: 340deg;
+        --brightness1: 104%;
+        --contrast1: 112%;
+        --invert2: 37%; 
+        --sepia2: 27%;
+        --saturate2: 2307%; 
+        --hue2: 360deg;
+        --brightness2: 97%;
+        --contrast2: 104%;
     }
 
     .theme6 {
@@ -99,15 +158,32 @@ body{
         --color-normal: 18, 18, 18;
         --color-cuasi-normal: 12, 12, 12;
         --color-button-base: 0, 177, 211;
-        --color-button-accent: 255, 56, 189;
+        --color-button-asccent: 255, 56, 189;
         --color-button-muted: 165, 127, 70;
         --color-button-disabled: 131, 171, 180;
         --david: url("/web/assets/david03c.png");
+        --invert1: 99%; 
+        --sepia1: 20%;
+        --saturate1: 1176%; 
+        --hue1: 172deg;
+        --brightness1: 100%;
+        --contrast1: 105%;
+        --invert2: 26%; 
+        --sepia2: 16%;
+        --saturate2: 3528%; 
+        --hue2: 147deg;
+        --brightness2: 93%;
+        --contrast2: 97%;
     }
 
-    .filter1b{
-        filter: invert(85%) sepia(45%) saturate(483%) hue-rotate(95deg) brightness(108%) contrast(106%);
+    .filtro1{
+        filter: invert(var(--invert1)) sepia(var(--sepia1)) saturate(var(--saturate1)) hue-rotate(var(--hue1)) brightness(var(--brightness1)) contrast(var(--contrast1));
     }
+
+    .filtro2{
+        filter: invert(var(--invert2)) sepia(var(--sepia2)) saturate(var(--saturate2)) hue-rotate(var(--hue2)) brightness(var(--brightness2)) contrast(var(--contrast2));
+    }
+
 }
 
 /* VARIABLES AUXILIARES SOLO PARA VER COLORES PREVIO A APLICARLOS ARRIBA */
@@ -173,7 +249,7 @@ body{
 .color_theme5 {
     --color-text-base: rgb(255, 248, 246);
     --color-text-inverted: rgb(32, 6, 0);
-    --color-text-inverted-accent: rgb(123, 27, 0);
+    --color-text-inverted-accent: rgb(173, 87, 0);
     --color-text-muted: rgb(134, 209, 198);
     --color-text-accent: rgb(227, 221, 219);
     --color-normal: rgb(18, 18, 18);
@@ -267,6 +343,10 @@ body{
 
 .toscuro{
     @apply w-12 h-12 m-1 text-center bg-gray-800 rounded-full shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-muted),0.4)] transition-all ease-in duration-300;
+}
+
+.botonredondo{
+    @apply w-12 h-12 text-4xl text-center text-skin-base rounded-2xl hover:text-skin-inverted hover:rounded-full  hover:bg-skin-accent ease-in duration-300 shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-accent),0.4)];
 }
 
 
@@ -386,11 +466,10 @@ body{
 }
 
 .backHeaderGallery{
-    background-image: linear-gradient(0deg, rgba(255,252,255,0) 0%, rgba(255,255,255,0) 68%, rgba(var(--color-normal),1) 82%), var(--david);
-    background-size:100%, 32%;
+    background-image: var(--david);
+    background-size:32%;
     background-repeat: no-repeat;
-    background-position: 100% 0%, 95% 90%;
-    background-attachment: fixed, scroll;
+    background-position: bottom -8px right 1px;;
 }
 
 /* FILTROS DE COLORES PARA ÍCONOS */
@@ -399,8 +478,8 @@ body{
     filter: invert(21%) sepia(84%) saturate(628%) hue-rotate(127deg) brightness(97%) contrast(101%);
 }
 
-.filter1{
-    @apply filter1a group-hover:filter1b;
+.filter1b{
+    filter: invert(85%) sepia(45%) saturate(483%) hue-rotate(95deg) brightness(108%) contrast(106%);
 }
 
 .filter2a{
@@ -432,7 +511,7 @@ body{
 }
 
 .filter5b{
-    filter: invert(13%) sepia(80%) saturate(2784%) hue-rotate(7deg) brightness(93%) contrast(104%);
+    filter: invert(37%) sepia(27%) saturate(2307%) hue-rotate(360deg) brightness(97%) contrast(104%);;
 }
 
 .filter6a{

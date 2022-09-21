@@ -50,6 +50,16 @@ module.exports = {
           inverted: withOpacity('--color-text-base')
          }
       },
+      boxShadowColor:{
+        skin:{
+          normal: withOpacity('--color-normal'),
+          base: withOpacity('--color-button-base'),
+          accent: withOpacity('--color-button-accent'),
+          muted: withOpacity('--color-button-muted'),
+          disabled: withOpacity('--color-button-disabled'),
+          inverted: withOpacity('--color-text-base')
+        }
+      },
       fontFamily: {
         bahnschrift : ['Bahnschrift','sans-serif'],
         quicksand: ['Quicksand','sans-serif'],

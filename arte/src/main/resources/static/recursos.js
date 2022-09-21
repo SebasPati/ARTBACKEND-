@@ -72,7 +72,7 @@ document.querySelectorAll('.venus').forEach(element => {
    const venus = basicScroll.create({
         elem:element,
         from: 300,
-        to: 2700,
+        to: 3300,
         direct: true,
         props:{
             '--translateX':{
