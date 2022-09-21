@@ -24,7 +24,7 @@ const app = Vue.createApp({
             mjeError: "",
             termsOfServiceChecked: "",
             userType: '',
-            user: "visitor",
+            user: '',
             artists: [],
             arrayArtists1: [],
             arrayArtists2: [],
@@ -43,16 +43,22 @@ const app = Vue.createApp({
             bestArtist: {},
             profileInfo: "",
             profileImage: "",
+            file: ''
         }
     },
     created() {
         this.initialTheme();
         this.getClients();
         this.getProducts();
-
-
+        this.initialTheme();
+        this.getClients();
+        this.getProducts();
+        this.getCurrentClient();
+        /* localStorage.setItem("user","visitor"); */
     },
     mounted() {
+        this.addClassY('navbar', 2700, 'glass1', 'opacity-0');
+        this.changethemesY();
     },
     methods: {
         theme(a) {
@@ -93,20 +99,17 @@ const app = Vue.createApp({
 
                     })
             }
-
-
         },
         loginAccount(e) {
-            e.preventDefault()/* window.location.href = "/web/public/wallofartist.html" */
+            e.preventDefault()
             console.log(this.login)
             axios.post(`/api/login?email=${this.login.email}&password=${this.login.password}`)
                 .then((response) => {
-                    this.user = "authenticated"
-
                     this.modalSimple = true
                     this.activeModal = false
                     this.getCurrentClient()
-
+                    localStorage.setItem("user", "authenticated")
+                    this.user = localStorage.getItem("user")
                 }).catch((error) => {
                     this.mjeError = 'Wrong email or password'
                     console.log(error)
@@ -114,6 +117,8 @@ const app = Vue.createApp({
         },
         logout() {
             axios.post('/api/logout').then((response) => this.user = "visitor")
+            localStorage.setItem("user", "visitor")
+            this.user = localStorage.getItem("user")
         },
         getClients() {
             axios.get('api/clients')
@@ -162,6 +167,10 @@ const app = Vue.createApp({
                     this.profileInfo = response.data
                     this.profileImage = this.profileInfo.image
                     console.log(this.profileImage)
+                    this.user = localStorage.getItem("user")
+                })
+                .catch((error)=>{
+                    localStorage.setItem("user","visitor")
                 })
         },
         modifyProductSelected(item) {
@@ -174,8 +183,100 @@ const app = Vue.createApp({
             }
             selectUnits.innerHTML = child
 
+        },
+        addClassY(ref, yTrigger, classToAdd, classToRemove) {
+            const element = eval(`this.$refs.${ref}`);
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > yTrigger) {
+                    element.classList.add(classToAdd);
+                    element.classList.remove(classToRemove);
+                } else {
+                    element.classList.remove(classToAdd);
+                    element.classList.add(classToRemove);
+                }
+            })
+        },
+        changethemesY() {
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 200 && window.scrollY < 400) {
+                    this.theme(1);
+                } else if (window.scrollY > 400 && window.scrollY < 1050) {
+                    this.theme(4);
+                } else if (window.scrollY > 1050 && window.scrollY < 1200) {
+                    this.theme(3);
+                }
+            })
+        },
+        select_file(event) {
+            this.file = event.target.files[0]
+            console.log(this.file)
+        },
+        editPhoto(e){
+            e.preventDefault(); 
+            let formData = new FormData()
+            formData.append("files", this.file)
+            axios.post('/api/files/upload/client',
+                formData,
+                { headers: { 'content-type': 'multipart/form-data' } })
+                .then(response => {
+                    location.reload()
+                })
+                .catch(error => alert(error.response.data))    
         }
     },
     computed: {
     }
 }).mount('#app')
+
+/* Para Nacimiento de Venus */
+document.querySelectorAll('.venus').forEach(element => {
+    const modx = element.getAttribute('data-mod-x');
+    const mody = element.getAttribute('data-mod-y');
+    const scala = element.getAttribute('scala');
+
+    const venus = basicScroll.create({
+        elem: element,
+        from: 300,
+        to: 3300,
+        direct: true,
+        props: {
+            '--translateX': {
+                from: '0',
+                to: `${10 * modx}px`
+            },
+            '--translateY': {
+                from: '0',
+                to: `${10 * mody}px`
+            },
+            '--scala': {
+                from: '1',
+                to: `${1 * scala}`
+            }
+        }
+    }).start();
+});
+
+/* Para bienvenida a la página */
+var section = document.querySelector('#section');
+window.addEventListener('scroll', function () {
+    var value = window.scrollY;
+    section.style.clipPath = "circle(" + value + "px at center)"
+})
+
+/* Para publicidad A */
+document.querySelectorAll('.bannerA').forEach(element => {
+    const bannerAy = element.getAttribute('data-mod-y');
+    console.log(bannerAy);
+    const bannerA = basicScroll.create({
+        elem: element,
+        from: 'top-middle',
+        to: 'bottom-middle',
+        direct: true,
+        props: {
+            '--bannerA-translateY': {
+                from: '0',
+                to: `${10 * bannerAy}px`
+            }
+        }
+    }).start();
+});

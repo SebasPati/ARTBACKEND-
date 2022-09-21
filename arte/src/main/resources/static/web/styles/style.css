@@ -184,6 +184,11 @@ body{
         filter: invert(var(--invert2)) sepia(var(--sepia2)) saturate(var(--saturate2)) hue-rotate(var(--hue2)) brightness(var(--brightness2)) contrast(var(--contrast2));
     }
 
+    /* ESTILOS POSICIÓN */
+
+    .c-flex{
+    @apply flex items-center justify-center content-center place-items-center;
+}
 }
 
 /* VARIABLES AUXILIARES SOLO PARA VER COLORES PREVIO A APLICARLOS ARRIBA */
@@ -284,13 +289,6 @@ body{
 /* ACCIÓN AL SCROLLEAR */
 
 
-
-/* ESTILOS POSICIÓN */
-
-.c-flex {
-    @apply flex items-center justify-center content-center place-items-center;
-}
-
 /* BOTONES */
 
 .boton0 {
@@ -368,7 +366,6 @@ body{
     position: relative;
     margin-top:  350vh;
     background: #fff;
-    padding: 100px;
 }
 .h2{
     display: flex;
@@ -410,18 +407,10 @@ body{
     will-change: opacity;
 }
 
-.box {
-    width: 5em;
-    height: 5em;
-    background: linear-gradient(135deg, #3cdddd, #ff1ac6);
-    transform: translateX(var(--tx)) rotate(var(--r));
-    transition: transform .1s linear;
-    will-change: transform;
- }
-
-
-
-
+.bannerA{
+    transform: translateY(var(--bannerA-translateY));
+	will-change: transform;
+}
 
 /* OTROS ESTILOS PROPIOS */
 
