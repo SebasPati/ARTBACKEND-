@@ -4,8 +4,9 @@ createApp({
     return {
       user: 'visitor',
       tema: '',
-      prueba: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-      activeModal: false
+      activeModal: false,
+      products: [],
+      productDetail: []
     }
   },
   created() {
@@ -13,9 +14,10 @@ createApp({
     this.getProducts();
     this.initialTheme();
     console.log(this.user);
+    this.currency = this.function
   },
   mounted(){
-    this.addClassY('navbar', 50, 'glass1', '');
+    this.addClassY('navbar', 50, 'glass1', 'A');
   },
   methods: {
     getProducts() {
@@ -23,18 +25,18 @@ createApp({
         .then((response) => {
           this.products = response.data
           console.log(this.products)
-          this.ej = this.products[0]
-          console.log(this.products[0])
-          this.product1 = this.products.slice(0, 1)
-          this.galleryImage1 = this.product1[0].image
-          /* de los productos, traerme un array con cada nombre de cada productos*/
-          this.arrayDeImagenes = this.products.map((product) => product.image)
-          this.img1 = bg - [url('${this.arrayDeImagenes[0]}')]
-          this.img2 = bg - [url('${this.arrayDeImagenes[1]}')]
-          this.img3 = bg - [url('${this.arrayDeImagenes[2]}')]
-          this.img4 = bg - [url('${this.arrayDeImagenes[3]}')]
-          this.img5 = bg - [url('${this.arrayDeImagenes[4]}')]
-          this.img6 = bg - [url('${this.arrayDeImagenes[5]}')]
+          // this.ej = this.products[0]
+          // console.log(this.products[0])
+          // this.product1 = this.products.slice(0, 1)
+          // this.galleryImage1 = this.product1[0].image
+          // /* de los productos, traerme un array con cada nombre de cada productos*/
+          // this.arrayDeImagenes = this.products.map((product) => product.image)
+          // this.img1 = bg - [url('${this.arrayDeImagenes[0]}')]
+          // this.img2 = bg - [url('${this.arrayDeImagenes[1]}')]
+          // this.img3 = bg - [url('${this.arrayDeImagenes[2]}')]
+          // this.img4 = bg - [url('${this.arrayDeImagenes[3]}')]
+          // this.img5 = bg - [url('${this.arrayDeImagenes[4]}')]
+          // this.img6 = bg - [url('${this.arrayDeImagenes[5]}')]
         })
         .catch((error) => console.log(error))
     },
@@ -62,6 +64,9 @@ createApp({
           element.classList.add(classToRemove);
         }
       })
-    }
+    },
+    function(number){
+      return new Intl.NumberFormat('en-US', {style: 'currency',currency: 'USD', minimumFractionDigits: 2}).format(number);
+    },
   }
 }).mount('#app')

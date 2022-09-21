@@ -59,14 +59,6 @@ public class ArteApplication implements CommandLineRunner {
 		List<Double> dimensions = List.of(12.5,24.6,36.5);
 		String image = "image/jpeg";
 
-		Product product1 = new Product("lisa","lorem Ipsum","categoría",232.2,true,LocalDate.now(),12,dimensions,image,artist);
-		artworksService.saveArtworks(product1);
-		Product product2 = new Product("Mona","lorem Ipsum",dimensions,"category",artist);
-
-		artworksService.saveArtworks(product2);
-		System.out.println(product1);
-		System.out.println(product2);
-
 
 		ShoppingCart shoppingCart = new ShoppingCart(client);
 		ShoppingCart shoppingCartDos = new ShoppingCart(client);
@@ -80,30 +72,6 @@ public class ArteApplication implements CommandLineRunner {
 		System.out.println(shoppingCartDos);
 		System.out.println(shoppingCartTres);
 		System.out.println(shoppingCartCuster);
-
-		OrderRequest orderRequest = new OrderRequest(product1,LocalDate.now(), StatePedido.CONFIRMED,234.4,12,shoppingCart);
-		OrderRequest orderRequestDos = new OrderRequest(product1,LocalDate.now(), StatePedido.CONFIRMED,25343.3,12,shoppingCart);
-		orderService.saveRequest(orderRequest);
-		orderService.saveRequest(orderRequestDos);
-		System.out.println(orderRequest);
-		System.out.println(orderRequestDos);
-
-		List<Integer> paymentsDebitCard = List.of(1);
-		List<Integer> paymentsCreditCard = List.of(1, 3, 6,12,24,36);
-		List<Integer> paymentsCash = List.of(1);
-
-		Payment payment1 = new Payment("Cash",paymentsCash);
-		Payment payment2 = new Payment("Credit",paymentsCreditCard);
-		Payment payment3 = new Payment("Debit",paymentsDebitCard);
-
-		paymentRepository.save(payment1);
-		paymentRepository.save(payment2);
-		paymentRepository.save(payment3);
-
-		GoodsReceipt goodsReceiptOne = new GoodsReceipt((orderRequest.getPrice()*1.010)*12,true,LocalDate.now(),12,shoppingCart,payment1);
-		goodsReceiptService.saveGoodsReceipt(goodsReceiptOne);
-		System.out.println(goodsReceiptOne);
-//CLAU:
 		//CLAU:
 		Client artist1 = new Client("Rosalia", "Ferrando", "roasliaferrando@art.com", passwordEncoder.encode("00"), TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/selfemployed-painter-looking-at-the-camera-cheerfully-picture-id1364209752?k=20&m=1364209752&s=612x612&w=0&h=yH-XL4ga0E7ixxn-KHexzIC5wWoBdTAX-q6NsHLOOcA=");
 		Client artist2= new Client("Francisco José", "Manzanares", "franciscojose@art.com", passwordEncoder.encode("00"), TypeUser.ARTIST, 1, "https://media.istockphoto.com/photos/portrait-of-young-dark-haired-concentrated-caucasian-white-male-with-picture-id1333064056?k=20&m=1333064056&s=612x612&w=0&h=WIBoskVGacXKcFocqymTxwzntfZx2PieiJR3Zptes8w=");
@@ -139,7 +107,7 @@ public class ArteApplication implements CommandLineRunner {
 		Product art10= new Product("Robotic Coronation", "Metal sculpture, a robot with a crown of polished spikes. Created 3000 years ago and cared for until then by the descendants of the creator.", "sculpture", 630.00, true, LocalDate.now(), 3, List.of(70.00, 80.00), "https://i.pinimg.com/originals/a9/90/5e/a9905eded97106bd2300dd873a213f48.jpg", artist2);
 		Product art6= new Product("Michelangelo Spirit", "Marble sculpture by Michelangelo David. Exported from the United States.", "sculpture", 8000.00, true, LocalDate.now(), 3, List.of(300.00, 40.00), "https://i.pinimg.com/originals/f8/49/bf/f849bfd7cc2da33e949a1f5cd9db71a6.png", artist2);
 		Product art5= new Product("Venus", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, true, LocalDate.now(), 1, List.of(40.00, 40.00), "https://i.pinimg.com/736x/a8/36/fd/a836fdf1ba811157586054afffff3074.jpg", artist2);
-		Product art78= new Product("Prob", "Imagine Lion Studio Venus resin statue in stock gold version collection", "sculpture", 6000000.00, true, LocalDate.now(), 1, List.of(40.00, 40.00), "https://i.pinimg.com/736x/a8/36/fd/a836fdf1ba811157586054afffff3074.jpg", artist2);
+
 		artworksService.saveArtworks(art1);
 		artworksService.saveArtworks(art2);
 		artworksService.saveArtworks(art3);
@@ -152,7 +120,32 @@ public class ArteApplication implements CommandLineRunner {
 		artworksService.saveArtworks(art10);
 		artworksService.saveArtworks(art11);
 		artworksService.saveArtworks(art12);
-		artworksService.saveArtworks(art78);
+
+
+		OrderRequest orderRequest = new OrderRequest(art1,LocalDate.now(), StatePedido.CONFIRMED,234.4,12,shoppingCart);
+		OrderRequest orderRequestDos = new OrderRequest(art1,LocalDate.now(), StatePedido.CONFIRMED,25343.3,12,shoppingCart);
+		orderService.saveRequest(orderRequest);
+		orderService.saveRequest(orderRequestDos);
+		System.out.println(orderRequest);
+		System.out.println(orderRequestDos);
+
+		List<Integer> paymentsDebitCard = List.of(1);
+		List<Integer> paymentsCreditCard = List.of(1, 3, 6,12,24,36);
+		List<Integer> paymentsCash = List.of(1);
+
+		Payment payment1 = new Payment("Cash",paymentsCash);
+		Payment payment2 = new Payment("Credit",paymentsCreditCard);
+		Payment payment3 = new Payment("Debit",paymentsDebitCard);
+
+		paymentRepository.save(payment1);
+		paymentRepository.save(payment2);
+		paymentRepository.save(payment3);
+
+		GoodsReceipt goodsReceiptOne = new GoodsReceipt((orderRequest.getPrice()*1.010)*12,true,LocalDate.now(),12,shoppingCart,payment1);
+		goodsReceiptService.saveGoodsReceipt(goodsReceiptOne);
+		System.out.println(goodsReceiptOne);
+//CLAU:
+
 
 
 	}

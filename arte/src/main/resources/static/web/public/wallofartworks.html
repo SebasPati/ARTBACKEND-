@@ -122,7 +122,7 @@
           class="m-5 block overflow-hidden rounded-t-2xl rounded-b-3xl md:flex md:w-4/5 md:h-2/3 aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.05)]">
           <div class="overflow-hidden c-flex aspect-card1 w-full  border-y-4 border-skin-muted bg-skin-cuasi-normal bg-opacity-70 border-opacity-100">
 
-            <img alt="venus" src="https://www.purina-latam.com/sites/g/files/auxxlc391/files/styles/social_share_large/public/Purina%C2%AE%20Como%20disciplinar%20a%20tu%20gato.jpg"
+            <img alt="venus" :src="productDetail.image"
               class="saturate-[.9] hover:saturate-100 transition-all ease-in duration-300" />
 
           </div>
@@ -130,20 +130,19 @@
           <div
             class="flex flex-col md:justify-around  p-5 md:p-8 bg-skin-inverted bg-opacity-[.85] w-full h-96 md:h-full transition-all ease-in-out duration-1000">
             <h5 class="text-center text-lg font-bahnschrift text-skin-inverted-accent">
-              EL NACIMIENTO DE VENUS
+              {{productDetail.name}}
             </h5>
 
             <p
               class="text-center text-sm font-quicksand   text-skin-inverted text-opacity-70 py-3">
-              Pintura - 36cm x 87cm</p>
+              Pintura - {{productDetail.dimensionsList[0]}}cm {{productDetail.dimensionsList[1]}}cm</p>
 
             <p class="text-justify py-3 font-quicksand text-skin-inverted text-opacity-90">
-              Descripción, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
-              aliquid accusamus? Sint, sequi voluptas.
+              {{productDetail.description}}
             </p>
 
             <p class="ml-2 text-center font-bold font-quicksand text-skin-inverted ">
-              PRICE: $50,000 </p>
+              PRICE: {{currency(productDetail.price)}} </p>
 
             <!-- SEPARADOR -->
             <img class="antialiased place-sel-center scale-[0.4] mt-2  transition-all ease-in-out duration-1000 filtro2 opacity-90"
@@ -235,12 +234,12 @@
 
 
           <!-- CARD OBRA DE ARTE -->
-          <div v-for="algo in prueba" href="#"
+          <div v-for="product in products" href="#"
             class="group m-5 block overflow-hidden rounded-t-2xl rounded-b-3xl md:w-[300px] aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.05)]">
             <div
               class="overflow-hidden aspect-card1 w-full border-b-[6px]  border-skin-muted border-opacity-60 group-hover:border-opacity-100">
 
-              <img alt="venus" src="https://i.pinimg.com/originals/bb/1d/57/bb1d571d7d778dae41451727fbfa808f.jpg"
+              <img alt="venus" :src="product.image"
                 class="saturate-[.9] hover:saturate-100 group-hover:scale-125 transition-all ease-in duration-300" />
 
             </div>
@@ -248,7 +247,7 @@
             <div
               class="flex flex-col p-5 bg-skin-normal group-hover:bg-skin-inverted w-full h-96 transition-all ease-in-out duration-1000">
               <h5 class="text-center text-lg font-bahnschrift text-skin-accent group-hover:text-skin-inverted-accent">
-                EL NACIMIENTO DE VENUS
+                {{product.name}}
               </h5>
 
               <!--          <p
@@ -257,8 +256,7 @@
 
               <p
                 class="text-justify mt-3 text-xs font-quicksand text-skin-base group-hover:text-skin-inverted text-opacity-90">
-                Descripción, Lorem ipsum dolor sit amet consectetur, adipisicing elit. Rerum nobis
-                aliquid accusamus? Sint, sequi voluptas.
+                {{product.description}}
               </p>
 
               <!-- SEPARADOR -->
@@ -276,7 +274,7 @@
 
                 <p
                   class="ml-2 text-skin-base font-bold text-xs font-quicksand text-opacity-70 group-hover:text-skin-inverted group-hover:text-opacity-100">
-                  PRICE: $50,000 </p>
+                  PRICE: {{currency(product.price)}} </p>
 
                 <div class="flex">
                   <button
@@ -292,7 +290,7 @@
 
                   <button
                     class="text-skin-base bg-skin-normal p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-br-xl hover:rounded-tr-xl  hover:rounded-br-none ease-in duration-300 hover:filtro2"
-                    @click="activeModal=true">DETAILS</button>
+                    @click="activeModal=true,productDetail = product">DETAILS</button>
 
                 </div>
 
