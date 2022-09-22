@@ -29,7 +29,7 @@
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="/index.html">Home</a>
+                                href="/main.html">Home</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
                                 href="/web/public/wallofartworks.html">Store</a>
@@ -69,8 +69,8 @@
                 <div class=" flex justify-center mt-11">
                     <p class=" text-3xl text-skin-accent">Shopping Cart</p>
                 </div>
-                <div class=" flex justify-around border-b-4 md:w-[75%] w-[100%] ml-12 mt-11 md:p-5" v-for="product in carProducts">
-                    <div class=" flex flex-row justify-evenly">
+                <div class=" md:flex md:flex-row justify-around border-b-4 md:w-[75%] w-[100%] ml-12 mt-11 md:p-5" v-for="product in carProducts">
+                    <div class=" md:flex md:flex-row justify-evenly">
                         <div class=" flex items-center m-3">
                             <button @click="eliminarArticulo(product.id)"><i
                                     class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
@@ -78,19 +78,17 @@
                         <div class=" flex items-center">
                             <img alt="Lava"
                                 :src="product.image"
-                                class="w-36 h-36 shadow-xl rounded-xl" />
+                                class="w-36 h-36 shadow-xl rounded-md" />
                         </div>
                         
                         <div class=" flex flex-col items-center pt-12 m-4">
                             <p class=" text-lg text-skin-muted"> 🎨 {{product.name}}</p>
                         </div>
-                        <div class="flex justify-center w-[25%]">
-                            <p class="text-lg text-skin-muted">{{product.description}}</p>
-                        </div>
+                       
                     </div>
                     <div class=" flex flex-col items-start pt-10">
-                        <p class=" text-skin-muted md:text-2xl">Unit: {{currency(product.price)}}</p>
-                        <p class=" text-skin-muted md:text-2xl">Subtotal: {{currency(product.price*product.cantidad)}}</p>
+                        <p class=" text-skin-muted font-bold">Unit: {{currency(product.price)}}</p>
+                        <p class=" text-skin-muted font-bold ">Subtotal: {{currency(product.price*product.cantidad)}}</p>
                         <div class=" flex flex-row mt-4">
                             <div class="flex items-center pr-1">
                                 <button @click="restarArticulo(product.id)"
@@ -113,7 +111,7 @@
                 </div>
                 <div class=" m-5 flex justify-center flex-row">
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
-                        <button href="/web/public/wallofartworks.html" class="boton1s w-24 h-14">CONTINUE SHOPPING</button>
+                        <button class="boton1s w-24 h-14"> <a href="/web/public/wallofartworks.html" >CONTINUE SHOPPING</a> </button>
                     </div>
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
                         <button class="boton1s w-24 h-14">PAY</button>
