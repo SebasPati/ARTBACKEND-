@@ -3,6 +3,8 @@ package com.challengerFinal.arte;
 import com.challengerFinal.arte.model.*;
 import com.challengerFinal.arte.model.enums.StatePedido;
 import com.challengerFinal.arte.model.enums.TypeUser;
+import com.challengerFinal.arte.service.PaymentServiceMP;
+import com.challengerFinal.arte.dtos.ItemDTO;
 import com.challengerFinal.arte.repositories.ClientRepository;
 import com.challengerFinal.arte.repositories.PaymentRepository;
 import com.challengerFinal.arte.service.*;
@@ -10,9 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.List;
 
 @SpringBootApplication
@@ -40,6 +44,7 @@ public class ArteApplication implements CommandLineRunner {
 	ClientRepository compradorRepository;
 	@Autowired
 	PasswordEncoder passwordEncoder;
+	PaymentServiceMP paymentServiceMP;
 
 	@Override
 	public void run(String... args) throws Exception {
@@ -188,5 +193,24 @@ public class ArteApplication implements CommandLineRunner {
 		artworksService.saveArtworks(art32);
 		artworksService.saveArtworks(art33);
 		artworksService.saveArtworks(art34);
+
+
+		////////
+		ItemDTO item1 = new ItemDTO("1", "Prueba Pago MindHub", "COP", "", "Prueba compra", "art", 1, 30000.0);
+		ItemDTO item2 = new ItemDTO("2", "Prueba Pago MindHub", "COP", "", "Prueba compra", "art", 2, 32000.0);
+		List<ItemDTO> items = Arrays.asList(item1,item2);
+
+
+//
+//
+
+//
+//		Preference preference = new Preference(items);
+//		ObjectMapper mapper = new ObjectMapper();
+//		String requestBody = mapper.writeValueAsString(preference);
+//		System.out.println(requestBody);
+//		String urlAPI = "https://api.mercadopago.com/checkout/preferences";
+//		String linkResponse = PaymentUtils.postGetMPUrl(requestBody);
+//		System.out.println(linkResponse);
 	}
 }
