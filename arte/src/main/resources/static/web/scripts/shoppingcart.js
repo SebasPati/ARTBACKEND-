@@ -105,13 +105,22 @@ createApp({
         return Math.floor(Math.random() * max);
       }
       let numeros = []
+      var cantidadNumeros = 4;
+      while(numeros.length < cantidadNumeros ){
+        var numeroAleatorio = Math.ceil(getRandomInt(this.numero));
+        var existe = false;
+        for(var i=0;i< numeros.length;i++){
+        if(numeros [i] == numeroAleatorio){
+              existe = true;
+              break;
+          }
+        }
+        if(!existe){
+          numeros[numeros.length] = numeroAleatorio;
+        }
 
-      
-      for (let i = 0; i < 4; i++) {
-        numeros.push(getRandomInt(this.numero))
       }
 
-      
       console.log(numeros);
       for (let i = 0; i < numeros.length; i++) {
         this.marketingProducts.push(this.products[numeros[i]])
