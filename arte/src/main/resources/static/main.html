@@ -87,7 +87,7 @@
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="/index.html">Home</a>
+                                href="/main.html">Home</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
                                 href="/web/public/wallofartworks.html">Store</a>
@@ -151,8 +151,7 @@
                     <div class="mb-6  pt-6">
                         <div>
                             <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
-                                class=" ml-4 aparecer transition-all ease-in-out duration-300 fixed left-0" alt="logo"
-                                style="width: 40px; height: 40px;">
+                                class=" ml-4 aparecer transition-all ease-in-out duration-300 fixed left-0 w-[40px] h-auto" alt="logo">
                         </div>
 
                         <!-- MENÚ DE TEMAS -->
@@ -175,7 +174,7 @@
                 </div>
 
 
-                <div class="flex justify-center fixed bottom-0 glass1 w-full py-3 font-extrabold z-50">
+                <div class="flex justify-center fixed bottom-0 glass1 w-full py-4 font-bold z-50">
                     <nav class="flex">
                         <div class="flex items-center">
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
@@ -215,19 +214,18 @@
                 </div>
 
 
-                <section class="flex justify-between">
-                    <div class="relative md:h-72 h-48 w-auto"></div>
+<!--                 <section class="flex justify-between">
+                    <div class="relative md:h-64 h-40 w-auto"></div>
                     <img class="absolute w-auto h-auto" src="/web/assets/angel3.png" alt="">
-                    <div></div>
-                </section>
+                    <div class="relative md:h-64 h-40 w-auto left-10"></div>
+                    <img class="absolute w-auto h-auto" src="/web/assets/angel3.png" alt="">
+                </section> -->
 
                 <!-- BANNER PUBLICITY 0 -->
-                <section class=" text-skin-inverted c-flex flex-col md:h-screen py-5 md:py-0 bg-skin-normal">
+                <section class=" text-skin-inverted c-flex flex-col md:h-screen my-24 md:py-0 bg-skin-normal">
                     <h2
-                        class="title-font sm:text-4xl text-3xl  md:mb-14 font-medium text-skin-base py-5 md:py-0 text-center">
-                        The
-                        gallery you
-                        needed
+                        class="title-font sm:text-4xl text-3xl font-bahnschrift md:mb-14 font-medium text-skin-base py-5 md:py-0 text-center">
+                        THE GALLERY YOU NEEDED
                     </h2>
                     <div class=" md:flex md:mt-3 flex flex-col justify-center items-center  md:flex-row">
                         <div class=" h-4/6  md:h-auto flex flex-col justify-between items-center overflow-hidden group">
@@ -236,13 +234,13 @@
                                 class="bg-gray-400 h-[400px] w-[250px] md:h-[450px] md:w-[375px] bg-[url('https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center bg-no-repeat group-hover:scale-125 transition-all ease-in duration-300">
                             </div>
 
-                            <div class="relative w-20 h-auto">
+<!--                             <div class="relative w-20 h-auto">
                                 <img src="/web/assets/est09s2.png"
-                                    class="absolute w-80 md:w-auto h-auto bottom-0 left-0 z-50 m-0" alt="">
+                                    class="absolute w-80 md:w-auto h-auto bottom-0 left-0 z-50 m-0" alt=""> -->
                             </div>
                         </div>
-                        <div class="flex flex-col justify-center items-center md:pl-10">
-                            <p class="mt-3 md:w-80 text-center text-skin-base">Many people have already entered this
+                        <div class="c-flex flex-col justify-center items-center md:pl-10">
+                            <p class="mt-3 md:w-80 text-center text-skin-base font-quicksand">Many people have already entered this
                                 page to buy and
                                 upload the best works, here nobody stops you, you can be whoever you want. </p>
                             <div class="place-self-center bg-skin-base h-[1.2px] lg:w-1/2 w-full mt-9 bg-opacity-20">
@@ -300,7 +298,7 @@
 
 
                 <!-- BANNER PUBLICITY B-->
-                <section class="flex justify-around w-full h-[80vh] bg-skin-normal overflow-hidden">
+<!--                 <section class="flex justify-around w-full h-[80vh] bg-skin-normal overflow-hidden">
 
                     <div class="w-1/3 h-full flex">
 
@@ -314,14 +312,14 @@
 
 
                     <div>
-                        hola
+                        
                     </div>
 
-                </section>
+                </section> -->
 
 
                 <!-- SECTION publicity2 -->
-                <section class="bg-skin-base text-skin-base body-font rounded-b-lg">
+                <section class=" text-skin-base body-font rounded-b-lg">
                     <div class="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
                         <div class="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 md:mb-0 mb-10 overflow-hidden group">
                             <img class="object-cover object-center rounded group-hover:scale-125 transition-all ease-in duration-300"
@@ -330,7 +328,7 @@
                         </div>
                         <div
                             class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                            <h2 class="title-font sm:text-4xl text-3xl mb-4 font-medium text-skin-muted">The best works
+                            <h2 class="title-font font-bahnschrift sm:text-4xl text-3xl mb-4 font-medium text-skin-muted">The best works
                                 are
                                 in this place, and the best artists too!
                             </h2>
@@ -366,7 +364,7 @@
                 </section> -->
 
                 <!-- SECTION artists -->
-                <div id="default-carousel" class="relative bg-skin-accent" data-carousel="static">
+                <div id="default-carousel" class="relative bg-skin-muted" data-carousel="static">
                     <!-- Carousel wrapper -->
                     <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                         <!-- Item 1 -->
@@ -616,10 +614,10 @@
 
 
                 <!-- SECTION artist of the year -->
-                <section class="text-black bg-skin-accent body-font rounded-b-lg">
+                <section class="text-black bg-skin-muted bg-opacity-25 body-font rounded-b-lg">
                     <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-                        <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium "
-                            :class="tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? 'text-black' : 'text-white'">
+                        <h1 class="title-font font-bahnschrift sm:text-4xl text-3xl mb-4 font-medium text-skin-base"
+                            >
                             This is the best
                             artist at this moment, congratulations!</h1>
                         <div class="overflow-hidden group c-flex">
@@ -627,7 +625,7 @@
                                 alt="hero" :src="bestArtist.image">
                         </div>
                         <div class="text-center lg:w-2/3 w-full">
-                            <h1 class="title-font sm:text-4xl text-3xl mb-4 font-medium "
+                            <h1 class="title-font sm:text-4xl font-bahnschrift text-3xl mb-4 font-medium "
                                 :class="tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? 'text-black' : 'text-white'">
                                 {{bestArtist.name + " " + bestArtist.lastName}}</h1>
                             <p class="leading-relaxed mb-8">Meggings kinfolk echo park stumptown DIY, kale chips
@@ -650,24 +648,26 @@
                 </section>
 
 
+                <img class="place-sel-center scale-[0.4] mt-9 opacity-70 transition-all ease-in-out duration-1000 filtro1 hover:filtro2 -scale-y-[0.4] w-full"
+                    src="/web/assets/sep4.png" alt="">
+
                 <!-- FOOTER -->
                 <footer class="md:ml-40 font-quicksand">
 
 
 
-                    <div
-                        class="container px-5 py-24 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col overflow-hidden">
+                    <div class="px-5 py-24 md:flex overflow-hidden md:flex-nowrap flex-wra">
+                        <!-- md:flex-row md:flex-nowrap flex-wrap flex-col overflow-hidden -->
                         <div
-                            class="w-64 flex-shrink-0 md:mx-0 mx-auto md:text-left md:mt-0 mt-10 flex items-center md:justify-start justify-center place-items-center content-center">
+                            class="w-64 flex-shrink-0 md:mx-0  md:text-left md:mt-0 mt-10 items-center md:justify-start justify-center place-items-center content-center inline m-0">
                             <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02L.png' : '/web/assets/logo01L.png'"
                                 class="w-[60%] h-[60%] aparecer transition-all ease-in-out duration-1000 hover:filtro1"
                                 :class="tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? 'filtro2 hover:filtro1' : 'filtro1 hover:filtro2'"
                                 alt="logo">
-                        </div> <!-- LOGO COMPLETO -->
-
+                        </div>
 
                         <div class="flex-grow flex flex-wrap md:pr-20 -mb-10 md:text-left text-center order-first">
-                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                            <div class="lg:w-1/4 md:w-1/2  px-4 inline">
                                 <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">ART
                                     GALLERIES AROUND THE
                                     WORLD</h2>
@@ -694,7 +694,7 @@
                                     </li>
                                 </nav>
                             </div>
-                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                            <div class="lg:w-1/4 md:w-1/2 px-4 inline">
                                 <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">LIST
                                     OF NGOS</h2>
                                 <nav class="list-none mb-10">
@@ -717,7 +717,7 @@
                                     </li>
                                 </nav>
                             </div>
-                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                            <div class="lg:w-1/4 md:w-1/2 px-4 inline">
                                 <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">LIST
                                     OF AWARDS</h2>
                                 <nav class="list-none mb-10">
@@ -742,7 +742,7 @@
                                     </li>
                                 </nav>
                             </div>
-                            <div class="lg:w-1/4 md:w-1/2 w-full px-4">
+                            <div class="lg:w-1/4 md:w-1/2  px-4 inline">
                                 <h2 class="title-font font-medium text-skin-accent tracking-widest text-sm mb-3 ">ART
                                     SCHOLARSHIPS AROUND
                                     THE WORLD</h2>
@@ -820,9 +820,10 @@
 
                 </footer>
 
+
                 <div class="relative">
-                    <img src="/web/assets/est09s2.png" class="absolute w-80 md:w-60 h-auto bottom-0 left-0 z-20 m-0"
-                        alt="">
+                    <img src="/web/assets/est09s2.png"
+                        class="absolute w-80 md:w-auto md:h-[600px] bottom-0 left-0 z-20 m-0 hidden md:block" alt="">
                 </div>
 
 
