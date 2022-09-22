@@ -45,10 +45,10 @@ public class ArteApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		List<String> socialNetwords = List.of("Twtter","Instagram","Tick Tock");
 
-		Client client = new Client("Juan","Da vinci","juda1@goto.com",passwordEncoder.encode("654"),TypeUser.CLIENT,0,"image/jpeg");
+		Client client = new Client("Juan","Da vinci","juda1@goto.com",passwordEncoder.encode("654"),TypeUser.CLIENT,0,"https://media.istockphoto.com/photos/portrait-of-young-dark-haired-concentrated-caucasian-white-male-with-picture-id1333064056?k=20&m=1333064056&s=612x612&w=0&h=WIBoskVGacXKcFocqymTxwzntfZx2PieiJR3Zptes8w=");
 
-		Client artist = new Client("Juan","Da vinci","don Bot","juda2@goto.com","3124523424",passwordEncoder.encode("654"),TypeUser.ARTIST,"cerca de la casa",0,"image/jpeg",socialNetwords);
-		Client admin = new Client("Juan","Da vinci","juda3@goto.com",passwordEncoder.encode("654"),TypeUser.ADMIN,0,"image/jpeg");
+		Client artist = new Client("Juan","Da vinci","don Bot","juda2@goto.com","3124523424",passwordEncoder.encode("654"),TypeUser.ARTIST,"cerca de la casa",0,"https://media.istockphoto.com/photos/portrait-of-young-dark-haired-concentrated-caucasian-white-male-with-picture-id1333064056?k=20&m=1333064056&s=612x612&w=0&h=WIBoskVGacXKcFocqymTxwzntfZx2PieiJR3Zptes8w=",socialNetwords);
+		Client admin = new Client("Juan","Da vinci","juda3@goto.com",passwordEncoder.encode("654"),TypeUser.ADMIN,0,"https://media.istockphoto.com/photos/portrait-of-young-dark-haired-concentrated-caucasian-white-male-with-picture-id1333064056?k=20&m=1333064056&s=612x612&w=0&h=WIBoskVGacXKcFocqymTxwzntfZx2PieiJR3Zptes8w=");
 
 
 		userGlobalRepository.save(client);
