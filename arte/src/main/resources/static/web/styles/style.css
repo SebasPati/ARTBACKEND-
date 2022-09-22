@@ -365,7 +365,7 @@ body{
 .contenedor{
     position: relative;
     margin-top:  350vh;
-    background: #fff;
+    /* background: #fff; */
 }
 .h2{
     display: flex;
@@ -409,6 +409,11 @@ body{
 
 .bannerA{
     transform: translateY(var(--bannerA-translateY));
+	will-change: transform;
+}
+
+.bannerB{
+    transform: translateX(var(--bannerA-translateX));
 	will-change: transform;
 }
 

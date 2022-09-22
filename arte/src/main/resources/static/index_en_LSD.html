@@ -84,7 +84,7 @@
                         :class="tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? 'filtro2' : 'filtro1'" alt="logo">
 
 
-                        
+
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
@@ -127,7 +127,7 @@
                                         class="w-14 h-14 mr-1  bg-cover bg-no-repeat rounded-full opacity-50 hover:contrast-150 ease-out duration-300">
                                 </div>
                                 <div
-                                    class="absolute -top-8 -left-16 z-[41] opacity-0 peer-hover:opacity-100 text-skin-base text-3xl font-bold ease-in-out duration-200">
+                                    class="absolute -top-8 -left-16 z-[41] opacity-0 peer-hover:opacity-100 text-skin-base text-3xl font-bold ease-in-out duration-300">
                                     +
                                 </div>
                             </button>
@@ -158,7 +158,7 @@
                         <!-- MENÚ DE TEMAS -->
                         <div class="self-start ml-16 mt-6 pb-3 fixed md:hidden flex">
                             <button class="" type="button"><img src="/web/assets/icons/theme.svg" alt="temas"
-                                    class="w-5 h-5 filtro1" @click="parseInt(theme(tema.slice(-1))+1)"></button>
+                                    class="w-5 h-5 filtro1" @click="prueba"></button>
                         </div>
 
 
@@ -188,7 +188,7 @@
                                 href="/web/public/wallofartist.html">Artists</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="/web/public/shoppingcart.html">Shop cart</a>
+                                href="/web/public/shoppingcart.html">Cart</a>
                         </div>
                     </nav>
                 </div>
@@ -248,8 +248,14 @@
 
             <main class="contenedor">
 
-            <!-- CAMBIOS -->
-            <button @click="modalUploadPhoto=true">Upload</button>
+                <section class="flex justify-around w-full h-[10vh] bg-gradient-to-t from-gray-100 overflow-hidden"></section>
+
+                <section class="flex justify-around w-full h-[120vh] bg-gray-100 overflow-hidden">
+                    <div>
+                        <p class="antialiased font-cinzel text-9xl text-lime-700 mt-40">VENUS</p>
+                        <p class="first-letter:uppercase"></p>
+                    </div>
+                </section>
 
                 <!-- SECTION Publicity -->
                 <section class=" text-skin-inverted c-flex flex-col md:h-screen py-5 md:py-0 bg-skin-muted">

@@ -231,7 +231,18 @@ const app = Vue.createApp({
                     location.reload()
                 })
                 .catch(error => alert(error.response.data))    
-        }
+        },
+        prueba() {
+            numero = parseInt(this.tema.slice(-1)) + 1
+            if (numero >= 7) {
+                this.tema = "tema1"
+                numero = 1
+            } else {
+                this.tema = `tema${numero}`
+            }
+            localStorage.setItem('theme', JSON.stringify(numero));
+            this.initialTheme();
+        },
     },
     computed: {
     }
