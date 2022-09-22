@@ -19,12 +19,12 @@ createApp({
     }
   },
   created(){
-    
     this.currency = this.function
     this.getCart();
     this.getProducts();
     this.getCurrentClient();
     this.total()
+    this.musica()
   },
   methods :{
     getCurrentClient(){
@@ -185,6 +185,12 @@ createApp({
       for (let i = 0; i < this.articuloCarrito.length; i++) {
         this.totalPay += this.articuloCarrito[i].total 
       }
+    },
+    musica(){
+      setTimeout(function(){
+        var vid = document.getElementById('intro')
+        vid.play()
+      },1000)
     }
 
   }

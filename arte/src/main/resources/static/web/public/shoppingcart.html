@@ -114,12 +114,13 @@
                         <button class="boton1s w-24 h-14"> <a href="/web/public/wallofartworks.html" >CONTINUE SHOPPING</a> </button>
                     </div>
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
-                        <button class="boton1s w-24 h-14">PAY</button>
+                        <button onclick="document.getElementById('player').play()" class="boton1s w-24 h-14">PAY</button>
                     </div>
                 </div>
-
-
-
+                <audio id="player" src="/web/assets/y2mate.com - Efecto de sonido Yamete Kudasai xd.mp3"></audio>
+                <audio id="intro" src="/web/assets/y2mate.com - Chopin  Nocturne op9 No2.mp3" autoplay></audio>
+                <button onclick="document.getElementById('intro').pause()">🔇</button>
+                <button onclick="document.getElementById('intro').play()" id="btn1">▶️</button>
 
                 <div class=" flex justify-center mt-11 mb-12">
                     <p class=" text-3xl text-skin-accent">You might also like</p>
@@ -152,6 +153,7 @@
 
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/howler/2.2.1/howler.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="/web/scripts/shoppingcart.js"></script>
