@@ -419,6 +419,10 @@ body{
 
 /* OTROS ESTILOS PROPIOS */
 
+.reflejarH{
+    transform: scaleX(-1);
+}
+
 .sus{
     background-size: 230% 230% !important;
     background: linear-gradient(90deg, rgba(var(--color-button-accent),1) 0%, rgba(var(--color-button-accent),1) 50%, rgba(var(--color-text-base),1) 50%);
