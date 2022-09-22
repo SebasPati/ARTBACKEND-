@@ -44,7 +44,9 @@ const app = Vue.createApp({
             profileInfo: "",
             profileImage: "",
             file: '',
-            menuPhoto: false
+            menuPhoto: false,
+            modalUploadPhoto: false,
+            changeImage: false
         }
     },
     created() {
@@ -64,6 +66,12 @@ const app = Vue.createApp({
     methods: {
         theme(a) {
             this.tema = `tema_${a}`;
+            if(parseInt(a)>5){
+                this.tema = 'tema_1';
+            }
+            if(a.lenght==0){
+                this.tema = 'tema_1'
+            }
             localStorage.setItem('theme', JSON.stringify(a));
         },
         initialTheme() {

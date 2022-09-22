@@ -27,8 +27,63 @@
                 <div ref="navbar"
                     class="opacity-0 hidden md:flex justify-between w-screen p-2 fixed z-40 place-items-center">
 
+                    <!-- MENÚ DE TEMAS -->
+                    <div class="self-start ml-16 mt-6 pb-3 fixed md:flex hidden">
+                        <button id="dropdownRightButton" data-dropdown-toggle="dropdownRight"
+                            data-dropdown-placement="right" class="" type="button"><img
+                                src="/web/assets/icons/theme.svg" alt="temas" class="w-5 h-5 filtro1"></button>
+
+                        <div id="dropdownRight" class="hidden z-10 w-4 fixed pt-[10px] pl-5 aparecer"
+                            data-popper-reference-hidden="" data-popper-escaped="" data-popper-placement="bottom"
+                            style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform:z translate(0px, 810px);">
+                            <ul class="flex py-1 text-sm text-gray-700 dark:text-gray-200"
+                                aria-labelledby="dropdownDefault">
+                                <li>
+                                    <button
+                                        class="w-7 h-7 -translate-x-[13px] hover:w-10 hover:h-10  c-flex tclaro ease-in-out hover:z-50"
+                                        @click="theme(1)"><img src="/web/assets/icons/pincel1.svg"
+                                            class="w-4 h-4 filter1a" alt="theme1"></button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="w-7 h-7 -translate-x-[26px] hover:w-10 hover:h-10  c-flex tclaro ease-in-out hover:z-50"
+                                        @click="theme(2)"><img src="/web/assets/icons/pincel1.svg"
+                                            class="w-4 h-4 filter2a" alt="theme2"></button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="w-7 h-7 -translate-x-[39px] hover:w-10 hover:h-10  c-flex tclaro ease-in-out hover:z-50"
+                                        @click="theme(3)"><img src="/web/assets/icons/pincel1.svg"
+                                            class="w-4 h-4 filter3a" alt="theme3"></button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="w-7 h-7 -translate-x-[52px] hover:w-10 hover:h-10  c-flex toscuro ease-in-out hover:z-50"
+                                        @click="theme(4)"><img src="/web/assets/icons/pincel1.svg"
+                                            class="w-4 h-4 filter4b" alt="theme4"></button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="w-7 h-7 -translate-x-[65px] hover:w-10 hover:h-10  c-flex toscuro ease-in-out hover:z-50"
+                                        @click="theme(5)"><img src="/web/assets/icons/pincel1.svg"
+                                            class="w-4 h-4 filter5b" alt="theme5"></button>
+                                </li>
+                                <li>
+                                    <button
+                                        class="w-7 h-7 -translate-x-[78px] hover:w-10 hover:h-10  c-flex toscuro ease-in-out hover:z-50"
+                                        @click="theme(6)"><img src="/web/assets/icons/pincel1.svg"
+                                            class="w-4 h-4 filter6b" alt="theme6"></button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+
                     <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
-                        class="w-[3.5%] h-[3.5%] ml-4 aparecer transition-all ease-in-out duration-300" alt="logo">
+                        class="w-[3.5%] h-[3.5%] ml-4 p-1 m-1 aparecer transition-all ease-in-out duration-300"
+                        :class="tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? 'filtro2' : 'filtro1'" alt="logo">
+
+
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
@@ -65,8 +120,8 @@
                             <!-- DIV DETRÁS DE IMAGEN PARA EDITAR -->
                             <button
                                 class="relative group-hover:-translate-x-6 transition-all duration-700 ease-in-out c-flex"
-                                @click="menuPhoto=true">
-                                <div class="right-1 -top-7 absolute w-14 h-14 rounded-full  bg-skin-base z-40 peer">
+                                @click="modalUploadPhoto=true">
+                                <div class="right-1 -top-7 absolute w-14 h-14 rounded-full  hover:bg-skin-base z-40 peer">
                                     <img :src="profileImage" alt=""
                                         class="w-14 h-14 mr-1  bg-cover bg-no-repeat rounded-full opacity-50 hover:contrast-150 ease-out duration-300">
                                 </div>
@@ -76,18 +131,7 @@
                                 </div>
                             </button>
 
-                            <div v-show="menuPhoto" class="relative top-0 right-0">
-                                <div class="absolute">
-                                    <button class="boton1s w-24 h-14" :class="" @click="editPhoto"> upload
-                                        photo</button>
-                                    <div class="form-floating mb-3">
-                                        <label for="avatar">Choose a image:</label>
-                                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
-                                            @change="select_file">
-                                    </div>
-                                </div>
-                            </div>
-
+                           
                             <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base sus"
                                 href="javascript:void(0);" @click="logout">Log out</a>
                         </div>
@@ -100,45 +144,7 @@
             </header>
 
 
-
             <!-- NAV-BAR MOBILE -->
-            <div class="self-start ml-16 mt-6 pb-3 fixed z-50">
-                <button id="dropdownRightButton" data-dropdown-toggle="dropdownRight" data-dropdown-placement="right"
-                    class="boton5s" type="button"><img src="/web/assets/icons/theme.svg" alt="temas" class="w-5 h-5 "
-                        :class="tema=='tema_1' ? 'filter1a' : tema=='tema_2' ? 'filter2b' : tema=='tema_3' ? 'filter3b' : tema=='tema_4' ? 'filter4b' : tema=='tema_5' ? 'filter5b' : 'filter1b'"></button>
-
-                <div id="dropdownRight" class="hidden z-10 w-4 fixed pt-[78px] aparecer" data-popper-reference-hidden=""
-                    data-popper-escaped="" data-popper-placement="bottom"
-                    style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform:z translate(0px, 810px);">
-                    <ul class="flex py-1 text-sm text-gray-700 dark:text-gray-200 c-flex"
-                        aria-labelledby="dropdownDefault">
-                        <li>
-                            <button class="w-6 h-6 c-flex tclaro" @click="theme(1)"><img
-                                    src="/web/assets/icons/pincel1.svg" class="w-4 h-4 filter1a" alt="theme1"></button>
-                        </li>
-                        <li>
-                            <button class="w-6 h-6 c-flex tclaro" @click="theme(2)"><img
-                                    src="/web/assets/icons/pincel1.svg" class="w-4 h-4 filter2a" alt="theme2"></button>
-                        </li>
-                        <li>
-                            <button class="w-6 h-6 c-flex tclaro" @click="theme(3)"><img
-                                    src="/web/assets/icons/pincel1.svg" class="w-4 h-4 filter3a" alt="theme3"></button>
-                        </li>
-                        <li>
-                            <button class="w-6 h-6 c-flex toscuro" @click="theme(4)"><img
-                                    src="/web/assets/icons/pincel1.svg" class="w-4 h-4 filter4b" alt="theme4"></button>
-                        </li>
-                        <li>
-                            <button class="w-6 h-6 c-flex toscuro" @click="theme(5)"><img
-                                    src="/web/assets/icons/pincel1.svg" class="w-4 h-4 filter5b" alt="theme5"></button>
-                        </li>
-                        <li>
-                            <button class="w-6 h-6 c-flex toscuro" @click="theme(6)"><img
-                                    src="/web/assets/icons/pincel1.svg" class="w-4 h-4 filter6b" alt="theme6"></button>
-                        </li>
-                    </ul>
-                </div>
-            </div>
             <header class="md:hidden">
                 <div class=" h-24  justify-center items-center fixed top-0 glass1 w-full z-40">
                     <div class="mb-6  pt-6">
@@ -147,6 +153,14 @@
                                 class=" ml-4 aparecer transition-all ease-in-out duration-300 fixed left-0" alt="logo"
                                 style="width: 40px; height: 40px;">
                         </div>
+
+                        <!-- MENÚ DE TEMAS -->
+                        <div class="self-start ml-16 mt-6 pb-3 fixed md:hidden flex">
+                            <button class="" type="button"><img src="/web/assets/icons/theme.svg" alt="temas"
+                                    class="w-5 h-5 filtro1" @click="parseInt(theme(tema.slice(-1))+1)"></button>
+                        </div>
+
+
 
                         <div class="fixed right-0 flex">
                             <a class="px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
@@ -178,6 +192,8 @@
                     </nav>
                 </div>
             </header>
+
+
 
             <!-- ANIMACIÓN INICIAL -->
             <div class="pt-28 c-flex">
@@ -231,7 +247,8 @@
 
             <main class="contenedor">
 
-
+            <!-- CAMBIOS -->
+            <button @click="modalUploadPhoto=true">Upload</button>
 
                 <!-- SECTION Publicity -->
                 <section class=" text-skin-inverted c-flex flex-col md:h-screen py-5 md:py-0 bg-skin-muted">
@@ -322,8 +339,8 @@
                         </div>
 
                     </div>
-                    
-                    
+
+
                     <div>
                         hola
                     </div>
@@ -815,6 +832,39 @@
 
 
             </main>
+
+
+
+            <!-- MODALES -->
+            <!-- MODAL DE PERFIL -->
+            <div v-show="modalUploadPhoto==true"
+                class="aparecer fixed top-0 left-0 flex justify-center bg-opacity-80 aparecer z-[42] w-full h-full glass2">
+            </div>
+            <div v-show="modalUploadPhoto==true"
+                class="aparecer fixed top-0 left-0 flex justify-center justify-items-center content-center w-full h-full z-50">
+                <!-- DETALLES PERFIL -->
+                <div href="#"
+                    class="m-5 overflow-hidden rounded-t-2xl rounded-b-3xl md:flex md:w-4/5 md:h-2/3 aspect-card2 shadow-[0px_8px_24px_rgba(var(--color-text-base),.05)] flex flex-col justify-center items-center">
+
+                    <img :src="profileImage" alt="" class="h-40 rounded-full w-40">
+                    <p class=" text-skin-inverted text-center text-2xl font-bahnschrift">{{profileInfo.name}}
+                        {{profileInfo.lastName}}</p>
+                    <button class=" boton2" @click="changeImage=true">Change Image</button>
+                    <div v-show="changeImage==true" class="mt-3 flex flex-col justify-center items-center">
+                        <div class="form-floating mb-3 flex flex-col">
+                            <label for="avatar">Choose an image:</label>
+                            <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                                @change="select_file" class="boton2">
+                        </div>
+                        <button class="boton1s w-24 h-14" :class="" @click="editPhoto"> upload
+                            photo</button>
+                    </div>
+                    <button
+                        class="w-24 h-12 text-skin-base bg-red-600 bg-opacity-70 p-3 font-bahnschrift text-sm hover:shadow-[1px_1px_5px_rgba(220,38,38,0.8)] rounded-tl-2xl rounded-b-2xl hover:rounded-t-3xl hover:rounded-br-3xl hover:rounded-bl-none ease-in duration-300 hover:bg-opacity-100"
+                        @click="modalUploadPhoto=false">return</button>
+                </div>
+            </div>
+            <!-- CAMBIOS -->
 
 
 
