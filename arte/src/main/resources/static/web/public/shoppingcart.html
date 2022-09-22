@@ -69,56 +69,84 @@
                 <div class=" flex justify-center mt-11">
                     <p class=" text-3xl text-skin-accent">Shopping Cart</p>
                 </div>
-                <div class=" flex justify-around border-b-4  mt-11 md:p-5" v-for="product in carProducts">
-                    <div class=" flex flex-row">
+                <div class=" flex justify-around border-b-4 md:w-[75%] w-[100%] ml-12 mt-11 md:p-5" v-for="product in carProducts">
+                    <div class=" flex flex-row justify-evenly">
                         <div class=" flex items-center m-3">
-                            <button @click="eliminarArticulo(product.id)"><i class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
+                            <button @click="eliminarArticulo(product.id)"><i
+                                    class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
                         </div>
                         <div class=" flex items-center">
-                            <img class=" w-36" :src="product.image" alt="">
+                            <img alt="Lava"
+                                :src="product.image"
+                                class="w-36 h-36 shadow-xl rounded-xl" />
                         </div>
-                        <div class=" flex flex-col items-center m-4">
+                        
+                        <div class=" flex flex-col items-center pt-12 m-4">
                             <p class=" text-lg text-skin-muted"> 🎨 {{product.name}}</p>
                         </div>
+                        <div class="flex justify-center w-[25%]">
+                            <p class="text-lg text-skin-muted">{{product.description}}</p>
+                        </div>
                     </div>
-                    <div class=" flex flex-col items-center">
-                        <p class=" text-skin-muted md:text-2xl">{{currency(product.price)}}</p>
+                    <div class=" flex flex-col items-start pt-10">
+                        <p class=" text-skin-muted md:text-2xl">Unit: {{currency(product.price)}}</p>
+                        <p class=" text-skin-muted md:text-2xl">Subtotal: {{currency(product.price*product.cantidad)}}</p>
                         <div class=" flex flex-row mt-4">
                             <div class="flex items-center pr-1">
                                 <button @click="restarArticulo(product.id)"
                                     class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-l-md hover:rounded-l-2xl  ease-in duration-300 hover:filtro2">-</button>
-                                <div class="text-skin-base px-1 group-hover:text-skin-inverted ">{{product.cantidad}}</div>
+                                <div class="text-skin-base px-1 group-hover:text-skin-inverted ">{{product.cantidad}}
+                                </div>
                                 <button @click="sumarArticulo(product.id)" v-show="product.cantidad < product.units"
                                     class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-r-md hover:rounded-r-2xl ease-in duration-300 hover:filtro2">+</button>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-                <div class=" flex justify-center mt-11">
-                    <p class=" text-3xl text-skin-accent">You might also like</p>
-                </div>
-
-                <div class=" flex md:flex-row flex-col justify-center">
-                    <div class="flex flex-col" v-for="marketing in marketingProducts">
-                        <div class="overflow-hidden relative w-72 h-72" style="background-image: url('https://i.pinimg.com/736x/a8/36/fd/a836fdf1ba811157586054afffff3074.jpg');">
-                        </div>
-                        <div class="  text-2xl text-skin-muted flex justify-center">
-                            <button class="boton1s w-24 h-14">❤️️ ADD</button>
-                        </div>
+                <div class=" m-5 flex justify-center flex-row">
+                    <div class="  text-2xl text-skin-muted flex justify-center mt-6">
+                        <p>Total:</p>
+                    </div>
+                    <div class="  text-2xl text-skin-muted flex justify-center mt-6 ml-5">
+                        <p>{{currency(totalPay)}}</p>
                     </div>
                 </div>
-
-                <div class=" border-t-2 m-5 flex justify-center flex-row">
+                <div class=" m-5 flex justify-center flex-row">
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
-                        <button class="boton1s w-24 h-14">CONTINUE SHOPPING</button>
+                        <button href="/web/public/wallofartworks.html" class="boton1s w-24 h-14">CONTINUE SHOPPING</button>
                     </div>
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
                         <button class="boton1s w-24 h-14">PAY</button>
                     </div>
+                </div>
+
+
+
+
+                <div class=" flex justify-center mt-11 mb-12">
+                    <p class=" text-3xl text-skin-accent">You might also like</p>
+                </div>
+
+                <div class=" flex flex-row flex-wrap justify-center mt-4">
+                    <div class=" flex flex-col ml-4" v-for="marketing in marketingProducts">
+                        <a href="#" class="block w-56">
+                            <img alt="Lava"
+                                :src="marketing.image"
+                                class="w-[100%] h-56 shadow-xl rounded-xl" />
+
+                            <div class="p-4">
+                                <h5 class="text-xl font-bold text-gray-900 h-12">
+                                    {{marketing.name}}
+                                </h5>
+
+                                <div class="  text-2xl text-skin-muted flex justify-center">
+                                    <button class="boton1s w-24 h-14" @click="escuchadorCarrito(marketing)">❤️️ ADD</button>
+                                </div>
+                            </div>
+                        </a>
+
+                    </div>
+
                 </div>
 
 

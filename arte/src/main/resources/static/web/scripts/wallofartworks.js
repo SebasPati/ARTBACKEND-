@@ -17,7 +17,8 @@ createApp({
       itemCarrito:{
         id:0,
         stock:0,
-        cantidad:0
+        cantidad:0,
+        total:0
       },
       cond:false,
       cantidad:0
@@ -111,6 +112,7 @@ createApp({
       this.articuloCarrito = JSON.parse(localStorage.getItem('articulos'))
       this.itemCarrito.id = producto.id
       this.itemCarrito.stock = producto.units
+      this.itemCarrito.total = producto.price
       if (this.articuloCarrito != null) {
         let filter_repeated = this.articuloCarrito.filter(articulo => articulo.id == (producto.id))
 
@@ -118,10 +120,12 @@ createApp({
           this.itemCarrito.id = filter_repeated.id
           this.itemCarrito.stock = filter_repeated.units
           this.itemCarrito.cantidad = filter_repeated.cantidad
+          this.itemCarrito.total = filter_repeated.price * filter_repeated.cantidad
           index = this.articuloCarrito.findIndex(articulo => articulo.id == producto.id)
 
           if (this.articuloCarrito[index].cantidad < this.articuloCarrito[index].stock) {
             this.articuloCarrito[index].cantidad += 1
+            this.articuloCarrito[index].total = filter_repeated.price *  this.articuloCarrito[index].cantidad
           }else{
             console.log("no stock");
           }
@@ -148,7 +152,10 @@ createApp({
       console.log(this.articuloCarrito);
       index = this.articuloCarrito.findIndex(articulo => articulo.id == idArticulo)
       if ((this.articuloCarrito[index].cantidad + 1) <= this.articuloCarrito[index].stock) {
+        let price = (this.articuloCarrito[index].total / this.articuloCarrito[index].cantidad)
         this.articuloCarrito[index].cantidad += 1
+        this.articuloCarrito[index].total = price * this.articuloCarrito[index].cantidad
+        
         this.cantidad += 1
       } else {
         console.log("no");
@@ -160,7 +167,9 @@ createApp({
       this.articuloCarrito = JSON.parse(localStorage.getItem('articulos'))
       index = this.articuloCarrito.findIndex(articulo => articulo.id == idArticulo)
       if ((this.articuloCarrito[index].cantidad) > 1) {
+        let price = (this.articuloCarrito[index].total / this.articuloCarrito[index].cantidad)
         this.articuloCarrito[index].cantidad -= 1
+        this.articuloCarrito[index].total = price * this.articuloCarrito[index].cantidad
         this.cantidad -= 1
       } else {
         this.articuloCarrito = this.articuloCarrito.filter(articulo => articulo.id != idArticulo)
