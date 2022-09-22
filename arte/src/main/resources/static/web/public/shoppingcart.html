@@ -24,26 +24,33 @@
 
                 <div ref="navbar" class="flex justify-between w-screen p-2 fixed z-0 place-items-center">
 
-                    <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'" class="w-[3.5%] h-[3.5%] ml-4 aparecer transition-all ease-in-out duration-300" alt="logo">
+                    <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
+                        class="w-[3.5%] h-[3.5%] ml-4 aparecer transition-all ease-in-out duration-300" alt="logo">
                     <nav class="flex font-bahnschrift">
                         <div class="flex items-center">
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/index.html">Home</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/wallofartworks.html">Store</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/wallofartist.html">Artists</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
-                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100" href="/web/public/shoppingcart.html">Shop cart</a>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/index.html">Home</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/web/public/wallofartworks.html">Store</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/web/public/wallofartist.html">Artists</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
+                            <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
+                                href="/web/public/shoppingcart.html">Shop cart</a>
                         </div>
                         <div v-show="user == 'visitor'" class="flex items-center mr-6 ml-6">
-                            <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus" href="javascript:void(0);">Log in</a>
-                            <div class="font-xs opacity-30 text-skin-base">|</div> 
+                            <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
+                                href="javascript:void(0);">Log in</a>
+                            <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
                         </div>
-                        <div v-show= "user == 'authenticated'" class="relative">
-                          <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="">
-                          <span class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
-                      </div>
+                        <div v-show="user == 'authenticated'" class="relative">
+                            <img class="w-10 h-10 rounded-full" src="/docs/images/people/profile-picture-5.jpg" alt="">
+                            <span
+                                class="top-0 left-7 absolute  w-3.5 h-3.5 bg-green-400 border-2 border-white dark:border-gray-800 rounded-full"></span>
+                        </div>
                         <div class="w-1/2">
                             <button class="boton1s" @click="theme(1)">TEMA 1</button>
                             <button class="boton1s" @click="theme(2)">TEMA 2</button>
@@ -62,126 +69,85 @@
                 <div class=" flex justify-center mt-11">
                     <p class=" text-3xl text-skin-accent">Shopping Cart</p>
                 </div>
-                <div class=" flex justify-around border-b-4  mt-11 md:p-5">
-                       <div class=" flex flex-row">
+                <div class=" flex justify-around border-b-4  mt-11 md:p-5" v-for="product in carProducts">
+                    <div class=" flex flex-row">
                         <div class=" flex items-center m-3">
-                            <button><i class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
+                            <button @click="eliminarArticulo(product.id)"><i class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
                         </div>
                         <div class=" flex items-center">
-                            <img class=" w-36" src="../assets/img3.png" alt="">
+                            <img class=" w-36" :src="product.image" alt="">
                         </div>
                         <div class=" flex flex-col items-center m-4">
-                            <p class=" text-lg text-skin-muted"> 🎨 Nombre de la obra</p>
+                            <p class=" text-lg text-skin-muted"> 🎨 {{product.name}}</p>
                         </div>
-                       </div>
-                        <div class=" flex flex-col items-center">
-                            <p class=" text-skin-muted md:text-2xl"><i class="uil uil-dollar-alt text-skin-muted"></i>200.000</p>
-                            <div class=" flex flex-row mt-4">
-                                <p class=" m-4 text-skin-muted">Add</p>
-                                <select class=" text-skin-muted">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                </select>
+                    </div>
+                    <div class=" flex flex-col items-center">
+                        <p class=" text-skin-muted md:text-2xl">{{currency(product.price)}}</p>
+                        <div class=" flex flex-row mt-4">
+                            <div class="flex items-center pr-1">
+                                <button @click="restarArticulo(product.id)"
+                                    class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-l-md hover:rounded-l-2xl  ease-in duration-300 hover:filtro2">-</button>
+                                <div class="text-skin-base px-1 group-hover:text-skin-inverted ">{{product.cantidad}}</div>
+                                <button @click="sumarArticulo(product.id)" v-show="product.cantidad < product.units"
+                                    class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-r-md hover:rounded-r-2xl ease-in duration-300 hover:filtro2">+</button>
                             </div>
                         </div>
-                </div>
-                <div class=" flex justify-around border-b-4  mt-11 md:p-5">
-                    <div class=" flex flex-row">
-                     <div class=" flex items-center m-3">
-                         <button><i class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
-                     </div>
-                     <div class=" flex items-center">
-                         <img class=" w-36" src="../assets/img3.png" alt="">
-                     </div>
-                     <div class=" flex flex-col items-center m-4">
-                         <p class=" text-lg text-skin-muted"> 🎨 Nombre de la obra</p>
-                     </div>
                     </div>
-                     <div class=" flex flex-col items-center">
-                         <p class=" text-skin-muted md:text-2xl"><i class="uil uil-dollar-alt text-skin-muted"></i>200.000</p>
-                         <div class=" flex flex-row mt-4">
-                             <p class=" m-4 text-skin-muted">Add</p>
-                             <select class=" text-skin-muted">
-                                 <option>1</option>
-                                 <option>2</option>
-                                 <option>3</option>
-                                 <option>4</option>
-                             </select>
-                         </div>
-                     </div>
-             </div>
-             <div class=" flex justify-around border-b-4  mt-11 md:p-5">
-                <div class=" flex flex-row">
-                 <div class=" flex items-center m-3">
-                     <button><i class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
-                 </div>
-                 <div class=" flex items-center">
-                     <img class=" w-36" src="../assets/img3.png" alt="">
-                 </div>
-                 <div class=" flex flex-col items-center m-4">
-                     <p class=" text-lg text-skin-muted"> 🎨 Nombre de la obra</p>
-                 </div>
                 </div>
-                 <div class=" flex flex-col items-center">
-                     <p class=" text-skin-muted md:text-2xl"><i class="uil uil-dollar-alt text-skin-muted"></i>200.000</p>
-                     <div class=" flex flex-row mt-4">
-                         <p class=" m-4 text-skin-muted">Add</p>
-                         <select class=" text-skin-muted">
-                             <option>1</option>
-                             <option>2</option>
-                             <option>3</option>
-                             <option>4</option>
-                         </select>
-                     </div>
-                 </div>
-         </div>
-               
-           
 
-         <div class=" flex justify-center mt-11">
-            <p class=" text-3xl text-skin-accent">You might also like</p>
-        </div>
 
-         <div class=" flex md:flex-row flex-col justify-center">
-            <div  class=" flex flex-col">
-             <img class="w-40 m-3 " src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg" alt="">
-             <div class="  text-2xl text-skin-muted flex justify-center">
-                 <button class="boton1s w-24 h-14">❤️️ ADD</button>
-             </div>
-            </div>
-            <div  class=" flex flex-col">
-                <img class="w-40 m-3 " src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg" alt="">
-                <div class="  text-2xl text-skin-muted flex justify-center">
-                    <button class="boton1s w-24 h-14">❤️️ ADD</button>
-                </div>
-               </div>
-               <div  class=" flex flex-col">
-                <img class="w-40 m-3 " src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg" alt="">
-                <div class="  text-2xl text-skin-muted flex justify-center">
-                    <button class="boton1s w-24 h-14">❤️️ ADD</button>
-                </div>
-               </div>
-               <div  class=" flex flex-col">
-                <img class="w-40 m-3 " src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg" alt="">
-                <div class="  text-2xl text-skin-muted flex justify-center">
-                    <button class="boton1s w-24 h-14">❤️️ ADD</button>
-                </div>
-               </div>
-         </div>
 
-         <div class=" border-t-2 m-5 flex justify-center flex-row">
-            <div class="  text-2xl text-skin-muted flex justify-center mt-6">
-                <button class="boton1s w-24 h-14">CONTINUE SHOPPING</button>
-            </div>
-            <div class="  text-2xl text-skin-muted flex justify-center mt-6">
-                <button class="boton1s w-24 h-14">PAY</button>
-            </div>
-         </div>
-                
-                
-        </main>
+
+                <div class=" flex justify-center mt-11">
+                    <p class=" text-3xl text-skin-accent">You might also like</p>
+                </div>
+
+                <div class=" flex md:flex-row flex-col justify-center">
+                    <div class=" flex flex-col">
+                        <img class="w-40 m-3 "
+                            src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg"
+                            alt="">
+                        <div class="  text-2xl text-skin-muted flex justify-center">
+                            <button class="boton1s w-24 h-14">❤️️ ADD</button>
+                        </div>
+                    </div>
+                    <div class=" flex flex-col">
+                        <img class="w-40 m-3 "
+                            src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg"
+                            alt="">
+                        <div class="  text-2xl text-skin-muted flex justify-center">
+                            <button class="boton1s w-24 h-14">❤️️ ADD</button>
+                        </div>
+                    </div>
+                    <div class=" flex flex-col">
+                        <img class="w-40 m-3 "
+                            src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg"
+                            alt="">
+                        <div class="  text-2xl text-skin-muted flex justify-center">
+                            <button class="boton1s w-24 h-14">❤️️ ADD</button>
+                        </div>
+                    </div>
+                    <div class=" flex flex-col">
+                        <img class="w-40 m-3 "
+                            src="https://st2.depositphotos.com/1000829/6424/i/950/depositphotos_64241097-stock-photo-drawing-portrait-of-akhal-teke.jpg"
+                            alt="">
+                        <div class="  text-2xl text-skin-muted flex justify-center">
+                            <button class="boton1s w-24 h-14">❤️️ ADD</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class=" border-t-2 m-5 flex justify-center flex-row">
+                    <div class="  text-2xl text-skin-muted flex justify-center mt-6">
+                        <button class="boton1s w-24 h-14">CONTINUE SHOPPING</button>
+                    </div>
+                    <div class="  text-2xl text-skin-muted flex justify-center mt-6">
+                        <button class="boton1s w-24 h-14">PAY</button>
+                    </div>
+                </div>
+
+
+            </main>
 
         </div>
     </div>
