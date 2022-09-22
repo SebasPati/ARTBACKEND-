@@ -60,7 +60,7 @@ const app = Vue.createApp({
         /* localStorage.setItem("user","visitor"); */
     },
     mounted() {
-        this.addClassY('navbar', 2700, 'glass1', 'opacity-0');
+        this.addClassY('navbar', 60, 'glass1', 'A');
         this.changethemesY();
     },
     methods: {
