@@ -190,7 +190,7 @@ createApp({
       setTimeout(function(){
         var vid = document.getElementById('intro')
         vid.play()
-      },1000)
+      },500)
     }
 
   }
