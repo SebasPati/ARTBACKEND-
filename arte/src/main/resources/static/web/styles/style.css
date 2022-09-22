@@ -410,18 +410,16 @@ body{
 .bannerA{
     transform: translateY(var(--bannerA-translateY));
 	will-change: transform;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 .bannerB{
     transform: translateX(var(--bannerB-translateX));
 	will-change: transform;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 
 /* OTROS ESTILOS PROPIOS */
-
-.reflejarH{
-    transform: scaleX(-1);
-}
 
 .sus{
     background-size: 230% 230% !important;

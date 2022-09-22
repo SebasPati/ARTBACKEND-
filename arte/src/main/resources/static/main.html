@@ -151,7 +151,8 @@
                     <div class="mb-6  pt-6">
                         <div>
                             <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
-                                class=" ml-4 aparecer transition-all ease-in-out duration-300 fixed left-0 w-[40px] h-auto" alt="logo">
+                                class=" ml-4 aparecer transition-all ease-in-out duration-300 fixed left-0 w-[40px] h-auto"
+                                alt="logo">
                         </div>
 
                         <!-- MENÚ DE TEMAS -->
@@ -195,10 +196,10 @@
 
             <!-- CUERPO -->
 
-            <main>
+            <main class="pt-24">
 
                 <!-- BIENVENIDA -->
-                <section class="md:h-[60vh] p-36 pb-20">
+                <section class="md:h-[60vh] p-36 pb-20 c-flex">
                     <div class="w-56 md:w-96 h-auto flex-shrink-0 md:mx-0 mx-auto md:text-left md:mt-0 mt-2 relative">
                         <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02L.png' : '/web/assets/logo01L.png'"
                             class=" w-auto h-auto aparecer"
@@ -213,63 +214,12 @@
                         src="/web/assets/sep3.png" alt="">
                 </div>
 
-
-                <section class="flex justify-between w-full h-6">
-                    <div class="relative md:h-64 h-40 w-auto" ></div>
-                    <img class="absolute w-auto h-auto right-0 bannerA" data-mod-y="-15" src="/web/assets/angel3.png" alt="angel">
-                    <div class="relative md:h-64 h-40 w-auto"></div>
-                    <img class="absolute w-auto h-auto left-0 bannerA" data-mod-y="-15" src="/web/assets/angel32.png" alt="angel">
-                </section>
-
-                <!-- BANNER PUBLICITY 0 -->
-                <section class=" text-skin-inverted c-flex flex-col md:h-screen my-24 md:py-0 bg-skin-normal">
-                    <h2
-                        class="title-font sm:text-4xl text-3xl font-bahnschrift md:mb-14 font-medium text-skin-base py-5 md:py-0 text-center">
-                        THE GALLERY YOU NEEDED
-                    </h2>
-                    <div class=" md:flex md:mt-3 flex flex-col justify-center items-center  md:flex-row">
-                        <div class=" h-4/6  md:h-auto flex flex-col justify-between items-center overflow-hidden group">
-
-                            <div
-                                class="bg-gray-400 h-[400px] w-[250px] md:h-[450px] md:w-[375px] bg-[url('https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center bg-no-repeat group-hover:scale-125 transition-all ease-in duration-300">
-                            </div>
-
-<!--                             <div class="relative w-20 h-auto">
-                                <img src="/web/assets/est09s2.png"
-                                    class="absolute w-80 md:w-auto h-auto bottom-0 left-0 z-50 m-0" alt=""> -->
-                            </div>
-                        </div>
-                        <div class="c-flex flex-col justify-center items-center md:pl-10">
-                            <p class="mt-3 md:w-80 text-center text-skin-base font-quicksand">Many people have already entered this
-                                page to buy and
-                                upload the best works, here nobody stops you, you can be whoever you want. </p>
-                            <div class="place-self-center bg-skin-base h-[1.2px] lg:w-1/2 w-full mt-9 bg-opacity-20">
-                            </div><!-- LINE -->
-                            <div class="container py-5 mx-auto">
-                                <div class="flex flex-wrap justify-around -m-4 text-center">
-                                    <div class="p-4 sm:w-1/2 w-1/2">
-                                        <h2 class="title-font font-medium sm:text-4xl text-3xl text-white">2.7K</h2>
-                                        <p class="leading-relaxed">Art Lovers</p>
-                                    </div>
-                                    <div class="p-4 sm:w-1/2 w-1/2">
-                                        <h2 class="title-font font-medium sm:text-4xl text-3xl text-white">1.8K</h2>
-                                        <p class="leading-relaxed">Artists</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                </section>
-
-
                 <!-- BANNER PUBLICITY A-->
-                <section class="flex justify-around w-full h-[80vh] bg-skin-normal overflow-hidden">
+                <section class="flex justify-around w-full h-[80vh] bg-skin-normal overflow-hidden my-12">
 
                     <div class="w-full h-full flex">
 
-                        <div class="overflow-hidden relative w-1/3 h-full border-r-4 border-skin-normal md:c-flex">
+                        <div class="overflow-hidden relative w-1/3 h-full md:c-flex">
                             <img class="bannerA relative md:min-w-[1322px] min-w-[1000px] h-auto md:bottom-[100px] bottom-40  "
                                 src="https://pro2-bar-s3-cdn-cf5.myportfolio.com/49837808-3263-4d2a-a921-3c23a3b02733/64d9f299-f1a5-46c2-a276-d6734cf23d71_rw_1920.jpg?h=8234f29f81b2503f6f9c24e9fe212c4b"
                                 alt="" data-mod-y="20">
@@ -281,18 +231,180 @@
                                 data-mod-y="-30" alt="">
                         </div>
 
-                        <div class="overflow-hidden relative w-1/3 h-full border-skin-normal md:c-flex">
+                        <div class="overflow-hidden relative w-1/3 h-full md:c-flex">
                             <img class="bannerA relative md:min-w-[1322px] min-w-[1000px] h-auto md:bottom-[100px] bottom-40 md:-left-[300px] -left-[700px] contrast-125"
                                 src="https://guerrerohistory.files.wordpress.com/2013/12/botticelli-birth-of-venus-detail.jpg"
                                 alt="" data-mod-y="20">
                         </div>
 
+                </section>
 
 
+                <!-- BANNER PUBLICITY 0 -->
+                <section class="c-flex md:h-[10vh] mt-12 md:py-0">
+                    <h2
+                        class="bannerA title-font sm:text-4xl text-3xl font-bahnschrift md:mb-14 font-medium text-skin-base py-5 md:py-0 text-center" data-mod-y="5">
+                        THE GALLERY YOU NEEDED
+                    </h2>
+                </section>
+
+                <!-- ÁNGELES 1 -->
+                <section class="flex justify-between w-full h-52 mb-32">
+                    <div class="relative w-auto h-auto"></div>
+                    <img class="absolute md:h-[200px] h-[150px] right-0 bannerA" data-mod-y="-13"
+                        src="/web/assets/angel3.png" alt="angel">
+                    <div class="relative w-auto h-auto "></div>
+                    <img class="absolute md:h-[200px] h-[150px] left-0 bannerA" data-mod-y="-13"
+                        src="/web/assets/angel32.png" alt="angel">
+                </section>
 
 
+                <!-- BANNER PUBLICITY ROLL-->
+                <section class="flex justify-center w-full h-[100vh] bg-skin-normal overflow-hidden mt-12">
+
+                    <div class="overflow-hidden w-1/2 rounded-l-full">
+
+                        <div class="-rotate-[20deg] flex justify-center -translate-y-20">
 
 
+                            <div class="bannerA w-72 h-[120vh] align-top -mt-10" data-mod-y="20">
+    
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://images.squarespace-cdn.com/content/v1/56ba660c859fd0d3d3173d5d/1599070629307-ZI831CUD31YTN8WNW3JG/image-asset.jpeg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://scentofagamer.files.wordpress.com/2017/09/0265_cuombajj_witches_by_seb_m-dbiufpu.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://preview.redd.it/zakzznbhna521.jpg?auto=webp&s=db06aedda5a3b1a00b7b6b5f7a302cf0fb45c08d')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://pbs.twimg.com/profile_images/910180438924300288/oJQHZdZn_400x400.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                            </div>
+        
+                            <div class="bannerA w-72 h-[120vh] align-top -mt-24" data-mod-y="-20">
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://www.rocketchainsaw.com.au/wp-content/uploads/2022/04/new-capenna-feature.jpg')] bg-no-repeat bg-[length:190%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://cdnb.artstation.com/p/assets/images/images/019/864/321/smaller_square/donato-giancola-throneofeldrainekiss-donato-3000-copy.jpg?1565321839')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://scentofagamer.files.wordpress.com/2013/12/cartographer.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://draftsim.com/wp-content/uploads/2020/05/Gift-of-Orzhova-MTG-card-art-by-Johannes-Voss-1024x748.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                            </div>
+        
+                            <div class="bannerA w-72 h-[120vh] align-top -mt-20" data-mod-y="30">
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('http://chetart.com/blog/wp-content/uploads/2012/12/Donato-Giancola.jpg')] bg-no-repeat bg-[length:190%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://i0.wp.com/www.tor.com/wp-content/uploads/2019/04/Donato_LotR_1.jpg?fit=740%2C+9999&crop=0%2C0%2C100%2C416px&ssl=1')] bg-no-repeat bg-[length:190%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://i.pinimg.com/originals/80/89/1e/80891ecce346fcef2e257f9965f07b18.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://i.pinimg.com/736x/5c/ef/dd/5cefdde59eb6100c4fe4f5c623b0ccbe--eldritch-moon-mtg-art.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                            </div>
+    
+    
+                        </div>
+
+                        
+                    </div>
+
+                    <div class="overflow-hidden w-1/2 rounded-r-full">
+
+                        <div class="rotate-[20deg] flex justify-center -translate-y-20">
+
+
+                            <div class="bannerA w-72 h-[120vh] align-top -mt-20" data-mod-y="30">
+    
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://i.pinimg.com/originals/95/4f/d6/954fd68a8539add3d5dc211472a2b495.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://media.nga.gov/iiif/fe16802f-5724-4206-979c-268e5cbfe615/full/!740,560/0/default.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('http://justfunfacts.com/wp-content/uploads/2022/03/sculpture-2.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://static.demilked.com/wp-content/uploads/2021/01/stunning-bronze-sculptures-coderch-malavia-11.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                            </div>
+        
+                            <div class="bannerA w-72 h-[120vh] align-top -mt-24" data-mod-y="-20">
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Michelangelo%27s_Pieta_5450_cut_out_black.jpg/640px-Michelangelo%27s_Pieta_5450_cut_out_black.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://media.istockphoto.com/photos/moses-renaissance-sculpture-by-michelangelo-buonarroti-picture-id1222715602?k=20&m=1222715602&s=170667a&w=0&h=CgIv-0xIbSQIwmTRTzQ-tF8HSQ9tVg8FeoLAdvw20nk=')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://cdn.shopify.com/s/files/1/1414/2472/files/1-_604px-Mona_Lisa__by_Leonardo_da_Vinci__from_C2RMF_retouched.jpg?v=1558424691')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://luxurycolumnist.com/wp-content/uploads/2022/01/Pieter_Bruegel_the_Elder_-_The_Tower_of_Babel.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                            </div>
+        
+                            <div class="bannerA w-72 h-[120vh] align-top -mt-10" data-mod-y="20">
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://www.flametreepublishing.com/ProductImages/renaissance-masterpieces-of-art-isbn-9781787556966.0.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://artincontext.org/wp-content/uploads/2021/08/Detail-of-Famous-Renaissance-Art.jpg')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://static.nationalgeographic.co.uk/files/styles/image_3200/public/raphael-og-03.jpg?w=400&h=400&q=75')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                                <div
+                                    class="overflow-hidden relative w-72 h-72 bg-[url('https://static01.nyt.com/images/2021/12/17/arts/16wadsworth-review-1/merlin_199297380_ad31742c-891c-4f85-a194-dfd2dc4d255e-articleLarge.jpg?quality=75&auto=webp&disable=upscale')] bg-no-repeat bg-[length:150%] bg-center">
+                                </div>
+        
+                            </div>
+    
+    
+                        </div>
+
+                        
+                    </div>
+
+                    
 
                 </section>
 
@@ -310,13 +422,48 @@
 
                     </div>
 
-
-                    <div>
-                        
-                    </div>
-
+                    old and new merge
+                
                 </section>
 
+                                <!-- BANNER PUBLICITY 0 -->
+                                <section class=" text-skin-inverted c-flex flex-col md:h-[150vh] mt-12 md:py-0">
+                                    <h2
+                                        class="title-font sm:text-4xl text-3xl font-bahnschrift md:mb-14 font-medium text-skin-base py-5 md:py-0 text-center">
+                                        THE GALLERY YOU NEEDED
+                                    </h2>
+                                    <div class=" md:flex md:mt-3 flex flex-col justify-center items-center  md:flex-row">
+                                        <div class=" h-4/6  md:h-auto flex flex-col justify-between items-center overflow-hidden group">
+                
+                                            <div
+                                                class="bg-gray-400 h-[400px] w-[250px] md:h-[450px] md:w-[375px] bg-[url('https://images.pexels.com/photos/4585185/pexels-photo-4585185.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1')] bg-cover bg-center bg-no-repeat group-hover:scale-125 transition-all ease-in duration-300">
+                                            </div>
+                
+                                            <!--                             <div class="relative w-20 h-auto">
+                                                <img src="/web/assets/est09s2.png"
+                                                    class="absolute w-80 md:w-auto h-auto bottom-0 left-0 z-50 m-0" alt=""> -->
+                                        </div>
+                                    </div>
+                                    <div class="c-flex flex-col justify-center items-center md:pl-10">
+                                        <p class="mt-3 md:w-80 text-center text-skin-base font-quicksand">Many people have already
+                                            entered this
+                                            page to buy and
+                                            upload the best works, here nobody stops you, you can be whoever you want. </p>
+                                        <div class="place-self-center bg-skin-accent h-[1.2px] lg:w-1/2 w-full mt-9 bg-opacity-20">
+                                        </div><!-- LINE -->
+                                        <div class="container py-5 mx-auto text-skin-accent">
+                                            <div class="flex flex-wrap justify-around -m-4 text-center">
+                                                <div class="p-4 sm:w-1/2 w-1/2">
+                                                    <h2 class="title-font font-medium sm:text-4xl text-3xl">2.7K</h2>
+                                                    <p class="leading-relaxed">Art Lovers</p>
+                                                </div>
+                                                <div class="p-4 sm:w-1/2 w-1/2">
+                                                    <h2 class="title-font font-medium sm:text-4xl text-3xl">1.8K</h2>
+                                                    <p class="leading-relaxed">Artists</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
 
                 <!-- SECTION publicity2 -->
                 <section class=" text-skin-base body-font rounded-b-lg">
@@ -328,14 +475,17 @@
                         </div>
                         <div
                             class="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                            <h2 class="title-font font-bahnschrift sm:text-4xl text-3xl mb-4 font-medium text-skin-muted">The best works
+                            <h2
+                                class="title-font font-bahnschrift sm:text-4xl text-3xl mb-4 font-medium text-skin-muted">
+                                The
+                                best works
                                 are
                                 in this place, and the best artists too!
                             </h2>
                             <p class="mb-8 leading-relaxed">Did you ever think something like this would be possible? A
                                 virtual gallery? It is already done! We take care that your productions reach everyone.
                             </p>
-                            <div class="flex justify-center">
+                            <div class="flex justify-center text-skin-accent">
                                 <a href="./web/public/wallofartist.html" class="boton1 c-flex">See the artists</a>
                                 <a href="./web/public/wallofartworks.html" class="boton3">See
                                     the artworks</a>
@@ -481,7 +631,8 @@
                                 fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M15 19l-7-7 7-7"></path>
+                                    d="M15 19l-7-7 7-7">
+                                </path>
                             </svg>
                             <span class="sr-only">Previous</span>
                         </span>
@@ -616,8 +767,7 @@
                 <!-- SECTION artist of the year -->
                 <section class="text-black bg-skin-muted bg-opacity-25 body-font rounded-b-lg">
                     <div class="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-                        <h1 class="title-font font-bahnschrift sm:text-4xl text-3xl mb-4 font-medium text-skin-base"
-                            >
+                        <h1 class="title-font font-bahnschrift sm:text-4xl text-3xl mb-4 font-medium text-skin-base">
                             This is the best
                             artist at this moment, congratulations!</h1>
                         <div class="overflow-hidden group c-flex">
