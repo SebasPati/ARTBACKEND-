@@ -23,7 +23,7 @@ public class AuthorizationSettings extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
                 .antMatchers("/web/", "/api/clients/current").hasAnyAuthority("ARTIST","CLIENT")
                 .antMatchers("/web/artist/**").hasAuthority("ARTIST")
-                .antMatchers("/web/artlover/**").hasAuthority("CLIENT")
+                .antMatchers("/web/artlover/**").permitAll()
                 .antMatchers("/public/","/index.html","/styles/**").permitAll()
                 .antMatchers(HttpMethod.POST,"/api/**").permitAll()
                 .antMatchers(HttpMethod.PATCH,"/api/**").permitAll()
