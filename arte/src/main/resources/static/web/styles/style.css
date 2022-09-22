@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 /* FUENTES */
-@import url('../assets/bahnschrift.ttf=?family=Bahnschrift:wght@300;400;500;600;700;800&display=swap');
-@import url('../assets/Cinzel-Regular.otf?family=Cinzel:wght@300;400;500;600;700;800&display=swap');
-@import url('../assets/Quicksand-VariableFont_wght.ttf?family=Quicksand:wght@300;400;500;600;700;800&display=swap');
+@import url('/web/assets/bahnschrift.ttf=?family=Bahnschrift:wght@300;400;500;600;700;800&display=swap');
+@import url('/web/assets/Cinzel-Regular.otf?family=Cinzel:wght@300;400;500;600;700;800&display=swap');
+@import url('/web/assets/Quicksand-VariableFont_wght.ttf?family=Quicksand:wght@300;400;500;600;700;800&display=swap');
 
 body{
     box-sizing: border-box;
