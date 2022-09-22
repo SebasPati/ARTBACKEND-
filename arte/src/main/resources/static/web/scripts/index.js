@@ -61,12 +61,11 @@ const app = Vue.createApp({
     },
     mounted() {
         this.addClassY('navbar', 60, 'glass1', 'A');
-        this.changethemesY();
     },
     methods: {
         theme(a) {
             this.tema = `tema_${a}`;
-            if(parseInt(a)>5){
+            if(parseInt(a)>6){
                 this.tema = 'tema_1';
             }
             if(a.lenght==0){
@@ -202,17 +201,6 @@ const app = Vue.createApp({
                 } else {
                     element.classList.remove(classToAdd);
                     element.classList.add(classToRemove);
-                }
-            })
-        },
-        changethemesY() {
-            window.addEventListener("scroll", () => {
-                if (window.scrollY > 200 && window.scrollY < 400) {
-                    this.theme(1);
-                } else if (window.scrollY > 400 && window.scrollY < 1050) {
-                    this.theme(4);
-                } else if (window.scrollY > 1050 && window.scrollY < 1200) {
-                    this.theme(3);
                 }
             })
         },
