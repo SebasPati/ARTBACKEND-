@@ -417,7 +417,7 @@ body{
 .sus{
     background-size: 230% 230% !important;
     background: linear-gradient(90deg, rgba(var(--color-button-accent),1) 0%, rgba(var(--color-button-accent),1) 50%, rgba(var(--color-text-base),1) 50%);
-    transition: .4s;
+    transition: .4s cubic-bezier(0.165, 0.84, 0.44, 1);
     background-position: right;
 }
 
@@ -433,7 +433,7 @@ body{
 }
 
 .glass1 {
-    background: rgba(var(--color-normal), 0.2);
+    background: rgba(var(--color-normal), 0.4);
     box-shadow: 0 4px 20px rgba(var(--color-text-base), 0.07);
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(7px);
@@ -442,7 +442,7 @@ body{
 }
 
 .glass1:hover{
-    background: rgba(var(--color-normal), 0.6);
+    background: rgba(var(--color-normal), 0.8);
 }
 
 .glass2 {

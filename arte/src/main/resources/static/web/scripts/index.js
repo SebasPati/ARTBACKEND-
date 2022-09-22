@@ -43,7 +43,8 @@ const app = Vue.createApp({
             bestArtist: {},
             profileInfo: "",
             profileImage: "",
-            file: ''
+            file: '',
+            menuPhoto: false
         }
     },
     created() {

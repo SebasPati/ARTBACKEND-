@@ -25,7 +25,7 @@
             <header>
 
                 <div ref="navbar"
-                    class="opacity-0 hidden md:flex justify-between w-screen p-2 fixed z-50 place-items-center">
+                    class="opacity-0 hidden md:flex justify-between w-screen p-2 fixed z-40 place-items-center">
 
                     <img :src=" tema=='tema_4' || tema=='tema_5' || tema=='tema_6' ? '/web/assets/logo02.png' : '/web/assets/logo01.png'"
                         class="w-[3.5%] h-[3.5%] ml-4 aparecer transition-all ease-in-out duration-300" alt="logo">
@@ -43,17 +43,62 @@
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
                                 href="/web/public/shoppingcart.html">Shop cart</a>
                         </div>
-                        <div class="flex items-center mr-6 ml-6">
+
+                        <div v-show="user=='visitor' || user==''" class="flex items-center mr-6 ml-6">
                             <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base  sus"
-                                href="javascript:void(0);">Log in</a>
+                                href="javascript:void(0);" @click="activeModal=true, modal='login', goTo='Store'">Log
+                                in</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-3 text-skin-base text-opacity-100" href="javascript:void(0);">Sign in</a>
                         </div>
+
+                        <div v-show="user=='authenticated'" class="flex items-center justify-between mr-6 ml-6 group">
+                            <!-- Foto si es CLIENTE, sin anchor -->
+                            <img :src="profileImage" v-show="profileInfo.typeUser == 'CLIENT'" alt=""
+                                class="w-14 h-14  bg-cover bg-no-repeat rounded-full z-[41]">
+                            <!-- Foto si es ARTISTA, con anchor a página personal -->
+                            <a v-show="profileInfo.typeUser == 'ARTIST'"
+                                :href="'/web/artist/artistpage.html?id='+profileInfo.id" class="z-[41]">
+                                <img :src="profileImage" alt=""
+                                    class="w-14 h-14 mr-1  bg-cover bg-no-repeat rounded-full">
+                            </a>
+                            <!-- DIV DETRÁS DE IMAGEN PARA EDITAR -->
+                            <button
+                                class="relative group-hover:-translate-x-6 transition-all duration-700 ease-in-out c-flex"
+                                @click="menuPhoto=true">
+                                <div class="right-1 -top-7 absolute w-14 h-14 rounded-full  bg-skin-base z-40 peer">
+                                    <img :src="profileImage" alt=""
+                                        class="w-14 h-14 mr-1  bg-cover bg-no-repeat rounded-full opacity-50 hover:contrast-150 ease-out duration-300">
+                                </div>
+                                <div
+                                    class="absolute -top-8 -left-16 z-[41] opacity-0 peer-hover:opacity-100 text-skin-base text-3xl font-bold ease-in-out duration-200">
+                                    +
+                                </div>
+                            </button>
+
+                            <div v-show="menuPhoto" class="relative top-0 right-0">
+                                <div  class="absolute">
+                                    <button class="boton1s w-24 h-14" :class="" @click="editPhoto"> upload photo</button>
+                                    <div class="form-floating mb-3">
+                                        <label for="avatar">Choose a image:</label>
+                                        <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
+                                            @change="select_file">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <a class="mr-4 ml-6 px-5 py-3 text-opacity-80 text-skin-inverted hover:text-skin-base sus"
+                                href="javascript:void(0);" @click="logout">Log out</a>
+                        </div>
                     </nav>
+
+                    
 
                 </div>
 
             </header>
+
+
 
             <!-- NAV-BAR MOBILE -->
             <div class="self-start ml-16 mt-6 pb-3 fixed z-50">
