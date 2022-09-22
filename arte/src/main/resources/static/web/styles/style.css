@@ -413,7 +413,7 @@ body{
 }
 
 .bannerB{
-    transform: translateX(var(--bannerA-translateX));
+    transform: translateX(var(--bannerB-translateX));
 	will-change: transform;
 }
 

@@ -283,7 +283,7 @@ window.addEventListener('scroll', function () {
     section.style.clipPath = "circle(" + value + "px at center)"
 })
 
-/* Para publicidad A */
+/* Para BannerA (Trasladar en Y)*/
 document.querySelectorAll('.bannerA').forEach(element => {
     const bannerAy = element.getAttribute('data-mod-y');
     console.log(bannerAy);
@@ -296,6 +296,24 @@ document.querySelectorAll('.bannerA').forEach(element => {
             '--bannerA-translateY': {
                 from: '0',
                 to: `${10 * bannerAy}px`
+            }
+        }
+    }).start();
+});
+
+/* Para BannerA (Trasladar en X)*/
+document.querySelectorAll('.bannerB').forEach(element => {
+    const bannerBx = element.getAttribute('data-mod-x');
+    console.log(bannerBx);
+    const bannerB = basicScroll.create({
+        elem: element,
+        from: 'top-middle',
+        to: 'bottom-middle',
+        direct: true,
+        props: {
+            '--bannerB-translateX': {
+                from: '0',
+                to: `${10 * bannerBx}px`
             }
         }
     }).start();
