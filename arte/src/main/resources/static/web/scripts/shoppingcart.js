@@ -55,6 +55,23 @@ createApp({
     this.musica()
   },
   methods: {
+    goToPaymenLink() {
+      console.log(this.carProducts)
+      let requestBody = []
+      this.carProducts.forEach(product => {
+        requestBody.push({
+          "id": product.id.toString(),
+          "quantity": product.units
+        })
+      })
+      axios.post('/api/paymentmp', requestBody,
+        { headers: { 'content-type': 'application/json' } })
+        .then(response => {
+          location.href = response.data
+        })
+        .catch(error => alert(error.response.data))
+      console.log(requestBody)
+    },
     getCurrentClient() {
       axios.get('/api/clients/current')
         .then((response) => {
@@ -344,20 +361,20 @@ createApp({
         vid.volume = "0.5"
       }, 500)
     },
-    estado(){
+    estado() {
       var vid = document.getElementById('intro')
       this.state = vid.paused
-      if(this.state){
+      if (this.state) {
         vid.play()
         this.state = vid.paused
         vid.volume = "0.5"
-      }else{
+      } else {
         vid.pause()
         this.state = vid.paused
         vid.volume = "0.5"
       }
     },
-    
+
 
   }
 }).mount('#app')
