@@ -103,14 +103,17 @@ document.querySelectorAll('.bannerB').forEach(element => {
 });
 
 
-const fadeIn = basicScroll.create({
-    elem: document.querySelector('.fadeIn'),
-    from: 'bottom-bottom',
-    to: 'top-top',
-    props: {
-      '--opacidad': {
-        from: .01,
-        to: .99
-      }
-    }
-  }).start()
+document.querySelectorAll('.fadeIn').forEach(element=>{
+    const fadeIn = basicScroll.create({
+        elem: element,
+        from: 'bottom-bottom',
+        to: 'top-middle',
+        direct: true,
+        props: {
+          '--opacidad': {
+            from: .01,
+            to: .99
+          }
+        }
+      }).start();
+});

@@ -240,11 +240,10 @@ const app = Vue.createApp({
 /* Para BannerA (Trasladar en Y)*/
 document.querySelectorAll('.bannerA').forEach(element => {
     const bannerAy = element.getAttribute('data-mod-y');
-    console.log(bannerAy);
     const bannerA = basicScroll.create({
         elem: element,
         from: 'top-middle',
-        to: 'bottom-middle',
+        to: 'bottom-top',
         direct: true,
         props: {
             '--bannerA-translateY': {
@@ -258,7 +257,6 @@ document.querySelectorAll('.bannerA').forEach(element => {
 /* Para BannerA (Trasladar en X)*/
 document.querySelectorAll('.bannerB').forEach(element => {
     const bannerBx = element.getAttribute('data-mod-x');
-    console.log(bannerBx);
     const bannerB = basicScroll.create({
         elem: element,
         from: 'top-middle',
@@ -277,14 +275,18 @@ document.querySelectorAll('.bannerB').forEach(element => {
 /* document.querySelectorAll('.fadeIn').forEach(element=>{
     const fadeIn = element.ge
 }) */
-const fadeIn = basicScroll.create({
-    elem: document.querySelector('.fadeIn'),
-    from: 'bottom-bottom',
-    to: 'top-top',
-    props: {
-      '--opacidad': {
-        from: .01,
-        to: .99
-      }
-    }
-  }).start()
+document.querySelectorAll('.fadeIn').forEach(element=>{
+    const fadeIn = basicScroll.create({
+        elem: element,
+        from: 'bottom-bottom',
+        to: 'top-middle',
+        direct: true,
+        props: {
+          '--opacidad': {
+            from: .01,
+            to: .99
+          }
+        }
+      }).start();
+});
+
