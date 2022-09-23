@@ -61,7 +61,7 @@ createApp({
       this.carProducts.forEach(product => {
         requestBody.push({
           "id": product.id.toString(),
-          "quantity": product.units
+          "quantity": product.cantidad
         })
       })
       axios.post('/api/paymentmp', requestBody,
