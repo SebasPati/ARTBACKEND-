@@ -6,6 +6,7 @@ const app = Vue.createApp({
             tema: '',
             artist: [],
             products: [],
+            activeModal: false,
             formularioProduct: false,
             formulario: false,
             formEdit:{
