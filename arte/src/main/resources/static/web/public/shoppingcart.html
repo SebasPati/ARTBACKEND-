@@ -7,9 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/web/styles/tailwind.css">
     <link rel="shortcut icon" href="/web/assets/logo01.png" type="image/x-icon">
-    <title>Artist den</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="/web/assets/logo01.png" type="image/x-icon">
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- librería flowbite -->
+    <link rel="stylesheet" href="https://unpkg.com/flowbite@1.5.3/dist/flowbite.min.css" />
+    <title>Artist den | AMBAR</title>
+
 </head>
 
 <body>
@@ -23,7 +28,7 @@
             <header>
 
                 <div ref="navbar"
-                    class="glass1 hidden md:flex justify-between w-screen p-2 fixed z-40 place-items-center">
+                    class="A hidden md:flex justify-between w-screen p-2 fixed z-40 place-items-center">
 
                     <!-- MENÚ DE TEMAS -->
                     <div class="self-start ml-16 mt-6 pb-3 fixed md:flex hidden">
@@ -95,7 +100,7 @@
                                 href="/web/public/wallofartist.html">Artists</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="/web/public/shoppingcart.html">Shop cart</a>
+                                href="/web/public/shoppingcart.html">Cart</a>
                         </div>
 
                         <div v-show="user=='visitor' || user==''" class="flex items-center mr-6 ml-6">
@@ -299,18 +304,18 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <audio id="intro"
                     src="/web/assets/y2mate.com - F Chopin  Nocturne in c sharp minor for violin and piano YuEun Kim Violin  쇼팽 녹턴  바이올리니스트 김유은.mp3"
                     autoplay="true"></audio>
                 <button v-show="!state"
-                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 hover:filtro2 border-2"
+                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 filtro1 hover:filtro2 border-2"
                     @click="estado">
                     <img src="/web/assets/mute.png" alt="" class="w-6 h-6 ">
                 </button>
 
                 <button v-show="state"
-                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 hover:filtro2 border-2"
+                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 filtro1 hover:filtro2 border-2"
                     @click="estado">
                     <img src="/web/assets/unmuted.png" alt="" class="w-6 h-6 ">
                 </button>
@@ -663,7 +668,7 @@
                 <button v-show="optionChange==true" class=" boton2" @click="changeImage=true, optionChange=false">Change
                     Image</button>
                 <div v-show="changeImage==true" class="mt-3 flex flex-col justify-center items-center">
-                    <div class="form-floating mb-3 flex flex-col">
+                    <div class="form-floating mb-3 flex flex-col file-select" id="src-file1">
                         <label for="avatar">Choose an image:</label>
                         <input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"
                             @change="select_file" class="boton2">
@@ -683,6 +688,8 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://unpkg.com/vue@3"></script>
     <script src="/web/scripts/shoppingcart.js"></script>
+    <!-- librería flowbite -->
+    <script src="https://unpkg.com/flowbite@1.5.3/dist/flowbite.js"></script>
 </body>
 
 </html>

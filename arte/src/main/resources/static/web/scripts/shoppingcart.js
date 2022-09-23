@@ -51,8 +51,12 @@ createApp({
     this.getCart();
     this.getProducts();
     this.getCurrentClient();
-    this.total()
-    this.musica()
+    this.total();
+    this.musica();
+    this.initialTheme();
+  },
+  mounted(){
+    this.addClassY('navbar', 60, 'glass1', 'A');
   },
   methods: {
     goToPaymenLink() {
@@ -374,6 +378,18 @@ createApp({
         vid.volume = "0.5"
       }
     },
+    addClassY(ref, yTrigger, classToAdd, classToRemove) {
+      const element = eval(`this.$refs.${ref}`);
+      window.addEventListener("scroll", () => {
+          if (window.scrollY > yTrigger) {
+              element.classList.add(classToAdd);
+              element.classList.remove(classToRemove);
+          } else {
+              element.classList.remove(classToAdd);
+              element.classList.add(classToRemove);
+          }
+      })
+  }
 
 
   }

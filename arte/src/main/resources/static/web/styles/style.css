@@ -345,7 +345,7 @@ body{
 }
 
 .botonredondo{
-    @apply p-1 w-12 h-12 text-4xl text-center text-skin-base rounded-2xl hover:text-skin-inverted hover:rounded-full  hover:bg-skin-accent ease-in duration-300 shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-accent),0.4)];
+    @apply w-12 h-12 text-3xl text-center text-skin-base rounded-2xl hover:text-skin-inverted hover:rounded-full  hover:bg-skin-accent ease-in duration-300 shadow-[1px_1px_5px_rgba(var(--color-text-base),0.2)] hover:shadow-[1px_1px_5px_rgba(var(--color-button-accent),0.4)];
 }
 
 
@@ -470,6 +470,41 @@ body{
     background-repeat: no-repeat;
     background-position: bottom -8px right 1px;;
 }
+
+/* TEMAS SEBAS */
+
+.file-select {
+    position: relative;
+    display: inline-block;
+  }
+  
+.file-select::before {
+    background-color: #5678EF;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3px;
+    content: 'Seleccionar'; /* testo por defecto */
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+  }
+  
+.file-select input[type="file"] {
+    opacity: 0;
+    width: 200px;
+    height: 32px;
+    display: inline-block;
+  }
+  
+#src-file1::before {
+    content: 'Select your file';
+  }
+
+
 
 /* FILTROS DE COLORES PARA ÍCONOS */
 

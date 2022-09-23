@@ -23,6 +23,7 @@ const app = Vue.createApp({
             artistsOrderedByRanking: {},
             bestArtist: {},
             menuPhoto: false,
+            state: false,
                         /* PARA FUNCIONAR EL NAV */
                         tema: '',
                         user: '',
@@ -57,10 +58,10 @@ const app = Vue.createApp({
         this.initialTheme();
         this.getClients();
         this.getProducts();
-        this.initialTheme();
         this.getClients();
         this.getProducts();
         this.getCurrentClient();
+        this.musica();
         /* localStorage.setItem("user","visitor"); */
     },
     mounted() {
@@ -213,11 +214,7 @@ const app = Vue.createApp({
             }
             localStorage.setItem('theme', JSON.stringify(a));
         },
-        initialTheme() {
-            if (JSON.parse(localStorage.getItem('theme'))) {
-                this.theme(JSON.parse(localStorage.getItem('theme')))
-            }
-        },
+
 
         /* REQUESTS */
         getClients() {
@@ -274,7 +271,27 @@ const app = Vue.createApp({
                     element.classList.add(classToRemove);
                 }
             })
-        }
+        },
+        musica() {
+            setTimeout(function () {
+              var vid = document.getElementById('intro')
+              vid.play()
+              vid.volume = "0.5"
+            }, 500)
+          },
+          estado() {
+            var vid = document.getElementById('intro')
+            this.state = vid.paused
+            if (this.state) {
+              vid.play()
+              this.state = vid.paused
+              vid.volume = "0.5"
+            } else {
+              vid.pause()
+              this.state = vid.paused
+              vid.volume = "0.5"
+            }
+          },
     },
     computed: {
     }

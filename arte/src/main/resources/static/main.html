@@ -90,7 +90,7 @@
                                 href="/main.html">Home</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
-                                href="#">Store</a>
+                                href="/web/public/wallofartworks.html">Store</a>
                             <div class="font-xs opacity-30 text-skin-base">|</div>
                             <a class="mr-6 ml-6 text-skin-base text-opacity-50 hover:text-opacity-100 transition-all ease-in duration-100"
                                 href="/web/public/wallofartist.html">Artists</a>
@@ -205,6 +205,21 @@
             <!-- CUERPO -->
 
             <main class="pt-24">
+
+                <audio id="intro"
+                    src="web/assets/y2mate.com - Antonio Vivaldi  Allegro non molto from Winter from The Four Seasons.mp3"
+                    autoplay="true"></audio>
+                <button v-show="!state"
+                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 filtro1 hover:filtro2 border-2"
+                    @click="estado">
+                    <img src="/web/assets/mute.png" alt="" class="w-6 h-6 ">
+                </button>
+
+                <button v-show="state"
+                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 filtro1 hover:filtro2 border-2"
+                    @click="estado">
+                    <img src="/web/assets/unmuted.png" alt="" class="w-6 h-6 ">
+                </button>
 
                 <!-- BIENVENIDA -->
                 <section class="md:h-[60vh] p-36 pb-20 c-flex">

@@ -2,8 +2,6 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
-      user: 'visitor',
-      tema: '',
       activeModal: false,
       products: [],
       productDetail: [],
@@ -21,7 +19,37 @@ createApp({
         total:0
       },
       cond:false,
-      cantidad:0
+      cantidad:0,
+      state: false,
+                  /* PARA FUNCIONAR EL NAV */
+                  tema: '',
+                  user: '',
+                  modalLoginRegister: false,
+                  modalSimple: false,
+                  modal: "",
+                  goTo: "",
+                  profileInfo: "",
+                  profileImage: "",
+                  modalUploadPhoto: false,
+                  changeImage: false,
+                  login: {
+                      email: "",
+                      password: ""
+                  },
+                  mjeError: "",
+                  userType: '',
+                  register: {
+                      name: '',
+                      lastName: '',
+                      email: '',
+                      password: ''
+                  },
+                  repeatedPassword: '',
+                  termsOfServiceChecked: "",
+                  p: "",
+                  file2: "",
+                  optionChange: true,
+      
     }
   },
   created() {
@@ -29,7 +57,8 @@ createApp({
     this.getProducts();
     this.initialTheme();
     console.log(this.user);
-    this.currency = this.function
+    this.currency = this.function;
+    this.musica();
   },
   mounted(){
     this.addClassY('navbar', 50, 'glass1', 'A');
@@ -177,7 +206,26 @@ createApp({
       }
       localStorage.setItem('articulos', JSON.stringify(this.articuloCarrito))
     },
-
+    musica() {
+      setTimeout(function () {
+        var vid = document.getElementById('intro')
+        vid.play()
+        vid.volume = "0.5"
+      }, 500)
+    },
+    estado() {
+      var vid = document.getElementById('intro')
+      this.state = vid.paused
+      if (this.state) {
+        vid.play()
+        this.state = vid.paused
+        vid.volume = "0.5"
+      } else {
+        vid.pause()
+        this.state = vid.paused
+        vid.volume = "0.5"
+      }
+    },
   },
   computed:{
     buscador(){
