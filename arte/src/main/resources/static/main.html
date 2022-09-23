@@ -423,7 +423,7 @@
                 </section>
 
                 <!-- BANNER PUBLICITY 0 -->
-                <section class=" text-skin-inverted c-flex flex-col md:h-[150vh] md:mt-[1500px]">
+                <section class=" text-skin-inverted c-flex flex-col md:h-[150vh] md:mt-[1200px]">
                     <h2
                         class="fadeIn title-font sm:text-4xl text-3xl font-bahnschrift md:mb-14 font-medium text-skin-base py-5 md:py-0 text-center">
                         IF YOU ARE AN ARTIST OR AN ARTIS LOVER, THIS IS YOUR PLACE
@@ -452,7 +452,7 @@
                                         <p class="leading-relaxed">Art Lovers</p>
                                     </div>
                                     <div class="p-4 sm:w-1/2 w-1/2">
-                                        <h2 class="title-font font-medium sm:text-4xl text-3xl">1.8K</h2>
+                                        <h2 class="title-font font-medium hover:scale-125 sm:text-4xl text-3xl">1.8K</h2>
                                         <p class="leading-relaxed">Artists</p>
                                     </div>
                                 </div>
@@ -478,7 +478,7 @@
                                     are
                                     in this place, and the best artists too!
                                 </h2>
-                                <p class="mb-8 leading-relaxed">Did you ever think something like this would be
+                                <p class="mb-8 px-4 leading-relaxed">Did you ever think something like this would be
                                     possible? A
                                     virtual gallery? It is already done! We take care that your productions reach
                                     everyone.
@@ -492,27 +492,8 @@
                         </div>
                     </section>
 
-                    <!-- SECTION tiktok video -->
-                    <!-- <section
-                    class=" text-skin-muted c-flex flex-col h-screen px-5 md:flex md:flex-row md:justify-evenly md:m-20 bg-skin-disabled rounded-lg">
-                    <iframe src="./web/assets/index/videotiktok.mp4" class="w-[220px] h-[390px] boton2"></iframe>
-                    <div class="mt-3 text-center text-xl">
-                        <h2 class="title-font sm:text-4xl text-3xl  md:mb-2 font-medium  py-5 md:py-0 text-center"
-                            :class="tema=='tema_1' ? 'text-black' :'text-white'">
-                            Do you want to see more?
-                        </h2>
-                        <p>We are wating for people like you</p>
-                        <div class="place-self-center bg-skin-base h-[1.2px] w-full mt-9 bg-opacity-20">
-                        </div>
-
-                        <button data-modal-toggle="authentication-modal" class="boton2"
-                            @click="activeModal=true, modal='login', goTo='Store'">Log
-                            in</button>
-                    </div>
-                </section> -->
-
                     <!-- SECTION artists -->
-                    <div id="default-carousel" class="relative bg-skin-muted" data-carousel="static">
+                    <div id="default-carousel" class="relative bg-opacity-20 w-full" data-carousel="static">
                         <!-- Carousel wrapper -->
                         <div class="relative h-56 overflow-hidden rounded-lg md:h-96">
                             <!-- Item 1 -->
@@ -521,25 +502,25 @@
                                 <!-- PERFIL CARD -->
                                 <!-- -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -->
                                 <div class="absolute w-full h-full py-4 flex items-center justify-evenly px-4">
-                                    <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                                    <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-skin-inverted rounded-tr-3xl hover:rounded-tr-none rounded-bl-3xl hover:rounded-bl-none hover:rounded-tl-3xl hover:rounded-br-3xl transition-all ease-in-out duration-300 hover:border hover:border-skin-muted hover:shadow-[1px_1px_5px_rgba(var(--color-text-base),0.5)]"
                                         v-for="artist in arrayArtists1">
 
                                         <div
                                             class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                            <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="artist.image">
+                                            <img class="mb-3 w-24 h-auto rounded-full shadow-lg" :src="artist.image">
                                             <div
-                                                class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                                                class="md:w-full md:flex md:flex-col md:justify-center md:items-center font-bahnschrift">
+                                                <h5 class="mb-1 text-xl font-medium text-skin-inverted-accent">
                                                     {{artist.name + " " +artist.lastName}}
                                                 </h5>
                                                 <span
-                                                    class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Artist</span>
+                                                    class="hidden md:block text-sm text-skin-inverted">Artist</span>
                                                 <div class="hidden md:block mt-4 space-x-3 md:mt-6">
                                                     <a :href="'./web/artistandartlovers/artistpage.html?id='+artist.id"
                                                         class="boton2">View Page</a>
-                                                    <a href="./web/public/wallofartist.html" class="boton1 ">See
+<!--                                                     <a href="./web/public/wallofartist.html" class="boton4">See
                                                         more
-                                                        artists</a>
+                                                        artists</a> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -554,28 +535,30 @@
                                 <!-- PERFIL CARD -->
                                 <!-- -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -->
                                 <div class="absolute w-full h-full py-4 flex items-center justify-evenly px-4">
-                                    <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                                    <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-skin-inverted rounded-tr-3xl hover:rounded-tr-none rounded-bl-3xl hover:rounded-bl-none hover:rounded-tl-3xl hover:rounded-br-3xl transition-all ease-in-out duration-300 hover:border hover:border-skin-muted hover:shadow-[1px_1px_5px_rgba(var(--color-text-base),0.5)]"
                                         v-for="artist in arrayArtists2">
 
                                         <div
                                             class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                            <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="artist.image">
+                                            <img class="mb-3 w-24 h-auto rounded-full shadow-lg" :src="artist.image">
                                             <div
-                                                class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                                                class="md:w-full md:flex md:flex-col md:justify-center md:items-center font-bahnschrift">
+                                                <h5 class="mb-1 text-xl font-medium text-skin-inverted-accent">
                                                     {{artist.name + " " +artist.lastName}}
                                                 </h5>
                                                 <span
-                                                    class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Artist</span>
+                                                    class="hidden md:block text-sm text-skin-inverted">Artist</span>
                                                 <div class="hidden md:block mt-4 space-x-3 md:mt-6">
                                                     <a :href="'./web/artistandartlovers/artistpage.html?id='+artist.id"
                                                         class="boton2">View Page</a>
-                                                    <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                        artists</a>
+<!--                                                     <a href="./web/public/wallofartist.html" class="boton4">See
+                                                        more
+                                                        artists</a> -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -585,29 +568,30 @@
                                 <!-- PERFIL CARD -->
                                 <!-- -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2 -->
                                 <div class="absolute w-full h-full py-4 flex items-center justify-evenly px-4">
-                                    <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700"
+                                    <div class="w-[190px] md:w-[375px] h-[190px] md:h-[300px] bg-skin-inverted rounded-tr-3xl hover:rounded-tr-none rounded-bl-3xl hover:rounded-bl-none hover:rounded-tl-3xl hover:rounded-br-3xl transition-all ease-in-out duration-300 hover:border hover:border-skin-muted hover:shadow-[1px_1px_5px_rgba(var(--color-text-base),0.5)]"
                                         v-for="artist in arrayArtists3">
 
                                         <div
                                             class="flex flex-col justify-center items-center mb:pb-10 h-full mb:h-auto">
-                                            <img class="mb-3 w-24 h-24 rounded-full shadow-lg" :src="artist.image">
+                                            <img class="mb-3 w-24 h-auto rounded-full shadow-lg" :src="artist.image">
                                             <div
-                                                class="md:w-full md:flex md:flex-col md:justify-center md:items-center">
-                                                <h5 class="mb-1 text-xl font-medium text-gray-900 dark:text-white">
+                                                class="md:w-full md:flex md:flex-col md:justify-center md:items-center font-bahnschrift">
+                                                <h5 class="mb-1 text-xl font-medium text-skin-inverted-accent">
                                                     {{artist.name + " " +artist.lastName}}
                                                 </h5>
                                                 <span
-                                                    class="hidden md:block text-sm text-gray-500 dark:text-gray-400">Visual
-                                                    Designer</span>
+                                                    class="hidden md:block text-sm text-skin-inverted">Artist</span>
                                                 <div class="hidden md:block mt-4 space-x-3 md:mt-6">
                                                     <a :href="'./web/artistandartlovers/artistpage.html?id='+artist.id"
                                                         class="boton2">View Page</a>
-                                                    <a href="./web/public/wallofartist.html" class="boton1 ">See more
-                                                        artists</a>
+<!--                                                     <a href="./web/public/wallofartist.html" class="boton4">See
+                                                        more
+                                                        artists</a> -->
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
 
                             </div>
@@ -630,8 +614,8 @@
                             class="absolute top-0 left-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                             data-carousel-prev="">
                             <span
-                                class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+                                class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-skin-cuasi-normal/50 group-hover:bg-skin-normal/70 group-focus:ring-4 group-focus:bg-skin-accent group-focus:outline-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-skin-accent sm:w-6 sm:h-6"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -645,8 +629,8 @@
                             class="absolute top-0 right-0 z-30 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none"
                             data-carousel-next="">
                             <span
-                                class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 group-focus:ring-4 group-focus:ring-white dark:group-focus:ring-gray-800/70 group-focus:outline-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+                                class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-skin-cuasi-normal/50 group-hover:bg-skin-normal/70 group-focus:ring-4 group-focus:bg-skin-accent group-focus:outline-none">
+                                <svg aria-hidden="true" class="w-5 h-5 text-skin-accent sm:w-6 sm:h-6"
                                     fill="none" stroke="currentColor" viewBox="0 0 24 24"
                                     xmlns="http://www.w3.org/2000/svg">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -659,78 +643,21 @@
                     </div>
 
                     <!-- SECTION Invitation to login -->
-                    <section class=" bg-skin-normal text-skin-muted body-font">
-                        <div class="container px-5 py-24 mx-auto">
+                    <section class="w-full text-skin-muted body-font group">
+                        <div class="container py-24 mx-auto">
                             <div class="lg:w-2/3 flex flex-col sm:flex-row sm:items-center items-start mx-auto">
-                                <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font mb-10 md:mb-0">Don't
+                                <h1 class="flex-grow sm:pr-16 text-2xl font-medium title-font mb-10 md:mb-0 group-hover:text-skin-accent">Don't
                                     forget,
                                     everything you do here will grow infinitely!</h1>
-                                <button class="boton1 w-20" data-modal-toggle="authentication-modal"
+                                <button class="boton3" data-modal-toggle="authentication-modal"
                                     @click="activeModal=true, modal='login', goTo='Store'">Log in</button>
                             </div>
                         </div>
                     </section>
 
-                    <!-- SECTION gallery of art -->
-                    <!-- <section class=" bg-skin-muted text-skin-inverted body-font rounded-t-lg">
-                    <div class="container px-5 py-24 mx-auto flex flex-wrap">
-                        <div class="flex w-full mb-20 flex-wrap">
-                            <h1 class="sm:text-3xl text-2xl font-medium title-font text-white lg:w-1/3 lg:mb-0 mb-4">
-                                Some of the works of art posted on this site</h1>
-                            <p class="lg:pl-6 lg:w-2/3 mx-auto leading-relaxed  font-bold"
-                                :class="tema=='tema_1' || tema=='tema_3'|| tema=='tema_6' ? 'text-black' :'text-white'">
-                                You will have a super close contact with those people you admire so much.
-                                The artists of
-                                this site are willing to satisfy your needs, you will never feel that it
-                                could be
-                                better.
-                            </p>
-                        </div>
-                        <p>{{arrayDeImagenes[0]}}</p>
-                        <div class="flex flex-wrap md:-m-2 -m-1 w-screen h-screen">
-                            <div class="flex flex-wrap w-1/2 overflow-hidden group">
-                                <div class="h-2/5 flex w-full overflow-hidden group">
-
-                                    <div class=" bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2 group-hover:scale-125 transition-all ease-in duration-300"
-                                        :class="img1" @click="modalDetails=true, productSelected=products[0]">
-
-                                    </div>
-                                    <div class="bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2 group-hover:scale-125 transition-all ease-in duration-300"
-                                        :class="img2" @click="modalDetails=true, productSelected=products[1]">
-                                    </div>
-                                </div>
-                                <div class="bg-cover bg-center bg-no-repeat w-full p-1 md:p-2 h-3/5 group-hover:scale-125 transition-all ease-in duration-300"
-                                    :class="img3" @click="modalDetails=true, productSelected=products[2]">
-                                </div>
-                            </div>
-                            <div class="flex flex-wrap w-1/2 overflow-hidden group">
-                                <div class="bg-cover bg-center bg-no-repeat w-full p-1 md:p-2 h-3/5 group-hover:scale-125 transition-all ease-in duration-300"
-                                    :class="img4" @click="modalDetails=true, productSelected=products[3]">
-                                </div>
-                                <div class="h-2/5 flex w-full overflow-hidden group">
-                                    <div class="bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2 group-hover:scale-125 transition-all ease-in duration-300"
-                                        :class="img5" @click="modalDetails=true, productSelected=products[4]">
-                                    </div>
-                                    <div class="bg-cover bg-center bg-no-repeat w-1/2 p-1 md:p-2 group-hover:scale-125 transition-all ease-in duration-300"
-                                        :class="img6" @click="modalDetails=true, productSelected=products[5]">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section> -->
-                    <!-- <img :src="arrayDeImagenes[0]" alt="" class="w-96 h-96 inline " @click="imgSelected=products[0]">
-                <img :src="arrayDeImagenes[1]" alt="" class="w-96 h-96 inline" @click="imgSelected=products[1]">
-                <img :src="arrayDeImagenes[2]" alt="" class="w-96 h-96 inline" @click="imgSelected=products[2]">
-                <img :src="arrayDeImagenes[3]" alt="" class="w-96 h-96 inline" @click="imgSelected=products[3]">
-                <img :src="arrayDeImagenes[4]" alt="" class="w-96 h-96 inline" @click="imgSelected=products[4]">
-                <img :src="arrayDeImagenes[5]" alt="" class="w-96 h-96 inline" @click="imgSelected=products[5]">
-                <img :src="arrayDeImagenes[5]" alt="" class="w-96 h-96 inline" @click="imgSelected=products[5]"> -->
-
-
                     <section class="flex flex-wrap justify-around pt-6">
                         <!-- CARD OBRA DE ARTE -->
-                        <div v-for="product in products.slice(0,4)" href="#"
+                        <div v-for="product in products.slice(0,3)" href="#"
                             class="group m-5 block overflow-hidden rounded-t-2xl rounded-b-3xl md:w-[300px] aspect-card2 ">
                             <div
                                 class="overflow-hidden aspect-card1 w-full border-b-[6px] border-skin-muted border-opacity-60 group-hover:border-opacity-100">
@@ -755,10 +682,10 @@
                                 </p>
 
                                 <!-- SEPARADOR -->
-                                <img class="place-sel-center scale-[0.8] mt-4 opacity-40 transition-all ease-in-out duration-1000 filtro2 group-hover:opacity-90"
-                                    src="/web/assets/sep11.png" alt="" />
+                                <img class="place-sel-center scale-[0.1] -mb-2 opacity-40 transition-all ease-in-out duration-1000 filtro2 group-hover:opacity-90"
+                                    src="/web/assets/sep9.png" alt="" />
 
-                                <a class="mt-3 c-flex flex-col hover:filtro1 transition-all ease-in-out duration-500"
+                                <a class="c-flex flex-col transition-all ease-in-out duration-500"
                                     :href="'/web/artlover/artistpageclient.html?id='+product.artistId">
                                     <button class="boton1s w-24 h-14"> 🖌️ View Artist</button>
                                 </a>
@@ -987,7 +914,6 @@
 
                     </footer>
 
-
                     <div class="relative">
                         <img src="/web/assets/est09s2.png"
                             class="absolute w-80 md:w-auto md:h-[600px] bottom-0 left-0 z-20 m-0 hidden md:block"
@@ -1037,23 +963,23 @@
                 <div
                     class=" w-full md:w-auto mx-3 flex flex-col justify-between items-center glass1 aparecer rounded-lg">
                     <!-- X -->
-                    <div class="flex justify-end items-end content-end w-full">
+                    <div class="flex justify-end text-skin-base font-bahnschrift font-bold items-end content-end w-full">
                         <button class="mt-2 mr-4" @click="activeModal=false">X</button>
                     </div>
                     <!-- content login-->
 
-                    <div class="flex flex-col justify-center items-center h-full w-full md:w-auto"
+                    <div class="flex flex-col md:px-5 justify-center items-center h-full w-full md:w-auto"
                         v-show="modal=='login'">
                         <h2 class="text-lg font-bold text-skin-muted md:text-2xl md:mb-5 ">Login</h2>
-                        <div class="w-full  flex flex-col justify-center px-7 text-sm">
-                            <div class="w-full flex  justify-between items-center mb-3 md:mb-5">
-                                <label class="mr-3" for="login-email">Your email</label>
+                        <div class="w-full flex flex-col justify-center px-7 text-sm">
+                            <div class="w-full flex  justify-between items-center mb-3 md:mb-5 text-skin-accent font-bahnschrift text-xs ">
+                                <label class="mr-3 text-right" for="login-email">YOUR EMAIL</label>
                                 <input id="login-email" type="text"
                                     class=" rounded-md dark:placeholder-gray-400 text-skin-muted "
                                     placeholder="name@company.com" required="" v-model="login.email">
                             </div>
                             <div class="w-full flex  justify-between items-center md:mb-5">
-                                <label class="mr-3" for="login-password">Your Password</label>
+                                <label class="mr-3  text-skin-accent font-bahnschrift text-xs" for="login-password">YOUR PASSWORD</label>
                                 <input id="login-password" type="password"
                                     class="rounded-md dark:placeholder-gray-400 text-skin-muted" placeholder="••••••••"
                                     required="" v-model="login.password">
@@ -1064,7 +990,7 @@
                             <button class="w-3/4 text-skin-muted font-medium rounded-lg text-sm boton3 mx-4"
                                 @click="loginAccount">Login
                                 to your account</button>
-                            <div class="text-sm font-medium  text-opacity-60 "
+                            <div class="text-sm font-medium pb-6 text-opacity-60 "
                                 :class="tema=='tema_1' || tema=='tema_2' ||tema=='tema_3' ? 'text-black' : 'text-skin-base'">
                                 Not registered?
                                 <a class="text-skin-muted hover:underline " @click="modal='register'">Create
