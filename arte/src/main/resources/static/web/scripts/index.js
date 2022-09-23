@@ -306,3 +306,19 @@ document.querySelectorAll('.bannerB').forEach(element => {
         }
     }).start();
 });
+
+/* Para fadein */
+/* document.querySelectorAll('.fadeIn').forEach(element=>{
+    const fadeIn = element.ge
+}) */
+const fadeIn = basicScroll.create({
+    elem: document.querySelector('.fadeIn'),
+    from: 'bottom-bottom',
+    to: 'top-top',
+    props: {
+      '--opacidad': {
+        from: .01,
+        to: .99
+      }
+    }
+  }).start()
