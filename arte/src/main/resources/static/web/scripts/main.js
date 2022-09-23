@@ -1,30 +1,11 @@
 const app = Vue.createApp({
     data() {
         return {
-            tema: '',
             activeModal: false,
-            modalSimple: false,
             modalDetails: true,
             productSelected: "",
             productSelectedimg: "",
-            goTo: "",
             location: "",
-            modal: "",
-            login: {
-                email: "",
-                password: ""
-            },
-            register: {
-                name: '',
-                lastName: '',
-                email: '',
-                password: ''
-            },
-            repeatedPassword: '',
-            mjeError: "",
-            termsOfServiceChecked: "",
-            userType: '',
-            user: '',
             artists: [],
             arrayArtists1: [],
             arrayArtists2: [],
@@ -41,12 +22,35 @@ const app = Vue.createApp({
             img6: "",
             artistsOrderedByRanking: {},
             bestArtist: {},
-            profileInfo: "",
-            profileImage: "",
-            file: '',
             menuPhoto: false,
-            modalUploadPhoto: false,
-            changeImage: false
+                        /* PARA FUNCIONAR EL NAV */
+                        tema: '',
+                        user: '',
+                        modalLoginRegister: false,
+                        modalSimple: false,
+                        modal: "",
+                        goTo: "",
+                        profileInfo: "",
+                        profileImage: "",
+                        modalUploadPhoto: false,
+                        changeImage: false,
+                        login: {
+                            email: "",
+                            password: ""
+                        },
+                        mjeError: "",
+                        userType: '',
+                        register: {
+                            name: '',
+                            lastName: '',
+                            email: '',
+                            password: ''
+                        },
+                        repeatedPassword: '',
+                        termsOfServiceChecked: "",
+                        p: "",
+                        file2: "",
+                        optionChange: true,
         }
     },
     created() {
@@ -63,12 +67,30 @@ const app = Vue.createApp({
         this.addClassY('navbar', 60, 'glass1', 'A');
     },
     methods: {
+        /* PARA QUE FUNCIONE EL NAV */
+        getCurrentClient() {
+            axios.get('/api/clients/current')
+                .then((response) => {
+                    console.log(response.data)
+                    this.profileInfo = response.data
+                    this.profileImage = this.profileInfo.image
+                    console.log(this.profileImage)
+                    localStorage.setItem("user", "authenticated")
+                    this.user = "authenticated"
+                    console.log(this.user)
+                })
+                .catch((error) => {
+                    localStorage.setItem("user", "visitor")
+                    this.user = "visitor"
+                    console.log(this.user)
+                })
+        },
         theme(a) {
             this.tema = `tema_${a}`;
-            if(parseInt(a)>6){
+            if (parseInt(a) > 6) {
                 this.tema = 'tema_1';
             }
-            if(a.lenght==0){
+            if (a.lenght == 0) {
                 this.tema = 'tema_1'
             }
             localStorage.setItem('theme', JSON.stringify(a));
@@ -78,8 +100,26 @@ const app = Vue.createApp({
                 this.theme(JSON.parse(localStorage.getItem('theme')))
             }
         },
-
-        /* REQUESTS */
+        logout() {
+            axios.post('/api/logout').then((response) => this.user = "visitor")
+            localStorage.setItem("user", "visitor")
+            this.user = localStorage.getItem("user")
+        },
+        loginAccount(e) {
+            e.preventDefault()
+            console.log(this.login)
+            axios.post(`/api/login?email=${this.login.email}&password=${this.login.password}`)
+                .then((response) => {
+                    this.modalSimple = true
+                    this.modalLoginRegister = false
+                    this.getCurrentClient()
+                    localStorage.setItem("user", "authenticated")
+                    this.user = localStorage.getItem("user")
+                }).catch((error) => {
+                    this.mjeError = 'Wrong email or password'
+                    console.log(error)
+                })
+        },
         createAccount() {
             this.mjeError = ''
             console.log(this.register)
@@ -108,26 +148,78 @@ const app = Vue.createApp({
                     })
             }
         },
-        loginAccount(e) {
-            e.preventDefault()
-            console.log(this.login)
-            axios.post(`/api/login?email=${this.login.email}&password=${this.login.password}`)
-                .then((response) => {
-                    this.modalSimple = true
-                    this.activeModal = false
-                    this.getCurrentClient()
-                    localStorage.setItem("user", "authenticated")
-                    this.user = localStorage.getItem("user")
-                }).catch((error) => {
-                    this.mjeError = 'Wrong email or password'
-                    console.log(error)
+        tt() {
+            console.log(this.activeModal, this.modal, this.goTo)
+        },
+        select_file(event) {
+            this.file = event.target.files[0]
+            console.log(this.file)
+        },
+        editPhoto(e) {
+            e.preventDefault();
+            let formData = new FormData()
+            formData.append("files", this.file)
+            axios.post('/api/files/upload/client',
+                formData,
+                { headers: { 'content-type': 'multipart/form-data' } })
+                .then(response => {
+                    location.reload()
                 })
+                .catch(error => console.log(error))
         },
-        logout() {
-            axios.post('/api/logout').then((response) => this.user = "visitor")
-            localStorage.setItem("user", "visitor")
-            this.user = localStorage.getItem("user")
+        redirect() {
+
+            if (this.goTo == 'Store') { this.location = "/web/public/wallofartworks.html" }
+            if (this.goTo == 'Profile') { this.location = "/web/artistandartlovers/myprofile.html" }
+            console.log(this.location)
+
+            window.location.href = this.location
         },
+        select_file2(event) {
+            this.file2 = event.target.files[0]
+            console.log(this.file2)
+        },
+        editPhoto(e) {
+            e.preventDefault();
+            let formData = new FormData()
+            formData.append("files", this.file2)
+            axios.post('/api/files/upload/client',
+                formData,
+                { headers: { 'content-type': 'multipart/form-data' } })
+                .then(response => {
+                    location.reload()
+                })
+                .catch(error => alert(error.response.data))
+        },
+        prueba() {
+            numero = parseInt(this.tema.slice(-1)) + 1
+            if (numero >= 7) {
+                this.tema = "tema1"
+                numero = 1
+            } else {
+                this.tema = `tema${numero}`
+            }
+            localStorage.setItem('theme', JSON.stringify(numero));
+            this.initialTheme();
+        },
+        /* PARA QUE FUNCIONE EL NAV */
+        theme(a) {
+            this.tema = `tema_${a}`;
+            if(parseInt(a)>6){
+                this.tema = 'tema_1';
+            }
+            if(a.lenght==0){
+                this.tema = 'tema_1'
+            }
+            localStorage.setItem('theme', JSON.stringify(a));
+        },
+        initialTheme() {
+            if (JSON.parse(localStorage.getItem('theme'))) {
+                this.theme(JSON.parse(localStorage.getItem('theme')))
+            }
+        },
+
+        /* REQUESTS */
         getClients() {
             axios.get('api/clients')
                 .then((response) => {
@@ -160,27 +252,6 @@ const app = Vue.createApp({
                 })
                 .catch((error) => console.log(error))
         },
-        Redirect() {
-
-            if (this.goTo == 'Store') { this.location = "/web/public/wallofartworks.html" }
-            if (this.goTo == 'Profile') { this.location = "/web/artistandartlovers/myprofile.html" }
-            console.log(this.location)
-
-            window.location.href = this.location
-        },
-        getCurrentClient() {
-            axios.get('/api/clients/current')
-                .then((response) => {
-                    console.log(response.data)
-                    this.profileInfo = response.data
-                    this.profileImage = this.profileInfo.image
-                    console.log(this.profileImage)
-                    this.user = localStorage.getItem("user")
-                })
-                .catch((error)=>{
-                    localStorage.setItem("user","visitor")
-                })
-        },
         modifyProductSelected(item) {
             this.productSelected = item
             this.productSelectedimg = this.productSelected.image.toString()
@@ -203,34 +274,7 @@ const app = Vue.createApp({
                     element.classList.add(classToRemove);
                 }
             })
-        },
-        select_file(event) {
-            this.file = event.target.files[0]
-            console.log(this.file)
-        },
-        editPhoto(e){
-            e.preventDefault(); 
-            let formData = new FormData()
-            formData.append("files", this.file)
-            axios.post('/api/files/upload/client',
-                formData,
-                { headers: { 'content-type': 'multipart/form-data' } })
-                .then(response => {
-                    location.reload()
-                })
-                .catch(error => alert(error.response.data))    
-        },
-        prueba() {
-            numero = parseInt(this.tema.slice(-1)) + 1
-            if (numero >= 7) {
-                this.tema = "tema1"
-                numero = 1
-            } else {
-                this.tema = `tema${numero}`
-            }
-            localStorage.setItem('theme', JSON.stringify(numero));
-            this.initialTheme();
-        },
+        }
     },
     computed: {
     }
