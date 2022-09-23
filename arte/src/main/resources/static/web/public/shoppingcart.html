@@ -299,14 +299,21 @@
                         </div>
                     </div>
                 </div>
-                <audio id="player"
-                    src="/web/assets/y2matecom-oruga-hace-extrano-chillido-jueputa-rakzer-lol_TKZus0X7.mp3"></audio>
+                
                 <audio id="intro"
                     src="/web/assets/y2mate.com - F Chopin  Nocturne in c sharp minor for violin and piano YuEun Kim Violin  쇼팽 녹턴  바이올리니스트 김유은.mp3"
                     autoplay="true"></audio>
+                <button v-show="!state"
+                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 hover:filtro2 border-2"
+                    @click="estado">
+                    <img src="/web/assets/mute.png" alt="" class="w-6 h-6 ">
+                </button>
 
-                <button onclick="document.getElementById('intro').pause()">🔇</button>
-                <button onclick="document.getElementById('intro').play()" id="btn1">▶️</button>
+                <button v-show="state"
+                    class="inline-block p-3 rounded-full focus:outline-none focus:ring fixed top-24 right-10 hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] ease-in duration-300 hover:filtro2 border-2"
+                    @click="estado">
+                    <img src="/web/assets/unmuted.png" alt="" class="w-6 h-6 ">
+                </button>
 
                 <div class=" flex justify-center mt-11 mb-12">
                     <p class=" text-3xl text-skin-accent">You might also like</p>
