@@ -2,6 +2,7 @@ const { createApp } = Vue
 createApp({
   data() {
     return {
+      state: false,
       tema: '',
       articuloCarrito: [],
       products: [],
@@ -340,8 +341,23 @@ createApp({
       setTimeout(function () {
         var vid = document.getElementById('intro')
         vid.play()
+        vid.volume = "0.5"
       }, 500)
-    }
+    },
+    estado(){
+      var vid = document.getElementById('intro')
+      this.state = vid.paused
+      if(this.state){
+        vid.play()
+        this.state = vid.paused
+        vid.volume = "0.5"
+      }else{
+        vid.pause()
+        this.state = vid.paused
+        vid.volume = "0.5"
+      }
+    },
+    
 
   }
 }).mount('#app')
