@@ -7,6 +7,7 @@ const app = Vue.createApp({
             artist: [],
             products: [],
             activeModal: false,
+            activeModalUpdate: false,
             formularioProduct: false,
             formulario: false,
             formEdit:{
@@ -93,7 +94,15 @@ const app = Vue.createApp({
             })
         },
         loadProduct(){
-
+            console.log(this.formLoad.name);
+            console.log(this.formLoad.description);
+            console.log(this.formLoad.category);
+            console.log(this.formLoad.large);
+            console.log(this.formLoad.width);
+            console.log(this.formLoad.height);
+            console.log(this.formLoad.price);
+            console.log(this.formLoad.units);
+            
             axios.post("/api/clients/current/products",{
                 "name": this.formLoad.name,
                 "description" : this.formLoad.description,

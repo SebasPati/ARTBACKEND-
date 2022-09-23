@@ -69,38 +69,50 @@
                 <div class=" flex justify-center mt-11">
                     <p class=" text-3xl text-skin-accent">Shopping Cart</p>
                 </div>
-                <div class=" md:flex md:flex-row justify-around border-b-4 md:w-[75%] w-[100%] ml-12 mt-11 md:p-5" v-for="product in carProducts">
-                    <div class=" md:flex md:flex-row justify-evenly">
-                        <div class=" flex items-center m-3">
-                            <button @click="eliminarArticulo(product.id)"><i
-                                    class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
-                        </div>
-                        <div class=" flex items-center">
-                            <img alt="Lava"
-                                :src="product.image"
-                                class="w-36 h-36 shadow-xl rounded-md" />
-                        </div>
-                        
-                        <div class=" flex flex-col items-center pt-12 m-4">
-                            <p class=" text-lg text-skin-muted"> 🎨 {{product.name}}</p>
-                        </div>
-                       
-                    </div>
-                    <div class=" flex flex-col items-start pt-10">
-                        <p class=" text-skin-muted font-bold">Unit: {{currency(product.price)}}</p>
-                        <p class=" text-skin-muted font-bold ">Subtotal: {{currency(product.price*product.cantidad)}}</p>
-                        <div class=" flex flex-row mt-4">
-                            <div class="flex items-center pr-1">
-                                <button @click="restarArticulo(product.id)"
-                                    class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-l-md hover:rounded-l-2xl  ease-in duration-300 hover:filtro2">-</button>
-                                <div class="text-skin-base px-1 group-hover:text-skin-inverted ">{{product.cantidad}}
+                <div class="w-full">
+                    <div class="w-[55%]">
+                        <div class="flex flex-row border-b-4 w-full mt-11" v-for="product in carProducts">
+                            <div class="w-full">
+                                <div class=" md:flex md:flex-row justify-evenly">
+                                    <div class=" flex items-center m-3 justify-center">
+                                        <button @click="eliminarArticulo(product.id)"><i
+                                                class="uil uil-trash-alt text-skin-muted text-3xl"></i></button>
+                                    </div>
+                                    <div class=" flex items-center justify-center">
+                                        <img alt="Lava" :src="product.image"
+                                            class="w-36 h-36 shadow-xl rounded-md mb-3" />
+                                    </div>
+                                    <div class=" flex flex-col items-center justify-center ml-4">
+                                        <p class="text-sm text-skin-muted font-bold">Product:</p>
+                                        <p class=" text-lg text-skin-muted">{{product.name}}</p>
+                                        <p class="text-sm text-skin-muted font-bold">Category:</p>
+                                        <p class="text-lg text-skin-muted mb-3">{{product.category}}</p>
+                                    </div>
+                                    <div class=" flex flex-col items-center justify-center ml-4">
+                                        <p class=" text-skin-muted "><span class="font-bold">Unit:
+                                            </span>{{currency(product.price)}}</p>
+                                        <div class=" flex flex-row mt-2">
+                                            <div class="flex items-center pr-1">
+                                                <button @click="restarArticulo(product.id)"
+                                                    class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-l-md hover:rounded-l-2xl  ease-in duration-300 hover:filtro2">-</button>
+                                                <div class="text-skin-base px-1 group-hover:text-skin-inverted ">
+                                                    {{product.cantidad}}
+                                                </div>
+                                                <button @click="sumarArticulo(product.id)"
+                                                    v-show="product.cantidad < product.units"
+                                                    class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-r-md hover:rounded-r-2xl ease-in duration-300 hover:filtro2">+</button>
+                                            </div>
+                                        </div>
+                                        <p class=" text-skin-muted font-normal mt-2 border-t-2"><span
+                                                class="font-bold">Subtotal:
+                                            </span>{{currency(product.price*product.cantidad)}}</p>
+                                    </div>
                                 </div>
-                                <button @click="sumarArticulo(product.id)" v-show="product.cantidad < product.units"
-                                    class="text-skin-base bg-skin-normal font-bold p-2 font-bahnschrift text-xs shadow-[0px_0px_1px_rgba(var(--color-text-base),0.4)] hover:shadow-[1px_1px_5px_rgba(var(--color-normal),0.8)] rounded-r-md hover:rounded-r-2xl ease-in duration-300 hover:filtro2">+</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div class=" m-5 flex justify-center flex-row">
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
                         <p>Total:</p>
@@ -111,15 +123,19 @@
                 </div>
                 <div class=" m-5 flex justify-center flex-row">
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
-                        <button class="boton1s w-24 h-14"> <a href="/web/public/wallofartworks.html" >CONTINUE SHOPPING</a> </button>
+                        <button class="boton1s w-24 h-14"> <a href="/web/public/wallofartworks.html">CONTINUE
+                                SHOPPING</a> </button>
                     </div>
                     <div class="  text-2xl text-skin-muted flex justify-center mt-6">
-                        <button onclick="document.getElementById('player').play()" class="boton1s w-24 h-14">PAY</button>
+                        <button onclick="document.getElementById('player').play()"
+                            class="boton1s w-24 h-14">PAY</button>
                     </div>
                 </div>
                 <audio id="player" src="/web/assets/y2mate.com - Efecto de sonido Yamete Kudasai xd.mp3"></audio>
-                <audio id="intro" src="/web/assets/y2mate.com - F Chopin  Nocturne in c sharp minor for violin and piano YuEun Kim Violin  쇼팽 녹턴  바이올리니스트 김유은.mp3" autoplay="true"></audio>
-                
+                <audio id="intro"
+                    src="/web/assets/y2mate.com - F Chopin  Nocturne in c sharp minor for violin and piano YuEun Kim Violin  쇼팽 녹턴  바이올리니스트 김유은.mp3"
+                    autoplay="true"></audio>
+
                 <button onclick="document.getElementById('intro').pause()">🔇</button>
                 <button onclick="document.getElementById('intro').play()" id="btn1">▶️</button>
 
@@ -130,9 +146,7 @@
                 <div class=" flex flex-row flex-wrap justify-center mt-4">
                     <div class=" flex flex-col ml-4" v-for="marketing in marketingProducts">
                         <a href="#" class="block w-56">
-                            <img alt="Lava"
-                                :src="marketing.image"
-                                class="w-[100%] h-56 shadow-xl rounded-xl" />
+                            <img alt="Lava" :src="marketing.image" class="w-[100%] h-56 shadow-xl rounded-xl" />
 
                             <div class="p-4">
                                 <h5 class="text-xl font-bold text-gray-900 h-12">
@@ -140,7 +154,8 @@
                                 </h5>
 
                                 <div class="  text-2xl text-skin-muted flex justify-center">
-                                    <button class="boton1s w-24 h-14" @click="escuchadorCarrito(marketing)">❤️️ ADD</button>
+                                    <button class="boton1s w-24 h-14" @click="escuchadorCarrito(marketing)">❤️️
+                                        ADD</button>
                                 </div>
                             </div>
                         </a>

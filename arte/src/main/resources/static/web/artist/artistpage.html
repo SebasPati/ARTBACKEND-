@@ -119,7 +119,7 @@
               </div>
               <div class="flex flex-col justify-center text-black">
                 <div class="w-1/4">
-                  <a href="javascript:void(0);" @click="activeModal=true" class="peer">
+                  <a href="javascript:void(0);" @click="activeModalUpdate=true" class="peer">
                     <div class="botonredondo">
                       +</div>
                   </a>
@@ -212,10 +212,10 @@
 
         <!-- MODAL AGREGAR -->
 
-        <div v-if="activeModal"
+        <div v-if="activeModalUpdate"
   class="aparecer fixed top-0 left-0 flex justify-center bg-opacity-80 aparecer z-30 w-full h-full glass2">
         </div>
-        <div v-if="activeModal"
+        <div v-if="activeModalUpdate"
   class="aparecer fixed top-0 left-0 flex justify-center justify-items-center content-center w-full z-40">
   <div
     class="flex flex-col justify-center items-center mt-10 bg-skin-normal text-skin-base filter-none w-96 h-96 rounded-2xl shadow-sm border border-slate-300 bg-opacity-50 hover:bg-opacity-70 transition-all ease-in duration-300">
@@ -330,7 +330,7 @@
       />
     </div>
   </form>
-    <button class="boton3" @click="loadProduct() , activeModal=false">Add 🏵️</button>
+    <button class="boton3" @click="loadProduct() , activeModalUpdate=false">Add 🏵️</button>
   </div>
         </div>
      
