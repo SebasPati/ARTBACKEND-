@@ -307,7 +307,7 @@ const app = Vue.createApp({
               var vid = document.getElementById('intro')
               vid.play()
               vid.volume = "0.5"
-            }, 500)
+            },200)
           },
           estado() {
             var vid = document.getElementById('intro')
